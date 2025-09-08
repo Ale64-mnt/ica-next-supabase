@@ -284,16 +284,18 @@ export default async function NewsDetail({{ params }}: {{ params: {{ locale: str
 """)
 
     # README
-    write(APP / "README.md", r"""
-# ICA Webapp (Next.js + Supabase + i18n)
+write(APP / "README.md", """# {project_name}
 
-## Requisiti
-- Node.js >= 18
-- Supabase Project (URL + anon key)
+Skeleton Next.js + Supabase generato automaticamente.
 
-## Setup
-```bash
-cp .env.example .env.local
-# inserisci NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY
-npm install
-npm run dev
+## Struttura
+- app/ – router, pagine e layout
+- lib/ – client Supabase e utilità
+- components/ – componenti UI riutilizzabili
+- .env.local.example – variabili ambiente richieste
+
+## Avvio rapido
+1. Copia `.env.local.example` in `.env.local` e riempi SUPABASE_URL e SUPABASE_ANON_KEY
+2. `pnpm install` (o `npm install`/`yarn`)
+3. `pnpm dev` e apri http://localhost:3000
+""")
