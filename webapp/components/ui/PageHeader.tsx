@@ -1,0 +1,1 @@
+export default function PageHeader({title,kicker,actions}:{title:string;kicker?:string;actions?:React.ReactNode;}){return(<header className="section"><div className="container">{kicker&&<div className="muted" style={{marginBottom:4}}>{kicker}</div>}<h1 style={{marginBottom:12}}>{title}</h1>{actions}</div></header>);}

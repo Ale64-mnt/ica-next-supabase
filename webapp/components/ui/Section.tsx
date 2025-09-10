@@ -1,0 +1,1 @@
+export default function Section({title,muted=false,children}:{title?:string;muted?:boolean;children:React.ReactNode;}){return(<section className={`section ${muted?'section--muted':''}`}><div className="container">{title&&<h2 style={{marginBottom:12}}>{title}</h2>}{children}</div></section>);}

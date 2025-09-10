@@ -1,0 +1,3 @@
+import React,{PropsWithChildren} from 'react';import styles from './card.module.css';
+type Props=PropsWithChildren<{href?:string;title?:string;meta?:string;image?:string}>;
+export default function Card({href,title,meta,image,children}:Props){const content=(<article className={styles.card}>{image&&<img src={image} alt="" className={styles.cover}/>}<div className={styles.body}>{meta&&<div className={styles.meta}>{meta}</div>}{title&&<h3 className={styles.title}>{title}</h3>}<div className={styles.text}>{children}</div></div></article>);return href?<a className={styles.link} href={href}>{content}</a>:content;}

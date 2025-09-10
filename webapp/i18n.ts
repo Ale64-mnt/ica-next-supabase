@@ -1,0 +1,1 @@
+export const locales=['it','en','fr','es','de'] as const;export type Locale=typeof locales[number];export const defaultLocale:Locale='it';

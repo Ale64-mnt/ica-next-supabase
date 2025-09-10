@@ -1,2 +1,2 @@
-import PageHeader from "@/components/ui/PageHeader";import Section from "@/components/ui/Section";
+import PageHeader from '@/components/ui/PageHeader';import Section from '@/components/ui/Section';
 export default function ContactPage(){return(<><PageHeader title="Contatti" kicker="Parla con noi"/><Section><form className="card" style={{maxWidth:600}}><label>Nome<br/><input style={{width:'100%'}} required/></label><br/><label>Email<br/><input type="email" style={{width:'100%'}} required/></label><br/><label>Messaggio<br/><textarea rows={5} style={{width:'100%'}}/></label><br/><button className="btn btn--primary">Invia</button></form></Section></>);}

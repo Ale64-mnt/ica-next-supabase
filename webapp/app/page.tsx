@@ -1,26 +1,6 @@
-import Link from 'next/link'
-
-function Card({ title, desc, href }: { title: string; desc: string; href: string }) {
-  return (
-    <Link href={href} className="rounded-lg border p-5 hover:shadow transition">
-      <h3 className="font-semibold text-lg">{title}</h3>
-      <p className="text-sm text-neutral-600 mt-1">{desc}</p>
-      <span className="inline-block mt-3 text-blue-600 text-sm">Vai →</span>
-    </Link>
-  )
-}
-
-export default function Home() {
-  return (
-    <main className="mx-auto max-w-5xl px-4 py-10 space-y-6">
-      <h1 className="text-3xl font-bold">Benvenuto 👋</h1>
-      <p className="text-neutral-700">
-        Sito ICA – Institute for Conscious Action. Educazione finanziaria ed etica digitale.
-      </p>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Card title="News" desc="Aggiornamenti e segnalazioni." href="/news" />
-        <Card title="Articoli" desc="Approfondimenti ed editoriali." href="/articles" />
-      </div>
-    </main>
-  )
-}
+import Section from "@/components/ui/Section";import Card from "@/components/ui/Card";import Button from "@/components/ui/Button";import PageHeader from "@/components/ui/PageHeader";
+export default function Home(){return(<><PageHeader kicker="Institute for Conscious Action" title="Educazione finanziaria, digitale ed etica — chiara e accessibile." actions={<Button href="/articles" variant="primary">Scopri gli articoli</Button>} />
+<Section title="Ultime News"><div className="grid grid--3"><Card href="/news/demo" meta="17 gen 2025 • Bank of England" title="Quiz di educazione economica (£1.000)">Breve sintesi… metodo ludico per stimolare la comprensione di concetti economici quotidiani.</Card><Card href="#" title="Esempio 2">Contenuto di esempio</Card><Card href="#" title="Esempio 3">Contenuto di esempio</Card></div><div style={{marginTop:'1rem'}}><Button href="/news" variant="ghost">Tutte le news</Button></div></Section>
+<Section title="Articoli in primo piano" muted><div className="grid grid--3"><Card href="/articles/demo" image="/placeholder.jpg" meta="Educazione Finanziaria" title="Risparmio e budgeting">Introduzione rapida…</Card><Card href="/articles/demo2" image="/placeholder.jpg" meta="Etica & Consapevolezza" title="Benessere digitale">…</Card><Card href="/articles/demo3" image="/placeholder.jpg" meta="Educazione Digitale" title="Sicurezza online 101">…</Card></div></Section>
+<Section title="Risorse educative"><div className="grid grid--2"><Card href="/glossary" title="Glossario">Termini complessi spiegati semplice.</Card><Card href="/faq" title="FAQ">Domande frequenti…</Card></div></Section>
+<Section muted><div className="grid grid--2"><div className="prose"><h2>Chi siamo</h2><p className="muted">Mission, trasparenza ed etica editoriale.</p><Button href="/about" variant="ghost">Scopri di più</Button></div><div className="prose"><h2>Iscriviti alla newsletter</h2><p className="muted">Aggiornamenti mensili, nessuno spam.</p></div></div></Section></>);}
