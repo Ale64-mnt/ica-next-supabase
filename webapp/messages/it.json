@@ -1,1 +1,54 @@
-{"common":{"brand":"Institute for Conscious Action","menu":{"home":"Home","news":"News","articles":"Educazione","about":"Chi siamo","faq":"FAQ","glossary":"Glossario","contact":"Contatti"},"cta":{"readMore":"Scopri di più","allNews":"Tutte le news","allArticles":"Tutti gli articoli"}},"home":{"title":"Educazione finanziaria, digitale ed etica — chiara e accessibile.","heroCta":"Scopri gli articoli","latestNews":"Ultime News","featuredArticles":"Articoli in primo piano","resources":"Risorse educative","aboutTeaser":"Mission, trasparenza ed etica editoriale.","newsletterTitle":"Iscriviti alla newsletter","newsletterText":"Aggiornamenti mensili, nessuno spam."},"news":{"title":"News","kicker":"Aggiornamenti e segnalazioni"},"articles":{"title":"Articoli","kicker":"Approfondimenti evergreen"},"about":{"title":"Chi siamo","kicker":"Institute for Conscious Action"},"faq":{"title":"FAQ","kicker":"Domande frequenti"},"glossary":{"title":"Glossario","kicker":"Termini spiegati semplice"},"contact":{"title":"Contatti","kicker":"Parla con noi"}}
+{
+  "common": {
+    "brand": "Institute for Conscious Action",
+    "menu": {
+      "home": "Home",
+      "news": "News",
+      "articles": "Educazione",
+      "about": "Chi siamo",
+      "faq": "FAQ",
+      "glossary": "Glossario",
+      "contact": "Contatti"
+    },
+    "cta": {
+      "readMore": "Scopri di più",
+      "allNews": "Tutte le news",
+      "allArticles": "Tutti gli articoli"
+    }
+  },
+  "home": {
+    "title": "Educazione finanziaria, digitale ed etica — chiara e accessibile.",
+    "heroCta": "Scopri gli articoli",
+    "latestNews": "Ultime News",
+    "featuredArticles": "Articoli in primo piano",
+    "resources": "Risorse educative",
+    "aboutTeaser": "Mission, trasparenza ed etica editoriale.",
+    "newsletterTitle": "Iscriviti alla newsletter",
+    "newsletterText": "Aggiornamenti mensili, nessuno spam.",
+    "intro": "Skeleton Next.js + Supabase + i18n pronto."
+  },
+  "news": {
+    "title": "News",
+    "kicker": "Aggiornamenti e segnalazioni"
+  },
+  "articles": {
+    "title": "Articoli",
+    "kicker": "Approfondimenti evergreen"
+  },
+  "about": {
+    "title": "Chi siamo",
+    "kicker": "Institute for Conscious Action"
+  },
+  "faq": {
+    "title": "FAQ",
+    "kicker": "Domande frequenti"
+  },
+  "glossary": {
+    "title": "Glossario",
+    "kicker": "Termini spiegati semplice"
+  },
+  "contact": {
+    "title": "Contatti",
+    "kicker": "Parla con noi"
+  }
+}

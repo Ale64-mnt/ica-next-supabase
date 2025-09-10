@@ -1,4 +1,31 @@
-import {NextIntlClientProvider} from 'next-intl';import {ReactNode} from 'react';import Nav from '@/components/Nav';
-export const dynamic='force-dynamic';
-export default async function LocaleLayout({children,params:{locale}}:{children:ReactNode;params:{locale:string}}){const messages=(await import(`@/messages/${locale}.json`)).default;return(<html lang={locale}><body><Nav/><NextIntlClientProvider messages={messages} locale={locale}>{children}</NextIntlClientProvider></body></html>);}
-export async function generateStaticParams(){return[{locale:'it'},{locale:'en'},{locale:'fr'},{locale:'es'},{locale:'de'}];}
+import type {Metadata} from 'next';
+import {NextIntlClientProvider} from 'next-intl';
+import {getMessages, setRequestLocale} from 'next-intl/server';
+import '../globals.css';
+
+export const metadata: Metadata = {
+  title: 'ICA',
+  description: 'Istituto per la Consapevolezza'
+};
+
+export function generateStaticParams() {
+  return [{locale: 'it'}, {locale: 'en'}, {locale: 'fr'}, {locale: 'es'}, {locale: 'de'}];
+}
+
+export default async function LocaleLayout({
+  children,
+  params: {locale}
+}: {
+  children: React.ReactNode;
+  params: {locale: string};
+}) {
+  setRequestLocale(locale);
+  const messages = await getMessages();
+  return (
+    <html lang={locale}>
+      <body>
+        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}

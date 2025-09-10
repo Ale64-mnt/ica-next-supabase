@@ -1,2 +1,12 @@
-import Section from '@/components/ui/Section';import Card from '@/components/ui/Card';import Button from '@/components/ui/Button';import PageHeader from '@/components/ui/PageHeader';import {useTranslations} from 'next-intl';
-export default function Home(){const t=useTranslations('home');return(<><PageHeader kicker="Institute for Conscious Action" title={t('title')} actions={<Button href="#" variant="primary">{t('heroCta')}</Button>} /><Section title={t('latestNews')}><div className="grid grid--3"><Card href="#" meta="17 gen 2025 • Bank of England" title="Quiz di educazione economica (£1.000)">Sintesi…</Card><Card href="#" title="Esempio 2">Contenuto di esempio</Card><Card href="#" title="Esempio 3">Contenuto di esempio</Card></div><div style={{marginTop:'1rem'}}><Button href="#" variant="ghost">Tutte le news</Button></div></Section><Section title={t('featuredArticles')} muted><div className="grid grid--3"><Card href="#" image="/placeholder.jpg" meta="Educazione Finanziaria" title="Risparmio e budgeting">Intro…</Card><Card href="#" image="/placeholder.jpg" meta="Etica & Consapevolezza" title="Benessere digitale">…</Card><Card href="#" image="/placeholder.jpg" meta="Educazione Digitale" title="Sicurezza online 101">…</Card></div></Section><Section title={t('resources')}><div className="grid grid--2"><Card href="#" title="Glossario">Termini semplici.</Card><Card href="#" title="FAQ">Domande frequenti.</Card></div></Section></>);}
+'use client';
+import {useTranslations} from 'next-intl';
+
+export default function Home() {
+  const t = useTranslations('home');
+  return (
+    <main style={{padding: '2rem'}}>
+      <h1>{t('title')}</h1>
+      <p>{t('intro')}</p>
+    </main>
+  );
+}

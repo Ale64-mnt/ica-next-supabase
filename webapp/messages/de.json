@@ -1,1 +1,54 @@
-{"common":{"brand":"Institute for Conscious Action","menu":{"home":"Start","news":"News","articles":"Bildung","about":"Über uns","faq":"FAQ","glossary":"Glossar","contact":"Kontakt"},"cta":{"readMore":"Mehr erfahren","allNews":"Alle News","allArticles":"Alle Artikel"}},"home":{"title":"Finanz-, Digital- und Ethikbildung — klar und zugänglich.","heroCta":"Artikel ansehen","latestNews":"Neueste News","featuredArticles":"Empfohlene Artikel","resources":"Bildungsressourcen","aboutTeaser":"Mission, Transparenz und redaktionelle Ethik.","newsletterTitle":"Newsletter abonnieren","newsletterText":"Monatliche Updates, kein Spam."},"news":{"title":"News","kicker":"Aktuelles und Highlights"},"articles":{"title":"Artikel","kicker":"Zeitlose Inhalte"},"about":{"title":"Über uns","kicker":"Institute for Conscious Action"},"faq":{"title":"FAQ","kicker":"Häufige Fragen"},"glossary":{"title":"Glossar","kicker":"Begriffe einfach erklärt"},"contact":{"title":"Kontakt","kicker":"Kontakt aufnehmen"}}
+{
+  "common": {
+    "brand": "Institute for Conscious Action",
+    "menu": {
+      "home": "Start",
+      "news": "News",
+      "articles": "Bildung",
+      "about": "Über uns",
+      "faq": "FAQ",
+      "glossary": "Glossar",
+      "contact": "Kontakt"
+    },
+    "cta": {
+      "readMore": "Mehr erfahren",
+      "allNews": "Alle News",
+      "allArticles": "Alle Artikel"
+    }
+  },
+  "home": {
+    "title": "Finanz-, Digital- und Ethikbildung — klar und zugänglich.",
+    "heroCta": "Artikel ansehen",
+    "latestNews": "Neueste News",
+    "featuredArticles": "Empfohlene Artikel",
+    "resources": "Bildungsressourcen",
+    "aboutTeaser": "Mission, Transparenz und redaktionelle Ethik.",
+    "newsletterTitle": "Newsletter abonnieren",
+    "newsletterText": "Monatliche Updates, kein Spam.",
+    "intro": "Skeleton Next.js + Supabase + i18n ready."
+  },
+  "news": {
+    "title": "News",
+    "kicker": "Aktuelles und Highlights"
+  },
+  "articles": {
+    "title": "Artikel",
+    "kicker": "Zeitlose Inhalte"
+  },
+  "about": {
+    "title": "Über uns",
+    "kicker": "Institute for Conscious Action"
+  },
+  "faq": {
+    "title": "FAQ",
+    "kicker": "Häufige Fragen"
+  },
+  "glossary": {
+    "title": "Glossar",
+    "kicker": "Begriffe einfach erklärt"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "kicker": "Kontakt aufnehmen"
+  }
+}

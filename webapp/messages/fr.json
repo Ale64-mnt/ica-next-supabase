@@ -1,1 +1,54 @@
-{"common":{"brand":"Institute for Conscious Action","menu":{"home":"Accueil","news":"Actualités","articles":"Éducation","about":"À propos","faq":"FAQ","glossary":"Glossaire","contact":"Contact"},"cta":{"readMore":"En savoir plus","allNews":"Toutes les actus","allArticles":"Tous les articles"}},"home":{"title":"Éducation financière, numérique et éthique — claire et accessible.","heroCta":"Découvrir les articles","latestNews":"Dernières actualités","featuredArticles":"Articles à la une","resources":"Ressources éducatives","aboutTeaser":"Mission, transparence et éthique éditoriale.","newsletterTitle":"Inscrivez-vous à la newsletter","newsletterText":"Mises à jour mensuelles, sans spam."},"news":{"title":"Actualités","kicker":"Mises à jour et points clés"},"articles":{"title":"Articles","kicker":"Analyses durables"},"about":{"title":"À propos","kicker":"Institute for Conscious Action"},"faq":{"title":"FAQ","kicker":"Questions fréquentes"},"glossary":{"title":"Glossaire","kicker":"Termes expliqués simplement"},"contact":{"title":"Contact","kicker":"Entrer en contact"}}
+{
+  "common": {
+    "brand": "Institute for Conscious Action",
+    "menu": {
+      "home": "Accueil",
+      "news": "Actualités",
+      "articles": "Éducation",
+      "about": "À propos",
+      "faq": "FAQ",
+      "glossary": "Glossaire",
+      "contact": "Contact"
+    },
+    "cta": {
+      "readMore": "En savoir plus",
+      "allNews": "Toutes les actus",
+      "allArticles": "Tous les articles"
+    }
+  },
+  "home": {
+    "title": "Éducation financière, numérique et éthique — claire et accessible.",
+    "heroCta": "Découvrir les articles",
+    "latestNews": "Dernières actualités",
+    "featuredArticles": "Articles à la une",
+    "resources": "Ressources éducatives",
+    "aboutTeaser": "Mission, transparence et éthique éditoriale.",
+    "newsletterTitle": "Inscrivez-vous à la newsletter",
+    "newsletterText": "Mises à jour mensuelles, sans spam.",
+    "intro": "Skeleton Next.js + Supabase + i18n ready."
+  },
+  "news": {
+    "title": "Actualités",
+    "kicker": "Mises à jour et points clés"
+  },
+  "articles": {
+    "title": "Articles",
+    "kicker": "Analyses durables"
+  },
+  "about": {
+    "title": "À propos",
+    "kicker": "Institute for Conscious Action"
+  },
+  "faq": {
+    "title": "FAQ",
+    "kicker": "Questions fréquentes"
+  },
+  "glossary": {
+    "title": "Glossaire",
+    "kicker": "Termes expliqués simplement"
+  },
+  "contact": {
+    "title": "Contact",
+    "kicker": "Entrer en contact"
+  }
+}
