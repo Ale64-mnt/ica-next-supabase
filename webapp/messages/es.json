@@ -1,54 +1,8 @@
 {
-  "common": {
-    "brand": "Institute for Conscious Action",
-    "menu": {
-      "home": "Inicio",
-      "news": "Noticias",
-      "articles": "Educación",
-      "about": "Quiénes somos",
-      "faq": "FAQ",
-      "glossary": "Glosario",
-      "contact": "Contacto"
-    },
-    "cta": {
-      "readMore": "Saber más",
-      "allNews": "Todas las noticias",
-      "allArticles": "Todos los artículos"
-    }
-  },
   "home": {
-    "title": "Educación financiera, digital y ética — clara y accesible.",
-    "heroCta": "Explorar artículos",
-    "latestNews": "Últimas noticias",
-    "featuredArticles": "Artículos destacados",
-    "resources": "Recursos educativos",
-    "aboutTeaser": "Misión, transparencia y ética editorial.",
-    "newsletterTitle": "Suscríbete al boletín",
-    "newsletterText": "Actualizaciones mensuales, sin spam.",
-    "intro": "Skeleton Next.js + Supabase + i18n ready."
-  },
-  "news": {
-    "title": "Noticias",
-    "kicker": "Actualizaciones y destacados"
-  },
-  "articles": {
-    "title": "Artículos",
-    "kicker": "Contenidos evergreen"
-  },
-  "about": {
-    "title": "Quiénes somos",
-    "kicker": "Institute for Conscious Action"
-  },
-  "faq": {
-    "title": "FAQ",
-    "kicker": "Preguntas frecuentes"
-  },
-  "glossary": {
-    "title": "Glosario",
-    "kicker": "Términos explicados"
-  },
-  "contact": {
-    "title": "Contacto",
-    "kicker": "Hablemos"
+    "title": "Educación financiera, digital y ética",
+    "intro": "Skeleton Next.js + Supabase + i18n listo para empezar.",
+    "ctaNews": "Ir a noticias",
+    "ctaArticles": "Leer artículos"
   }
 }

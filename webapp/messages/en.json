@@ -1,54 +1,8 @@
 {
-  "common": {
-    "brand": "Institute for Conscious Action",
-    "menu": {
-      "home": "Home",
-      "news": "News",
-      "articles": "Education",
-      "about": "About",
-      "faq": "FAQ",
-      "glossary": "Glossary",
-      "contact": "Contact"
-    },
-    "cta": {
-      "readMore": "Learn more",
-      "allNews": "All news",
-      "allArticles": "All articles"
-    }
-  },
   "home": {
-    "title": "Financial, digital and ethical education — clear and accessible.",
-    "heroCta": "Explore articles",
-    "latestNews": "Latest news",
-    "featuredArticles": "Featured articles",
-    "resources": "Educational resources",
-    "aboutTeaser": "Mission, transparency and editorial ethics.",
-    "newsletterTitle": "Join the newsletter",
-    "newsletterText": "Monthly updates, no spam.",
-    "intro": "Skeleton Next.js + Supabase + i18n ready."
-  },
-  "news": {
-    "title": "News",
-    "kicker": "Updates and highlights"
-  },
-  "articles": {
-    "title": "Articles",
-    "kicker": "Evergreen insights"
-  },
-  "about": {
-    "title": "About us",
-    "kicker": "Institute for Conscious Action"
-  },
-  "faq": {
-    "title": "FAQ",
-    "kicker": "Frequently asked questions"
-  },
-  "glossary": {
-    "title": "Glossary",
-    "kicker": "Terms made simple"
-  },
-  "contact": {
-    "title": "Contact",
-    "kicker": "Get in touch"
+    "title": "Financial, digital and ethical education",
+    "intro": "Skeleton Next.js + Supabase + i18n ready to go.",
+    "ctaNews": "Go to news",
+    "ctaArticles": "Read articles"
   }
 }
