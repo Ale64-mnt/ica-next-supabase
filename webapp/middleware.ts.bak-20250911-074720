@@ -1,0 +1,14 @@
+// webapp/middleware.ts
+import createMiddleware from 'next-intl/middleware';
+import {locales, defaultLocale} from './i18n/routing';
+
+export default createMiddleware({
+  locales,
+  defaultLocale,
+  localePrefix: 'always',
+});
+
+export const config = {
+  // esclude asset e file statici
+  matcher: ['/((?!_next|.*\\..*).*)'],
+};

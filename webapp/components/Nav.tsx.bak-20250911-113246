@@ -1,0 +1,33 @@
+'use client';
+
+import Link from 'next/link';
+import {useLocale, useTranslations} from 'next-intl';
+import LanguageSwitcher from './LanguageSwitcher';
+
+const items = [
+  {href: '/',        key: 'nav.home'},
+  {href: '/news',    key: 'nav.news'},
+  {href: '/articles',key: 'nav.articles'},
+  {href: '/about',   key: 'nav.about'},
+  {href: '/contact', key: 'nav.contact'}
+];
+
+export default function Nav() {
+  const t = useTranslations();
+  const locale = useLocale();
+
+  return (
+    <nav style={{display:'flex', gap:16, alignItems:'center', padding:'12px 0'}}>
+      <div style={{display:'flex', gap:12}}>
+        {items.map((it) => (
+          <Link key={it.href} href={`/${locale}${it.href}`}>
+            {t(it.key)}
+          </Link>
+        ))}
+      </div>
+      <div style={{marginLeft:'auto'}}>
+        <LanguageSwitcher />
+      </div>
+    </nav>
+  );
+}

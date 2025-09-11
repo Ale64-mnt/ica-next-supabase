@@ -6,11 +6,6 @@
   "nav": {
     "home": "Start",
     "about": "Über uns",
-    "contact": "Kontakt",
-    "news": "News",
-    "articles": "Artikel"
-  },
-  "common": {
-    "cta": "Loslegen"
+    "contact": "Kontakt"
   }
 }

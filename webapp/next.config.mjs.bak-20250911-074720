@@ -1,0 +1,7 @@
+// webapp/next.config.mjs
+import withNextIntl from 'next-intl/plugin';
+
+// collega il plugin al file di config qui sopra
+export default withNextIntl('./next-intl.config.ts')({
+  reactStrictMode: true,
+});

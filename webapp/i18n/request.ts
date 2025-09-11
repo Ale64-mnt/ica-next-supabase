@@ -1,21 +1,11 @@
-// webapp/i18n/request.ts
-import {getRequestConfig} from 'next-intl/server';
-import {routing} from './routing';
+import {getRequestConfig} from "next-intl/server";
 
-export default getRequestConfig(async ({requestLocale}) => {
-  // requestLocale è una Promise in next-intl v4: serve await
-  let locale = await requestLocale;
-
-  // Fallback alla defaultLocale se la locale non è supportata
-  if (!routing.locales.includes(locale as any)) {
-    locale = routing.defaultLocale;
+export default getRequestConfig(async ({locale}) => {
+  try {
+    const mod = await import(`../messages/${locale}.json`);
+    return { locale, messages: mod.default };
+  } catch {
+    const mod = await import("../messages/it.json");
+    return { locale: "it", messages: mod.default };
   }
-
-  // Importa il file di messaggi corretto (cartella: webapp/messages)
-  const messages = (await import(`../messages/${locale}.json`)).default;
-
-  return {
-    locale,
-    messages
-  };
 });

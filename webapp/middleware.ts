@@ -1,9 +1,18 @@
+// middleware.ts
 import createMiddleware from 'next-intl/middleware';
-import {routing} from './i18n/routing';
+import {locales, defaultLocale} from './i18n/routing';
 
-export default createMiddleware(routing);
+// Forziamo sempre una locale valida e ignoriamo asset/API
+export default createMiddleware({
+  locales,
+  defaultLocale,
+  // se vuoi evitare redirect sulla root, cambia in 'as-needed'
+  localePrefix: 'always'
+});
 
-// Intercetta tutto tranne asset statici, API, _next e _vercel
 export const config = {
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
+  matcher: [
+    // Intercetta tutto tranne asset, file statici e API
+    '/((?!_next|api|.*\\..*).*)'
+  ]
 };

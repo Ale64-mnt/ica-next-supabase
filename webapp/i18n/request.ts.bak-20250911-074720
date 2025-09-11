@@ -1,0 +1,7 @@
+// DICE A next-intl COME CARICARE I MESSAGGI PER OGNI LOCALE
+import {getRequestConfig} from 'next-intl/server';
+
+export default getRequestConfig(async ({locale}) => ({
+  // Carica i JSON da /messages/<locale>.json
+  messages: (await import(`../messages/${locale}.json`)).default
+}));

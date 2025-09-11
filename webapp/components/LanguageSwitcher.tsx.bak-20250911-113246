@@ -1,0 +1,29 @@
+'use client';
+
+import {useLocale} from 'next-intl';
+import {usePathname, useRouter} from 'next/navigation';
+import {locales} from '@/i18n/routing';
+
+export default function LanguageSwitcher() {
+  const locale = useLocale();
+  const pathname = usePathname() || '/';
+  const router = useRouter();
+
+  function changeLanguage(next: string) {
+    const parts = pathname.split('/');
+    // forza '/{locale}/...' sostituendo il primo segmento
+    parts[1] = next;
+    const target = parts.join('/') || '/';
+    router.push(target);
+  }
+
+  return (
+    <select value={locale} onChange={(e) => changeLanguage(e.target.value)}>
+      {locales.map((l) => (
+        <option key={l} value={l}>
+          {l.toUpperCase()}
+        </option>
+      ))}
+    </select>
+  );
+}

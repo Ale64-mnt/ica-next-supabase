@@ -1,5 +1,17 @@
-'use client'
-import {usePathname,useRouter} from 'next/navigation';
-const locales=['it','en','fr','es','de'];
-function replaceLocale(path:string,locale:string){const parts=path.split('/');if(parts[1]&&locales.includes(parts[1])){parts[1]=locale;return parts.join('/');}return `/${locale}${path.startsWith('/')?'':'/'}${path}`;}
-export default function LanguageSwitcher(){const router=useRouter();const pathname=usePathname();return(<select aria-label="Language" defaultValue={pathname.split('/')[1]} onChange={(e)=>router.push(replaceLocale(pathname,e.target.value))} style={{padding:'6px 10px',borderRadius:8,border:'1px solid #e6e8ef'}}><option value="it">IT</option><option value="en">EN</option><option value="fr">FR</option><option value="es">ES</option><option value="de">DE</option></select>);}
+'use client';
+import Link from 'next/link';
+import {usePathname} from 'next/navigation';
+import {locales} from '@/i18n/routing';
+
+export default function LanguageSwitcher(){
+  const pathname = usePathname() || '/it';
+  // rimuovi il primo segmento /xx
+  const rest = pathname.replace(/^\/[a-z]{2}(?=\/|$)/, '');
+  return (
+    <div style={{display:'flex', gap:'0.5rem'}}>
+      {locales.map(l => (
+        <Link key={l} href={`/${l}${rest || ''}`}>{l.toUpperCase()}</Link>
+      ))}
+    </div>
+  );
+}

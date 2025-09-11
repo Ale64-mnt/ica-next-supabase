@@ -1,0 +1,8 @@
+{
+  "home": {
+    "title": "Educación financiera, digital y ética",
+    "intro": "Skeleton Next.js + Supabase + i18n listo para empezar.",
+    "ctaNews": "Ir a noticias",
+    "ctaArticles": "Leer artículos"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "home": {
+    "title": "Benvenuto",
+    "subtitle": "Sito di esempio con Next.js + i18n",
+    "cta": "Inizia ora"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "Chi siamo",
+    "contact": "Contatti"
+  }
+}

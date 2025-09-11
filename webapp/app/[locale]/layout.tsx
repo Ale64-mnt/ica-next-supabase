@@ -1,30 +1,37 @@
-import type {Metadata} from 'next';
+// app/[locale]/layout.tsx
 import {NextIntlClientProvider} from 'next-intl';
-import {getMessages, setRequestLocale} from 'next-intl/server';
-import '../globals.css';
+import {setRequestLocale} from 'next-intl/server';
+import {notFound} from 'next/navigation';
+import type {ReactNode} from 'react';
+import {locales} from '@/i18n/routing'; // usa alias @ (già configurato)
 
-export const metadata: Metadata = {
-  title: 'ICA',
-  description: 'Istituto per la Consapevolezza'
-};
-
+/** Pre-render di /it, /en, /fr, /es, /de */
 export function generateStaticParams() {
-  return [{locale: 'it'}, {locale: 'en'}, {locale: 'fr'}, {locale: 'es'}, {locale: 'de'}];
+  return locales.map((locale) => ({locale}));
 }
 
 export default async function LocaleLayout({
   children,
   params: {locale}
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   params: {locale: string};
 }) {
+  // imposta la locale nel runtime next-intl (v4)
   setRequestLocale(locale);
-  const messages = await getMessages();
+
+  // se la locale non è supportata → 404
+  if (!locales.includes(locale as any)) notFound();
+
+  // carica i messaggi della lingua
+  const messages = (await import(`@/messages/${locale}.json`)).default;
+
   return (
     <html lang={locale}>
       <body>
-        <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
