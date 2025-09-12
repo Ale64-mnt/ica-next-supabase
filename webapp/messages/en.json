@@ -6,11 +6,34 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "contact": "Contact",
     "news": "News",
-    "articles": "Articles"
+    "articles": "Articles",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "glossary": "Glossary"
   },
-  "common": {
-    "cta": "Get started"
+  "about": {
+    "title": "About us",
+    "intro": "Information about the project."
+  },
+  "news": {
+    "title": "News",
+    "intro": "Latest updates from our team."
+  },
+  "articles": {
+    "title": "Articles",
+    "intro": "Insights and guides."
+  },
+  "contact": {
+    "title": "Contact",
+    "intro": "How to reach us."
+  },
+  "faq": {
+    "title": "FAQ",
+    "intro": "Frequently asked questions."
+  },
+  "glossary": {
+    "title": "Glossary",
+    "intro": "Useful terms and definitions."
   }
 }

@@ -1,5 +1,5 @@
 # Worklog – ICA Next.js + Supabase
-## Totale ore registrate: 2h 5m
+## Totale ore registrate: 2h 10m
 
 ---
 
@@ -12,3 +12,6 @@
 ### 📌 2025-09-11 – Fase 2 completata: i18n
 - request.ts, layout.tsx, messaggi base, test /it /en
 ⏱ 1h 15m
+### 📌 2025-09-11 – Commit fase 3
+- salvataggio in Git di Navbar, LanguageSwitcher, pagine secondarie e messaggi
+⏱ 5m

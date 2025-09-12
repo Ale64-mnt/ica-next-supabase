@@ -1,0 +1,16 @@
+{
+  "home": {
+    "title": "Welcome",
+    "intro": "Next.js + i18n site"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "news": "News",
+    "articles": "Articles"
+  },
+  "common": {
+    "cta": "Get started"
+  }
+}

@@ -3,21 +3,20 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start",
-  "lint": "next lint",
-  "ica:layout": "..\\Tools\\runica.cmd layout",
-  "ica:i18n": "..\\Tools\\runica.cmd i18n",
-  "ica:log": "..\\Tools\\runica.cmd log",
-  "ica:sum": "..\\Tools\\runica.cmd sum",
-  "ica:status": "..\\Tools\\runica.cmd status"
-}
-,
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "ica:layout": "..\\Tools\\runica.cmd layout",
+    "ica:i18n": "..\\Tools\\runica.cmd i18n",
+    "ica:log": "..\\Tools\\runica.cmd log",
+    "ica:sum": "..\\Tools\\runica.cmd sum",
+    "ica:status": "..\\Tools\\runica.cmd status"
+  },
   "dependencies": {
     "@supabase/auth-ui-react": "^0.4.7",
     "@supabase/auth-ui-shared": "^0.1.8",
-    "@supabase/supabase-js": "^2.57.2",
+    "@supabase/supabase-js": "^2.57.4",
     "date-fns": "^4.1.0",
     "next": "14.2.5",
     "next-intl": "^4.3.6",

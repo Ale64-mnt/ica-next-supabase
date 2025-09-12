@@ -6,11 +6,34 @@
   "nav": {
     "home": "Inicio",
     "about": "Quiénes somos",
-    "contact": "Contacto",
     "news": "Noticias",
-    "articles": "Artículos"
+    "articles": "Artículos",
+    "contact": "Contacto",
+    "faq": "FAQ",
+    "glossary": "Glosario"
   },
-  "common": {
-    "cta": "Empezar"
+  "about": {
+    "title": "Quiénes somos",
+    "intro": "Información sobre el proyecto."
+  },
+  "news": {
+    "title": "Noticias",
+    "intro": "Últimas novedades de nuestro equipo."
+  },
+  "articles": {
+    "title": "Artículos",
+    "intro": "Análisis y guías."
+  },
+  "contact": {
+    "title": "Contacto",
+    "intro": "Cómo contactarnos."
+  },
+  "faq": {
+    "title": "FAQ",
+    "intro": "Preguntas frecuentes."
+  },
+  "glossary": {
+    "title": "Glosario",
+    "intro": "Términos y definiciones útiles."
   }
 }

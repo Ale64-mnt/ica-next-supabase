@@ -1,0 +1,16 @@
+{
+  "home": {
+    "title": "Benvenuto",
+    "intro": "Sito Next.js + i18n"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "Chi siamo",
+    "contact": "Contatti",
+    "news": "Notizie",
+    "articles": "Articoli"
+  },
+  "common": {
+    "cta": "Inizia ora"
+  }
+}

@@ -1,2 +1,9 @@
-import PageHeader from '@/components/ui/PageHeader';import Section from '@/components/ui/Section';import Card from '@/components/ui/Card';
-export default function NewsPage(){return(<><PageHeader title="News" kicker="Aggiornamenti e segnalazioni"/><Section><div className="grid grid--3"><Card href="#" meta="17 gen 2025 • Fonte" title="Titolo news">Riassunto…</Card></div></Section></>);}
+import BasicPage from '@/components/BasicPage';
+import NewsList from '@/components/NewsList';
+export const dynamic = 'force-dynamic'; // per vedere aggiornamenti
+export default function Page(){
+  return <>
+    <BasicPage ns="news" />
+    <div style={{padding:'0 2rem'}}><NewsList /></div>
+  </>;
+}
