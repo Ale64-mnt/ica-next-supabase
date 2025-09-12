@@ -1,5 +1,5 @@
 # Worklog – ICA Next.js + Supabase
-## Totale ore registrate: 2h 10m
+## Totale ore registrate: 3h 10m
 
 ---
 
@@ -15,3 +15,12 @@
 ### 📌 2025-09-11 – Commit fase 3
 - salvataggio in Git di Navbar, LanguageSwitcher, pagine secondarie e messaggi
 ⏱ 5m
+### 📌 2025-09-12 – Commit fase 4
+- Integrazione Supabase completata, news e articles online
+⏱ 20m
+### 📌 2025-09-12 – Commit fase 4
+- Integrazione Supabase completata, news e articles online
+⏱ 20m
+### 📌 2025-09-12 – Commit fase 4
+- Integrazione Supabase completata, news e articles online
+⏱ 20m
