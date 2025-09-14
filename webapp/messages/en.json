@@ -1,39 +1,45 @@
-{
-  "home": {
-    "title": "Welcome",
-    "intro": "Next.js + i18n site"
-  },
-  "nav": {
-    "home": "Home",
-    "about": "About",
-    "news": "News",
-    "articles": "Articles",
-    "contact": "Contact",
-    "faq": "FAQ",
-    "glossary": "Glossary"
-  },
-  "about": {
-    "title": "About us",
-    "intro": "Information about the project."
-  },
-  "news": {
-    "title": "News",
-    "intro": "Latest updates from our team."
-  },
-  "articles": {
-    "title": "Articles",
-    "intro": "Insights and guides."
-  },
-  "contact": {
-    "title": "Contact",
-    "intro": "How to reach us."
-  },
-  "faq": {
-    "title": "FAQ",
-    "intro": "Frequently asked questions."
-  },
-  "glossary": {
-    "title": "Glossary",
-    "intro": "Useful terms and definitions."
-  }
+﻿{
+    "home":  {
+                 "title":  "Welcome",
+                 "intro":  "Next.js + i18n site"
+             },
+    "nav":  {
+                "home":  "Home",
+                "about":  "About",
+                "news":  "News",
+                "articles":  "Articles",
+                "contact":  "Contact",
+                "faq":  "FAQ",
+                "glossary":  "Glossary"
+            },
+    "about":  {
+                  "title":  "About us",
+                  "intro":  "Information about the project."
+              },
+    "news":  {
+                 "title":  "News",
+                 "intro":  "Latest updates from our team."
+             },
+    "articles":  {
+                     "title":  "Articles",
+                     "intro":  "Insights and guides."
+                 },
+    "contact":  {
+                    "title":  "Contact",
+                    "intro":  "How to reach us."
+                },
+    "faq":  {
+                "title":  "FAQ",
+                "intro":  "Frequently asked questions."
+            },
+    "glossary":  {
+                     "title":  "Glossary",
+                     "intro":  "Useful terms and definitions."
+                 },
+    "admin":  {
+                  "blog":  {
+                               "intro":  "Create a new post and optionally upload a cover.",
+                               "title":  "Admin – Blog Management"
+                           }
+              }
 }

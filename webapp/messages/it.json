@@ -1,39 +1,46 @@
-{
-  "home": {
-    "title": "Benvenuto",
-    "intro": "Sito Next.js + i18n"
-  },
-  "nav": {
-    "home": "Home",
-    "about": "Chi siamo",
-    "news": "Notizie",
-    "articles": "Articoli",
-    "contact": "Contatti",
-    "faq": "FAQ",
-    "glossary": "Glossario"
-  },
-  "about": {
-    "title": "Chi siamo",
-    "intro": "Informazioni sul progetto."
-  },
-  "news": {
-    "title": "Notizie",
-    "intro": "Ultimi aggiornamenti dal nostro team."
-  },
-  "articles": {
-    "title": "Articoli",
-    "intro": "Approfondimenti e guide."
-  },
-  "contact": {
-    "title": "Contatti",
-    "intro": "Come contattarci."
-  },
-  "faq": {
-    "title": "Domande frequenti",
-    "intro": "Risposte alle domande più comuni."
-  },
-  "glossary": {
-    "title": "Glossario",
-    "intro": "Termini e definizioni utili."
-  }
+﻿{
+    "home":  {
+                 "title":  "Benvenuto",
+                 "intro":  "Sito Next.js + i18n"
+             },
+    "nav":  {
+                "home":  "Home",
+                "about":  "Chi siamo",
+                "news":  "Notizie",
+                "articles":  "Articoli",
+                "contact":  "Contatti",
+                "faq":  "FAQ",
+                "glossary":  "Glossario"
+            },
+    "about":  {
+                  "title":  "Chi siamo",
+                  "intro":  "Informazioni sul progetto."
+              },
+    "news":  {
+                 "title":  "Notizie",
+                 "intro":  "Ultimi aggiornamenti dal nostro team."
+             },
+    "articles":  {
+                     "title":  "Articoli",
+                     "intro":  "Approfondimenti e guide."
+                 },
+    "contact":  {
+                    "title":  "Contatti",
+                    "intro":  "Come contattarci."
+                },
+    "faq":  {
+                "title":  "Domande frequenti",
+                "intro":  "Risposte alle domande piÃ¹ comuni."
+            },
+    "glossary":  {
+                     "title":  "Glossario",
+                     "intro":  "Termini e definizioni utili."
+                 },
+    "admin":  {
+                  "blog":  {
+                               "title":  "Admin – Gestione Blog",
+                               "intro":  "Crea un nuovo post e (se vuoi) carica una cover."
+                           }
+              },
+    "title":  "Titolo"
 }

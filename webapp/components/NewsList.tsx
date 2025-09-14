@@ -1,6 +1,6 @@
-'use client';
+﻿'use client';
 import {useEffect, useState} from 'react';
-import {supabaseBrowser} from '@/lib/supabaseBrowser';
+import { getSupabaseBrowser } from '@/lib/supabaseBrowser';
 
 type News = { id: string; title: string; summary?: string; published_at?: string };
 
@@ -22,7 +22,7 @@ export default function NewsList() {
   }, []);
 
   if (error) return <div style={{color:'crimson'}}>Errore nel caricamento delle news: {error}</div>;
-  if (!data) return <div>Caricamento…</div>;
+  if (!data) return <div>Caricamentoâ€¦</div>;
   if (data.length === 0) return <div>Nessuna news disponibile.</div>;
 
   return (
@@ -41,3 +41,4 @@ export default function NewsList() {
     </ul>
   );
 }
+

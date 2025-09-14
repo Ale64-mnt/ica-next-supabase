@@ -1,39 +1,45 @@
-{
-  "home": {
-    "title": "Bienvenue",
-    "intro": "Site Next.js + i18n"
-  },
-  "nav": {
-    "home": "Accueil",
-    "about": "À propos",
-    "news": "Actualités",
-    "articles": "Articles",
-    "contact": "Contact",
-    "faq": "FAQ",
-    "glossary": "Glossaire"
-  },
-  "about": {
-    "title": "À propos",
-    "intro": "Informations sur le projet."
-  },
-  "news": {
-    "title": "Actualités",
-    "intro": "Dernières nouvelles de notre équipe."
-  },
-  "articles": {
-    "title": "Articles",
-    "intro": "Analyses et guides."
-  },
-  "contact": {
-    "title": "Contact",
-    "intro": "Comment nous contacter."
-  },
-  "faq": {
-    "title": "FAQ",
-    "intro": "Questions fréquentes."
-  },
-  "glossary": {
-    "title": "Glossaire",
-    "intro": "Termes et définitions utiles."
-  }
+﻿{
+    "home":  {
+                 "title":  "Bienvenue",
+                 "intro":  "Site Next.js + i18n"
+             },
+    "nav":  {
+                "home":  "Accueil",
+                "about":  "Ã€ propos",
+                "news":  "ActualitÃ©s",
+                "articles":  "Articles",
+                "contact":  "Contact",
+                "faq":  "FAQ",
+                "glossary":  "Glossaire"
+            },
+    "about":  {
+                  "title":  "Ã€ propos",
+                  "intro":  "Informations sur le projet."
+              },
+    "news":  {
+                 "title":  "ActualitÃ©s",
+                 "intro":  "DerniÃ¨res nouvelles de notre Ã©quipe."
+             },
+    "articles":  {
+                     "title":  "Articles",
+                     "intro":  "Analyses et guides."
+                 },
+    "contact":  {
+                    "title":  "Contact",
+                    "intro":  "Comment nous contacter."
+                },
+    "faq":  {
+                "title":  "FAQ",
+                "intro":  "Questions frÃ©quentes."
+            },
+    "glossary":  {
+                     "title":  "Glossaire",
+                     "intro":  "Termes et dÃ©finitions utiles."
+                 },
+    "admin":  {
+                  "blog":  {
+                               "intro":  "Créez un nouvel article et, si vous le souhaitez, téléchargez une couverture.",
+                               "title":  "Admin – Gestion du blog"
+                           }
+              }
 }
