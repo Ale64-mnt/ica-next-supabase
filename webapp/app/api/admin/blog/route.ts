@@ -1,38 +1,57 @@
-﻿import {NextRequest, NextResponse} from 'next/server';
-import {createClient} from '@supabase/supabase-js';
+import { NextResponse } from "next/server";
+import { z } from "zod";
+import { getSupabaseService } from "@/lib/supabaseServer";
 
-export async function POST(req: NextRequest) {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-  const key = process.env.SUPABASE_SERVICE_ROLE!;
-  const adminToken = process.env.ADMIN_TOKEN || '';
+const CreateSchema = z.object({
+  title: z.string().min(1),
+  excerpt: z.string().min(1),
+  cover_url: z.string().url().optional().nullable(),
+  slug: z.string().min(1),
+});
 
-  if (!url || !key) {
-    return NextResponse.json({ok: false, error: 'Missing env'}, {status: 500});
+export async function GET() {
+  const supa = getSupabaseService();
+  const { data, error } = await supa
+    .from("articles")
+    .select("id,title,excerpt,cover_url,slug,published_at")
+    .order("published_at", { ascending: false })
+    .limit(50);
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  return NextResponse.json({ items: data ?? [] });
+}
+
+export async function POST(req: Request) {
+  try {
+    const payload = await req.json();
+    const parsed = CreateSchema.parse(payload);
+
+    const supa = getSupabaseService();
+
+    const { data: exists, error: exErr } = await supa
+      .from("articles")
+      .select("id")
+      .eq("slug", parsed.slug)
+      .limit(1);
+    if (exErr) return NextResponse.json({ error: exErr.message }, { status: 500 });
+    if (exists && exists.length > 0) {
+      return NextResponse.json({ error: "Slug già esistente" }, { status: 409 });
+    }
+
+    const { data, error } = await supa
+      .from("articles")
+      .insert({
+        title: parsed.title,
+        excerpt: parsed.excerpt,
+        cover_url: parsed.cover_url ?? null,
+        slug: parsed.slug,
+        published_at: new Date().toISOString(),
+      })
+      .select()
+      .single();
+
+    if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+    return NextResponse.json({ item: data }, { status: 201 });
+  } catch (e: any) {
+    return NextResponse.json({ error: e?.message ?? "Invalid request" }, { status: 400 });
   }
-
-  const clientToken = req.headers.get('x-admin-token') || '';
-  if (adminToken && clientToken !== adminToken) {
-    return NextResponse.json({ok: false, error: 'unauthorized'}, {status: 401});
-  }
-
-  const supabase = createClient(url, key);
-  const {title, summary, body, cover_url, tags} = await req.json();
-
-  if (!title?.trim() || !body?.trim()) {
-    return NextResponse.json({ok: false, error: 'title/body required'}, {status: 400});
-  }
-
-  const {error} = await supabase.from('blog').insert({
-    title,
-    summary: summary || null,
-    body,
-    cover_url: cover_url || null,
-    tags: Array.isArray(tags) ? tags : null
-  });
-
-  if (error) {
-    return NextResponse.json({ok: false, error: error.message}, {status: 400});
-  }
-
-  return NextResponse.json({ok: true});
 }
