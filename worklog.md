@@ -1,5 +1,5 @@
 # Worklog – ICA Next.js + Supabase
-## Totale ore registrate: 9h 35m
+## Totale ore registrate: 9h 50m
 
 ---
 
@@ -39,3 +39,6 @@
 ### 📌 2025-09-14 – Fase 5 – Admin Blog hardening
 - Rimosse policy anon CRUD, rimasta sola SELECT pubblica; CRUD via API service_role
 ⏱ 20m
+### 📌 2025-09-15 – Fase 6 – i18n blog multilingua
+- Aggiornati file it/en/es/fr/de.json con namespace blog; rimossi BOM; script Python per merge i18n
+⏱ 15m

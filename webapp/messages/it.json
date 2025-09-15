@@ -26,7 +26,7 @@
     "title": "Contatti"
   },
   "faq": {
-    "intro": "Risposte alle domande piÃ¹ comuni.",
+    "intro": "Risposte alle domande più comuni.",
     "title": "Domande frequenti"
   },
   "glossary": {
@@ -47,8 +47,9 @@
     "news": "Notizie"
   },
   "news": {
-    "intro": "Ultimi aggiornamenti dal nostro team.",
-    "title": "Notizie"
-  },
-  "title": "Titolo"
+    "empty": "Nessuna notizia disponibile.",
+    "intro": "Ultime notizie di educazione finanziaria e digitale.",
+    "readMore": "Leggi di più",
+    "title": "News"
+  }
 }
