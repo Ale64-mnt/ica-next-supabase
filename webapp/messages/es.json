@@ -1,45 +1,53 @@
-﻿{
-    "home":  {
-                 "title":  "Bienvenido",
-                 "intro":  "Sitio Next.js + i18n"
-             },
-    "nav":  {
-                "home":  "Inicio",
-                "about":  "QuiÃ©nes somos",
-                "news":  "Noticias",
-                "articles":  "ArtÃ­culos",
-                "contact":  "Contacto",
-                "faq":  "FAQ",
-                "glossary":  "Glosario"
-            },
-    "about":  {
-                  "title":  "QuiÃ©nes somos",
-                  "intro":  "InformaciÃ³n sobre el proyecto."
-              },
-    "news":  {
-                 "title":  "Noticias",
-                 "intro":  "Ãšltimas novedades de nuestro equipo."
-             },
-    "articles":  {
-                     "title":  "ArtÃ­culos",
-                     "intro":  "AnÃ¡lisis y guÃ­as."
-                 },
-    "contact":  {
-                    "title":  "Contacto",
-                    "intro":  "CÃ³mo contactarnos."
-                },
-    "faq":  {
-                "title":  "FAQ",
-                "intro":  "Preguntas frecuentes."
-            },
-    "glossary":  {
-                     "title":  "Glosario",
-                     "intro":  "TÃ©rminos y definiciones Ãºtiles."
-                 },
-    "admin":  {
-                  "blog":  {
-                               "intro":  "Crea una nueva entrada y, si quieres, sube una portada.",
-                               "title":  "Admin – Gestión del blog"
-                           }
-              }
+{
+  "about": {
+    "intro": "InformaciÃ³n sobre el proyecto.",
+    "title": "QuiÃ©nes somos"
+  },
+  "admin": {
+    "blog": {
+      "intro": "Crea una nueva entrada y, si quieres, sube una portada.",
+      "title": "Admin – Gestión del blog"
+    }
+  },
+  "articles": {
+    "intro": "AnÃ¡lisis y guÃ­as.",
+    "title": "ArtÃ­culos"
+  },
+  "blog": {
+    "empty": "Aún no hay artículos.",
+    "intro": "Artículos y novedades.",
+    "next": "Siguientes",
+    "page": "Página",
+    "prev": "Anteriores",
+    "title": "Blog"
+  },
+  "contact": {
+    "intro": "CÃ³mo contactarnos.",
+    "title": "Contacto"
+  },
+  "faq": {
+    "intro": "Preguntas frecuentes.",
+    "title": "FAQ"
+  },
+  "glossary": {
+    "intro": "TÃ©rminos y definiciones Ãºtiles.",
+    "title": "Glosario"
+  },
+  "home": {
+    "intro": "Sitio Next.js + i18n",
+    "title": "Bienvenido"
+  },
+  "nav": {
+    "about": "QuiÃ©nes somos",
+    "articles": "ArtÃ­culos",
+    "contact": "Contacto",
+    "faq": "FAQ",
+    "glossary": "Glosario",
+    "home": "Inicio",
+    "news": "Noticias"
+  },
+  "news": {
+    "intro": "Ãšltimas novedades de nuestro equipo.",
+    "title": "Noticias"
+  }
 }

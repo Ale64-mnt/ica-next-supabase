@@ -1,5 +1,5 @@
 # Worklog – ICA Next.js + Supabase
-## Totale ore registrate: 3h 10m
+## Totale ore registrate: 9h 35m
 
 ---
 
@@ -23,4 +23,19 @@
 ⏱ 20m
 ### 📌 2025-09-12 – Commit fase 4
 - Integrazione Supabase completata, news e articles online
+⏱ 20m
+### 📌 2025-09-12 – Fase 5 Admin News
+- Form create news con route server-side e service_role
+⏱ 1h
+### 📌 2025-09-14 – Fase 5: Admin Blog
+- Creata sezione Admin Blog con gestione traduzioni
+⏱ 2h 5m
+### 📌 2025-09-14 – Fase 5 – Admin Blog base
+- Form con upload cover, slug unico, lista post; policy DEV temporanea
+⏱ 2h 45m
+### 📌 2025-09-14 – Fix variabili ambiente + debug-env
+- Corretto .env.local (una variabile per riga), aggiunta route /api/debug-env per test
+⏱ 15m
+### 📌 2025-09-14 – Fase 5 – Admin Blog hardening
+- Rimosse policy anon CRUD, rimasta sola SELECT pubblica; CRUD via API service_role
 ⏱ 20m

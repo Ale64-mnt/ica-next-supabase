@@ -1,45 +1,53 @@
-﻿{
-    "home":  {
-                 "title":  "Welcome",
-                 "intro":  "Next.js + i18n site"
-             },
-    "nav":  {
-                "home":  "Home",
-                "about":  "About",
-                "news":  "News",
-                "articles":  "Articles",
-                "contact":  "Contact",
-                "faq":  "FAQ",
-                "glossary":  "Glossary"
-            },
-    "about":  {
-                  "title":  "About us",
-                  "intro":  "Information about the project."
-              },
-    "news":  {
-                 "title":  "News",
-                 "intro":  "Latest updates from our team."
-             },
-    "articles":  {
-                     "title":  "Articles",
-                     "intro":  "Insights and guides."
-                 },
-    "contact":  {
-                    "title":  "Contact",
-                    "intro":  "How to reach us."
-                },
-    "faq":  {
-                "title":  "FAQ",
-                "intro":  "Frequently asked questions."
-            },
-    "glossary":  {
-                     "title":  "Glossary",
-                     "intro":  "Useful terms and definitions."
-                 },
-    "admin":  {
-                  "blog":  {
-                               "intro":  "Create a new post and optionally upload a cover.",
-                               "title":  "Admin – Blog Management"
-                           }
-              }
+{
+  "about": {
+    "intro": "Information about the project.",
+    "title": "About us"
+  },
+  "admin": {
+    "blog": {
+      "intro": "Create a new post and optionally upload a cover.",
+      "title": "Admin – Blog Management"
+    }
+  },
+  "articles": {
+    "intro": "Insights and guides.",
+    "title": "Articles"
+  },
+  "blog": {
+    "empty": "No posts yet.",
+    "intro": "Articles and updates.",
+    "next": "Next",
+    "page": "Page",
+    "prev": "Previous",
+    "title": "Blog"
+  },
+  "contact": {
+    "intro": "How to reach us.",
+    "title": "Contact"
+  },
+  "faq": {
+    "intro": "Frequently asked questions.",
+    "title": "FAQ"
+  },
+  "glossary": {
+    "intro": "Useful terms and definitions.",
+    "title": "Glossary"
+  },
+  "home": {
+    "intro": "Next.js + i18n site",
+    "title": "Welcome"
+  },
+  "nav": {
+    "about": "About",
+    "articles": "Articles",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "glossary": "Glossary",
+    "home": "Home",
+    "news": "News"
+  },
+  "news": {
+    "intro": "Latest updates from our team.",
+    "title": "News"
+  }
 }
