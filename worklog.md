@@ -1,5 +1,5 @@
 # Worklog – ICA Next.js + Supabase
-## Totale ore registrate: 9h 50m
+## Totale ore registrate: 10h 40m
 
 ---
 
@@ -42,3 +42,6 @@
 ### 📌 2025-09-15 – Fase 6 – i18n blog multilingua
 - Aggiornati file it/en/es/fr/de.json con namespace blog; rimossi BOM; script Python per merge i18n
 ⏱ 15m
+### 📌 2025-09-15 – PL-2 – News pubblico
+- Creata pagina dettaglio news [slug]; fix i18n JSON it/en; seed SQL esempio; rimosse rotte [id] in conflitto
+⏱ 50m
