@@ -9,7 +9,13 @@ const withNextIntl = createNextIntlPlugin({
 
 /** @type {import("next").NextConfig} */
 const nextConfig = {
-  reactStrictMode: true
+  
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "placehold.co" },
+      { protocol: "https", hostname: "twwgfrbcndouazujgcma.supabase.co", pathname: "/storage/v1/object/public/**" }
+    ]
+  },reactStrictMode: true
 };
 
 export default withNextIntl(nextConfig);

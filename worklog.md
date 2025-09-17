@@ -45,3 +45,14 @@
 ### 📌 2025-09-15 – PL-2 – News pubblico
 - Creata pagina dettaglio news [slug]; fix i18n JSON it/en; seed SQL esempio; rimosse rotte [id] in conflitto
 ⏱ 50m
+### 📌 2025-09-17 – PL-4 – Formattazione News/Blog
+- Stile editoriale per pagine news/blog: titolo grande, badge categoria, cover, summary e body Markdown
+- Fix slug duplicati su Supabase
+- Debug e rendering articoli di test
+⏱ 1h 55m
+## Totale ore registrate: 13h 21m
+
+### 📌 2025-09-17 – PL-5b – Integrazione Header/Footer
+- Integrati SiteHeader e SiteFooter nel layout.tsx
+- Aggiustati import e percorso componenti
+⏱ 40m

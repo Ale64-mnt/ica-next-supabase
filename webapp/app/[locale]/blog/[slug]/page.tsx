@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { getSupabasePublicServer } from "@/lib/supabaseServerPublic";
 import { marked } from "marked";
 import { sanitizeHtml } from "@/lib/sanitize";
+import Image from "next/image";
+import CategoryTag from "@/components/ui/CategoryTag";
 import type { Metadata, ResolvingMetadata } from "next";
 
 type Props = { params: { locale: string; slug: string } };
@@ -43,20 +45,40 @@ export default async function BlogPostPage({ params }: Props) {
     ? sanitizeHtml(await marked.parse(post.content))
     : (post.excerpt ? `<p>${sanitizeHtml(post.excerpt)}</p>` : "");
 
+  const dateStr = post.published_at
+    ? new Date(post.published_at).toLocaleDateString(params.locale, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : "";
+
   return (
-    <article className="max-w-3xl mx-auto py-10 space-y-6">
-      <header className="space-y-2">
-        <h1 className="text-3xl font-bold">{post.title}</h1>
-        <p className="text-sm text-gray-500">
-          {post.published_at ? new Date(post.published_at).toLocaleString(params.locale) : "—"}
-        </p>
+    <article className="mx-auto max-w-3xl px-4 md:px-6 py-8 md:py-12 space-y-6">
+      <header className="space-y-3">
+        <CategoryTag>Blog</CategoryTag>
+        <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">{post.title}</h1>
+        <p className="text-sm text-gray-500">{dateStr}</p>
       </header>
 
       {post.cover_url && (
-        <img src={post.cover_url} alt={post.title} className="w-full max-h-[480px] object-cover rounded-lg" />
+        <figure className="w-full">
+          <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
+            <Image
+              src={post.cover_url}
+              alt={post.title ?? ""}
+              fill
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+              priority={false}
+            />
+          </div>
+        </figure>
       )}
 
-      <div className="prose prose-neutral max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
+      {post.excerpt && <p className="text-lg md:text-xl text-gray-700 leading-relaxed">{post.excerpt}</p>}
+
+      <div className="prose prose-neutral md:prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
     </article>
   );
 }

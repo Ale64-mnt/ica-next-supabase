@@ -4,6 +4,9 @@ import {setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import type {ReactNode} from 'react';
 import {locales} from '@/i18n/routing'; // usa alias @ (già configurato)
+import SiteHeader from "@/components/SiteHeader.tsx"
+import SiteFooter from "@/components/SiteFooter.tsx"
+
 
 /** Pre-render di /it, /en, /fr, /es, /de */
 export function generateStaticParams() {
@@ -29,10 +32,12 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body>
+      <SiteHeader />
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
         </NextIntlClientProvider>
-      </body>
+            <SiteFooter />
+    </body>
     </html>
   );
 }
