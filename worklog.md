@@ -56,3 +56,11 @@
 - Integrati SiteHeader e SiteFooter nel layout.tsx
 - Aggiustati import e percorso componenti
 ⏱ 40m
+### 📌 2025-09-18 – PL-5b – Integrazione Header/Footer + Home
+- Integrazione `SiteHeader` e `SiteFooter` nel layout principale  
+- Pulizia `EditorialLayout` (rimossi duplicati Header/Footer)  
+- Home page aggiornata: wrapper `<main>`, i18n `home.*` attivo  
+- Logo collegato (`public/logo.png`)  
+- Verifica con `pl5b_verify_phase.py` → esito ✅ verde
+⏱ 3h
+## Totale ore registrate: 16h 21m
