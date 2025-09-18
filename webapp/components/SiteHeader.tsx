@@ -1,39 +1,40 @@
-'use client';
-import Link from "next/link";
+// webapp/components/SiteHeader.tsx
 import Image from "next/image";
-import { usePathname } from "next/navigation";
-
-function IconSearch(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" {...props}>
-      <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round"/>
-      <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="2" fill="none"/>
-    </svg>
-  );
-}
-function IconMenu(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" {...props}>
-      <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-    </svg>
-  );
-}
+import Link from "next/link";
 
 export default function SiteHeader() {
-  const pathname = usePathname();
-  const locale = pathname?.split("/").filter(Boolean)?.[0] ?? "";
   return (
-    <div className="sticky top-0 z-40 w-full bg-white/90 backdrop-blur border-b border-gray-100">
-      <div className="mx-auto max-w-6xl px-4 md:px-6">
-        <div className="h-16 md:h-20 flex items-center justify-between">
-          <button aria-label="Search" className="p-2 rounded hover:bg-gray-100"><IconSearch /></button>
-          <Link href={`/${locale || ""}`} className="inline-flex items-center">
-            <span className="sr-only">Home</span>
-            <Image src="/logo-edunova.png" alt="Edunovà" width={200} height={48} className="h-8 md:h-10 w-auto" priority />
+    <header
+      className="sticky top-0 z-40 w-full border-b border-neutral-200 bg-white/90 backdrop-blur"
+      role="banner"
+    >
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+        <div className="flex h-14 items-center justify-between">
+          <Link href="/" className="flex items-center gap-3" aria-label="Homepage">
+            <Image
+              src="/logo.png"
+              alt="Edunovà"
+              width={160}        // ⬅️ dimensioni fisse
+              height={48}
+              priority
+              className="h-10 w-auto" // ⬅️ controlla l’altezza visiva
+            />
           </Link>
-          <button aria-label="Menu" className="p-2 rounded hover:bg-gray-100"><IconMenu /></button>
+
+          <nav aria-label="Main" className="flex items-center gap-4">
+            {/* link placeholder, da popolare più avanti */}
+            <Link href="/it/news" className="text-sm font-medium text-neutral-700 hover:text-black">
+              News
+            </Link>
+            <Link href="/it/blog" className="text-sm font-medium text-neutral-700 hover:text-black">
+              Blog
+            </Link>
+            <Link href="/it/about" className="text-sm font-medium text-neutral-700 hover:text-black">
+              Chi siamo
+            </Link>
+          </nav>
         </div>
       </div>
-    </div>
+    </header>
   );
 }
