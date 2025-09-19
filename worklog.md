@@ -1,66 +1,31 @@
-# Worklog – ICA Next.js + Supabase
-## Totale ore registrate: 10h 40m
+📑 Worklog – ICA Next.js + Supabase
+🔹 Bootstrap e Setup
+Data	Attività	Tempo
+2025-09-10	Primo log di prova	10m
+2025-09-10	Fix i18n: configurazione next-intl v4, middleware, routing, request.ts	40m
+🔹 Fase 2 – i18n completata
+Data	Attività	Tempo
+2025-09-11	Completata Fase 2: layout.tsx, messaggi base, test /it /en	1h 15m
+2025-09-11	Commit fase 3: salvataggio Git (Navbar, LanguageSwitcher, pagine, messaggi)	5m
+🔹 Fase 4 – Integrazione Supabase
+Data	Attività	Tempo
+2025-09-12	Commit fase 4: Integrazione Supabase, news e articles online	20m
+🔹 Fase 5 – Admin News & Blog
+Data	Attività	Tempo
+2025-09-12	Admin News: form create news, route server-side con service_role	1h
+2025-09-14	Admin Blog: creata sezione con gestione traduzioni	2h 5m
+2025-09-14	Admin Blog base: form con upload cover, slug unico, lista post, policy DEV	2h 45m
+2025-09-14	Fix variabili ambiente + debug-env	15m
+2025-09-14	Admin Blog hardening: rimosse policy anon CRUD, rimasta sola SELECT pubblica	20m
+🔹 Fase 6 – Multilingua, Formattazione e SEO
+Data	Attività	Tempo
+2025-09-15	Blog multilingua: aggiornati JSON i18n (it/en/es/fr/de), rimossi BOM	15m
+2025-09-15	PL-2 News pubblico: creata pagina dettaglio news [slug], fix i18n, seed SQL	50m
+2025-09-17	PL-4 News/Blog: formattazione editoriale (titolo, badge, cover, summary, markdown); fix slug duplicati; debug rendering articoli	1h 55m
+2025-09-17	PL-5b: Integrazione SiteHeader/SiteFooter in layout.tsx	40m
+2025-09-18	PL-5b: Pulizia EditorialLayout, home aggiornata, logo collegato, test pl5b_verify ✅	3h
+2025-09-19	PL-6f: Fix NewsList – rewrite completo con supabaseBrowser.ts	1h
+2025-09-19	PL-6e: Pagine evergreen SEO AI Ethics (it/en), metadata avanzati, test locale	2h
+🔹 Totale
 
----
-
-### 📌 2025-09-10 – Bootstrap
-- Primo log di prova
-⏱ 10m
-### 📌 2025-09-10 – Fix i18n
-- Configurazione next-intl v4, fix middleware, routing e request.ts
-⏱ 40m
-### 📌 2025-09-11 – Fase 2 completata: i18n
-- request.ts, layout.tsx, messaggi base, test /it /en
-⏱ 1h 15m
-### 📌 2025-09-11 – Commit fase 3
-- salvataggio in Git di Navbar, LanguageSwitcher, pagine secondarie e messaggi
-⏱ 5m
-### 📌 2025-09-12 – Commit fase 4
-- Integrazione Supabase completata, news e articles online
-⏱ 20m
-### 📌 2025-09-12 – Commit fase 4
-- Integrazione Supabase completata, news e articles online
-⏱ 20m
-### 📌 2025-09-12 – Commit fase 4
-- Integrazione Supabase completata, news e articles online
-⏱ 20m
-### 📌 2025-09-12 – Fase 5 Admin News
-- Form create news con route server-side e service_role
-⏱ 1h
-### 📌 2025-09-14 – Fase 5: Admin Blog
-- Creata sezione Admin Blog con gestione traduzioni
-⏱ 2h 5m
-### 📌 2025-09-14 – Fase 5 – Admin Blog base
-- Form con upload cover, slug unico, lista post; policy DEV temporanea
-⏱ 2h 45m
-### 📌 2025-09-14 – Fix variabili ambiente + debug-env
-- Corretto .env.local (una variabile per riga), aggiunta route /api/debug-env per test
-⏱ 15m
-### 📌 2025-09-14 – Fase 5 – Admin Blog hardening
-- Rimosse policy anon CRUD, rimasta sola SELECT pubblica; CRUD via API service_role
-⏱ 20m
-### 📌 2025-09-15 – Fase 6 – i18n blog multilingua
-- Aggiornati file it/en/es/fr/de.json con namespace blog; rimossi BOM; script Python per merge i18n
-⏱ 15m
-### 📌 2025-09-15 – PL-2 – News pubblico
-- Creata pagina dettaglio news [slug]; fix i18n JSON it/en; seed SQL esempio; rimosse rotte [id] in conflitto
-⏱ 50m
-### 📌 2025-09-17 – PL-4 – Formattazione News/Blog
-- Stile editoriale per pagine news/blog: titolo grande, badge categoria, cover, summary e body Markdown
-- Fix slug duplicati su Supabase
-- Debug e rendering articoli di test
-⏱ 1h 55m
-## Totale ore registrate: 13h 21m
-
-### 📌 2025-09-17 – PL-5b – Integrazione Header/Footer
-- Integrati SiteHeader e SiteFooter nel layout.tsx
-- Aggiustati import e percorso componenti
-⏱ 40m
-### 📌 2025-09-18 – PL-5b – Integrazione Header/Footer + Home
-- Integrazione `SiteHeader` e `SiteFooter` nel layout principale  
-- Pulizia `EditorialLayout` (rimossi duplicati Header/Footer)  
-- Home page aggiornata: wrapper `<main>`, i18n `home.*` attivo  
-- Logo collegato (`public/logo.png`)  
-- Verifica con `pl5b_verify_phase.py` → esito ✅ verde
-⏱ 3h
-## Totale ore registrate: 16h 21m
+⏱ 19h 15m
