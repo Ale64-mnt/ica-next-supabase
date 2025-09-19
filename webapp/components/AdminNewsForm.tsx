@@ -1,7 +1,8 @@
+'use client';
+import { supabaseBrowser() } from '@/lib/supabaseBrowser()';
 ﻿'use client';
 
 import { useState, useEffect } from 'react';
-import { getSupabaseBrowser } from '@/lib/supabaseBrowser';
 
 export default function AdminNewsForm() {
   const supabase = getSupabaseBrowser();

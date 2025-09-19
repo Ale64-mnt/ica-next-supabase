@@ -35,7 +35,8 @@
   },
   "home": {
     "intro": "Sitio Next.js + i18n",
-    "title": "Bienvenido"
+    "title": "Bienvenido",
+    "empty": "No content available."
   },
   "nav": {
     "about": "QuiÃ©nes somos",
@@ -48,6 +49,14 @@
   },
   "news": {
     "intro": "Ãšltimas novedades de nuestro equipo.",
-    "title": "Noticias"
+    "title": "Noticias",
+    "empty": "No news available.",
+    "readMore": "Read more",
+    "list": {
+      "title": "News",
+      "empty": "No news available.",
+      "prev": "Prev",
+      "next": "Next"
+    }
   }
 }

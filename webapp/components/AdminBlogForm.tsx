@@ -1,7 +1,8 @@
+'use client';
+import { supabaseBrowser() } from '@/lib/supabaseBrowser()';
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { getSupabaseBrowser } from "@/lib/supabaseBrowser";
 
 type Article = {
   id: string;

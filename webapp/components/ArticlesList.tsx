@@ -1,6 +1,7 @@
+'use client';
+import { supabaseBrowser() } from '@/lib/supabaseBrowser()';
 ﻿'use client';
 import {useEffect, useState} from 'react';
-import { getSupabaseBrowser } from '@/lib/supabaseBrowser';
 
 type Article = { id: string; title: string; excerpt?: string; published_at?: string };
 
@@ -10,7 +11,6 @@ export default function ArticlesList() {
 
   useEffect(() => {
     (async () => {
-      const {data, error} = await supabaseBrowser
         .from('articles')
         .select('id,title,excerpt,published_at')
         .order('published_at', {ascending: false})
@@ -41,4 +41,3 @@ export default function ArticlesList() {
     </ul>
   );
 }
-

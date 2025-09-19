@@ -35,7 +35,8 @@
   },
   "home": {
     "intro": "Next.js + i18n site",
-    "title": "Welcome"
+    "title": "Welcome",
+    "empty": "No content available."
   },
   "nav": {
     "about": "About",
@@ -50,6 +51,12 @@
     "empty": "No news available.",
     "intro": "Latest updates on financial and digital education.",
     "readMore": "Read more",
-    "title": "News"
+    "title": "News",
+    "list": {
+      "title": "News",
+      "empty": "No news available.",
+      "prev": "Prev",
+      "next": "Next"
+    }
   }
 }

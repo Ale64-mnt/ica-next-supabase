@@ -12,6 +12,9 @@ import SiteFooter from "@/components/SiteFooter";
 
 import Analytics from '@/components/Analytics';
 import CookieBanner from '@/components/CookieBanner';
+
+const LOCALES = ['it','en'] as const;
+
 /** Pre-render di /it, /en, /fr, /es, /de */
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
