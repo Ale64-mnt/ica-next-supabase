@@ -10,6 +10,8 @@ import { locales } from "@/i18n/routing";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
+import Analytics from '@/components/Analytics';
+import CookieBanner from '@/components/CookieBanner';
 /** Pre-render di /it, /en, /fr, /es, /de */
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -52,11 +54,20 @@ export default async function LocaleLayout({
           <main className="container mx-auto max-w-6xl w-full flex-1 px-4 sm:px-6">
             {children}
           </main>
-        </NextIntlClientProvider>
+          <Analytics />
+            <CookieBanner />
+          </NextIntlClientProvider>
 
         {/* Footer ancorato in fondo grazie a flex-col + flex-1 su main */}
         <SiteFooter />
       </body>
     </html>
   );
+}
+
+
+export async function generateMetadata({ params }: any) {
+  const site = (process.env.NEXT_PUBLIC_SITE_URL || '').replace(/\/+$/, '');
+  const alternates: Record<string, string> = Object.fromEntries((LOCALES as readonly string[]).map(l => [l, `${site}/${l}`]));
+  return { alternates: { languages: alternates } } as any;
 }
