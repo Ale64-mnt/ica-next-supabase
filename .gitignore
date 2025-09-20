@@ -1,48 +1,49 @@
-﻿# Node / Next.js
+# === Node / Next.js ===
 node_modules/
 .next/
 out/
-*.log
-npm-debug.log*
-yarn.lock
-pnpm-lock.yaml
+dist/
 
-# Env
-.env
-.env.*.local
-.env.local
-
-# Editor/OS
-.DS_Store
-.vscode/
-*.swp
-
-# Python
-.venv/
-venv/
-__pycache__/
-*.pyc
-# Environment
-.env.local
-.env*
-
-# Node.js
-node_modules/
-.next/
+# === Logs & cache ===
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+*.log
+.cache/
+*.tmp
+*.temp
 
-# Vite / Next cache
-.turbo/
-.vercel/
-
-# Python venv
+# === Python / venv ===
 .venv/
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
 
-# OS files
-Thumbs.db
+# === IDE / OS ===
+.vscode/
+.idea/
 .DS_Store
+Thumbs.db
+
+# === Project-specific ===
+# Timer e file temporanei
+.pl_timer.json
+tree.txt
+reports/
+_trash/
+
+# File di backup (generati dai tool i18n, ecc.)
+*.bak
+*.bak-*
+
+# Build/test output
+coverage/
+.env.local
+.env.*.local
+
+# === Supabase generated ===
+supabase/.temp
