@@ -41,14 +41,13 @@ Data	Attività	Tempo
 
 ⏱ 30m
 
-
-
-\## Totale
-
-⏱ 19h 45m
-
+### 📌 2025-09-20 – PL-6h – Gitignore integration
+- Creato script `Tools/pl6h_gitignore_integration.py` per:
+  - generare `pl_gitignore_check.py` con regole standard
+  - integrare il controllo `.gitignore` in `preflight.py` con auto-fix
+- Testato con `preflight.py`: output `[OK]/[PATCH]/[WARN]` automatico
+⏱ 15m
 
 🔹 Totale
 
-⏱ 19h 15m
-
+⏱ 45m

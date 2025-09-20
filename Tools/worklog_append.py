@@ -1,84 +1,63 @@
 # -*- coding: utf-8 -*-
 """
 worklog_append.py
-Aggiorna il file WORKLOG.md (stile narrativo già esistente).
-- Aggiunge una nuova sezione con data, fase, descrizione e tempo ⏱.
-- Aggiorna la riga "Totale ore registrate" incrementando il monte ore.
+- Legge l'ultimo commit git
+- Estrae fase (PL-6b), descrizione e tempo (es: 1h 20m o 30m)
+- Aggiunge in worklog.md nella sezione corretta
+- NON duplica se la voce esiste già
 """
-
-from __future__ import annotations
-import argparse
-from datetime import date
-from pathlib import Path
 import re
+import subprocess
+from pathlib import Path
 
-ROOT = Path(".").resolve()
-WORKLOG = ROOT / "WORKLOG.md"
+ROOT = Path(__file__).resolve().parent.parent
+WORKLOG = ROOT / "worklog.md"
 
-def parse_time_to_minutes(s: str) -> int:
-    """Converte '1h 30m', '45m', '2h' in minuti."""
-    h, m = 0, 0
-    s = s.strip().lower()
-    h_match = re.search(r"(\d+)\s*h", s)
-    m_match = re.search(r"(\d+)\s*m", s)
-    if h_match: h = int(h_match.group(1))
-    if m_match: m = int(m_match.group(1))
-    return h * 60 + m
+def get_last_commit() -> str:
+    return subprocess.check_output(
+        ["git", "log", "-1", "--pretty=%s"], cwd=ROOT, text=True
+    ).strip()
 
-def minutes_to_str(total: int) -> str:
-    h, m = divmod(total, 60)
-    if h and m:
-        return f"{h}h {m}m"
-    elif h:
-        return f"{h}h"
-    else:
-        return f"{m}m"
+def parse_commit(msg: str):
+    m = re.match(r"(PL-\d+\w*): (.+?) – tempo registrato (.+)", msg)
+    if not m:
+        raise ValueError(f"Commit message non valido: {msg}")
+    phase, desc, duration = m.groups()
+    return phase, desc.strip(), duration.strip()
 
-def update_worklog(phase: str, desc: str, time_str: str):
-    if not WORKLOG.exists():
-        raise FileNotFoundError(f"{WORKLOG} non trovato")
+def append_worklog(phase: str, desc: str, duration: str):
+    lines = WORKLOG.read_text(encoding="utf-8").splitlines()
+    header = f"### 📌 {phase}"
 
-    text = WORKLOG.read_text(encoding="utf-8").splitlines()
+    # Se esiste già, non duplicare
+    joined = "\n".join(lines)
+    if desc in joined and duration in joined:
+        print(f"[SKIP] {phase}: già registrato")
+        return False
 
-    # calcola nuovo totale
-    total_minutes = 0
-    for line in text:
-        if line.strip().startswith("## Totale ore registrate"):
-            m = re.search(r"(\d+)h(?:\s*(\d+)m)?", line)
-            if m:
-                h = int(m.group(1))
-                mm = int(m.group(2) or 0)
-                total_minutes = h * 60 + mm
-            break
+    # Sezione fase non trovata → aggiungila in fondo
+    if header not in lines:
+        lines.append("")
+        lines.append(header)
 
-    add_minutes = parse_time_to_minutes(time_str)
-    new_total = total_minutes + add_minutes
+    # Aggiungi voce
+    lines.append(f"- {desc}")
+    lines.append(f"⏱ {duration}")
 
-    # aggiorna riga Totale ore registrate (ultima trovata)
-    for i, line in enumerate(text):
-        if line.strip().startswith("## Totale ore registrate"):
-            text[i] = f"## Totale ore registrate: {minutes_to_str(new_total)}"
-            break
-
-    # aggiungi nuova sezione
-    today = date.today().isoformat()
-    entry = [
-        f"### 📌 {today} – {phase}",
-        f"- {desc}",
-        f"⏱ {time_str}"
-    ]
-    text.extend(entry)
-
-    WORKLOG.write_text("\n".join(text) + "\n", encoding="utf-8")
-    print(f"[OK] Aggiunta voce: {today} – {phase} – {time_str}")
+    WORKLOG.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"[APPEND] {phase}: {desc} ({duration})")
+    return True
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--phase", required=True, help="Es: PL-6f – Fix NewsList")
-    ap.add_argument("--time", required=True, help="Es: 1h, 30m, 1h 15m")
-    ap.add_argument("--desc", required=True, help="Descrizione attività")
-    args = ap.parse_args()
-    update_worklog(args.phase, args.desc, args.time)
+    msg = get_last_commit()
+    print(f"[COMMIT] {msg}")
+    try:
+        phase, desc, duration = parse_commit(msg)
+    except ValueError as e:
+        print(f"[WARN] {e}")
+        return 1
+    append_worklog(phase, desc, duration)
+    return 0
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
