@@ -4,6 +4,7 @@ import os, sys, json, re, urllib.request, urllib.error, ssl
 from pathlib import Path
 from typing import Tuple, List, Dict
 from base64 import b64encode
+from pl_gitignore_check import ensure_gitignore
 
 ROOT = Path(__file__).resolve().parents[1]    # repo root
 WEBAPP = ROOT / "webapp"
@@ -159,3 +160,18 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# --- auto-added by pl6h_gitignore_integration.py ---
+if __name__ == "__main__":
+    try:
+        from pl_gitignore_check import ensure_gitignore
+        status, added = ensure_gitignore(auto_fix=True)
+        if status == "OK":
+            print("[OK] .gitignore completo")
+        elif status == "PATCH":
+            print(f"[PATCH] .gitignore aggiornato (+{added})")
+        else:
+            print(f"[WARN] Mancano {added} regole in .gitignore (no auto-fix)")
+    except Exception as e:
+        print("[WARN] .gitignore check failed:", e)
+# --- end auto-added ---
