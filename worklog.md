@@ -80,10 +80,12 @@
 - aggiunti script autolog
 - normalizza sezioni con ⏱ in coda
 - ricalcolo Totale robusto
-⏱ 2h 0m
+⏱ 25h 20m
 
-⏱ 23h 20m
+### 📌 2025-09-20 – PL-6k – Tools cleanup & archive
+- archiviati fix_* e patch_*;creato _archive datato
+⏱ 0h 10m
 
 🔹 Totale
 
-⏱ 23h 20m
+⏱ 46h 50m
