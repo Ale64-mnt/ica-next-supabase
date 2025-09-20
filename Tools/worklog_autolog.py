@@ -1,20 +1,19 @@
 # -*- coding: utf-8 -*-
 """
 worklog_autolog.py
-Gestisce il worklog in modo standardizzato:
-- Aggiunge/aggiorna una sezione fase (header + bullet + tempo)
-- Evita duplicati
-- Aggiorna la sezione '🔹 Totale' (una sola, in fondo)
+- Crea/aggiorna una sezione fase nel worklog in formato standard
+- La riga '⏱ <durata>' viene SEMPRE messa in fondo alla sezione
+- Non tocca la sezione '🔹 Totale' (lasciata ai tool di normalizzazione/somma)
 
 Uso:
-  python Tools/worklog_autolog.py --phase PL-6h --title "Gitignore integration" --time "15m" --date 2025-09-20 --bullets "creato modulo check;;patch preflight auto-fix"
+  python Tools/worklog_autolog.py --phase PL-6h --title "Gitignore integration" --time "15m" --date 2025-09-20 --bullets "creato modulo;;patch preflight"
 """
 
 from __future__ import annotations
 from pathlib import Path
+from datetime import date
 import argparse
 import re
-from datetime import date
 
 ROOT = Path(__file__).resolve().parent.parent
 WORKLOG = ROOT / "worklog.md"
@@ -23,144 +22,125 @@ RE_H = re.compile(r"(\d+)\s*h", re.I)
 RE_M = re.compile(r"(\d+)\s*m", re.I)
 
 def parse_minutes(s: str) -> int:
-    h = 0
-    m = 0
-    mh = RE_H.search(s or "")
-    mm = RE_M.search(s or "")
-    if mh:
-        h = int(mh.group(1))
-    if mm:
-        m = int(mm.group(1))
-    return h * 60 + m
+    h = RE_H.search(s or "")
+    m = RE_M.search(s or "")
+    hh = int(h.group(1)) if h else 0
+    mm = int(m.group(1)) if m else 0
+    return hh * 60 + mm
 
-def minutes_to_str(total: int) -> str:
-    h, m = divmod(total, 60)
+def minutes_to_str(n: int) -> str:
+    h, m = divmod(n, 60)
     if h and m: return f"{h}h {m}m"
     if h: return f"{h}h"
     return f"{m}m"
 
-def sum_all_minutes(lines: list[str]) -> int:
-    """Somma tutte le durate prima della sezione '🔹 Totale'."""
-    total = 0
-    upto = len(lines)
-    for i, ln in enumerate(lines):
-        if ln.strip().startswith("🔹 Totale"):
-            upto = i
-            break
-    for ln in lines[:upto]:
-        total += parse_minutes(ln)
-    return total
+def ensure_section(lines: list[str], d: str, phase: str, title: str, bullets: list[str], time_str: str) -> list[str]:
+    header = f"### 📌 {d} – {phase} – {title}"
+    # se il file è vuoto, preparalo con il titolo
+    if not lines:
+        lines = [f"# Worklog – ICA Next.js + Supabase", ""]
 
-def ensure_section(lines: list[str], day: str, phase: str, title: str, bullets: list[str], time_str: str) -> list[str]:
-    header = f"### 📌 {day} – {phase} – {title}"
     text = "\n".join(lines)
+    if header not in text:
+        # nuova sezione → append in fondo, prima del blocco Totale (se presente)
+        # rimuovi eventuali blank finali
+        while lines and not lines[-1].strip():
+            lines.pop()
+        # se c'è già il blocco “🔹 Totale”, lo tagliamo e lo riaggiungeremo dopo con update_worklog
+        if any(ln.strip().startswith("🔹 Totale") for ln in lines):
+            # taglia tutto da '🔹 Totale' in poi
+            cut = []
+            for ln in lines:
+                if ln.strip().startswith("🔹 Totale"):
+                    break
+                cut.append(ln)
+            lines = cut
+        # scrivi nuova sezione
+        lines.append("")
+        lines.append(header)
+        for b in bullets:
+            b = b.strip()
+            if b:
+                lines.append(f"- {b}")
+        lines.append(f"⏱ {time_str}")
+        lines.append("")
+        return lines
 
-    if header in text:
-        # già esiste: se manca il tempo, aggiungilo; se manca un bullet, aggiungilo
-        out: list[str] = []
-        in_section = False
-        seen_time = False
-        seen_bullets = {b.strip() for b in bullets if b.strip()}
-        present_bullets: set[str] = set()
-
-        for ln in lines:
-            if ln.strip() == header:
-                in_section = True
-                seen_time = False
-                present_bullets = set()
-                out.append(ln)
-                continue
-
-            if in_section:
-                if ln.startswith("### 📌 ") or ln.strip().startswith("🔹 Totale"):
-                    # chiusura sezione: inserisci ciò che manca prima di chiudere
-                    for b in bullets:
-                        b = b.strip()
-                        if b and b not in present_bullets:
-                            out.append(f"- {b}")
-                    if not seen_time:
-                        out.append(f"⏱ {time_str}")
-                    in_section = False
-
-            if in_section:
-                # traccia bullet esistenti e se c'è la riga tempo
-                if ln.strip().startswith("⏱"):
-                    seen_time = True
-                if ln.strip().startswith("- "):
-                    present_bullets.add(ln.strip()[2:].strip())
-                out.append(ln)
-            else:
-                out.append(ln)
-
-        # se il file finisce dentro la sezione, chiudi inserendo eventuali mancanze
-        if in_section:
+    # sezione esiste: consolidiamo bullets e mettiamo ⏱ in fondo
+    out: list[str] = []
+    i = 0
+    n = len(lines)
+    in_sec = False
+    sec_buf: list[str] = []
+    while i < n:
+        ln = lines[i]
+        if ln.strip() == header:
+            # dump vecchia sezione (se ne avessimo in buf, improbabile qui)
+            if sec_buf:
+                out.extend(sec_buf)
+                sec_buf = []
+            # entra in sezione target
+            in_sec = True
+            out.append(ln)
+            i += 1
+            # raccogli corpo fino alla prossima sezione o totale
+            body: list[str] = []
+            while i < n and not lines[i].startswith("### 📌 ") and not lines[i].strip().startswith("🔹 Totale"):
+                body.append(lines[i])
+                i += 1
+            # separa ⏱ esistenti e bullets esistenti
+            seen_bullets = set()
+            existing_time_min = 0
+            new_body: list[str] = []
+            for b in body:
+                if b.strip().startswith("⏱"):
+                    existing_time_min += parse_minutes(b)
+                elif b.strip().startswith("- "):
+                    seen_bullets.add(b.strip()[2:].strip())
+                    new_body.append(b)
+                else:
+                    new_body.append(b)
+            # aggiungi bullets mancanti
             for b in bullets:
                 b = b.strip()
-                if b and b not in present_bullets:
-                    out.append(f"- {b}")
-            if not seen_time:
-                out.append(f"⏱ {time_str}")
-        return out
-
-    # sezione nuova → aggiungi in fondo
-    while lines and not lines[-1].strip():
-        lines.pop()
-    lines.append("")
-    lines.append(header)
-    for b in bullets:
-        if b.strip():
-            lines.append(f"- {b.strip()}")
-    lines.append(f"⏱ {time_str}")
-    return lines
-
-def rewrite_total(lines: list[str]) -> list[str]:
-    # rimuovi qualsiasi sezione Totale esistente
-    cleaned: list[str] = []
-    skip = False
-    for ln in lines:
-        if ln.strip().startswith("🔹 Totale"):
-            skip = True
+                if b and b not in seen_bullets:
+                    new_body.append(f"- {b}")
+                    seen_bullets.add(b)
+            # tempo finale = esistente + nuovo
+            total_min = existing_time_min + parse_minutes(time_str)
+            # ripulisci blank finali
+            while new_body and not new_body[-1].strip():
+                new_body.pop()
+            out.extend(new_body)
+            out.append(f"⏱ {minutes_to_str(total_min)}")
+            out.append("")
+            in_sec = False
             continue
-        if skip:
-            # salta fino a riga vuota successiva o fine
-            if not ln.strip():
-                skip = False
-            continue
-        cleaned.append(ln)
 
-    # pulisci trailing blank
-    while cleaned and not cleaned[-1].strip():
-        cleaned.pop()
+        # righe fuori dalla sezione target: copiale
+        out.append(ln)
+        i += 1
 
-    # somma e scrivi il nuovo totale
-    total_min = sum_all_minutes(cleaned)
-    total_str = minutes_to_str(total_min)
-    cleaned.append("")
-    cleaned.append("🔹 Totale")
-    cleaned.append("")
-    cleaned.append(f"⏱ {total_str}")
-    cleaned.append("")
-    return cleaned
+    return out
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--phase", required=True, help="es. PL-6h")
-    ap.add_argument("--title", required=True, help="Titolo sintetico fase")
-    ap.add_argument("--time", required=True, help="Durata es. '30m' o '1h 15m'")
-    ap.add_argument("--date", default=str(date.today()), help="YYYY-MM-DD (default: oggi)")
-    ap.add_argument("--bullets", default="", help="bullet separati da ';;'")
+    ap.add_argument("--phase", required=True)
+    ap.add_argument("--title", required=True)
+    ap.add_argument("--time", required=True)   # "15m" | "1h 30m"
+    ap.add_argument("--date", default=str(date.today()))
+    ap.add_argument("--bullets", default="")   # "punto1;;punto2"
     args = ap.parse_args()
 
     bullets = [b.strip() for b in args.bullets.split(";;")] if args.bullets else []
 
-    # leggi worklog
-    text = WORKLOG.read_text(encoding="utf-8-sig") if WORKLOG.exists() else "# Worklog – ICA Next.js + Supabase\n"
-    lines = text.splitlines()
+    content = WORKLOG.read_text(encoding="utf-8-sig") if WORKLOG.exists() else ""
+    lines = content.splitlines()
 
     lines = ensure_section(lines, args.date, args.phase, args.title, bullets, args.time)
-    lines = rewrite_total(lines)
 
-    WORKLOG.write_text("\n".join(lines), encoding="utf-8")
+    # scrivi (senza toccare il blocco Totale, che verrà riscritto dall'altro tool)
+    WORKLOG.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"[OK] Inserita/aggiornata sezione: {args.date} – {args.phase} – {args.title} ({args.time})")
     return 0
 

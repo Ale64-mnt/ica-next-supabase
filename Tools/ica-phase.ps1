@@ -5,18 +5,24 @@ param(
   [string]$Bullets = ""                         # es. "punto1;;punto2"
 )
 
-# 1) Commit standard (wrappo le variabili per evitare l'errore con ':')
+# 1) Commit (wrappo per i due punti dopo la variabile)
 $commitMsg = "$($Phase): $Title -- tempo $Time"
-
 git add -A
 git commit -m $commitMsg
 
-# 2) Aggiorna worklog (fase + titolo + durata + bullet)
+# 2) Aggiorna/crea sezione fase
 .\.venv\Scripts\python.exe Tools\worklog_autolog.py --phase $Phase --title $Title --time $Time --bullets $Bullets
 
-# 3) Push
+# 3) Normalizza sezioni (⏱ in fondo)
+.\.venv\Scripts\python.exe Tools\worklog_normalize_sections.py
+
+# 4) Ricalcola totale (solo sezioni standard)
+.\.venv\Scripts\python.exe Tools\update_worklog.py
+
+# 5) Push
 git push origin main
 
-# 4) Mostra il totale aggiornato
+# 6) Stampa il totale
 Write-Host "=== Totale aggiornato ==="
-Select-String "⏱" worklog.md | Select-Object -Last 1
+$lastTotal = (Get-Content worklog.md -Raw) -split "`n" | Where-Object { $_ -match '^\s*⏱ ' } | Select-Object -Last 1
+Write-Host $lastTotal

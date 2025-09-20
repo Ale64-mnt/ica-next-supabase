@@ -1,103 +1,77 @@
 # -*- coding: utf-8 -*-
 """
 update_worklog.py
-Aggiorna il totale ore in worklog.md in modo idempotente.
-
-Come funziona
-- Legge worklog.md (UTF-8, BOM tollerato)
-- Calcola la somma delle durate presenti PRIMA della sezione "🔹 Totale"
-  (quindi ignora eventuali totali già presenti)
-- Durate riconosciute in formato:
-    ⏱ 30m
-    ⏱ 2h
-    ⏱ 1h 45m
-- Riscrive/ricrea la sezione finale:
-      🔹 Totale
-
-      ⏱ <HHh MMm>   (oppure solo Hh o solo Mm)
+- Somma SOLO i '⏱ …' delle sezioni '### 📌 …'
+- Riscrive una sola sezione '🔹 Totale' in fondo
 """
 
 from __future__ import annotations
 from pathlib import Path
 import re
-import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 WORKLOG = ROOT / "worklog.md"
 
-# pattern durate: ore e minuti opzionali, nell'ordine classico
-RE_H = re.compile(r"(\d+)\s*h", flags=re.IGNORECASE)
-RE_M = re.compile(r"(\d+)\s*m", flags=re.IGNORECASE)
+RE_H = re.compile(r"(\d+)\s*h", re.I)
+RE_M = re.compile(r"(\d+)\s*m", re.I)
 
-def parse_line_minutes(line: str) -> int:
-    """Estrae minuti da una riga che contiene una durata (ore/minuti)."""
-    # prendi la PRIMA occorrenza di ore e/o minuti
-    h = 0
-    m = 0
-    mh = RE_H.search(line)
-    mm = RE_M.search(line)
-    if mh:
-        try:
-            h = int(mh.group(1))
-        except ValueError:
-            h = 0
-    if mm:
-        try:
-            m = int(mm.group(1))
-        except ValueError:
-            m = 0
-    return h * 60 + m
+def to_minutes(s: str) -> int:
+    mh = RE_H.search(s or "")
+    mm = RE_M.search(s or "")
+    h = int(mh.group(1)) if mh else 0
+    m = int(mm.group(1)) if mm else 0
+    return h*60 + m
 
-def format_minutes(total_min: int) -> str:
-    h, m = divmod(total_min, 60)
-    if h and m:
-        return f"{h}h {m}m"
-    if h:
-        return f"{h}h"
+def fmt(mm: int) -> str:
+    h, m = divmod(mm, 60)
+    if h and m: return f"{h}h {m}m"
+    if h: return f"{h}h"
     return f"{m}m"
+
+def sum_sections(lines: list[str]) -> int:
+    total = 0
+    in_sec = False
+    for ln in lines:
+        if ln.startswith("### 📌 "):
+            in_sec = True
+            continue
+        if in_sec and (ln.startswith("### 📌 ") or ln.strip().startswith("🔹 Totale")):
+            in_sec = False
+        if in_sec and ln.strip().startswith("⏱"):
+            total += to_minutes(ln)
+    return total
+
+def rewrite_total(lines: list[str], total_min: int) -> list[str]:
+    cleaned: list[str] = []
+    skip = False
+    for ln in lines:
+        if ln.strip().startswith("🔹 Totale"):
+            skip = True
+            continue
+        if skip:
+            if not ln.strip():
+                skip = False
+            continue
+        cleaned.append(ln)
+    while cleaned and not cleaned[-1].strip():
+        cleaned.pop()
+    cleaned.append("")
+    cleaned.append("🔹 Totale")
+    cleaned.append("")
+    cleaned.append(f"⏱ {fmt(total_min)}")
+    cleaned.append("")
+    return cleaned
 
 def main() -> int:
     if not WORKLOG.exists():
-        print(f"[ERROR] File non trovato: {WORKLOG}")
+        print(f"[ERROR] Non trovo {WORKLOG}")
         return 2
-
-    # Leggi tollerando BOM
     content = WORKLOG.read_text(encoding="utf-8-sig")
     lines = content.splitlines()
-
-    # Trova eventuale sezione "🔹 Totale" per escluderla dal conteggio
-    totale_idx = None
-    for i, ln in enumerate(lines):
-        if ln.strip().startswith("🔹 Totale"):
-            totale_idx = i
-            break
-
-    # Somma tutte le ⏱ prima di "🔹 Totale" (se esiste), altrimenti su tutto
-    scan_upto = totale_idx if totale_idx is not None else len(lines)
-    total_minutes = 0
-    for ln in lines[:scan_upto]:
-        if "⏱" in ln:
-            total_minutes += parse_line_minutes(ln)
-
-    total_str = format_minutes(total_minutes)
-
-    # Rimuovi qualsiasi sezione "🔹 Totale" esistente (dalla prima occorrenza in poi)
-    if totale_idx is not None:
-        lines = lines[:totale_idx]
-
-    # Ripulisci eventuali righe vuote in coda
-    while lines and not lines[-1].strip():
-        lines.pop()
-
-    # Aggiungi sezione totale standardizzata
-    lines.append("")
-    lines.append("🔹 Totale")
-    lines.append("")
-    lines.append(f"⏱ {total_str}")
-    lines.append("")  # newline finale
-
-    WORKLOG.write_text("\n".join(lines), encoding="utf-8")
-    print(f"[DONE] Totale aggiornato: {total_str}")
+    total_min = sum_sections(lines)
+    new_lines = rewrite_total(lines, total_min)
+    WORKLOG.write_text("\n".join(new_lines), encoding="utf-8")
+    print(f"[DONE] Totale aggiornato: {fmt(total_min)}")
     return 0
 
 if __name__ == "__main__":
