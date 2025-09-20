@@ -1,62 +1,40 @@
+// webapp/app/it/chi-siamo/page.tsx
 import type { Metadata } from "next";
 
-export const dynamic = "force-static";
+const site = (process.env.NEXT_PUBLIC_SITE_URL || "").replace(/\/+$/, "");
 
 export const metadata: Metadata = {
   title: "Chi siamo | ICA – Institute for Conscious Action",
   description:
-    "Promuoviamo un’educazione finanziaria e digitale eticamente consapevole, accessibile e inclusiva. La nostra missione è fornire strumenti e competenze per decisioni responsabili.",
+    "Promuoviamo un’educazione finanziaria e digitale eticamente consapevole, accessibile e inclusiva. Strumenti e competenze per decisioni responsabili con impatto sociale.",
   alternates: {
     languages: {
-      it: "/it/chi-siamo",
-      en: "/en/about",
+      "it-IT": `${site}/it/chi-siamo`,
+      "en-US": `${site}/en/about`,
     },
   },
   openGraph: {
     title: "Chi siamo | ICA – Institute for Conscious Action",
     description:
-      "Educazione finanziaria e digitale etica, accessibile e inclusiva. Strumenti, conoscenze e competenze per decisioni responsabili.",
-    url: "/it/chi-siamo",
-    siteName: "ICA – Institute for Conscious Action",
-    type: "website",
+      "Educazione finanziaria e digitale con etica e inclusione al centro. Formazione, alfabetizzazione, sostenibilità e responsabilità sociale.",
+    url: `${site}/it/chi-siamo`,
+    type: "article",
+    locale: "it_IT",
   },
 };
 
-export default function Page() {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "/it",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "Chi siamo",
-        item: "/it/chi-siamo",
-      },
-    ],
-  };
-
+export default function ChiSiamoPage() {
   return (
-    <main className="mx-auto max-w-3xl px-4 py-10 prose prose-neutral">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <h1 className="mb-3">Chi siamo</h1>
+    <main className="prose mx-auto max-w-3xl px-6 py-10">
+      <h1>Chi siamo</h1>
 
       <p>
-        Promuoviamo un’educazione finanziaria e digitale eticamente
-        consapevole, accessibile e inclusiva. La nostra missione è fornire
-        strumenti, conoscenze e competenze per aiutare persone, professionisti e
-        organizzazioni a prendere decisioni più responsabili nell’uso del denaro
-        e delle tecnologie digitali, favorendo al tempo stesso sostenibilità e
-        responsabilità sociale.
+        Promuoviamo un’educazione finanziaria e digitale eticamente consapevole,
+        accessibile e inclusiva. La nostra missione è fornire strumenti,
+        conoscenze e competenze per aiutare persone, professionisti e
+        organizzazioni a prendere decisioni più responsabili nell’uso del
+        denaro e delle tecnologie digitali, favorendo al tempo stesso
+        sostenibilità e responsabilità sociale.
       </p>
 
       <p>
@@ -65,19 +43,14 @@ export default function Page() {
         dati, dal consumo critico agli investimenti sostenibili. Per questo
         riteniamo fondamentale un approccio che unisca competenza tecnica,
         consapevolezza etica e inclusione sociale, in linea con gli obiettivi
-        europei di riduzione del digital divide e pari opportunità.
+        dell’Unione Europea di riduzione del digital divide e pari opportunità.
       </p>
 
       <h2>I nostri ambiti principali</h2>
-      <ul>
-        <li>
-          Formazione e corsi su educazione finanziaria di base e avanzata
-        </li>
+      <ul className="list-disc pl-6">
+        <li>Formazione e corsi in educazione finanziaria (base e avanzata)</li>
         <li>Programmi di alfabetizzazione digitale e sicurezza online</li>
-        <li>
-          Percorsi di sensibilizzazione su consumo responsabile e finanza
-          sostenibile
-        </li>
+        <li>Percorsi di sensibilizzazione su consumo responsabile e finanza sostenibile</li>
         <li>Workshop e consulenze per imprese, scuole e associazioni</li>
       </ul>
 
@@ -87,16 +60,31 @@ export default function Page() {
         conoscenza come leva di crescita personale e collettiva.
       </p>
 
+      <h2>Il nostro obiettivo</h2>
       <p>
-        <strong>Il nostro obiettivo</strong> è semplice ma ambizioso: creare un
-        impatto positivo e misurabile, favorendo un futuro più consapevole,
-        sostenibile e inclusivo.
+        Semplice ma ambizioso: creare un impatto positivo e misurabile,
+        favorendo un futuro più consapevole, sostenibile e inclusivo.
       </p>
 
-      <p>
-        <strong>Nota</strong>: la nostra missione si ispira ed è in continuità
-        con gli <strong>obiettivi strategici della Commissione Europea</strong>,
-        che promuovono educazione digitale, competenze finanziarie di base,
+      <p className="text-sm opacity-80">
+        <strong>Nota</strong>: la nostra missione nasce dagli obiettivi e dagli
+        indirizzi strategici della{" "}
+        <a
+          href="https://digital-strategy.ec.europa.eu/it/policies/digital-education-action-plan"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Commissione Europea (Digital Education Action Plan 2021–2027)
+        </a>{" "}
+        e dei principali{" "}
+        <a
+          href="https://commission.europa.eu/strategy-and-policy/eu-budget/long-term-eu-budget/2021-2027/programmes/erdf_it"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          programmi di finanziamento europei
+        </a>
+        , che promuovono educazione digitale, alfabetizzazione finanziaria,
         sostenibilità e inclusione sociale.
       </p>
     </main>
