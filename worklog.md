@@ -90,7 +90,13 @@
 - creato ica-phase-all.ps1
 - integra preflight+verifiche+commit
 - parametri umani interattivi
-⏱ 45m
 
 ### Totale
-⏱ 24h 35m
+⏱ 23h 50m
+
+### 📌 2025-09-20 – PL-6m – Evergreen: Chi siamo (IT/EN)
+- pagine it/en
+- SEO+breadcrumbs
+- link header+footer
+⏱ 2h
+

@@ -19,7 +19,10 @@
     "next": "Successivi",
     "page": "Pagina",
     "prev": "Precedenti",
-    "title": "Blog"
+    "title": "Blog",
+    "category": "Categoria",
+    "readMore": "Leggi di più",
+    "allArticles": "Tutti gli articoli"
   },
   "contact": {
     "intro": "Come contattarci.",

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import CategoryBadge from "@/components/ui/CategoryBadge";
 import { getSupabasePublicServer } from "@/lib/supabaseServerPublic";
 import { marked } from "marked";
 import { sanitizeHtml } from "@/lib/sanitize";
@@ -57,7 +58,14 @@ export default async function BlogPostPage({ params }: Props) {
     <article className="mx-auto max-w-3xl px-4 md:px-6 py-8 md:py-12 space-y-6">
       <header className="space-y-3">
         <CategoryTag>Blog</CategoryTag>
-        <h1 className="text-3xl md:text-4xl font-extrabold leading-tight">{post.title}</h1>
+        {post?.categories?.length ? (
+  <div className="mb-3 flex gap-2">{/* __PL7_CATEGORIES__ */}
+    {post.categories.map((c:any)=> (
+      <CategoryBadge key={c.id} locale={params.locale} slug={c.slug} label={c.name || c.slug} />
+    ))}
+  </div>
+) : null}
+<h1 className="text-3xl md:text-4xl font-extrabold leading-tight">{post.title}</h1>
         <p className="text-sm text-gray-500">{dateStr}</p>
       </header>
 

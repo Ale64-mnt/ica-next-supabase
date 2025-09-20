@@ -19,7 +19,10 @@
     "next": "Next",
     "page": "Page",
     "prev": "Previous",
-    "title": "Blog"
+    "title": "Blog",
+    "category": "Category",
+    "readMore": "Read more",
+    "allArticles": "All articles"
   },
   "contact": {
     "intro": "How to reach us.",

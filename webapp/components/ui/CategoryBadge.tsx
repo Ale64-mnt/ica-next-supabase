@@ -1,9 +1,14 @@
-import React from "react";
+import Link from "next/link";
 
-export default function CategoryBadge({ children }: { children: React.ReactNode }) {
+export default function CategoryBadge({ locale, slug, label }:{
+  locale: string; slug: string; label: string;
+}) {
   return (
-    <span className="inline-block rounded-md bg-orange-500 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">
-      {children}
-    </span>
+    <Link
+      href={`/${locale}/blog/category/${slug}`}
+      className="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700"
+    >
+      {label}
+    </Link>
   );
 }
