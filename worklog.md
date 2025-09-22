@@ -100,3 +100,18 @@
 - link header+footer
 ⏱ 2h
 
+### 📌 2025-09-20 – PL-7 – Blog: categorie + pagina singolo pronta
+- badge categoria
+- pagina categoria
+- SEO base
+⏱ 45m
+
+### 📌 2025-09-21 – PL-6z – Diagnostica DB & decisione cambio istanza
+- Verifiche connessione Supabase (session/transaction pooler, direct)
+- Test DNS/porte, variabili d’ambiente, encoding password
+- Valutazione piani A/B (nuovo progetto Supabase vs Neon+Prisma)
+- Decisione: procedere con nuovo progetto Supabase (piano A)
+
+⏱ 6h
+
+
