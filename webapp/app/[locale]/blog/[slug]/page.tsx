@@ -1,92 +1,73 @@
-import { notFound } from "next/navigation";
-import CategoryBadge from "@/components/ui/CategoryBadge";
-import { getSupabasePublicServer } from "@/lib/supabaseServerPublic";
-import { marked } from "marked";
-import { sanitizeHtml } from "@/lib/sanitize";
 import Image from "next/image";
-import CategoryTag from "@/components/ui/CategoryTag";
-import type { Metadata, ResolvingMetadata } from "next";
+import ReactMarkdown from "react-markdown";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 
-type Props = { params: { locale: string; slug: string } };
+export const revalidate = 60;
 
-async function fetchPost(slug: string) {
-  const supa = getSupabasePublicServer();
-  const { data } = await supa
-    .from("articles")
-    .select("id,title,excerpt,content,cover_url,slug,published_at")
-    .eq("slug", slug)
-    .single();
-  return data || null;
+function localCover(cover: string | null, slug: string): string {
+  if (cover && cover.startsWith("/")) return cover;
+  return `/covers/${slug}.jpg`;
 }
 
-export async function generateMetadata(
-  { params }: Props,
-  _parent: ResolvingMetadata
-): Promise<Metadata> {
-  const post = await fetchPost(params.slug);
-  if (!post) return {};
-  const title = post.title;
-  const description = post.excerpt ?? "";
-  const base = process.env.NEXT_PUBLIC_BASE_URL ?? "http://localhost:3000";
-  const url = `${base}/${params.locale}/blog/${post.slug}`;
-  const images = post.cover_url ? [{ url: post.cover_url }] : undefined;
+async function getSeo(slug: string) {
+  const { data } = await supabase
+    .from("articles")
+    .select("title,summary,cover_url")
+    .eq("slug", slug)
+    .eq("published", true)
+    .maybeSingle();
+  return data ?? null;
+}
+
+export async function generateMetadata({ params }: { params: { slug: string; locale: string } }): Promise<Metadata> {
+  const d = await getSeo(params.slug);
   return {
-    title,
-    description,
-    openGraph: { title, description, url, type: "article", images },
-    alternates: { canonical: url },
+    title: d?.title ?? "Articolo",
+    description: d?.summary ?? undefined,
+    openGraph: d ? { images: [{ url: localCover(d.cover_url ?? null, params.slug) }] } : undefined,
   };
 }
 
-export default async function BlogPostPage({ params }: Props) {
-  const post = await fetchPost(params.slug);
-  if (!post) return notFound();
+async function getArticle(slug: string, locale: string) {
+  const { data, error } = await supabase
+    .from("articles")
+    .select("slug,title,summary,body_md,cover_url,category,published_at,locale")
+    .eq("slug", slug)
+    .eq("locale", locale)
+    .eq("published", true)
+    .maybeSingle();
+  if (error) return null;
+  return data ?? null;
+}
 
-  const html = post.content
-    ? sanitizeHtml(await marked.parse(post.content))
-    : (post.excerpt ? `<p>${sanitizeHtml(post.excerpt)}</p>` : "");
+export default async function BlogDetail({ params }: { params: { locale: string; slug: string } }) {
+  const a = await getArticle(params.slug, params.locale);
+  if (!a) return notFound();
 
-  const dateStr = post.published_at
-    ? new Date(post.published_at).toLocaleDateString(params.locale, {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-    : "";
+  const src = localCover(a.cover_url, a.slug);
 
   return (
-    <article className="mx-auto max-w-3xl px-4 md:px-6 py-8 md:py-12 space-y-6">
-      <header className="space-y-3">
-        <CategoryTag>Blog</CategoryTag>
-        {post?.categories?.length ? (
-  <div className="mb-3 flex gap-2">{/* __PL7_CATEGORIES__ */}
-    {post.categories.map((c:any)=> (
-      <CategoryBadge key={c.id} locale={params.locale} slug={c.slug} label={c.name || c.slug} />
-    ))}
-  </div>
-) : null}
-<h1 className="text-3xl md:text-4xl font-extrabold leading-tight">{post.title}</h1>
-        <p className="text-sm text-gray-500">{dateStr}</p>
-      </header>
+    <main className="mx-auto max-w-3xl p-6">
+      <p className="text-xs opacity-70">{a.category} · {a.locale}</p>
+      <h1 className="text-3xl font-bold mt-1">{a.title}</h1>
 
-      {post.cover_url && (
-        <figure className="w-full">
-          <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl">
-            <Image
-              src={post.cover_url}
-              alt={post.title ?? ""}
-              fill
-              sizes="(max-width: 768px) 100vw, 768px"
-              className="object-cover"
-              priority={false}
-            />
-          </div>
-        </figure>
-      )}
+      <div className="relative w-full h-64 my-4">
+        <Image
+          src={src}
+          alt={a.title}
+          fill
+          sizes="(min-width:1024px) 768px, 100vw"
+          className="object-cover rounded-2xl"
+        />
+      </div>
 
-      {post.excerpt && <p className="text-lg md:text-xl text-gray-700 leading-relaxed">{post.excerpt}</p>}
+      {a.summary && <p className="italic opacity-80">{a.summary}</p>}
 
-      <div className="prose prose-neutral md:prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: html }} />
-    </article>
+      <article className="prose prose-neutral max-w-none mt-6">
+        <ReactMarkdown>{a.body_md}</ReactMarkdown>
+      </article>
+    </main>
   );
 }
