@@ -115,3 +115,5 @@
 ⏱ 6h
 
 
+2025-09-25 | 3h | Local cover assets + blog pages refactor
+Tasks: tools + pagine Next.js + pulizia rotte legacy + test
