@@ -1,45 +1,37 @@
-// webapp/components/ArticleCard.tsx
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 
 type Props = {
   href: string;
   title: string;
   summary?: string | null;
-  category?: string | null;
-  coverUrl?: string | null;
+  slug: string;
+  cover_url?: string | null;
 };
 
-export default function ArticleCard({ href, title, summary, category, coverUrl }: Props) {
-  const src = coverUrl || "https://placehold.co/640x360/png?text=News";
+function localCover(cover: string | null | undefined, slug: string): string {
+  if (cover && cover.startsWith("/")) return cover;
+  return `/covers/${slug}.jpg`;
+}
+
+export default function ArticleCard({ href, title, summary, slug, cover_url }: Props) {
+  const src = localCover(cover_url ?? null, slug);
+
   return (
-    <article className="grid grid-cols-1 gap-4 py-6 md:grid-cols-[280px,1fr] md:gap-6 md:py-8 border-b border-neutral-200">
-      <Link href={href} className="relative block aspect-[16/9] w-full overflow-hidden rounded md:h-[160px]">
+    <article className="rounded-2xl border p-4 hover:shadow-md transition">
+      <div className="relative w-full h-40 mb-3">
         <Image
           src={src}
           alt={title}
           fill
-          sizes="(max-width: 768px) 100vw, 280px"
-          className="object-cover transition-transform duration-300 hover:scale-[1.02]"
+          sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+          className="object-cover rounded-xl"
         />
-      </Link>
-      <div className="flex flex-col gap-2">
-        {category ? (
-          <div className="text-[11px] font-bold uppercase tracking-[0.05em] text-[#0f766e]">
-            {category}
-          </div>
-        ) : null}
-        <Link href={href} className="group">
-          <h3 className="text-2xl font-extrabold leading-snug group-hover:underline underline-offset-4">
-            {title}
-          </h3>
-        </Link>
-        {summary ? (
-          <p className="text-[17px] leading-relaxed text-neutral-700">
-            {summary}
-          </p>
-        ) : null}
       </div>
+      <h3 className="text-lg font-semibold mt-1">
+        <Link href={href} className="hover:underline">{title}</Link>
+      </h3>
+      {summary && <p className="text-sm mt-2 line-clamp-3">{summary}</p>}
     </article>
   );
 }

@@ -1,71 +1,50 @@
-// webapp/app/[locale]/news/[slug]/page.tsx
 import Image from "next/image";
-import EditorialLayout from "@/components/EditorialLayout";
-import ArticleBody from "@/components/ArticleBody";
-import { createClient } from "@/lib/supabaseServerPublic";
+import { notFound } from "next/navigation";
+import { supabase } from "@/lib/supabase";
 
-type Props = {
-  params: { locale: string; slug: string };
-};
+export const revalidate = 60;
 
-export default async function NewsDetail({ params }: Props) {
-  const { locale, slug } = params;
-  const supabase = createClient();
+function localCover(cover: string | null, slug: string): string {
+  if (cover && cover.startsWith("/")) return cover;
+  return `/covers/${slug}.jpg`;
+}
 
+async function getNews(slug: string, locale: string) {
   const { data, error } = await supabase
-    .from("news")
-    .select("id, title, summary, body, cover_url, category, lang, created_at")
+    .from("articles")
+    .select("slug,title,summary,body_md,cover_url,locale,category,published")
     .eq("slug", slug)
+    .eq("locale", locale)
+    .eq("published", true)
     .maybeSingle();
+  if (error) return null;
+  return data ?? null;
+}
 
-  if (!data || error || (data.lang && data.lang !== locale)) {
-    return (
-      <EditorialLayout>
-        <div className="py-16">
-          <h1 className="mb-2 text-2xl font-bold">Articolo non trovato</h1>
-          <p className="text-neutral-600">Controlla lo slug o la lingua.</p>
-        </div>
-      </EditorialLayout>
-    );
-  }
+export default async function NewsDetail({ params }: { params: { locale: string; slug: string } }) {
+  const data = await getNews(params.slug, params.locale);
+  if (!data) return notFound();
 
-  const src = data.cover_url || "https://placehold.co/1200x675/png?text=News";
+  const src = localCover(data.cover_url, data.slug);
 
-  // Se in futuro converti Markdown -> HTML, metti l'HTML in "html" e togli "text"
   return (
-    <EditorialLayout>
-      <article className="py-8 sm:py-10">
-        {data.category ? (
-          <div className="text-[12px] font-bold uppercase tracking-[0.06em] text-[#0f766e]">
-            {data.category}
-          </div>
-        ) : null}
+    <main className="mx-auto max-w-3xl p-6">
+      <p className="text-xs opacity-70">{data.category} · {data.locale}</p>
+      <h1 className="text-3xl font-bold mt-1">{data.title}</h1>
 
-        <h1 className="mt-2 text-3xl font-extrabold leading-tight md:text-4xl">
-          {data.title || "Senza titolo"}
-        </h1>
+      <div className="relative w-full h-64 my-4">
+        <Image
+          src={src}
+          alt={data.title}
+          fill
+          sizes="(min-width:1024px) 768px, 100vw"
+          className="object-cover rounded-2xl"
+          onError={(e) => { (e.currentTarget as any).src = "/covers/placeholder.svg"; }}
+        />
+      </div>
 
-        {data.summary ? (
-          <p className="mt-3 text-[18px] leading-relaxed text-neutral-700">
-            {data.summary}
-          </p>
-        ) : null}
-
-        <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden rounded">
-          <Image
-            src={src}
-            alt={data.title || "News"}
-            fill
-            sizes="(max-width: 1024px) 100vw, 960px"
-            className="object-cover"
-            priority
-          />
-        </div>
-
-        <div className="mt-8">
-          <ArticleBody text={data.body} />
-        </div>
-      </article>
-    </EditorialLayout>
+      {data.summary && <p className="italic opacity-80">{data.summary}</p>}
+      {/* Render del body_md se necessario */}
+    </main>
   );
 }

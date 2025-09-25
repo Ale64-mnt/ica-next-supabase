@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { supabase } from "@/lib/supabase";
@@ -67,7 +67,6 @@ export default async function CategoryPage({
                   fill
                   sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
                   className="object-cover rounded-xl"
-                  onError={(e) => { (e.currentTarget as any).src = "/covers/placeholder.svg"; }}
                 />
               </div>
               <h2 className="text-lg font-semibold mt-1">

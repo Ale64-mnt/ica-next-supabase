@@ -1,24 +1,24 @@
-'use client';
-import Link from 'next/link';
-import {usePathname} from 'next/navigation';
-import {useTranslations} from 'next-intl';
+"use client";
 
-export default function Nav(){
-  const pathname = usePathname() || '/it';
-  const locale = (pathname.split('/')[1] || 'it');
-  const t = useTranslations('nav');
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-  const link = (slug:string) => `/${locale}${slug}`;
+function getLangFromPath(path: string): string {
+  const seg = (path || "/").split("/").filter(Boolean);
+  const lang = seg[0];
+  return lang === "it" || lang === "en" ? lang : "it";
+}
+
+export default function Nav() {
+  const pathname = usePathname() || "/";
+  const lang = getLangFromPath(pathname);
 
   return (
-    <nav style={{display:'flex',gap:'1rem',padding:'1rem',borderBottom:'1px solid #eee'}}>
-      <Link href={link('')}>{t('home')}</Link>
-      <Link href={link('/about')}>{t('about')}</Link>
-      <Link href={link('/news')}>{t('news')}</Link>
-      <Link href={link('/articles')}>{t('articles')}</Link>
-      <Link href={link('/faq')}>{t('faq')}</Link>
-      <Link href={link('/glossary')}>{t('glossary')}</Link>
-      <Link href={link('/contact')}>{t('contact')}</Link>
+    <nav className="p-4 border-b flex gap-4 text-sm">
+      <Link href={`/${lang}`} className="hover:underline">Home</Link>
+      <Link href={`/${lang}/blog`} className="hover:underline">Blog</Link>
+      <Link href={`/${lang}/news`} className="hover:underline">News</Link>
+      <Link href={`/${lang}/contact`} className="hover:underline">Contact</Link>
     </nav>
   );
 }

@@ -47,3 +47,8 @@ coverage/
 
 # === Supabase generated ===
 supabase/.temp
+
+*.env*
+
+_app_mistaken/
+backups/
