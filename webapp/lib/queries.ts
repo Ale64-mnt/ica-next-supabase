@@ -23,9 +23,12 @@ export type News = {
   locale?: string | null;
   published?: boolean | null;
   published_at?: string | null;
+  /** campi usati dalla pagina */
+  source?: string | null;
+  source_date?: string | null; // ISO string in DB
 };
 
-// client anonimo per letture con RLS attive
+// client anonimo (RLS read-only)
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
@@ -62,7 +65,9 @@ export async function fetchArticleById(id: string) {
 export async function fetchNews(limit = 20) {
   const { data, error } = await supabase
     .from('news')
-    .select('id,title,summary,cover_url,slug,locale,published_at')
+    .select(
+      'id,title,summary,cover_url,slug,locale,published_at,source,source_date'
+    )
     .eq('published', true)
     .order('published_at', { ascending: false })
     .limit(limit);
@@ -74,7 +79,9 @@ export async function fetchNews(limit = 20) {
 export async function fetchNewsById(id: string) {
   const { data, error } = await supabase
     .from('news')
-    .select('id,title,summary,cover_url,slug,locale,published_at')
+    .select(
+      'id,title,summary,cover_url,slug,locale,published_at,source,source_date'
+    )
     .eq('id', id)
     .eq('published', true)
     .maybeSingle();
