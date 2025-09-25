@@ -1,36 +1,49 @@
-import { createClient } from './supabaseClient'
-const supabase = createClient()
+// webapp/lib/queries.ts
+import { createClient } from '@supabase/supabase-js';
 
-export async function fetchNews(lang = 'it') {
-  const { data, error } = await supabase
-    .from('news')
-    .select('id,title,source,source_date,summary,image_url,lang,created_at')
-    .eq('lang', lang).eq('published', true)
-    .order('source_date', { ascending: false })
-    .limit(25)
-  if (error) throw error
-  return data ?? []
-}
+export type Article = {
+  id: string;
+  slug: string;
+  title: string;
+  summary?: string | null;
+  excerpt?: string | null;
+  cover_url?: string | null;
+  category?: string | null;
+  locale?: string | null;
+  published?: boolean | null;
+  published_at?: string | null;
+};
 
-export async function fetchNewsById(id: string) {
-  const { data, error } = await supabase.from('news').select('*').eq('id', id).single()
-  if (error) throw error
-  return data
-}
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
-export async function fetchArticles(lang = 'it') {
+/**
+ * Ritorna gli articoli pubblicati (con RLS attiva l'anon vede solo published=TRUE e
+ * i locale permessi).
+ */
+export async function fetchArticles(limit = 20) {
   const { data, error } = await supabase
     .from('articles')
-    .select('id,title,subtitle,image_url,lang,created_at')
-    .eq('lang', lang).eq('published', true)
-    .order('created_at', { ascending: false })
-    .limit(25)
-  if (error) throw error
-  return data ?? []
+    .select('id, slug, title, excerpt, summary, cover_url, category, locale, published_at')
+    .eq('published', true)
+    .order('published_at', { ascending: false })
+    .limit(limit);
+
+  if (error) throw error;
+  return (data ?? []) as Article[];
 }
 
+/** Ritorna un articolo per id (se pubblicato e visibile per RLS). */
 export async function fetchArticleById(id: string) {
-  const { data, error } = await supabase.from('articles').select('*').eq('id', id).single()
-  if (error) throw error
-  return data
+  const { data, error } = await supabase
+    .from('articles')
+    .select('id, slug, title, excerpt, summary, cover_url, category, locale, published_at')
+    .eq('id', id)
+    .eq('published', true)
+    .maybeSingle();
+
+  if (error) throw error;
+  return (data ?? null) as Article | null;
 }
