@@ -1,40 +1,83 @@
 import Link from "next/link";
-import { supabaseBrowser } from "@/lib/supabaseBrowser";
+import Image from "next/image";
+import type { Metadata } from "next";
+import { supabase } from "@/lib/supabase";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
-export default async function CategoryPage({ params:{ locale, slug } }:{
-  params:{ locale:string; slug:string }
-}) {
-  const sb = supabaseBrowser();
-  // usa una view se ce l'hai; altrimenti adatta con la tua tabella traduzioni
-  const { data, error } = await sb
-    .from("posts_by_category_view")
-    .select("slug, title, summary, cover_url, published_at")
+type Row = { slug: string; title: string; summary: string | null; cover_url: string | null };
+
+function localCover(cover: string | null, slug: string): string {
+  if (cover && cover.startsWith("/")) return cover;
+  return `/covers/${slug}.jpg`;
+}
+
+async function getData(category: string, locale: string) {
+  const { data, error } = await supabase
+    .from("articles")
+    .select("slug,title,summary,cover_url")
+    .eq("published", true)
+    .eq("category", category)
     .eq("locale", locale)
-    .eq("category_slug", slug)
-    .order("published_at", { ascending:false });
+    .order("published_at", { ascending: false });
+  if (error) throw new Error(error.message);
+  return (data ?? []) as Row[];
+}
 
-  if (error) {
-    console.error(error);
-  }
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string; slug: string };
+}): Promise<Metadata> {
+  const { locale, slug } = params;
+  const title = locale === "en" ? `Category: ${slug} (en)` : `Categoria: ${slug} (${locale})`;
+  const description = locale === "en" ? `Posts in category "${slug}".` : `Articoli nella categoria "${slug}".`;
+  return { title, description };
+}
+
+export default async function CategoryPage({
+  params,
+}: {
+  params: { locale: string; slug: string };
+}) {
+  const { locale, slug } = params;
+  const items = await getData(slug, locale);
 
   return (
-    <main className="mx-auto max-w-5xl px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">{slug}</h1>
-      <ul className="grid gap-8 md:grid-cols-2">
-        {(data ?? []).map((p:any)=>(
-          <li key={p.slug} className="group">
-            <Link href={`/${locale}/blog/${p.slug}`}>
-              <div className="space-y-2">
-                {p.cover_url && <img src={p.cover_url} className="rounded-xl" alt="" />}
-                <h2 className="text-xl font-semibold group-hover:underline">{p.title}</h2>
-                {p.summary && <p className="text-slate-600">{p.summary}</p>}
+    <main className="mx-auto max-w-5xl p-6">
+      <h1 className="text-3xl font-bold mb-6">
+        {locale === "en" ? "Category" : "Categoria"}: {slug} ({locale})
+      </h1>
+
+      {items.length === 0 && (
+        <p className="opacity-70">
+          {locale === "en" ? "No posts in this category." : "Nessun articolo in questa categoria."}
+        </p>
+      )}
+
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((a) => {
+          const src = localCover(a.cover_url, a.slug);
+          return (
+            <article key={a.slug} className="rounded-2xl border p-4 hover:shadow-md transition">
+              <div className="relative w-full h-40 mb-3">
+                <Image
+                  src={src}
+                  alt={a.title}
+                  fill
+                  sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
+                  className="object-cover rounded-xl"
+                  onError={(e) => { (e.currentTarget as any).src = "/covers/placeholder.svg"; }}
+                />
               </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
+              <h2 className="text-lg font-semibold mt-1">
+                <Link href={`/${locale}/blog/${a.slug}`} className="hover:underline">{a.title}</Link>
+              </h2>
+              {a.summary && <p className="text-sm mt-2 line-clamp-3">{a.summary}</p>}
+            </article>
+          );
+        })}
+      </div>
     </main>
   );
 }
