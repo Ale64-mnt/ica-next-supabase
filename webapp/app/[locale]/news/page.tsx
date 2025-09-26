@@ -2,16 +2,10 @@
 import BasicPage from '@/components/BasicPage';
 import NewsList from '@/components/NewsList';
 
-type Props = {
-  params: { locale: string };
-};
-
-export default function Page({ params }: Props) {
-  const { locale } = params;
-
+export default function Page() {
   return (
     <>
-      <BasicPage locale={locale} />
+      <BasicPage namespace="news" />
       <div style={{ padding: '0 2rem' }}>
         <NewsList />
       </div>

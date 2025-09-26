@@ -1,14 +1,14 @@
 'use client';
-import { supabaseBrowser() } from '@/lib/supabaseBrowser()';
-﻿'use client';
 
-import { useState, useEffect } from 'react';
+import { supabaseBrowser } from '@/lib/supabaseBrowser';
+import { useEffect, useState } from 'react';
 
 export default function AdminNewsForm() {
-  const supabase = getSupabaseBrowser();
+  const supabase = supabaseBrowser();
+
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
-  const [news, setNews] = useState<any[]>([]);
+  const [news, setNews] = useState<Array<{ id: string; title: string; summary: string | null; published_at: string | null }>>([]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -16,9 +16,10 @@ export default function AdminNewsForm() {
     setError(null);
     const { data, error } = await supabase
       .from('news')
-      .select('id, title, summary, published_at')
+      .select('id,title,summary,published_at')
       .order('published_at', { ascending: false })
       .limit(25);
+
     if (error) setError(error.message);
     setNews(data ?? []);
   }
@@ -31,13 +32,14 @@ export default function AdminNewsForm() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // token di protezione lato server (match con .env ADMIN_TOKEN)
-          'x-admin-token': process.env.NEXT_PUBLIC_ADMIN_TOKEN || 'dev-admin-token-123'
+          'x-admin-token': process.env.NEXT_PUBLIC_ADMIN_TOKEN || 'dev-admin-token-123',
         },
-        body: JSON.stringify({title, summary})
+        body: JSON.stringify({ title, summary }),
       });
+
       const json = await res.json();
       if (!res.ok || !json.ok) throw new Error(json.error || 'save failed');
+
       setTitle('');
       setSummary('');
       await loadNews();
@@ -48,39 +50,46 @@ export default function AdminNewsForm() {
     }
   }
 
-  useEffect(() => { loadNews(); }, []);
+  useEffect(() => {
+    loadNews();
+  }, []);
 
   return (
-    <div style={{maxWidth: 720}}>
+    <div style={{ maxWidth: 720 }}>
       <h2>Nuova News</h2>
 
-      <div style={{display: 'grid', gap: 8, marginBottom: 12}}>
+      <div style={{ display: 'grid', gap: 8, marginBottom: 12 }}>
         <input
-          placeholder='Titolo'
+          placeholder="Titolo"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          style={{padding: 8, border: '1px solid #ccc', borderRadius: 6}}
+          style={{ padding: 8, border: '1px solid #ccc', borderRadius: 6 }}
         />
         <input
-          placeholder='Sommario'
+          placeholder="Sommario"
           value={summary}
           onChange={(e) => setSummary(e.target.value)}
-          style={{padding: 8, border: '1px solid #ccc', borderRadius: 6}}
+          style={{ padding: 8, border: '1px solid #ccc', borderRadius: 6 }}
         />
         <button onClick={saveNews} disabled={saving || !title.trim()}>
           {saving ? 'Salvataggio...' : 'Salva'}
         </button>
-        {error && <p style={{color: 'crimson'}}>Errore: {error}</p>}
+        {error && <p style={{ color: 'crimson' }}>Errore: {error}</p>}
       </div>
 
       <h2>Lista News</h2>
-      <ul style={{listStyle: 'none', padding: 0}}>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
         {news.map((n) => (
-          <li key={n.id} style={{padding: '10px 0', borderBottom: '1px solid #eee'}}>
+          <li key={n.id} style={{ padding: '10px 0', borderBottom: '1px solid #eee' }}>
             <b>{n.title}</b>
-            {n.summary ? <> — <i>{n.summary}</i></> : null}
+            {n.summary ? (
+              <>
+                {' '}
+                - <i>{n.summary}</i>
+              </>
+            ) : null}
             {n.published_at ? (
-              <div style={{fontSize: 12, color: '#666'}}>
+              <div style={{ fontSize: 12, color: '#666' }}>
                 {new Date(n.published_at).toLocaleString()}
               </div>
             ) : null}
