@@ -1,9 +1,14 @@
-import BasicPage from '@/components/BasicPage';
+// webapp/app/[locale]/news/page.tsx
 import NewsList from '@/components/NewsList';
-export const dynamic = 'force-dynamic'; // per vedere aggiornamenti
-export default function Page(){
-  return <>
-    <BasicPage ns="news" />
-    <div style={{padding:'0 2rem'}}><NewsList /></div>
-  </>;
+import BasicPage from '@/components/BasicPage';
+
+export default function Page() {
+  return (
+    <>
+      <BasicPage />
+      <div style={{ padding: '0 2rem' }}>
+        <NewsList />
+      </div>
+    </>
+  );
 }
