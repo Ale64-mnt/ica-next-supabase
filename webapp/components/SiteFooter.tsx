@@ -1,6 +1,6 @@
-// webapp/components/SiteFooter.tsx
-import { useTranslations, useLocale } from "next-intl";
+"use client";
 import Link from "next/link";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function SiteFooter() {
   const t = useTranslations("nav");
@@ -13,7 +13,9 @@ export default function SiteFooter() {
       </div>
 
       <nav className="flex justify-center gap-4 mb-3">
-        <Link href={`/${locale}/chi-siamo`}>{t("about")}</Link>
+        <Link href={`/${locale}/about`}>{t("about")}</Link>
+        <Link href={`/${locale}/news`}>{t("news")}</Link>
+        <Link href={`/${locale}/contact`}>{t("contact")}</Link>
       </nav>
     </footer>
   );
