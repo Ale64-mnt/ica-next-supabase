@@ -1,2 +1,0 @@
-import PageHeader from "@/components/ui/PageHeader";import Section from "@/components/ui/Section";import Card from "@/components/ui/Card";
-export const revalidate=60;export default function ArticlesPage(){return(<><PageHeader title="Articoli" kicker="Approfondimenti evergreen"/><Section><div className="grid grid--3"><Card href="/articles/demo" title="Titolo articolo" image="/placeholder.jpg">Breve estratto…</Card></div></Section></>);}

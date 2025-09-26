@@ -1,18 +1,12 @@
-import { JSDOM } from "jsdom";
-import createDOMPurify from "dompurify";
+// webapp/lib/sanitize.ts
+import DOMPurify from 'isomorphic-dompurify';
 
-let purify: ReturnType<typeof createDOMPurify> | null = null;
-
-export function sanitizeHtml(dirty: string): string {
-  if (!purify) {
-    const window = new JSDOM("").window as unknown as Window;
-    purify = createDOMPurify(window);
-  }
-  return purify!.sanitize(dirty, {
-    ALLOWED_ATTR: ["href", "title", "alt", "src", "target", "rel"],
-    ALLOWED_TAGS: [
-      "a","abbr","b","blockquote","br","code","em","i","img","li","ol","p","pre","strong","ul",
-      "h1","h2","h3","h4","h5","h6","hr","table","thead","tbody","tr","th","td"
-    ]
+/**
+ * Sanifica HTML in modo sicuro sia in SSR che nel browser.
+ * Niente jsdom, niente tipi ballerini.
+ */
+export function sanitize(dirty: string): string {
+  return DOMPurify.sanitize(dirty, {
+    ALLOWED_ATTR: ['href', 'title', 'alt', 'src', 'target', 'rel'],
   }) as string;
 }

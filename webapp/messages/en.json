@@ -58,7 +58,7 @@
     "list": {
       "title": "News",
       "empty": "No news available.",
-      "prev": "Prev",
+      "prev": "Previous",
       "next": "Next"
     }
   }

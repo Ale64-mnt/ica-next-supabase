@@ -39,7 +39,7 @@
   "home": {
     "intro": "Sito Next.js + i18n",
     "title": "Benvenuto",
-    "empty": "No content available."
+    "empty": "Nessun contenuto disponibile."
   },
   "nav": {
     "about": "Chi siamo",
@@ -54,9 +54,9 @@
     "empty": "Nessuna notizia disponibile.",
     "intro": "Ultime notizie di educazione finanziaria e digitale.",
     "readMore": "Leggi di più",
-    "title": "News",
+    "title": "Notizie",
     "list": {
-      "title": "News",
+      "title": "Notizie",
       "empty": "Nessuna news disponibile.",
       "prev": "Precedente",
       "next": "Successiva"

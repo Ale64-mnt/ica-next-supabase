@@ -1,7 +1,0 @@
-// webapp/next-intl.config.ts
-export default {
-  locales: ['it', 'en', 'fr', 'es', 'de'],
-  defaultLocale: 'it',
-  // sempre il prefisso di lingua nell'URL: /it, /en, ...
-  localePrefix: 'always'
-} as const;

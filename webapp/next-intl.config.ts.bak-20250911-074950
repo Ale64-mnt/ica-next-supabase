@@ -1,5 +1,0 @@
-export default {
-  locales: ['it', 'en', 'fr', 'es', 'de'],
-  defaultLocale: 'it',
-  localePrefix: 'always'
-};

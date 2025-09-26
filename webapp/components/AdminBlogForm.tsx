@@ -1,5 +1,4 @@
-﻿'use client';
-
+'use client';
 import { supabaseBrowser } from '@/lib/supabaseBrowser';
 import { useEffect, useMemo, useState } from 'react';
 
