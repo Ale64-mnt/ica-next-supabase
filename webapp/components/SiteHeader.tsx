@@ -1,10 +1,11 @@
-import { useTranslations } from "next-intl";
-// webapp/components/SiteHeader.tsx
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslations, useLocale } from "next-intl";
 
 export default function SiteHeader() {
   const t = useTranslations("nav");
+  const locale = useLocale();
 
   return (
     <header
@@ -13,33 +14,28 @@ export default function SiteHeader() {
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="flex h-14 items-center justify-between">
-          <Link href="/" className="flex items-center gap-3" aria-label="Homepage">
+          <Link href={`/${locale}`} className="flex items-center gap-3" aria-label="Homepage">
             <Image
               src="/logo.png"
               alt="Edunovà"
-              width={160}        // ⬅️ dimensioni fisse
+              width={160}
               height={48}
               priority
-              className="h-10 w-auto" // ⬅️ controlla l’altezza visiva
+              className="h-10 w-auto"
             />
           </Link>
 
           <nav aria-label="Main" className="flex items-center gap-4">
-            {/* link placeholder, da popolare più avanti */}
-            <Link href="/it/news" className="text-sm font-medium text-neutral-700 hover:text-black">
-              News
+            <Link href={`/${locale}/news`} className="text-sm font-medium text-neutral-700 hover:text-black">
+              {t("news")}
             </Link>
-            <Link href="/it/blog" className="text-sm font-medium text-neutral-700 hover:text-black">
+            <Link href={`/${locale}/blog`} className="text-sm font-medium text-neutral-700 hover:text-black">
               Blog
             </Link>
-            <Link href="/it/about" className="text-sm font-medium text-neutral-700 hover:text-black">
-              Chi siamo
+            <Link href={`/${locale}/about`} className="text-sm font-medium text-neutral-700 hover:text-black">
+              {t("about")}
             </Link>
-          
-  <ul className="flex gap-6 text-sm">
-    <li><Link href="/[locale]/chi-siamo" locale>{t("about")}</Link></li>
-  </ul>
-</nav>
+          </nav>
         </div>
       </div>
     </header>

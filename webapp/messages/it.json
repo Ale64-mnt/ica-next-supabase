@@ -1,5 +1,65 @@
 {
-  "HomePage": {
-    "title": "Progetto Funzionante!"
+  "about": {
+    "intro": "Informazioni sul progetto.",
+    "title": "Chi siamo"
+  },
+  "admin": {
+    "blog": {
+      "intro": "Crea un nuovo post e (se vuoi) carica una cover.",
+      "title": "Admin – Gestione Blog"
+    }
+  },
+  "articles": {
+    "intro": "Approfondimenti e guide.",
+    "title": "Articoli"
+  },
+  "blog": {
+    "empty": "Nessun articolo pubblicato.",
+    "intro": "Articoli e aggiornamenti.",
+    "next": "Successivi",
+    "page": "Pagina",
+    "prev": "Precedenti",
+    "title": "Blog",
+    "category": "Categoria",
+    "readMore": "Leggi di più",
+    "allArticles": "Tutti gli articoli"
+  },
+  "contact": {
+    "intro": "Come contattarci.",
+    "title": "Contatti"
+  },
+  "faq": {
+    "intro": "Risposte alle domande più comuni.",
+    "title": "Domande frequenti"
+  },
+  "glossary": {
+    "intro": "Termini e definizioni utili.",
+    "title": "Glossario"
+  },
+  "home": {
+    "intro": "Sito Next.js + i18n",
+    "title": "Benvenuto",
+    "empty": "Nessun contenuto disponibile."
+  },
+  "nav": {
+    "about": "Chi siamo",
+    "articles": "Articoli",
+    "contact": "Contatti",
+    "faq": "FAQ",
+    "glossary": "Glossario",
+    "home": "Home",
+    "news": "Notizie"
+  },
+  "news": {
+    "empty": "Nessuna notizia disponibile.",
+    "intro": "Ultime notizie di educazione finanziaria e digitale.",
+    "readMore": "Leggi di più",
+    "title": "Notizie",
+    "list": {
+      "title": "Notizie",
+      "empty": "Nessuna news disponibile.",
+      "prev": "Precedente",
+      "next": "Successiva"
+    }
   }
 }

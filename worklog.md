@@ -114,6 +114,48 @@
 
 ⏱ 6h
 
+### 📌 2025-09-25 | PL-? | Local cover assets + blog pages refactor
+- tools per gestione asset
+- refactor pagine blog in Next.js
+- pulizia rotte legacy
+- test e verifica build
+⏱ 3h
 
-2025-09-25 | 3h | Local cover assets + blog pages refactor
-Tasks: tools + pagine Next.js + pulizia rotte legacy + test
+### 📌 2025-09-26 | PL-? | Cleanup repo + i18n header/footer + sanitizer
+- rimozione rotte legacy; pulizia backup/cache/log (*.bak, .next/.turbo, log)
+- i18n: SiteHeader/SiteFooter localizzati (EN/IT), link corretti
+- sicurezza: sanitizer SSR-safe (isomorphic-dompurify)
+- sitemap/robots rigenerati; build e smoke test OK
+⏱ 4h 15m
+
+### 📌 2025-09-27 | PL-1 | Debugging next-intl e reset configurazione
+- Analisi errore runtime "Couldn't find next-intl config file"
+- Ispezione e correzione file di configurazione (i18n.ts, middleware.ts, layout.tsx)
+- Correzione dipendenza: downgrade da versione beta (4.x) a stabile (3.x) di next-intl
+- Pulizia completa dipendenze (rimozione node_modules, package-lock.json) e reinstallazione
+- Rimozione file/cartelle in conflitto (i18n/, .bak, script temporanei)
+- Diagnostica avanzata con log per verificare il runtime del server
+- Strategia finale: creazione nuovo progetto pulito per validare il setup
+ ⏱ 4h 40m
+
+ ### 📌 2025-09-27 | PL-2 | Cleanup progetto e finalizzazione configurazione i18n
+- Analisi file e rimozione ambiguità (file .bak, config duplicate)
+- Unificazione di `next.config.js` e `next.config.mjs`
+- Pulizia finale cartelle non necessarie (i18n/, lib/)
+- Riavvio server e validazione della soluzione finale
+ 1h 0m
+
+### 📌 2025-09-27 | PL-3 | Reset e creazione progetto pulito per validazione i18n
+- Creazione nuovo progetto Next.js (`next-intl-test`) con versioni stabili.
+- Installazione e configurazione di `next-intl` su base pulita.
+- Creazione file di configurazione (`i18n.ts`, `middleware.ts`).
+- Ristrutturazione cartella `app` e creazione file di traduzione.
+- Validazione finale del corretto funzionamento e identificazione del problema ambientale.
+ 1h 18m
+
+ ### 📌 2025-09-27 | PL-4 | Migrazione su progetto pulito e test finale
+- Eseguito script di migrazione per copiare componenti, asset e dipendenze.
+- Unificata e pulita la configurazione di `next.config.mjs`.
+- Eseguita reinstallazione pulita delle dipendenze con `npm install`.
+- Avviato il server e validato il corretto funzionamento dell'internazionalizzazione.
+ 30m

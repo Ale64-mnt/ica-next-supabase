@@ -1,8 +1,6 @@
 'use client';
-import { supabaseBrowser() } from '@/lib/supabaseBrowser()';
-"use client";
-
-import { useEffect, useMemo, useState } from "react";
+import { supabaseBrowser } from '@/lib/supabaseBrowser';
+import { useEffect, useMemo, useState } from 'react';
 
 type Article = {
   id: string;
@@ -15,21 +13,21 @@ type Article = {
 
 function slugify(raw: string): string {
   return raw
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
 }
 
 export default function AdminBlogForm() {
-  const supabase = getSupabaseBrowser();
+  const supabase = supabaseBrowser();
 
-  const [title, setTitle] = useState("");
-  const [excerpt, setExcerpt] = useState("");
+  const [title, setTitle] = useState('');
+  const [excerpt, setExcerpt] = useState('');
   const [cover, setCover] = useState<File | null>(null);
-  const [slug, setSlug] = useState("");
+  const [slug, setSlug] = useState('');
   const [posts, setPosts] = useState<Article[]>([]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -39,12 +37,12 @@ export default function AdminBlogForm() {
   async function loadPosts() {
     setError(null);
     try {
-      const res = await fetch("/api/admin/blog");
+      const res = await fetch('/api/admin/blog');
       const json = await res.json();
-      if (!res.ok) throw new Error(json?.error || "Errore caricamento lista");
+      if (!res.ok) throw new Error(json?.error || 'Errore caricamento lista');
       setPosts(json.items ?? []);
     } catch (e: any) {
-      setError(e?.message ?? "Errore inatteso");
+      setError(e?.message ?? 'Errore inatteso');
     }
   }
 
@@ -53,14 +51,12 @@ export default function AdminBlogForm() {
   }, []);
 
   async function uploadCover(file: File): Promise<string> {
-    const ext = file.name.split(".").pop() || "jpg";
+    const ext = file.name.split('.').pop() || 'jpg';
     const path = `blog/${Date.now()}.${ext}`;
-    const { data, error } = await supabase.storage
-      .from("images")
-      .upload(path, file, { upsert: false });
+    const { error } = await supabase.storage.from('images').upload(path, file, { upsert: false });
     if (error) throw new Error(error.message);
 
-    const { data: pub } = supabase.storage.from("images").getPublicUrl(path);
+    const { data: pub } = supabase.storage.from('images').getPublicUrl(path);
     return pub.publicUrl;
   }
 
@@ -72,9 +68,9 @@ export default function AdminBlogForm() {
       let cover_url: string | undefined = undefined;
       if (cover) cover_url = await uploadCover(cover);
 
-      const res = await fetch("/api/admin/blog", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
+      const res = await fetch('/api/admin/blog', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           title,
           excerpt,
@@ -83,42 +79,41 @@ export default function AdminBlogForm() {
         }),
       });
       const json = await res.json();
-      if (!res.ok) throw new Error(json?.error || "Errore salvataggio");
+      if (!res.ok) throw new Error(json?.error || 'Errore salvataggio');
 
-      setTitle("");
-      setExcerpt("");
+      setTitle('');
+      setExcerpt('');
       setCover(null);
-      setSlug("");
-
+      setSlug('');
       await loadPosts();
     } catch (e: any) {
-      setError(e?.message ?? "Errore inatteso");
+      setError(e?.message ?? 'Errore inatteso');
     } finally {
       setSaving(false);
     }
   }
 
   async function handleDelete(id: string) {
-    if (!confirm("Eliminare questo post?")) return;
+    if (!confirm('Eliminare questo post?')) return;
     try {
-      const res = await fetch(`/api/admin/blog/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/admin/blog/${id}`, { method: 'DELETE' });
       const json = await res.json();
-      if (!res.ok) throw new Error(json?.error || "Errore eliminazione");
+      if (!res.ok) throw new Error(json?.error || 'Errore eliminazione');
       await loadPosts();
     } catch (e: any) {
-      setError(e?.message ?? "Errore inatteso");
+      setError(e?.message ?? 'Errore inatteso');
     }
   }
 
   async function handleInlineEdit(p: Article) {
-    const newTitle = prompt("Titolo", p.title) ?? p.title;
-    const newExcerpt = prompt("Estratto", p.excerpt ?? "") ?? p.excerpt ?? "";
-    const newSlug = prompt("Slug", p.slug) ?? p.slug;
+    const newTitle = prompt('Titolo', p.title) ?? p.title;
+    const newExcerpt = prompt('Estratto', p.excerpt ?? '') ?? (p.excerpt ?? '');
+    const newSlug = prompt('Slug', p.slug) ?? p.slug;
 
     try {
       const res = await fetch(`/api/admin/blog/${p.id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           title: newTitle,
           excerpt: newExcerpt,
@@ -126,10 +121,10 @@ export default function AdminBlogForm() {
         }),
       });
       const json = await res.json();
-      if (!res.ok) throw new Error(json?.error || "Errore aggiornamento");
+      if (!res.ok) throw new Error(json?.error || 'Errore aggiornamento');
       await loadPosts();
     } catch (e: any) {
-      setError(e?.message ?? "Errore inatteso");
+      setError(e?.message ?? 'Errore inatteso');
     }
   }
 
@@ -165,7 +160,7 @@ export default function AdminBlogForm() {
             onChange={(e) => setSlug(e.target.value)}
           />
           <p className="text-xs text-gray-500 mt-1">
-            Slug effettivo: <code>{effectiveSlug || "—"}</code>
+            Slug effettivo: <code>{effectiveSlug || '-'}</code>
           </p>
         </div>
 
@@ -186,7 +181,7 @@ export default function AdminBlogForm() {
           disabled={saving}
           className="rounded bg-black text-white px-4 py-2 disabled:opacity-50"
         >
-          {saving ? "Salvataggio..." : "Salva"}
+          {saving ? 'Salvataggio...' : 'Salva'}
         </button>
       </form>
 
@@ -196,11 +191,7 @@ export default function AdminBlogForm() {
           {posts.map((p) => (
             <li key={p.id} className="border rounded p-3 flex items-start gap-3">
               {p.cover_url ? (
-                <img
-                  src={p.cover_url}
-                  alt={p.title}
-                  className="w-20 h-20 object-cover rounded"
-                />
+                <img src={p.cover_url} alt={p.title} className="w-20 h-20 object-cover rounded" />
               ) : (
                 <div className="w-20 h-20 bg-gray-100 rounded" />
               )}
@@ -208,10 +199,7 @@ export default function AdminBlogForm() {
                 <div className="flex items-center justify-between">
                   <h4 className="font-medium">{p.title}</h4>
                   <div className="flex gap-2">
-                    <button
-                      onClick={() => handleInlineEdit(p)}
-                      className="text-xs rounded border px-2 py-1"
-                    >
+                    <button onClick={() => handleInlineEdit(p)} className="text-xs rounded border px-2 py-1">
                       Modifica
                     </button>
                     <button
@@ -224,10 +212,7 @@ export default function AdminBlogForm() {
                 </div>
                 <p className="text-sm text-gray-600 line-clamp-2">{p.excerpt}</p>
                 <p className="text-xs text-gray-400 mt-1">
-                  {p.slug} •{" "}
-                  {p.published_at
-                    ? new Date(p.published_at).toLocaleString()
-                    : "—"}
+                  {p.slug} • {p.published_at ? new Date(p.published_at).toLocaleString() : '-'}
                 </p>
               </div>
             </li>
