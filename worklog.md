@@ -143,7 +143,7 @@
 - Unificazione di `next.config.js` e `next.config.mjs`
 - Pulizia finale cartelle non necessarie (i18n/, lib/)
 - Riavvio server e validazione della soluzione finale
- 1h 0m
+⏱ 1h 0m
 
 ### 📌 2025-09-27 | PL-3 | Reset e creazione progetto pulito per validazione i18n
 - Creazione nuovo progetto Next.js (`next-intl-test`) con versioni stabili.
@@ -151,11 +151,19 @@
 - Creazione file di configurazione (`i18n.ts`, `middleware.ts`).
 - Ristrutturazione cartella `app` e creazione file di traduzione.
 - Validazione finale del corretto funzionamento e identificazione del problema ambientale.
- 1h 18m
+⏱1h 18m
 
  ### 📌 2025-09-27 | PL-4 | Migrazione su progetto pulito e test finale
 - Eseguito script di migrazione per copiare componenti, asset e dipendenze.
 - Unificata e pulita la configurazione di `next.config.mjs`.
 - Eseguita reinstallazione pulita delle dipendenze con `npm install`.
 - Avviato il server e validato il corretto funzionamento dell'internazionalizzazione.
- 30m
+⏱ 30m
+
+ ### 📌 2025-09-27 | PL-5 | Connessione a Supabase e Test di Esecuzione
+- Aggiunte variabili d'ambiente per Supabase (`.env.local`).
+- Installate le librerie client di Supabase (`@supabase/ssr`).
+- Creati i file helper per la connessione (`lib/supabase/client.ts` e `server.ts`).
+- Eseguita query di test per leggere i dati dal database.
+- Verificato il corretto funzionamento della connessione e del caricamento dati.
+⏱ 45m
