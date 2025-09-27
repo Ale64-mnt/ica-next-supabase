@@ -1,17 +1,21 @@
-import Nav from "@/components/Nav";
+import type {ReactNode} from 'react';
+import {NextIntlClientProvider} from 'next-intl';
+import {getMessages} from 'next-intl/server';
 
-export default function LocaleLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { locale: string };
-}) {
+type Props = {
+  children: ReactNode;
+  params: {locale: string};
+};
+
+export default async function LocaleLayout({children, params: {locale}}: Props) {
+  const messages = await getMessages();
+
   return (
-    <html lang={params.locale}>
-      <body className="antialiased">
-        <Nav />
-        {children}
+    <html lang={locale}>
+      <body>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
