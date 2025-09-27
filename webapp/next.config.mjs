@@ -1,21 +1,20 @@
-import createNextIntlPlugin from "next-intl/plugin";
+import createNextIntlPlugin from 'next-intl/plugin';
 
-const withNextIntl = createNextIntlPlugin({
-  requestConfig: "./i18n/request.ts",
-  localePrefix: "always",
-  locales: ["it","en","fr","es","de"],
-  defaultLocale: "it"
-});
+const withNextIntl = createNextIntlPlugin();
 
-/** @type {import("next").NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  
+  reactStrictMode: true,
   images: {
     remotePatterns: [
-      { protocol: "https", hostname: "placehold.co" },
-      { protocol: "https", hostname: "twwgfrbcndouazujgcma.supabase.co", pathname: "/storage/v1/object/public/**" }
-    ]
-  },reactStrictMode: true
+      // Domini dal tuo file .js
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'res.cloudinary.com' },
+      // Domini dal tuo file .mjs
+      { protocol: 'https', hostname: 'placehold.co' },
+      { protocol: 'https', hostname: 'twxgfrbcndovazujgcma.supabase.co' }
+    ],
+  },
 };
 
 export default withNextIntl(nextConfig);

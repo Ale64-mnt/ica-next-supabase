@@ -1,1 +1,6 @@
-export const locales=['it','en','fr','es','de'] as const;export type Locale=typeof locales[number];export const defaultLocale:Locale='it';
+import {getRequestConfig} from 'next-intl/server';
+ 
+export default getRequestConfig(async ({locale}) => ({
+  locale,
+  messages: (await import(`./messages/${locale}.json`)).default
+}));
