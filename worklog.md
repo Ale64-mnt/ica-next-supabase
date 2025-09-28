@@ -167,3 +167,10 @@
 - Eseguita query di test per leggere i dati dal database.
 - Verificato il corretto funzionamento della connessione e del caricamento dati.
 ⏱ 45m
+
+### 📌 2025-09-28 | PL-6 | Finalizzazione Setup i18n
+- Spostamento e aggiornamento file di layout e pagina in `app/[locale]`.
+- Creazione file di traduzione (`messages/it.json`, `en.json`).
+- Esecuzione script `finalize_setup.py` per automatizzare e verificare la struttura.
+- Test finale e validazione del corretto funzionamento delle traduzioni.
+⏱ 1h 15m

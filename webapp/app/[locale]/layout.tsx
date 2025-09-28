@@ -14,6 +14,7 @@ export default async function LocaleLayout({children, params: {locale}}: Props) 
     <html lang={locale}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
+          {/* Qui puoi rimettere i tuoi componenti come SiteHeader e SiteFooter */}
           {children}
         </NextIntlClientProvider>
       </body>

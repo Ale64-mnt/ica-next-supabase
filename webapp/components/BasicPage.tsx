@@ -1,29 +1,37 @@
-import { ReactNode } from "react";
-import {getTranslations} from 'next-intl/server';
-export type BasicPageProps = {
+import type { ReactNode } from "react";
+
+// Definiamo un tipo per la funzione 't' per maggiore sicurezza
+type TFunction = (key: string) => string;
+
+type BasicPageProps = {
+  children: ReactNode;
+  t: TFunction; // 't' è ora una prop obbligatoria
+  namespace: string;
   title?: string;
   intro?: string;
-  // rimosso: namespace?: string;
-  children?: ReactNode;
-  // opzionale: lo accettiamo per compat, ma non lo usiamo
-  locale?: string;
 };
 
-export default async function BasicPage({
+export default function BasicPage({
+  t,
   title,
   intro,
-  namespace,
   children,
+  namespace
 }: BasicPageProps) {
-  // riga rimossa: const t = namespace ? await getTranslations(namespace) : null;
-  const resolvedTitle = title ?? (t ? t("title") : "");
-  const resolvedIntro = intro ?? (t ? t("intro") : "");
+
+  // Ora 't' viene ricevuto come prop e usato in sicurezza
+  const resolvedTitle = title ?? t("title");
+  const resolvedIntro = intro ?? t("intro");
 
   return (
-    <main className="container" style={{ padding: "2rem" }}>
-      {resolvedTitle && <h1>{resolvedTitle}</h1>}
-      {resolvedIntro && <p>{resolvedIntro}</p>}
-      {children}
+    <main className="container mx-auto px-4 py-8">
+      <header>
+        <h1 className="text-4xl font-bold mb-2">{resolvedTitle}</h1>
+        <p className="text-lg text-gray-600">{resolvedIntro}</p>
+      </header>
+      <div className="mt-8">
+        {children}
+      </div>
     </main>
   );
 }
