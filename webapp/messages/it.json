@@ -1,5 +1,11 @@
 {
   "Index": {
-    "title": "Configurazione completata!"
+    "title": "Configurazione completata!",
+    "subtitle_articles": "Scopri i nostri ultimi articoli.",
+    "no_articles_found": "Nessun articolo trovato."
+  },
+  "Article": { 
+    "back_to_home": "Torna alla Homepage",
+    "published_on": "Pubblicato il"
   }
 }
