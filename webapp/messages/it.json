@@ -4,8 +4,17 @@
     "subtitle_articles": "Scopri i nostri ultimi articoli.",
     "no_articles_found": "Nessun articolo trovato."
   },
-  "Article": { 
+  "Article": {
     "back_to_home": "Torna alla Homepage",
     "published_on": "Pubblicato il"
+  },
+  "Blog": {
+    "title": "Il Nostro Blog",
+    "read_post": "Leggi il Post completo →",
+    "read_article": "Vai all'Articolo di Approfondimento →",
+    "published_on": "Pubblicato il",
+    "back_to_blog": "Torna al Blog",
+    "loading_error": "Errore nel caricamento dei post del Blog.",
+    "no_posts": "Nessun post del blog pubblicato al momento."
   }
 }

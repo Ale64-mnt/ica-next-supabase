@@ -1,64 +1,87 @@
-import Link from "next/link";
-import Image from "next/image";
-import { supabase } from "@/lib/supabase";
+// webapp/app/[locale]/blog/[id]/page.tsx
 
-export const revalidate = 60;
+import { getTranslations } from 'next-intl/server';
+import { createClient } from '@/lib/supabase/server'; 
+import { notFound } from 'next/navigation';
+import Link from 'next/link'; 
+import Image from 'next/image';
 
-type Row = {
-  slug: string;
+// Interfaccia per il contenuto del singolo post
+interface BlogPostContent {
+  id: number;
   title: string;
-  summary: string | null;
-  cover_url: string | null;
-  category: string | null;
-  published_at: string | null;
-  locale: string | null;
-};
-
-function localCover(cover: string | null, slug: string): string {
-  if (cover && cover.startsWith("/")) return cover;
-  return `/covers/${slug}.jpg`;
+  content: string; 
+  created_at: string;
+  image_url: string; 
+  image_alt: string; 
 }
 
-export default async function BlogList({ params }: { params: { locale: string } }) {
-  const { data, error } = await supabase
-    .from("articles")
-    .select("slug,title,summary,cover_url,category,published_at,locale")
-    .eq("published", true)
-    .order("published_at", { ascending: false })
-    .limit(24);
+interface BlogPostPageProps {
+  params: {
+    id: string; // L'ID del post dal percorso URL
+    locale: string; 
+  };
+}
 
-  if (error) throw new Error(error.message);
-  const items = (data ?? []) as Row[];
-  const lang = params.locale;
-
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  // Carica le traduzioni per la sezione Blog
+  const t = await getTranslations('Blog'); 
+  const supabase = createClient();
+  const postId = params.id;
+  
+  // RECUPERO DEI DATI DEL POST COMPLETO (CON FILTRO LOCALE)
+  const { data: post, error } = await supabase
+    .from('blog_posts') // Tabella dei post del blog
+    .select('id, title, content, created_at, image_url, image_alt')
+    .eq('id', postId) 
+    .eq('locale', params.locale) // FILTRO ESSENZIALE: garantisce che il post sia nella lingua corretta
+    .single(); 
+  
+  if (error || !post) {
+    console.error("Errore nel recupero del post:", error || "Post non trovato");
+    // Se non trova il post, reindirizza alla pagina 404
+    notFound(); 
+  }
+  
   return (
-    <main className="mx-auto max-w-5xl p-6">
-      <h1 className="text-3xl font-bold mb-6">Blog</h1>
+    <main style={{ padding: '0 0 4rem 0' }}>
+      
+      {/* Immagine Hero (WCAG 1 & 4 - alt obbligatorio) */}
+      <div style={{ position: 'relative', width: '100%', height: '40vh', marginBottom: '3rem' }}>
+          {/* Next/Image per ottimizzazione e CLS, con fallback per l'URL */}
+          <Image
+              src={post.image_url || '/placeholder.png'} 
+              alt={post.image_alt || `Immagine Hero per ${post.title}`} 
+              fill
+              sizes="100vw" 
+              priority
+              style={{ objectFit: 'cover' }}
+          />
+      </div>
 
-      {items.length === 0 && <p className="opacity-70">Ancora nessun articolo pubblicato.</p>}
+      <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 1rem' }}>
+        
+        {/* Titolo Principale (WCAG 2: H1 descrittivo) */}
+        <h1>{post.title}</h1>
+        <p style={{ color: '#666', fontSize: '0.9em', marginBottom: '2rem' }}>
+          {t('published_on', { default: 'Pubblicato il' })}: {new Date(post.created_at).toLocaleDateString(params.locale)}
+        </p>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((a) => {
-          const src = localCover(a.cover_url, a.slug);
-          return (
-            <article key={a.slug} className="rounded-2xl border p-4 hover:shadow-md transition">
-              <div className="relative w-full h-40 mb-3">
-                <Image
-                  src={src}
-                  alt={a.title}
-                  fill
-                  sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-                  className="object-cover rounded-xl"
-                />
-              </div>
-              <div className="text-xs opacity-70">{a.category} · {a.locale}</div>
-              <h2 className="text-lg font-semibold mt-1">
-                <Link href={`/${lang}/blog/${a.slug}`} className="hover:underline">{a.title}</Link>
-              </h2>
-              {a.summary && <p className="text-sm mt-2 line-clamp-3">{a.summary}</p>}
-            </article>
-          );
-        })}
+        {/* Contenuto Principale (WCAG 3: chiarezza del linguaggio) */}
+        <div style={{ lineHeight: '1.7', fontSize: '1.1rem' }}>
+          {/* Nota: Se il contenuto è in Markdown, qui andrebbe un componente di rendering Markdown */}
+          <p>{post.content}</p> 
+        </div>
+
+        <div style={{ marginTop: '3rem', paddingTop: '1rem', borderTop: '1px solid #eee' }}>
+          <Link 
+            href={`/${params.locale}/blog`} 
+            style={{ textDecoration: 'none', color: '#0070f3' }}
+            // WCAG 2: Assicura che sia accessibile da tastiera
+          >
+            &larr; {t('back_to_blog', { default: 'Torna al Blog' })}
+          </Link>
+        </div>
       </div>
     </main>
   );
