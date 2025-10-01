@@ -16,5 +16,40 @@
     "back_to_blog": "Torna al Blog",
     "loading_error": "Errore nel caricamento dei post del Blog.",
     "no_posts": "Nessun post del blog pubblicato al momento."
+  },
+  "LocaleSwitcher": {
+    "select_language": "Seleziona lingua",
+    "locale": "Lingua attuale:",
+    "en_label": "Inglese",
+    "it_label": "Italiano",
+    "de": "Tedesco",
+    "es": "Spagnolo",
+    "fr": "Francese"
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "Chi Siamo",
+    "contact": "Contatti",
+    "articles": "Articoli",
+    "news": "Notizie",
+    
+    
+    "home_link": "Home",
+    "blog_link": "Blog",
+    "site_logo_alt": "Logo del Sito",
+    "main_navigation_label": "Navigazione Principale"
+  },
+  "Footer": {
+   
+    "copyright": "© {year} Tutti i diritti riservati.",
+    "links": "Link Utili",
+    
+    
+    "privacy_policy": "Informativa sulla Privacy",
+    "terms_of_service": "Termini di Servizio",
+    "accessibility_statement": "Dichiarazione di Accessibilità",
+    "footer_navigation_label": "Navigazione Footer",
+    "all_rights_reserved": "Tutti i diritti riservati.",
+    "contact_us_label": "Contattaci"
   }
 }

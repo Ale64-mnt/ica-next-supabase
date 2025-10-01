@@ -174,3 +174,17 @@
 - Esecuzione script `finalize_setup.py` per automatizzare e verificare la struttura.
 - Test finale e validazione del corretto funzionamento delle traduzioni.
 ⏱ 1h 15m
+
+### 📌 2025-09-30 | PL-7 | Implementazione Sezione Blog e Debugging Supabase
+- Implementazione completa del **Blog** (Lista e Dettaglio Post) con routing dinamico.
+- Aggiunta del filtro **Multilingua** (`locale`) per tutti i contenuti dinamici (Blog e Articoli).
+- Risoluzione degli errori SQL (`image_alt` e `locale` mancanti) tramite sincronizzazione dello schema Supabase.
+- Aggiornamento delle traduzioni (`it.json`) con la sezione "Blog".
+⏱ 1h 30m
+
+### 📌 2025-10-01 | PL-8 | Risoluzione Errori Missing Message (i18n)
+- Correzione finale della sintassi JSON nel file `messages/it.json`.
+- Aggiunta delle chiavi di traduzione mancanti per i namespace **Navigation** e **Footer** (`home_link`, `blog_link`, `privacy_policy`, `all_rights_reserved`, ecc.).
+- Integrazione delle chiavi specifiche richieste dal componente `LocaleSwitcher` (`it_label`, `select_language`).
+- Risoluzione completa degli errori `IntlError: MISSING_MESSAGE`.
+⏱ 1h 30m

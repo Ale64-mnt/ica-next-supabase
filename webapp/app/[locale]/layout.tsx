@@ -1,21 +1,51 @@
-import type {ReactNode} from 'react';
-import {NextIntlClientProvider} from 'next-intl';
-import {getMessages} from 'next-intl/server';
+import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
+import Header from '@/components/navigation/Header';
+import Footer from '@/components/navigation/Footer';
+import type { Metadata } from 'next';
 
-type Props = {
-  children: ReactNode;
-  params: {locale: string};
+interface LocaleLayoutProps {
+  children: React.ReactNode;
+  params: {
+    locale: string;
+  };
+}
+
+// Funzione per caricare i messaggi di traduzione
+async function getMessages(locale: string) {
+  try {
+    // Carica i file di traduzione
+    return (await import(`../../messages/${locale}.json`)).default;
+  } catch (error) {
+    // Se il file della lingua non esiste, mostra 404
+    notFound(); 
+  }
+}
+
+// Metadata Globale
+export const metadata: Metadata = {
+  title: 'ICA Webapp - Sito Istituzionale Multilingua',
+  description: 'Sito aziendale con standard WCAG e integrazione Supabase.',
 };
 
-export default async function LocaleLayout({children, params: {locale}}: Props) {
-  const messages = await getMessages();
+export default async function LocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
+  const messages = await getMessages(locale);
 
   return (
-    <html lang={locale}>
-      <body>
+    <html lang={locale}> {/* WCAG 5: Tag lang corretto */}
+      <body style={{ margin: 0, display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {/* Qui puoi rimettere i tuoi componenti come SiteHeader e SiteFooter */}
-          {children}
+          {/* WCAG 2: Link "Salta al Contenuto" - Essential for keyboard navigation */}
+          <a href="#main-content" className="skip-link">Salta al Contenuto Principale</a>
+          
+          <Header />
+          
+          {/* id="main-content" è il target del link skip-link */}
+          <main id="main-content" style={{ flexGrow: 1, padding: '2rem' }}>
+            {children}
+          </main>
+          
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
