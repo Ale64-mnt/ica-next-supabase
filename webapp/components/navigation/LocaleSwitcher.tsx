@@ -1,21 +1,20 @@
-'use client';
+'use client'; 
 
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 import { ChangeEvent, useTransition } from 'react';
 
 // Questo componente si occupa di cambiare la lingua mantenendo la posizione nella pagina
-export default function LocaleSwitcher() {
+export function LocaleSwitcher() { 
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const pathname = usePathname();
   const locale = useLocale();
-  const t = useTranslations('LocaleSwitcher'); // Carica i testi dal dizionario
+  const t = useTranslations('LocaleSwitcher');
 
   function onSelectChange(event: ChangeEvent<HTMLSelectElement>) {
     const nextLocale = event.target.value;
     startTransition(() => {
-      // Sostituisce la locale corrente nel percorso (pathname) con la nuova
       const newPath = pathname.replace(`/${locale}`, `/${nextLocale}`);
       router.replace(newPath);
     });
@@ -27,19 +26,11 @@ export default function LocaleSwitcher() {
       defaultValue={locale}
       onChange={onSelectChange}
       disabled={isPending}
-      aria-label={t('select_language')} // Etichetta accessibile
-      style={{
-        padding: '5px 10px',
-        borderRadius: '4px',
-        border: '1px solid #ccc',
-        backgroundColor: '#f9f9f9',
-        cursor: 'pointer',
-        fontSize: '1em',
-      }}
+      aria-label={t('select_language')}
+      className="p-1.5 rounded-md border border-gray-300 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
     >
       <option value="it">{t('it_label')}</option>
       <option value="en">{t('en_label')}</option>
-      {/* Aggiungi qui le altre lingue supportate */}
     </select>
   );
 }

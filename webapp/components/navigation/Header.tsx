@@ -1,73 +1,86 @@
+'use client'; 
 import Link from 'next/link';
-import { useLocale, useTranslations } from 'next-intl';
-import LocaleSwitcher from './LocaleSwitcher'; 
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react'; // ✅ CHIAVE: Questa riga mancava o era commentata
+import { LocaleSwitcher } from './LocaleSwitcher'; // Import Nominato
 
-// Componente Server per l'intestazione globale
-export default function Header() {
+export function Header({ locale }: { locale: string }) {
   const t = useTranslations('Navigation');
-  const locale = useLocale();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Definiamo i link principali
-  const navItems = [
-    { label: t('home_link'), href: '/' },
-    { label: t('blog_link'), href: '/blog' },
-    // Aggiungi qui altri link principali come 'Contatti' o 'Chi Siamo'
-    // Stiamo usando il percorso '/articles' per l'elenco degli articoli, anche se l'elenco principale è in Homepage
+  const navLinks = [
+    { href: '/', labelKey: 'home_link' },
+    { href: '/articles', labelKey: 'articles' },
+    { href: '/news', labelKey: 'news' },
+    { href: '/blog', labelKey: 'blog_link' },
   ];
 
   return (
-    <header 
-      style={{ 
-        backgroundColor: '#fff', 
-        borderBottom: '1px solid #eee', 
-        padding: '1rem 2rem',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        position: 'sticky', // Rende l'header fisso in alto
-        top: 0,
-        zIndex: 50,
-      }}
-      // WCAG: L'elemento header ha un ruolo semantico 'banner'
-    >
-      {/* Logo/Nome del Sito (Link alla Homepage) */}
-      <Link href={`/${locale}`} style={{ textDecoration: 'none', color: '#333' }}>
-        {/* WCAG: Usiamo il componente Image con alt descrittivo. Assumi che il logo sia in /public/logo.svg */}
-        <Image src="/logo.svg" alt={t('site_logo_alt')} width={120} height={30} priority />
-      </Link>
+    <header className="sticky top-0 z-40 w-full bg-white/90 shadow-md backdrop-blur-sm">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          
+          <Link href={`/${locale}`} className="flex items-center space-x-3">
+            <Image
+              src="/logo.svg" 
+              alt={t('site_logo_alt')}
+              width={32}
+              height={32}
+              className="h-8 w-auto"
+            />
+            <span className="text-xl font-bold text-gray-900 tracking-tight">
+                {t('site_title')}
+            </span>
+          </Link>
 
-      {/* Navigazione Principale */}
-      <nav aria-label={t('main_navigation_label')}>
-        <ul 
-          style={{ 
-            listStyle: 'none', 
-            padding: 0, 
-            margin: 0, 
-            display: 'flex', 
-            gap: '1.5rem',
-          }}
-        >
-          {navItems.map((item) => (
-            <li key={item.href}>
+          <nav className="hidden md:flex items-center space-x-6" 
+               aria-label={t('main_navigation_label')}>
+            {navLinks.map((link) => (
               <Link 
-                href={`/${locale}${item.href}`} 
-                style={{ 
-                  textDecoration: 'none', 
-                  color: '#333', 
-                  fontWeight: 500,
-                  padding: '5px 0',
-                }}
+                key={link.href} 
+                href={`/${locale}${link.href}`}
+                className="text-gray-700 hover:text-indigo-600 transition-colors 
+                           focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
-                {item.label}
+                {t(link.labelKey)}
               </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+            ))}
+            <LocaleSwitcher />
+          </nav>
 
-      {/* Selettore Lingua */}
-      <LocaleSwitcher />
+          <div className="md:hidden flex items-center space-x-3">
+            <LocaleSwitcher />
+            <button
+              aria-label={t('menu_toggle')}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 text-gray-600 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
+              {/* Riferimento a Menu e X che ora sono importati correttamente */}
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      {isMenuOpen && (
+        <nav className="md:hidden bg-white/95 border-t border-gray-200" 
+             aria-label={t('mobile_navigation_label')}>
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {navLinks.map((link) => (
+              <Link 
+                key={link.href} 
+                href={`/${locale}${link.href}`} 
+                onClick={() => setIsMenuOpen(false)}
+                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600"
+              >
+                {t(link.labelKey)}
+              </Link>
+            ))}
+          </div>
+        </nav>
+      )}
     </header>
   );
 }

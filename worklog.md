@@ -188,3 +188,10 @@
 - Integrazione delle chiavi specifiche richieste dal componente `LocaleSwitcher` (`it_label`, `select_language`).
 - Risoluzione completa degli errori `IntlError: MISSING_MESSAGE`.
 ⏱ 1h 30m
+
+### 📌 2025-10-01 | PL-9 | Finalizzazione Integrazione Brevo & Autenticazione Dominio
+- Risoluzione dei conflitti DNS (SPF, DKIM) su Aruba Admin per l'autenticazione Brevo.
+- Unione del Record SPF di Aruba e Brevo per garantire l'affidabilità delle email.
+- Verifica e autenticazione finale del dominio `eduethica.eu` e dell'indirizzo mittente `noreply@eduethica.eu`.
+- Il sistema di invio email del Form Contatti è ora operativo.
+⏱ 1h 30m

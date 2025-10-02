@@ -32,19 +32,16 @@
     "contact": "Contatti",
     "articles": "Articoli",
     "news": "Notizie",
-    
-    
     "home_link": "Home",
     "blog_link": "Blog",
     "site_logo_alt": "Logo del Sito",
-    "main_navigation_label": "Navigazione Principale"
+    "main_navigation_label": "Navigazione Principale",
+    "site_title": "Titolo del Sito",
+    "menu_toggle": "Apri/Chiudi Menu"
   },
   "Footer": {
-   
     "copyright": "© {year} Tutti i diritti riservati.",
     "links": "Link Utili",
-    
-    
     "privacy_policy": "Informativa sulla Privacy",
     "terms_of_service": "Termini di Servizio",
     "accessibility_statement": "Dichiarazione di Accessibilità",

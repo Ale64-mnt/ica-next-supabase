@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import Header from '@/components/navigation/Header';
+import { Header } from '@/components/navigation/Header';
 import Footer from '@/components/navigation/Footer';
 import type { Metadata } from 'next';
 
