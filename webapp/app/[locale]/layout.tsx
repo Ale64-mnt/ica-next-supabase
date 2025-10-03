@@ -38,14 +38,16 @@ export default async function LocaleLayout({ children, params: { locale } }: Loc
           {/* WCAG 2: Link "Salta al Contenuto" - Essential for keyboard navigation */}
           <a href="#main-content" className="skip-link">Salta al Contenuto Principale</a>
           
-          <Header />
+          {/* ✅ CORREZIONE: Passaggio della prop locale all'Header */}
+          <Header locale={locale} />
           
           {/* id="main-content" è il target del link skip-link */}
           <main id="main-content" style={{ flexGrow: 1, padding: '2rem' }}>
             {children}
           </main>
           
-          <Footer />
+          {/* ✅ CORREZIONE: Passaggio della prop locale al Footer */}
+          <Footer locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>

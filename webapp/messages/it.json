@@ -15,7 +15,9 @@
     "published_on": "Pubblicato il",
     "back_to_blog": "Torna al Blog",
     "loading_error": "Errore nel caricamento dei post del Blog.",
-    "no_posts": "Nessun post del blog pubblicato al momento."
+    "no_posts": "Nessun post del blog pubblicato al momento.",
+    "skip_to_main_content": "Salta al Contenuto Principale",
+    "hero_image_for": "Immagine Hero per"
   },
   "LocaleSwitcher": {
     "select_language": "Seleziona lingua",

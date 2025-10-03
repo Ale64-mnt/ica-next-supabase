@@ -52,3 +52,13 @@ supabase/.temp
 
 _app_mistaken/
 backups/
+
+# Cache e file temporanei
+.cache/
+**/cache/
+
+/ # Tools metascript (locale)
+../Tools/
+
+/ # Immagini raw o temp
+*.jpc

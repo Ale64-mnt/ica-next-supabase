@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { useState } from 'react';
-import { Menu, X } from 'lucide-react'; // ✅ CHIAVE: Questa riga mancava o era commentata
-import { LocaleSwitcher } from './LocaleSwitcher'; // Import Nominato
+import { Menu, X } from 'lucide-react'; 
+import { LocaleSwitcher } from './LocaleSwitcher'; 
 
 export function Header({ locale }: { locale: string }) {
   const t = useTranslations('Navigation');
@@ -24,14 +24,15 @@ export function Header({ locale }: { locale: string }) {
           
           <Link href={`/${locale}`} className="flex items-center space-x-3">
             <Image
-              src="/logo.svg" 
+              src="/logo.jpg" // ✅ CORRETTO: Adesso cerca il file JPG
               alt={t('site_logo_alt')}
-              width={32}
+              // Dobbiamo specificare la dimensione per il logo JPEG
+              width={140} 
               height={32}
               className="h-8 w-auto"
             />
             <span className="text-xl font-bold text-gray-900 tracking-tight">
-                {t('site_title')}
+                {t('site_title')} {/* Rimosso sr-only per visibilità */}
             </span>
           </Link>
 
@@ -57,7 +58,6 @@ export function Header({ locale }: { locale: string }) {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 text-gray-600 hover:text-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
-              {/* Riferimento a Menu e X che ora sono importati correttamente */}
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>

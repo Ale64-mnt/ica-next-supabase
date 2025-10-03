@@ -195,3 +195,18 @@
 - Verifica e autenticazione finale del dominio `eduethica.eu` e dell'indirizzo mittente `noreply@eduethica.eu`.
 - Il sistema di invio email del Form Contatti è ora operativo.
 ⏱ 1h 30m
+
+### 📌 2025-10-02 | PL-10 | Finalizzazione UI & Debug Critico
+- Implementazione del layout responsive e stili Tailwind CSS per Header e Footer.
+- Creazione dei file di pagina statica per Privacy, Termini, Accessibilità e Contatti.
+- Risoluzione finale del bug critico "Unsupported Server Component type: undefined" (conflitto export/import tra Header e LocaleSwitcher).
+- Correzione del `TypeError` bloccante nel file `i18n.ts`.
+⏱ 2h 00m
+
+### 📌 2025-10-03 | PL-11 | Migrazione Next-Intl & Fix Config
+- Migrazione config da i18n.ts a i18n/request.ts per compatibilità next-intl 3.22 (await requestLocale, fallback locale).
+- Aggiunta chiavi traduzioni mancanti nel namespace "Blog" per messages/it.json e en.json (skip_to_main_content, hero_image_for, published_on, back_to_blog).
+- Update next.config.mjs: path plugin esplicito per request.ts, remotePatterns per Supabase storage e localhost.
+- Risoluzione warning deprecazione e MISSING_MESSAGE; disabilitazione telemetry via CLI.
+- Fix minore per 404 su logo.jpg (rinominato asset in public/).
+⏱ 4h 00m

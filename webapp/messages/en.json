@@ -1,5 +1,11 @@
 {
   "Index": {
     "title": "Setup complete!"
+  },
+  "Blog": {
+    "skip_to_main_content": "Skip to Main Content",
+    "hero_image_for": "Hero Image for",
+    "published_on": "Published on",
+    "back_to_blog": "Back to Blog"
   }
 }
