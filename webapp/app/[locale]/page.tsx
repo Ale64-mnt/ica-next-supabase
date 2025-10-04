@@ -24,13 +24,17 @@ export default async function HomePage({
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Hero Section */}
+      {/* Hero Section - Font aggiornati con classi standard */}
       <section className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">{t('title')}</h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">{t('subtitle_articles')}</p>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+          {t('title')}
+        </h1>
+        <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+          {t('subtitle_articles')}
+        </p>
       </section>
 
-      {/* Sezione Blog Posts */}
+      {/* Sezione Blog Posts - Font aggiornati */}
       <section className="mb-12">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl font-bold text-gray-900">Ultimi Articoli</h2>
@@ -54,7 +58,7 @@ export default async function HomePage({
                   />
                 )}
                 <div className="p-6">
-                  <h3 className="font-bold text-lg mb-2 line-clamp-2">{post.title}</h3>
+                  <h3 className="font-bold text-lg mb-2">{post.title}</h3>
                   <p className="text-gray-600 text-sm mb-4">
                     {new Date(post.created_at).toLocaleDateString(locale, {
                       year: 'numeric',
@@ -62,7 +66,7 @@ export default async function HomePage({
                       day: 'numeric'
                     })}
                   </p>
-                  <p className="text-gray-700 mb-4 line-clamp-3">
+                  <p className="text-gray-700 mb-4">
                     {post.body_md?.substring(0, 150)}...
                   </p>
                   <Link 
@@ -77,12 +81,12 @@ export default async function HomePage({
           </div>
         ) : (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">Nessun articolo trovato</p>
+            <p className="text-gray-500 text-lg">{t('no_articles_found')}</p>
           </div>
         )}
       </section>
 
-      {/* Additional Sections */}
+      {/* Additional Sections - Font aggiornati */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <div className="bg-gray-50 rounded-lg p-6">
           <h3 className="font-bold text-xl mb-3">News</h3>

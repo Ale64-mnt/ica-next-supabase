@@ -35,13 +35,19 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* AGGIUNGI IL FONT INTER */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body style={{ 
         margin: 0, 
         display: 'flex', 
         flexDirection: 'column', 
         minHeight: '100vh',
-        lineHeight: '1.5'
+        lineHeight: '1.5',
+        fontFamily: 'Inter, system-ui, sans-serif' // APPLICA IL FONT
       }}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <a 
