@@ -43,54 +43,56 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   
   return (
     <main>
-        {/* Link di accessibilità "Salta al contenuto" */}
-        <a 
-          href="#main-content" 
-          className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-3 focus:bg-gray-800 focus:text-white focus:rounded-br-lg"
-        >
-          {t('skip_to_main_content')}
-        </a>
+      {/* Link di accessibilità "Salta al contenuto" */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:p-3 focus:bg-gray-800 focus:text-white focus:rounded-br-lg"
+      >
+        {t('skip_to_main_content')}
+      </a>
 
-        {/* Immagine Hero */}
-        <div className="relative w-full h-96 mb-12 shadow-lg overflow-hidden">
-            <Image
-                src={post.image_url || '/placeholder.png'} 
-                alt={post.image_alt || `${t('hero_image_for')} ${post.title}`} 
-                fill
-                sizes="(max-width: 1024px) 100vw, 80vw" 
-                priority
-                style={{ objectFit: 'cover' }}
-            />
+      {/* Container immagine con dimensioni controllate */}
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+        <div className="w-full aspect-video max-h-48 rounded-lg shadow-lg overflow-hidden bg-gray-200">
+          <Image
+            src={post.image_url || '/placeholder.png'} 
+            alt={post.image_alt || `${t('hero_image_for')} ${post.title}`} 
+            width={800}
+            height={200}
+            style={{ 
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover'
+            }}
+            priority
+          />
         </div>
+      </div>
 
-        {/* Contenuto principale dell'articolo */}
-        <div id="main-content" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-          <h1 className="text-4xl font-extrabold mb-4 text-gray-900">{post.title}</h1>
-          <p className="text-gray-500 text-sm mb-8">
-            {t('published_on')}: {new Date(post.created_at).toLocaleDateString(params.locale, { 
-              year: 'numeric', 
-              month: 'long', 
-              day: 'numeric' 
-            })}
-          </p>
+      {/* Contenuto principale */}
+      <div id="main-content" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <h1 className="text-4xl font-extrabold mb-4 text-gray-900">{post.title}</h1>
+        <p className="text-gray-500 text-sm mb-8">
+          {t('published_on')}: {new Date(post.created_at).toLocaleDateString(params.locale, { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          })}
+        </p>
 
-          {/* Rendering del contenuto Markdown con stile `prose` */}
-          <article className="prose lg:prose-xl prose-indigo">
-            <ReactMarkdown>{post.body_md}</ReactMarkdown>
-          </article>
+        <article className="prose lg:prose-xl prose-indigo max-w-none">
+          <ReactMarkdown>{post.body_md}</ReactMarkdown>
+        </article>
 
-          {/* Link per tornare alla pagina di elenco del blog */}
-          <div className="mt-12 pt-6 border-t">
-            <Link 
-              href={`/${params.locale}/blog`} 
-              className="text-indigo-600 hover:text-indigo-800 transition-colors inline-flex items-center"
-            >
-              &larr; {t('back_to_blog')}
-            </Link>
-          </div>
+        <div className="mt-12 pt-6 border-t">
+          <Link 
+            href={`/${params.locale}/blog`} 
+            className="text-indigo-600 hover:text-indigo-800 transition-colors inline-flex items-center"
+          >
+            &larr; {t('back_to_blog')}
+          </Link>
         </div>
+      </div>
     </main>
   );
 }
-
-

@@ -217,3 +217,12 @@
 - Risoluzione MISSING_MESSAGE durante rendering pagine in locale 'en'.
 - Verifica con riavvio dev server e test console (no crash su /en/blog).
 ⏱ 2h 00m
+
+### 📌 2025-10-04 | PL-14 | Fix Layout Immagine Post Blog
+
+    Risolto bug critico di layout dove <Image> con prop fill copriva il testo dell'articolo.
+    Il problema era un contenitore genitore senza dimensioni definite che non vincolava l'immagine.
+    Soluzione applicata forzando aspect-ratio e altezza massima sul container (aspect-video, max-h-48).
+    L'immagine ora rimane correttamente contenuta nel suo spazio designato. 🚀
+    
+    ⏱ 1h 40m
