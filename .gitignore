@@ -62,3 +62,10 @@ backups/
 
 / # Immagini raw o temp
 *.jpc
+# Tools and temp files
+Tools/
+*.log
+*.txt  # Per reports
+chromedriver
+wcag_report.txt
+blog_verify_report.txt

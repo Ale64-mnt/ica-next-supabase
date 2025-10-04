@@ -210,3 +210,10 @@
 - Risoluzione warning deprecazione e MISSING_MESSAGE; disabilitazione telemetry via CLI.
 - Fix minore per 404 su logo.jpg (rinominato asset in public/).
 ⏱ 4h 00m
+
+### 📌 2025-10-03 | PL-13 | Fix i18n en.json e Footer/Navigation Keys
+- Aggiunte chiavi mancanti in messages/en.json per Footer (privacy_policy, terms_of_service, accessibility_statement, footer_navigation_label).
+- Aggiunta chiave Navigation.home_link per link "Home" in Header/Nav.tsx.
+- Risoluzione MISSING_MESSAGE durante rendering pagine in locale 'en'.
+- Verifica con riavvio dev server e test console (no crash su /en/blog).
+⏱ 2h 00m

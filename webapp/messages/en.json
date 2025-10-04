@@ -6,6 +6,43 @@
     "skip_to_main_content": "Skip to Main Content",
     "hero_image_for": "Hero Image for",
     "published_on": "Published on",
-    "back_to_blog": "Back to Blog"
+    "back_to_blog": "Back to Blog",
+    "title": "Blog",
+    "read_post": "Read Post"
+  },
+  "Footer": {
+    "copyright": "© 2025 Urban Space Memory. All rights reserved.",
+    "all_rights_reserved": "All Rights Reserved",
+    "links": "Links",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service",
+    "accessibility_statement": "Accessibility Statement",
+    "footer_navigation_label": "Footer Navigation",
+    "contact_us_label": "Contact Us"
+  },
+  "Navigation": {
+    "home": "Home",
+    "home_link": "Home Link",
+    "blog": "Blog",
+    "blog_link": "Blog",
+    "news": "News",
+    "articles": "Articles",
+    "about": "About",
+    "contact": "Contact",
+    "site_logo_alt": "Urban Space Memory Logo",
+    "site_title": "Urban Space Memory",
+    "main_navigation_label": "Main Navigation",
+    "menu_toggle": "Toggle Menu"
+  },
+  "LocaleSwitcher": {
+    "select": "Select Language",
+    "select_language": "Select Language",
+    "it": "Italian",
+    "it_label": "Italian",
+    "en": "English",
+    "en_label": "English",
+    "de": "German",
+    "es": "Spanish",
+    "fr": "French"
   }
 }
