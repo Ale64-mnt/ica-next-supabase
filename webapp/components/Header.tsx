@@ -1,24 +1,37 @@
-'use client'
+"use client"; // AGGIUNGI QUESTA RIGA
 
 import Link from 'next/link'
+import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation'
 
-const nav = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'Chi siamo' },
-  { href: '/news', label: 'News' },
-  { href: '/articles', label: 'Articoli' },
-  { href: '/contact', label: 'Contatti' },
-]
+interface HeaderProps {
+  locale: string;
+}
 
-export default function Header() {
+export default function Header({ locale }: HeaderProps) {
+  const t = useTranslations('Navigation');
   const pathname = usePathname()
+
+  // Navigazione con traduzioni
+  const nav = [
+    { href: `/${locale}`, label: t('home_link') },
+    { href: `/${locale}/blog`, label: t('blog_link') },
+    { href: `/${locale}/news`, label: t('news') },
+    { href: `/${locale}/articles`, label: t('articles') },
+    { href: `/${locale}/about`, label: t('about') },
+    { href: `/${locale}/contact`, label: t('contact') },
+  ]
 
   return (
     <header className="border-b">
       <div className="mx-auto max-w-5xl px-4 py-4 flex items-center justify-between">
-        <Link href="/" className="font-semibold text-lg">ICA</Link>
-        <nav className="flex gap-4 text-sm">
+        {/* Logo con traduzione */}
+        <Link href={`/${locale}`} className="font-semibold text-lg">
+          {t('site_title')}
+        </Link>
+        
+        {/* Navigazione principale */}
+        <nav aria-label={t('main_navigation_label')} className="flex gap-4 text-sm">
           {nav.map(item => (
             <Link
               key={item.href}

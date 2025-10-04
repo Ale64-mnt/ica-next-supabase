@@ -28,19 +28,8 @@
     "es": "Spagnolo",
     "fr": "Francese"
   },
-  "Navigation": {
-    "home": "Home",
-    "about": "Chi Siamo",
-    "contact": "Contatti",
-    "articles": "Articoli",
-    "news": "Notizie",
-    "home_link": "Home",
-    "blog_link": "Blog",
-    "site_logo_alt": "Logo del Sito",
-    "main_navigation_label": "Navigazione Principale",
-    "site_title": "Titolo del Sito",
-    "menu_toggle": "Apri/Chiudi Menu"
-  },
+  
+  
   "Footer": {
     "copyright": "© {year} Tutti i diritti riservati.",
     "links": "Link Utili",
@@ -50,5 +39,21 @@
     "footer_navigation_label": "Navigazione Footer",
     "all_rights_reserved": "Tutti i diritti riservati.",
     "contact_us_label": "Contattaci"
+  },
+  
+
+
+  "Navigation": {
+    "home": "Home",
+    "home_link": "Home", 
+    "blog": "Blog",
+    "blog_link": "Blog",
+    "about": "Chi Siamo",
+    "contact": "Contatti",
+    "articles": "Articoli",
+    "news": "Notizie",
+    "site_title": "ICA Webapp",
+    "main_navigation_label": "Navigazione Principale",
+    "site_logo_alt": "Logo ICA"
   }
 }

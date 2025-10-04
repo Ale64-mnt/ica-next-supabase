@@ -226,3 +226,14 @@
     L'immagine ora rimane correttamente contenuta nel suo spazio designato. 🚀
     
     ⏱ 1h 40m
+
+### 📌 2025-10-04 | PL-15 | Fix Sistema I18n e Layout Generale
+- Risolti problemi critici del sistema di internazionalizzazione:
+- Corretta configurazione NextIntlClientProvider nel layout
+- Fix import componenti (Header → SiteHeader, rimozione Nav duplicato)
+- Implementazione corretta useTranslations nei componenti client
+- Risoluzione errori Server/Client Components
+- Ripristino card blog sulla homepage e pagine dedicate
+- Verifica e fix di tutte le traduzioni italiane
+
+⏱ 1h 10m

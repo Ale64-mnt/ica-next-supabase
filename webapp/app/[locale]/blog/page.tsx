@@ -1,5 +1,3 @@
-// Sostituisci TUTTO il contenuto di webapp/app/[locale]/blog/page.tsx con questo codice
-
 import { getTranslations } from 'next-intl/server';
 import { createClient } from '@/lib/supabase/server'; 
 import Link from 'next/link'; 

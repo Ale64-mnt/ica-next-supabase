@@ -1,86 +1,124 @@
-// webapp/app/[locale]/blog/page.tsx
-
 import { getTranslations } from 'next-intl/server';
-import { createClient } from '@/lib/supabase/server'; 
+import { createClient } from '@/lib/supabase/server';
 import Link from 'next/link';
-import Image from 'next/image'; 
 
-// Interfaccia che include i campi necessari, inclusi quelli WCAG (image_alt)
-interface BlogPost {
-  id: number;
-  title: string;
-  excerpt: string; 
-  created_at: string;
-  related_article_id: string | null; 
-  image_url: string; 
-  image_alt: string; 
-}
-
-export default async function BlogListPage({ params }: { params: { locale: string } }) {
-  const t = await getTranslations('Blog'); 
+export default async function HomePage({
+  params: { locale }
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations('Index');
   const supabase = createClient();
 
-  // RECUPERO DEI DATI DEI POST DEL BLOG (CON FILTRO LOCALE)
+  // Recupera i post del blog per la homepage
   const { data: posts, error } = await supabase
-    .from('blog_posts') // Assicurati che il nome della tua tabella sia 'blog_posts'
-    .select('id, title, excerpt, related_article_id, created_at, image_url, image_alt')
-    .eq('locale', params.locale) // FILTRO ESSENZIALE: mostra solo i post nella lingua corrente
-    .order('created_at', { ascending: false }); 
+    .from('blog_posts')
+    .select('*')
+    .eq('locale', locale)
+    .order('created_at', { ascending: false })
+    .limit(6);
 
   if (error) {
-    console.error('Errore durante il recupero dei post del Blog:', error);
+    console.error('Error fetching blog posts:', error);
   }
-  
+
   return (
-    <main style={{ padding: '2rem', maxWidth: '900px', margin: '0 auto' }}>
-      {/* WCAG: h1 descrittivo per il titolo della pagina */}
-      <h1>{t('title', { default: 'Il Nostro Blog' })}</h1>
-      
-      {error ? (
-        <p style={{ color: 'red' }}>{t('loading_error', { default: 'Errore nel caricamento dei post del Blog.' })}</p>
-      ) : posts && posts.length > 0 ? (
-        <section style={{ display: 'grid', gap: '2rem', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
-          {posts.map((post) => {
-            // Logica di linking: se c'è un articolo correlato (approfondimento), linka lì. Altrimenti, al dettaglio post.
-            const destinationHref = post.related_article_id 
-              ? `/${params.locale}/articles/${post.related_article_id}` 
-              : `/${params.locale}/blog/${post.id}`; 
+    <div className="container mx-auto px-4 py-8">
+      {/* Hero Section */}
+      <section className="text-center mb-12">
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">{t('title')}</h1>
+        <p className="text-xl text-gray-600 max-w-2xl mx-auto">{t('subtitle_articles')}</p>
+      </section>
 
-            return (
-              <Link 
-                key={post.id} 
-                href={destinationHref} 
-                style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', borderRadius: '8px', overflow: 'hidden', border: '1px solid #eee', transition: 'box-shadow 0.3s' }}
-              >
-                {/* WCAG 1: Uso del componente Image e alt obbligatorio */}
-                <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9' }}>
-                    <Image
-                        src={post.image_url || '/placeholder.png'} 
-                        alt={post.image_alt || `Immagine per ${post.title}`} 
-                        fill 
-                        sizes="(max-width: 768px) 100vw, 30vw"
-                        style={{ objectFit: 'cover' }}
-                    />
-                </div>
+      {/* Sezione Blog Posts */}
+      <section className="mb-12">
+        <div className="flex justify-between items-center mb-8">
+          <h2 className="text-2xl font-bold text-gray-900">Ultimi Articoli</h2>
+          <Link 
+            href={`/${locale}/blog`} 
+            className="text-blue-600 hover:text-blue-800 font-semibold"
+          >
+            Vedi tutti →
+          </Link>
+        </div>
 
-                <div style={{ padding: '15px' }}>
-                    <p style={{ color: '#666', fontSize: '0.9em', marginBottom: '0.5rem' }}>
-                      {new Date(post.created_at).toLocaleDateString(params.locale)}
-                    </p>
-                    <h3 style={{ marginTop: 0 }}>{post.title}</h3>
-                    <p>{post.excerpt}</p>
-                    {/* WCAG 2: Testo del link descrittivo */}
-                    <span style={{ color: '#0070f3', fontWeight: 'bold' }}>
-                      {post.related_article_id ? t('read_article') : t('read_post')}
-                    </span>
+        {posts && posts.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {posts.map((post) => (
+              <div key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-lg transition-shadow">
+                {post.image_url && (
+                  <img 
+                    src={post.image_url} 
+                    alt={post.image_alt || post.title}
+                    className="w-full h-48 object-cover"
+                  />
+                )}
+                <div className="p-6">
+                  <h3 className="font-bold text-lg mb-2 line-clamp-2">{post.title}</h3>
+                  <p className="text-gray-600 text-sm mb-4">
+                    {new Date(post.created_at).toLocaleDateString(locale, {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </p>
+                  <p className="text-gray-700 mb-4 line-clamp-3">
+                    {post.body_md?.substring(0, 150)}...
+                  </p>
+                  <Link 
+                    href={`/${locale}/blog/${post.id}`}
+                    className="text-blue-600 hover:text-blue-800 font-semibold text-sm"
+                  >
+                    Leggi di più →
+                  </Link>
                 </div>
-              </Link>
-            );
-          })}
-        </section>
-      ) : (
-        <p>{t('no_posts', { default: 'Nessun post del blog pubblicato al momento.' })}</p>
-      )}
-    </main>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-12">
+            <p className="text-gray-500 text-lg">Nessun articolo trovato</p>
+          </div>
+        )}
+      </section>
+
+      {/* Additional Sections */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div className="bg-gray-50 rounded-lg p-6">
+          <h3 className="font-bold text-xl mb-3">News</h3>
+          <p className="text-gray-600 mb-4">Scopri le ultime novità e aggiornamenti.</p>
+          <Link 
+            href={`/${locale}/news`}
+            className="text-blue-600 hover:text-blue-800 font-semibold"
+          >
+            Vedi le News →
+          </Link>
+        </div>
+        
+        <div className="bg-gray-50 rounded-lg p-6">
+          <h3 className="font-bold text-xl mb-3">Articoli</h3>
+          <p className="text-gray-600 mb-4">Approfondimenti e analisi dettagliate.</p>
+          <Link 
+            href={`/${locale}/articles`}
+            className="text-blue-600 hover:text-blue-800 font-semibold"
+          >
+            Esplora Articoli →
+          </Link>
+        </div>
+      </section>
+    </div>
   );
+}
+
+export async function generateMetadata({
+  params: { locale }
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations('Index');
+
+  return {
+    title: t('title'),
+    description: t('subtitle_articles'),
+  };
 }

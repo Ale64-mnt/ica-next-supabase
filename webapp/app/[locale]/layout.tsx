@@ -1,53 +1,56 @@
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import { Header } from '@/components/navigation/Header';
-import Footer from '@/components/navigation/Footer';
-import type { Metadata } from 'next';
+import SiteHeader from '@/components/SiteHeader';
+import SiteFooter from '@/components/SiteFooter';
+import { ReactNode } from 'react';
+import '../globals.css'; // ✅ AGGIUNGI QUESTA RIGA
 
 interface LocaleLayoutProps {
-  children: React.ReactNode;
+  children: ReactNode;
   params: {
     locale: string;
   };
 }
 
-// Funzione per caricare i messaggi di traduzione
+const locales = ['en', 'it', 'de', 'es', 'fr'];
+
 async function getMessages(locale: string) {
   try {
-    // Carica i file di traduzione
     return (await import(`../../messages/${locale}.json`)).default;
   } catch (error) {
-    // Se il file della lingua non esiste, mostra 404
     notFound(); 
   }
 }
 
-// Metadata Globale
-export const metadata: Metadata = {
-  title: 'ICA Webapp - Sito Istituzionale Multilingua',
-  description: 'Sito aziendale con standard WCAG e integrazione Supabase.',
-};
+export default async function LocaleLayout({ 
+  children, 
+  params: { locale } 
+}: LocaleLayoutProps) {
+  if (!locales.includes(locale)) {
+    notFound();
+  }
 
-export default async function LocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
   const messages = await getMessages(locale);
 
   return (
-    <html lang={locale}> {/* WCAG 5: Tag lang corretto */}
-      <body style={{ margin: 0, display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <html lang={locale}>
+      <head>
+        <title>ICA Webapp</title>
+      </head>
+      <body className="min-h-screen flex flex-col">
         <NextIntlClientProvider locale={locale} messages={messages}>
-          {/* WCAG 2: Link "Salta al Contenuto" - Essential for keyboard navigation */}
-          <a href="#main-content" className="skip-link">Salta al Contenuto Principale</a>
+          {/* Link accessibilità */}
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:p-3 focus:bg-gray-800 focus:text-white focus:rounded-br-lg">
+            Salta al Contenuto Principale
+          </a>
           
-          {/* ✅ CORREZIONE: Passaggio della prop locale all'Header */}
-          <Header locale={locale} />
+          <SiteHeader locale={locale} />
           
-          {/* id="main-content" è il target del link skip-link */}
-          <main id="main-content" style={{ flexGrow: 1, padding: '2rem' }}>
+          <main id="main-content" className="flex-grow container mx-auto px-4 py-8">
             {children}
           </main>
           
-          {/* ✅ CORREZIONE: Passaggio della prop locale al Footer */}
-          <Footer locale={locale} />
+          <SiteFooter locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>
