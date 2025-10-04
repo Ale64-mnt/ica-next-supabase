@@ -237,3 +237,15 @@
 - Verifica e fix di tutte le traduzioni italiane
 
 ⏱ 1h 10m
+
+### 📌 2025-10-04 | PL-16 | WCAG Compliance e Accessibilità
+
+- Implementazione completa conformità WCAG 2.1 AA
+- Layout con attributi accessibilità (lang, landmarks, skip links)
+- Header navigabile da tastiera con focus visible e aria-labels
+- Correzione sovrapposizione immagini/testo in blog posts
+- CSS per contrast ratio, text spacing e focus management
+- Aggiunte traduzioni mancanti per namespace Navigation
+- Eliminazione componenti duplicati e ottimizzazione struttura
+
+⏱ 19m

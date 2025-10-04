@@ -28,8 +28,6 @@
     "es": "Spagnolo",
     "fr": "Francese"
   },
-  
-  
   "Footer": {
     "copyright": "© {year} Tutti i diritti riservati.",
     "links": "Link Utili",
@@ -40,12 +38,9 @@
     "all_rights_reserved": "Tutti i diritti riservati.",
     "contact_us_label": "Contattaci"
   },
-  
-
-
   "Navigation": {
     "home": "Home",
-    "home_link": "Home", 
+    "home_link": "Home",
     "blog": "Blog",
     "blog_link": "Blog",
     "about": "Chi Siamo",
@@ -54,6 +49,7 @@
     "news": "Notizie",
     "site_title": "ICA Webapp",
     "main_navigation_label": "Navigazione Principale",
-    "site_logo_alt": "Logo ICA"
+    "site_logo_alt": "Logo ICA",
+    "menu_toggle": "Apri o chiudi il menu di navigazione"
   }
 }
