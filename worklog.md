@@ -356,3 +356,20 @@ Problemi risolti:
 - EU Web Accessibility Directive
 
 ⏱ 40m
+
+### 📌 2025-10-04 | PL-18 | Fix Critici Logo e Header
+
+- Risolto errore caricamento logo (404 logo-small.png → logo.png)
+- Sistemata struttura cartella public e path immagini
+- Aumentate dimensioni logo a 450x450px per migliore visibilità
+- Rimosso testo "EduEthica" duplicato dall'header
+- Fix errore sintassi nel componente Header.tsx
+- Verifica e ottimizzazione colori sfondo pagine
+- Pulizia file temporanei e duplicati logo
+
+**File modificati:**
+- components/navigation/Header.tsx (fix sintassi e rimozione testo duplicato)
+- public/logo.png (aggiunto logo corretto)
+- messages/*.json (aggiornamenti minori)
+
+⏱ 2h 50m
