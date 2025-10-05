@@ -32,7 +32,7 @@ export default async function LocaleLayout({ children, params: { locale } }: Pro
             {children}
           </main>
           
-          <Footer />
+          <Footer locale={locale} />
         </NextIntlClientProvider>
       </body>
     </html>

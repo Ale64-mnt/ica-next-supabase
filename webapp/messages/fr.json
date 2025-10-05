@@ -1,6 +1,10 @@
 {
   "Index": {
-    "title": "Configuration terminée !"
+    "title": "Configuration terminée !",
+    "hero_title": "Nous promouvons l'éducation financière et éthique",
+    "hero_subtitle": "à travers l'Europe, en cinq langues, pour une citoyenneté plus consciente et inclusive",
+    "discover_articles": "Découvrez nos articles",
+    "join_courses": "Rejoignez des cours gratuits"
   },
   "Blog": {
     "skip_to_main_content": "Aller au contenu principal",
@@ -30,6 +34,10 @@
     "mobile_navigation_label": "Navigation mobile",
     "menu_toggle": "Basculer le menu",
     "support": "Support",
-    "contact": "Contact"
+    "contact": "Contact",
+    "blog": "Blog",
+    "courses": "Cours",
+    "resources": "Ressources",
+    "about": "Qui sommes-nous"
   }
 }

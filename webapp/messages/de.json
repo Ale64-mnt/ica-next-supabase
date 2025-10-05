@@ -1,6 +1,10 @@
 {
   "Index": {
-    "title": "Einrichtung abgeschlossen!"
+    "title": "Einrichtung abgeschlossen!",
+    "hero_title": "Wir fördern finanzielle und ethische Bildung",
+    "hero_subtitle": "in ganz Europa, in fünf Sprachen, für eine bewusstere und integrativere Bürgerschaft",
+    "discover_articles": "Entdecken Sie unsere Artikel",
+    "join_courses": "Nehmen Sie an kostenlosen Kursen teil"
   },
   "Blog": {
     "skip_to_main_content": "Zum Hauptinhalt springen",
@@ -30,6 +34,10 @@
     "mobile_navigation_label": "Mobile Navigation",
     "menu_toggle": "Menü umschalten",
     "support": "Support",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "courses": "Kurse",
+    "resources": "Ressourcen",
+    "about": "Über uns"
   }
 }

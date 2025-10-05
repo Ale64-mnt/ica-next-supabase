@@ -2,7 +2,11 @@
   "Index": {
     "title": "Configurazione completata!",
     "subtitle_articles": "Scopri i nostri ultimi articoli.",
-    "no_articles_found": "Nessun articolo trovato."
+    "no_articles_found": "Nessun articolo trovato.",
+    "hero_title": "Promuoviamo l'educazione finanziaria ed etica",
+    "hero_subtitle": "in tutta Europa, in cinque lingue, per una cittadinanza più consapevole e inclusiva",
+    "discover_articles": "Scopri i nostri articoli",
+    "join_courses": "Partecipa ai corsi gratuiti"
   },
   "Article": {
     "back_to_home": "Torna alla Homepage",
@@ -43,8 +47,8 @@
     "home_link": "Home",
     "blog": "Blog",
     "blog_link": "Blog",
-    "about": "Chi Siamo",
-    "contact": "Contatto",
+    "about": "Chi siamo",
+    "contact": "Contatti",
     "articles": "Articoli",
     "news": "Notizie",
     "site_title": "ICA Webapp",
@@ -52,6 +56,8 @@
     "site_logo_alt": "Logo ICA",
     "menu_toggle": "Apri o chiudi il menu di navigazione",
     "mobile_navigation_label": "Navigazione mobile",
-    "support": "Supporto"
+    "support": "Supporto",
+    "courses": "Corsi",
+    "resources": "Risorse"
   }
 }

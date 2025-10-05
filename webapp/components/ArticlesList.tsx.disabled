@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useLocale } from 'next-intl';
 import Link from 'next/link';
-import { supabaseBrowser } from '@/lib/supabaseBrowser';
+import { createClient } from '@/lib/supabaseBrowser';
 
 type SupportedLocale = 'it' | 'en';
 type Props = { locale?: SupportedLocale };
@@ -29,7 +29,7 @@ export default function ArticlesList({ locale }: Props) {
 
     (async () => {
       try {
-        const supabase = supabaseBrowser();
+        const supabase = createClient();
         const { data, error } = await supabase
           .from('articles')
           .select('id,slug,title,excerpt,published_at,locale')

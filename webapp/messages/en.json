@@ -1,6 +1,10 @@
 {
   "Index": {
-    "title": "Setup complete!"
+    "title": "Setup complete!",
+    "hero_title": "We promote financial and ethical education",
+    "hero_subtitle": "across Europe, in five languages, for a more aware and inclusive citizenship",
+    "discover_articles": "Discover our articles",
+    "join_courses": "Join free courses"
   },
   "Blog": {
     "skip_to_main_content": "Skip to Main Content",
@@ -22,19 +26,21 @@
   },
   "Navigation": {
     "home": "Home",
-    "home_link": "Home Link",
+    "home_link": "Home",
     "blog": "Blog",
     "blog_link": "Blog",
     "news": "News",
     "articles": "Articles",
-    "about": "About",
+    "about": "About us",
     "contact": "Contact",
     "site_logo_alt": "Urban Space Memory Logo",
     "site_title": "Urban Space Memory",
     "main_navigation_label": "Main Navigation",
     "menu_toggle": "Toggle Menu",
     "mobile_navigation_label": "Mobile navigation",
-    "support": "Support"
+    "support": "Support",
+    "courses": "Courses",
+    "resources": "Resources"
   },
   "LocaleSwitcher": {
     "select": "Select Language",

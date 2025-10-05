@@ -1,0 +1,63 @@
+'use client';
+import { useEffect, useState } from 'react';
+import { useLocale } from 'next-intl';
+import Link from 'next/link';
+import { createClient } from '@/lib/supabaseBrowser';
+
+type SupportedLocale = 'it' | 'en';
+type Props = { locale?: SupportedLocale };
+
+type Article = {
+  id: string;
+  title: string;
+  summary: string;
+  cover_image: string;
+  published_at: string;
+  category: string;
+};
+
+export default function ArticlesList({ locale }: Props) {
+  const defaultLocale = useLocale() as SupportedLocale;
+  const currentLocale = locale || defaultLocale;
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase
+          .from('articles')
+          .select('*')
+          .order('published_at', { ascending: false })
+          .limit(6);
+
+        if (error) throw error;
+        setArticles(data || []);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, []);
+
+  if (loading) return <div>Loading articles...</div>;
+
+  return (
+    <div style={{ padding: '2rem' }}>
+      <h2>Ultimi Articoli</h2>
+      <div style={{ display: 'grid', gap: '1rem' }}>
+        {articles.map((article) => (
+          <div key={article.id} style={{ border: '1px solid #ccc', padding: '1rem' }}>
+            <h3>{article.title}</h3>
+            <p>{article.summary}</p>
+            <Link href={`/${currentLocale}/articles/${article.id}`}>
+              Leggi di più
+            </Link>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
