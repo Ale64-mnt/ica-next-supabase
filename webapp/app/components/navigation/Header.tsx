@@ -24,15 +24,15 @@ export function Header({ locale }: { locale: string }) {
           
           <Link href={`/${locale}`} className="flex items-center space-x-3">
             <Image
-              src="/logo.jpg" // ✅ CORRETTO: Adesso cerca il file JPG
+              src="/logo-small.png" // ✅ CORRETTO: Adesso cerca il file JPG
               alt={t('site_logo_alt')}
               // Dobbiamo specificare la dimensione per il logo JPEG
               width={140} 
-              height={32}
+              height={40}
               className="h-8 w-auto"
             />
             <span className="text-xl font-bold text-gray-900 tracking-tight">
-                {t('site_title')} {/* Rimosso sr-only per visibilità */}
+                EduEthica {/* Rimosso sr-only per visibilità */}
             </span>
           </Link>
 

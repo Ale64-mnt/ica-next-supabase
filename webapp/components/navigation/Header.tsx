@@ -38,24 +38,16 @@ export function Header({ locale }: { locale: string }) {
           justifyContent: 'space-between'
         }}>
           
-          {/* LOGO + TITOLO - Stesso stile dell'esempio */}
+          {/* LOGO - Senza testo duplicato */}
           <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <Link href={`/${locale}`} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
               <Image
-                src="/logo.jpg"
+                src="/logo.png"
                 alt={t('site_logo_alt')}
-                width={32}
-                height={32}
-                style={{ height: '2rem', width: '2rem' }}
+                width={300}
+                height={300}
+                style={{ height: '18.75rem', width: '18.5rem' }}
               />
-              <span style={{ 
-                marginLeft: '0.75rem', 
-                fontSize: '1.25rem', 
-                fontWeight: 'bold', 
-                color: '#111827'
-              }}>
-                {t('site_title')}
-              </span>
             </Link>
           </div>
 
