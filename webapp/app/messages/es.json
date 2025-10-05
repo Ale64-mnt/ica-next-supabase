@@ -28,8 +28,6 @@
     "site_logo_alt": "Logo del sitio",
     "main_navigation_label": "Navegación principal",
     "mobile_navigation_label": "Navegación móvil",
-    "menu_toggle": "Alternar menú",
-    "support": "Soporte",
-    "contact": "Contacto"
+    "menu_toggle": "Alternar menú"
   }
 }

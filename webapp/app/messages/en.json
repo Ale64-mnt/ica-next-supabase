@@ -33,8 +33,7 @@
     "site_title": "Urban Space Memory",
     "main_navigation_label": "Main Navigation",
     "menu_toggle": "Toggle Menu",
-    "mobile_navigation_label": "Mobile navigation",
-    "support": "Support"
+    "mobile_navigation_label": "Mobile navigation"
   },
   "LocaleSwitcher": {
     "select": "Select Language",

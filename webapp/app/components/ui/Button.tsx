@@ -1,0 +1,1 @@
+export default function Button({children,href,onClick,variant='primary'}:{children:React.ReactNode;href?:string;onClick?:()=>void;variant?:'primary'|'ghost'}){const cls=variant==='primary'?'btn btn--primary':'btn btn--ghost';const el=<button className={cls} onClick={onClick}>{children}</button>;return href?<a className={cls} href={href}>{children}</a>:el;}

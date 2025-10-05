@@ -44,14 +44,13 @@
     "blog": "Blog",
     "blog_link": "Blog",
     "about": "Chi Siamo",
-    "contact": "Contatto",
+    "contact": "Contatti",
     "articles": "Articoli",
     "news": "Notizie",
     "site_title": "ICA Webapp",
     "main_navigation_label": "Navigazione Principale",
     "site_logo_alt": "Logo ICA",
     "menu_toggle": "Apri o chiudi il menu di navigazione",
-    "mobile_navigation_label": "Navigazione mobile",
-    "support": "Supporto"
+    "mobile_navigation_label": "Navigazione mobile"
   }
 }

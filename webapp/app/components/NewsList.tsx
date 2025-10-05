@@ -1,0 +1,56 @@
+'use client';
+
+import {useEffect, useState} from 'react';
+import Link from 'next/link';
+import {useLocale} from 'next-intl';
+import { supabaseBrowser } from '@/lib/supabaseBrowser';
+
+type SupportedLocale = 'it' | 'en';
+type NewsItem = { id: string; title: string; excerpt?: string; published_at?: string };
+type Props = { locale?: SupportedLocale };
+
+export default function NewsList({ locale }: Props) {
+  const fallback = useLocale() as SupportedLocale;
+  const loc: SupportedLocale = locale ?? fallback;
+
+  const [items, setItems] = useState<NewsItem[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const supabase = supabaseBrowser();
+        const { data, error } = await supabase
+          .from('news')
+          .select('id,title,excerpt,published_at')
+          .order('published_at', { ascending: false })
+          .limit(20);
+        if (error) throw error;
+        setItems(data ?? []);
+      } catch (e: any) {
+        setError(e?.message || 'Errore caricamento news');
+      }
+    })();
+  }, [loc]);
+
+  if (error) return <div style={{color:'crimson'}}>Errore: {error}</div>;
+  if (!items) return <div>Caricamento…</div>;
+  if (items.length === 0) return <div>Nessuna news disponibile.</div>;
+
+  return (
+    <ul style={{display:'grid', gap:'0.75rem', padding:0, listStyle:'none'}}>
+      {items.map(a => (
+        <li key={a.id} style={{border:'1px solid #eee', borderRadius:8, padding:'0.75rem'}}>
+          <div style={{fontWeight:600}}>{a.title}</div>
+          {a.published_at && (
+            <div style={{fontSize:12, opacity:0.7}}>
+              {new Date(a.published_at).toISOString().slice(0,10)}
+            </div>
+          )}
+          {a.excerpt && <p style={{marginTop:6}}>{a.excerpt}</p>}
+          <Link href={`/${loc}/news/${a.id}`} style={{fontSize:12}}>Leggi di più</Link>
+        </li>
+      ))}
+    </ul>
+  );
+}
