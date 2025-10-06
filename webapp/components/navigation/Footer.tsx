@@ -1,15 +1,25 @@
+'use client';
 import Link from 'next/link';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
-export default function Footer() {
+export default function Footer({ locale }: { locale: string }) {
   const t = useTranslations('Footer');
-  const locale = useLocale();
 
-  // Link Legali e WCAG: Ogni sito deve avere una Dichiarazione di Accessibilità
+  // Link Legali e Utili
   const legalLinks = [
     { label: t('privacy_policy'), href: '/privacy' },
     { label: t('terms_of_service'), href: '/terms' },
-    { label: t('accessibility_statement'), href: '/accessibility' }, 
+    { label: t('accessibility_statement'), href: '/accessibility' },
+    { label: t('cookie_policy'), href: '/cookies' },
+    { label: t('sitemap'), href: '/sitemap' },
+  ];
+
+  // Link Social con icone (segnaposto)
+  const socialLinks = [
+    { name: 'LinkedIn', href: '#', icon: '🔗' },
+    { name: 'X (Twitter)', href: '#', icon: '🐦' },
+    { name: 'YouTube', href: '#', icon: '📺' },
+    { name: 'Instagram', href: '#', icon: '📷' },
   ];
 
   return (
@@ -22,36 +32,95 @@ export default function Footer() {
         color: '#666',
         fontSize: '0.9em',
       }}
-      // WCAG: L'elemento footer ha un ruolo semantico 'contentinfo'
     >
       <div 
         style={{ 
           maxWidth: '1200px', 
-          margin: '0 auto', 
-          display: 'flex', 
+          margin: '0 auto',
+          display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           textAlign: 'center',
+          gap: '1.5rem',
         }}
       >
         {/* Link Legali e Utili */}
         <nav aria-label={t('footer_navigation_label')}>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
+          <ul style={{ 
+            listStyle: 'none', 
+            padding: 0, 
+            margin: 0, 
+            display: 'flex', 
+            gap: '1rem', 
+            marginBottom: '1rem', 
+            flexWrap: 'wrap', 
+            justifyContent: 'center' 
+          }}>
             {legalLinks.map((item) => (
               <li key={item.href}>
-                <Link href={`/${locale}${item.href}`} style={{ textDecoration: 'none', color: '#666' }}>
+                <Link 
+                  href={`/${locale}${item.href}`} 
+                  style={{ textDecoration: 'none', color: '#666' }}
+                >
                   {item.label}
                 </Link>
               </li>
             ))}
           </ul>
         </nav>
-        
-        {/* Sezione Copyright e Contatti */}
-        <div style={{ lineHeight: 1.6, marginTop: '1rem' }}>
-          <p>&copy; {new Date().getFullYear()} ICA Webapp. {t('all_rights_reserved')}.</p>
+
+        {/* Social Links */}
+        <div>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>{t('follow_us')}</p>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+            {socialLinks.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                aria-label={social.name}
+                style={{ 
+                  fontSize: '1.5rem',
+                  textDecoration: 'none',
+                  color: '#666',
+                  transition: 'color 0.2s'
+                }}
+                onMouseOver={(e) => e.currentTarget.style.color = '#0070f3'}
+                onMouseOut={(e) => e.currentTarget.style.color = '#666'}
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        {/* Informazioni Multilingue */}
+        <div style={{ 
+          padding: '0.5rem 1rem', 
+          backgroundColor: '#e9ecef', 
+          borderRadius: '4px',
+          fontSize: '0.8em'
+        }}>
+          <p style={{ margin: 0 }}>
+            🌐 {t('multilingual_site')}
+          </p>
+        </div>
+
+        {/* Sezione Copyright, Contatti e Data Aggiornamento */}
+        <div style={{ lineHeight: 1.6 }}>
           <p>
-            {t('contact_us_label')}: <a href="mailto:info@icawebapp.com" style={{ color: '#0070f3' }}>info@icawebapp.com</a>
+            &copy; {new Date().getFullYear()} EduEthica. {t('all_rights_reserved')}.
+          </p>
+          <p style={{ fontSize: '0.8em', margin: '0.5rem 0' }}>
+            📅 {t('last_updated')}: {new Date().toLocaleDateString(locale)}
+          </p>
+          <p>
+            📧 {t('contact_us_label')}:{' '}
+            <a href="mailto:info@eduethica.com" style={{ color: '#0070f3' }}>
+              info@eduethica.com
+            </a>
+            <br />
+            📍 {t('address_label')}:{' '}
+            <span style={{ fontStyle: 'italic' }}>{t('address_placeholder')}</span>
           </p>
         </div>
       </div>

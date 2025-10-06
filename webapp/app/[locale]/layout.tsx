@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { Header } from '@/components/navigation/Header';
-import Footer from '@/components/SiteFooter';
+import Footer from '@/components/navigation/Footer';
 import { ReactNode } from 'react';
 
 type Props = {
