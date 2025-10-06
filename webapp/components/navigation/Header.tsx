@@ -24,10 +24,11 @@ export function Header({ locale }: { locale: string }) {
       width: '100%', 
       backgroundColor: 'white', 
       borderBottom: '1px solid #e5e7eb',
-      padding: '0.75rem 0'
+      padding: '0.5rem 0'
     }}>
       <div style={{ 
         maxWidth: '1200px', 
+        
         margin: '0 auto', 
         padding: '0 1.5rem'
       }}>
@@ -44,9 +45,9 @@ export function Header({ locale }: { locale: string }) {
               <Image
                 src="/logo.png"
                 alt={t('site_logo_alt')}
-                width={300}
-                height={300}
-                style={{ height: '18.75rem', width: '18.5rem' }}
+                width={156}
+                height={78}
+                style={{ height: '4.875rem', width: '9.75rem' }}
               />
             </Link>
           </div>

@@ -388,3 +388,15 @@ Problemi risolti:
 - app/[locale]/layout.tsx (cambio import Footer)
 
 ⏱ 1h 5m
+
+### 📌 2025-10-04 | PL-20 | Ottimizzazione Header e Logo
+
+- Ridotta altezza header (padding: 0.75rem → 0.3rem)
+- Regolate dimensioni logo mantenendo proporzioni originali 623x311
+- Ottimizzato spazio header per migliore UX
+- Logo ridimensionato a 156x78px per adattamento header compatto
+
+**File modificati:**
+- components/navigation/Header.tsx (padding e dimensioni logo)
+
+⏱ 1h
