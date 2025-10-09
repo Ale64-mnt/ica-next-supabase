@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import { Header } from '@/components/navigation/Header';
+import { Header } from '@/components/navigation/Header'; // ✅ Un solo ;
 import Footer from '@/components/navigation/Footer';
 import { ReactNode } from 'react';
 
@@ -25,11 +25,12 @@ export default async function LocaleLayout({ children, params: { locale } }: Pro
             Skip to main content
           </a>
           
-          {/* UNICO HEADER - NESSUN DOPPIONE */}
           <Header locale={locale} />
           
-          <main id="main-content">
-            {children}
+          <main id="main-content" className="min-h-screen">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              {children}
+            </div>
           </main>
           
           <Footer locale={locale} />

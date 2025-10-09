@@ -400,3 +400,35 @@ Problemi risolti:
 - components/navigation/Header.tsx (padding e dimensioni logo)
 
 ⏱ 1h
+
+### 📌 2025-10-08 | UNIFICAZIONE-01 | Tentativo Unificazione Struttura Componenti - ROLLBACK
+
+    Tentativo di unificazione struttura cartelle componenti eliminando duplicati
+
+    Identificati e risolti conflitti file duplicati tra diverse locazioni
+
+    Aggiornato path alias in tsconfig.json per nuova struttura
+
+    Dopo l'unificazione, riscontrati problemi di rendering Header e traduzioni
+
+    Decisione di rollback completo per mantenere funzionalità
+
+    Ripristinata struttura originale funzionante
+
+    Lezioni apprese: necessità di testing incrementale e verifica compatibilità traduzioni
+
+Operazioni eseguite:
+
+    Unificazione cartelle components/ e app/components/
+
+    Risoluzione conflitti file duplicati
+
+    Aggiornamento configurazione TypeScript
+
+    Test e identificazione problemi
+
+    Rollback completo allo stato precedente
+
+Risultato: Struttura ripristinata alla versione funzionante pre-unificazione
+
+⏱ 3h 30m
