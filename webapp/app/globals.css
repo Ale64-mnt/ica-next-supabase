@@ -1,0 +1,29 @@
+/* app/globals.css */
+
+/* 1. Direttive Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 2. Regole di Responsività di Base */
+
+/* Assicura che padding e border siano inclusi nella larghezza e altezza (cruciale per layout responsive) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Le immagini non superano la larghezza del contenitore su mobile */
+img,
+picture,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Rimuove i margini di default che possono causare scroll indesiderato */
+body {
+  margin: 0;
+}

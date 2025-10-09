@@ -1,24 +1,23 @@
-// app/[locale]/layout.tsx - Modificato
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import { Header } from '@/components/navigation/Header'; 
-import Footer from '@/components/navigation/Footer';
+import { Header } from '@/app/components/navigation/Header';
+import Footer from '@/app/components/navigation/Footer';
 import { ReactNode } from 'react';
 
 type Props = {
-// ... (omitted for brevity, the rest of the file logic remains the same)
+  children: ReactNode;
+  params: { locale: string };
 };
 
 export default async function LocaleLayout({ children, params: { locale } }: Props) {
   let messages;
   try {
-    messages = (await import(`../../messages/${locale}.json`)).default;
+    messages = (await import(`../messages/${locale}.json`)).default;
   } catch (error) {
     notFound();
   }
 
   return (
-    // INIZIO: Non più <html>
     <NextIntlClientProvider locale={locale} messages={messages}>
       <a href="#main-content" className="skip-link">
         Skip to main content
@@ -27,14 +26,12 @@ export default async function LocaleLayout({ children, params: { locale } }: Pro
       <Header locale={locale} />
       
       <main id="main-content" className="min-h-screen">
-        {/* Le classi Tailwind qui sono già responsive: container mx-auto px-4 sm:px-6 lg:px-8 */}
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8"> 
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {children}
         </div>
       </main>
       
       <Footer locale={locale} />
     </NextIntlClientProvider>
-    // FINE: Non più </body></html>
   );
 }

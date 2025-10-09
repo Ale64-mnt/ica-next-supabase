@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { LocaleSwitcher } from './LocaleSwitcher';
+// TODO: Avremo bisogno di un componente/icona per il menu mobile (es. MenuIcon)
 
 export function Header({ locale }: { locale: string }) {
   const t = useTranslations('Navigation');
@@ -17,71 +18,63 @@ export function Header({ locale }: { locale: string }) {
   ];
 
   return (
-    <header style={{ 
-      position: 'sticky', 
-      top: 0, 
-      zIndex: 40, 
-      width: '100%', 
-      backgroundColor: 'white', 
-      borderBottom: '1px solid #e5e7eb',
-      padding: '0.5rem 0'
-    }}>
-      <div style={{ 
-        maxWidth: '1200px', 
-        
-        margin: '0 auto', 
-        padding: '0 1.5rem'
-      }}>
-        {/* TUTTO SULLA STESSA RIGA - Stile preciso */}
-        <div style={{ 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'space-between'
-        }}>
+    // HEADER: Sticky, top-0, z-40, white background, border-b (Tailwind)
+    <header className="sticky top-0 z-40 w-full bg-white border-b border-gray-200 py-2">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ROW CONTAINER: Flex, centered, space-between */}
+        <div className="flex items-center justify-between">
           
-          {/* LOGO - Senza testo duplicato */}
-          <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
-            <Link href={`/${locale}`} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
+          {/* LOGO: Always visible */}
+          <div className="flex items-center flex-shrink-0">
+            <Link href={`/${locale}`}>
               <Image
                 src="/logo.png"
                 alt={t('site_logo_alt')}
                 width={156}
                 height={78}
-                style={{ height: '4.875rem', width: '9.75rem' }}
+                className="h-16 w-auto" // Aggiungi classi per controllo dimensione
               />
             </Link>
           </div>
 
-          {/* MENU - Stesso stile dell'esempio */}
-          <nav style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: '2rem',
-            margin: '0 2rem'
-          }} aria-label={t('main_navigation_label')}>
+          {/* MENU DESKTOP: VISIBILE DA MD IN SU (md:flex) */}
+          <nav 
+            className="hidden md:flex items-center space-x-8 mr-8" 
+            aria-label={t('main_navigation_label')}
+          >
             {navLinks.map((link) => (
               <Link 
                 key={link.href} 
                 href={`/${locale}${link.href}`}
-                style={{ 
-                  color: '#374151',
-                  fontWeight: 'bold',
-                  fontSize: '0.875rem',
-                  textDecoration: 'none',
-                  whiteSpace: 'nowrap'
-                }}
+                className="text-sm font-bold text-gray-700 hover:text-gray-900 whitespace-nowrap"
               >
                 {t(link.labelKey)}
               </Link>
             ))}
           </nav>
 
-          {/* LOCALESWITCHER */}
-          <div style={{ flexShrink: 0 }}>
-            <LocaleSwitcher />
+          {/* UTILITY (Locale Switcher & Mobile Menu Button) */}
+          <div className="flex items-center flex-shrink-0">
+            {/* LocaleSwitcher */}
+            <div className="mr-4">
+              <LocaleSwitcher />
+            </div>
+
+            {/* MOBILE MENU BUTTON: VISIBILE SOLO SU MOBILE (md:hidden) */}
+            <button 
+              type="button" 
+              className="md:hidden p-2 text-gray-700 hover:text-gray-900"
+              aria-label={t('open_menu')}
+              // TODO: Aggiungere logica per aprire/chiudere il menu mobile (stato React)
+            >
+              {/* Sostituire con icona "hamburger" */}
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
           </div>
         </div>
       </div>
+      
+      {/* TODO: Qui andrà il menu mobile che si apre sotto (MobileHeader o logica inline) */}
     </header>
   );
 }
