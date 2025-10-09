@@ -432,3 +432,36 @@ Operazioni eseguite:
 Risultato: Struttura ripristinata alla versione funzionante pre-unificazione
 
 ⏱ 3h 30m
+
+### 📌 2025-10-09 | RF-15 | Unificazione Struttura Components e Setup i18n
+
+- Unificata struttura components: spostati tutti i componenti da /components/ a /app/components/
+- Eliminata cartella components/ duplicata per centralizzazione
+- Aggiornato tsconfig.json per nuovi path dei componenti
+- Aggiunti componenti navigation (DesktopHeader, MobileHeader, LocaleSwitcher)
+- Implementata configurazione i18n routing per supporto multilingua
+- Preparata base per risoluzione errori di idratazione Next.js
+
+**File modificati:**
+- Spostati tutti i componenti da /components/ a /app/components/
+- Eliminata cartella /components/ duplicata
+- app/[locale]/layout.tsx (preparazione i18n)
+- app/components/navigation/* (nuovi componenti header)
+- tsconfig.json (aggiornamento path)
+- i18n/routing.ts (nuova configurazione)
+
+⏱ 2h
+### 📌 2025-10-09 | RF-16 | Implementazione Header Responsivo
+
+- Implementato header responsive con logo a sinistra e menu a destra
+- Struttura base funzionante per menu desktop (md+) e hamburger mobile
+- Preparata base per completamento funzionalità mobile menu
+- Commit: 7145fd4
+
+**File modificati:**
+- app/components/navigation/Header.tsx (struttura responsive)
+- app/components/navigation/MobileHeader.tsx 
+- app/[locale]/layout.tsx
+- app/layout.tsx
+
+⏱ 1h
