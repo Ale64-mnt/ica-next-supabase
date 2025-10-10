@@ -1,43 +1,46 @@
 {
-  "Index": {
-    "title": "Configuration terminée !",
-    "hero_title": "Nous promouvons l'éducation financière et éthique",
-    "hero_subtitle": "à travers l'Europe, en cinq langues, pour une citoyenneté plus consciente et inclusive",
-    "discover_articles": "Découvrez nos articles",
-    "join_courses": "Rejoignez des cours gratuits"
-  },
-  "Blog": {
-    "skip_to_main_content": "Aller au contenu principal",
-    "hero_image_for": "Image principale pour",
-    "published_on": "Publié le",
-    "back_to_blog": "Retour au blog",
-    "title": "Blog",
-    "read_post": "Lire l'article"
-  },
-  "Footer": {
-    "copyright": "© 2025 Urban Space Memory. Tous droits réservés.",
-    "all_rights_reserved": "Tous droits réservés",
-    "links": "Liens",
-    "privacy_policy": "Politique de confidentialité",
-    "terms_of_service": "Conditions d'utilisation",
-    "accessibility_statement": "Déclaration d'accessibilité",
-    "footer_navigation_label": "Navigation du pied de page"
-  },
-  "Navigation": {
-    "home_link": "Accueil",
-    "articles": "Articles",
-    "news": "Actualités",
-    "blog_link": "Blog",
-    "site_title": "EduEthica",
-    "site_logo_alt": "Logo du site",
-    "main_navigation_label": "Navigation principale",
-    "mobile_navigation_label": "Navigation mobile",
-    "menu_toggle": "Basculer le menu",
-    "support": "Support",
-    "contact": "Contact",
-    "blog": "Blog",
-    "courses": "Cours",
-    "resources": "Ressources",
-    "about": "Qui sommes-nous"
-  }
+    "Index":  {
+                  "title":  "Configuration terminée !",
+                  "hero_title":  "Nous promouvons l\u0027éducation financière et éthique",
+                  "hero_subtitle":  "à travers l\u0027Europe, en cinq langues, pour une citoyenneté plus consciente et inclusive",
+                  "discover_articles":  "Découvrez nos articles",
+                  "join_courses":  "Rejoignez des cours gratuits"
+              },
+    "Blog":  {
+                 "skip_to_main_content":  "Aller au contenu principal",
+                 "hero_image_for":  "Image principale pour",
+                 "published_on":  "Publié le",
+                 "back_to_blog":  "Retour au blog",
+                 "title":  "Blog",
+                 "read_post":  "Lire l\u0027article"
+             },
+    "Footer":  {
+                   "copyright":  "© 2025 Urban Space Memory. Tous droits réservés.",
+                   "all_rights_reserved":  "Tous droits réservés",
+                   "links":  "Liens",
+                   "privacy_policy":  "Politique de confidentialité",
+                   "terms_of_service":  "Conditions d\u0027utilisation",
+                   "accessibility_statement":  "Déclaration d\u0027accessibilité",
+                   "footer_navigation_label":  "Navigation du pied de page"
+               },
+    "Navigation":  {
+                       "home_link":  "Accueil",
+                       "articles":  "Articles",
+                       "news":  "Actualités",
+                       "blog_link":  "Blog",
+                       "site_title":  "EduEthica",
+                       "site_logo_alt":  "Logo du site",
+                       "main_navigation_label":  "Navigation principale",
+                       "mobile_navigation_label":  "Navigation mobile",
+                       "menu_toggle":  "Basculer le menu",
+                       "support":  "Support",
+                       "contact":  "Contact",
+                       "blog":  "Blog",
+                       "courses":  "Cours",
+                       "resources":  "Ressources",
+                       "about":  "Qui sommes-nous"
+                   },
+    "Common":  {
+                   "skip_to_content":  "Aller au contenu principal"
+               }
 }

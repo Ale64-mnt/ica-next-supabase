@@ -31,8 +31,8 @@ export default async function LocaleLayout({ children, params: { locale } }: Pro
         <NextIntlClientProvider locale={locale} messages={messages}>
           {/* Skip link tradotto server-side per evitare hydration mismatch */}
           <a href="#main-content" className="skip-link" suppressHydrationWarning>
-            {t('skip_to_main')} {/* es. "Vai al contenuto principale" */}
-          </a>
+  {t('skip_to_content')}
+</a>
 
           <Header locale={locale} />
 
