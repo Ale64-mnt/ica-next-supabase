@@ -47,7 +47,7 @@ export function DesktopHeader({ locale }: DesktopHeaderProps) {
               <Link
                 key={link.href}
                 href={buildHref(link.href)}
-                className="text-[15px] font-semibold text-gray-700 no-underline hover:text-gray-900 hover:underline underline-offset-4 transition-all duration-200 [color:inherit] [text-decoration-color:inherit]"
+                className="text-[15px] font-medium text-gray-700 hover:text-gray-900 hover:underline underline-offset-4 transition-all duration-200"
               >
                 {t(link.labelKey)}
               </Link>
