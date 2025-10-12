@@ -1,14 +1,12 @@
-"use client";
-
-import { useTranslations } from 'next-intl';
+﻿import { getTranslations } from 'next-intl/server';
 
 interface SiteFooterProps {
   locale: string;
 }
 
-export default function SiteFooter({ locale }: SiteFooterProps) {
-  const t = useTranslations('Footer');
-  
+export default async function SiteFooter({ locale }: SiteFooterProps) {
+  const t = await getTranslations('Footer');
+
   return (
     <footer className="bg-gray-100 py-8 mt-auto">
       <div className="container mx-auto px-4 text-center">

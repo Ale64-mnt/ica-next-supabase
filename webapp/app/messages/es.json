@@ -1,33 +1,54 @@
 {
-  "Index": {
-    "title": "¡Configuración completada!"
-  },
-  "Blog": {
-    "skip_to_main_content": "Saltar al contenido principal",
-    "hero_image_for": "Imagen principal para",
-    "published_on": "Publicado el",
-    "back_to_blog": "Volver al Blog",
-    "title": "Blog",
-    "read_post": "Leer publicación"
-  },
-  "Footer": {
-    "copyright": "© 2025 Urban Space Memory. Todos los derechos reservados.",
-    "all_rights_reserved": "Todos los derechos reservados",
-    "links": "Enlaces",
-    "privacy_policy": "Política de privacidad",
-    "terms_of_service": "Términos de servicio",
-    "accessibility_statement": "Declaración de accesibilidad",
-    "footer_navigation_label": "Navegación del pie de página"
-  },
-  "Navigation": {
-    "home_link": "Inicio",
-    "articles": "Artículos",
-    "news": "Noticias",
-    "blog_link": "Blog",
-    "site_title": "Urban Space Memory",
-    "site_logo_alt": "Logo del sitio",
-    "main_navigation_label": "Navegación principal",
-    "mobile_navigation_label": "Navegación móvil",
-    "menu_toggle": "Alternar menú"
+    "Common": {
+      "skip_to_content": "Saltar al contenido principal",
+      "change_language": "Cambiar idioma" 
+    },
+    "Navigation": {
+      "site_logo_alt": "Logotipo ICA",
+      "main_navigation_label": "Navegación principal",
+      "open_menu": "Abrir menú",
+      "close_menu": "Cerrar menú",
+      "home_link": "Inicio",
+      "articles": "Artículos",
+      "news": "Noticias",
+      "blog_link": "Blog",
+      "support": "Soporte",
+      "contact": "Contacto"
+    },
+    "Footer": {
+      "copyright": "© {year} Urban Space Memory. Todos los derechos reservados.",
+      "all_rights_reserved": "Todos los derechos reservados",
+      "links": "Enlaces",
+      "privacy_policy": "Política de privacidad",
+      "terms_of_service": "Términos de servicio",
+      "accessibility_statement": "Declaración de accesibilidad",
+      "footer_navigation_label": "Navegación del pie de página",
+      "address_placeholder": "Introduce tu dirección",
+      "contact_us_label": "Contáctanos",
+      "cookie_policy": "Política de Cookies",
+      "sitemap": "Mapa del sitio",
+      "follow_us": "Síguenos",
+      "multilingual_site": "Sitio Multilingüe",
+      "last_updated": "Última actualización",
+      "address_label": "Dirección",
+      "newsletter_signup": "Boletín informativo",
+    "newsletter_description": "Suscríbete para recibir actualizaciones",
+    "subscribe": "Suscribirse"
+    },
+    "News": {
+      "eu_updates": "Actualizaciones UE y nacionales",
+      "news_title": "Título de la noticia",
+      "view_all_news": "Ver todas las noticias"
+    },
+    "Index": {
+      "hero_title": "Promovemos la educación financiera y ética",
+      "hero_subtitle": "en toda Europa, en cinco idiomas, para una ciudadanía más consciente e inclusiva",
+      "discover_articles": "Descubre nuestros artículos",
+      "join_courses": "Participa en cursos gratuitos"
+    },
+    "Blog": {
+      "title": "Blog",
+      "view_all": "Ver todo",
+      "read_more": "Leer más"
+    }
   }
-}

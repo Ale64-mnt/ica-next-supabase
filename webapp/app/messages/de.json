@@ -1,33 +1,54 @@
 {
-  "Index": {
-    "title": "Einrichtung abgeschlossen!"
-  },
-  "Blog": {
-    "skip_to_main_content": "Zum Hauptinhalt springen",
-    "hero_image_for": "Hero-Bild für",
-    "published_on": "Veröffentlicht am",
-    "back_to_blog": "Zurück zum Blog",
-    "title": "Blog",
-    "read_post": "Beitrag lesen"
-  },
-  "Footer": {
-    "copyright": "© 2025 Urban Space Memory. Alle Rechte vorbehalten.",
-    "all_rights_reserved": "Alle Rechte vorbehalten",
-    "links": "Links",
-    "privacy_policy": "Datenschutzerklärung",
-    "terms_of_service": "Nutzungsbedingungen",
-    "accessibility_statement": "Barrierefreiheitserklärung",
-    "footer_navigation_label": "Footer-Navigation"
-  },
-  "Navigation": {
-    "home_link": "Startseite",
-    "articles": "Artikel",
-    "news": "Nachrichten",
-    "blog_link": "Blog",
-    "site_title": "Urban Space Memory",
-    "site_logo_alt": "Site-Logo",
-    "main_navigation_label": "Hauptnavigation",
-    "mobile_navigation_label": "Mobile Navigation",
-    "menu_toggle": "Menü umschalten"
+    "Common": {
+      "skip_to_content": "Zum Hauptinhalt springen",
+      "change_language": "Sprache ändern" 
+    },
+    "Navigation": {
+      "site_logo_alt": "Logo ICA",
+      "main_navigation_label": "Hauptnavigation",
+      "open_menu": "Menü öffnen",
+      "close_menu": "Menü schließen",
+      "home_link": "Startseite",
+      "articles": "Artikel",
+      "news": "Nachrichten",
+      "blog_link": "Blog",
+      "support": "Support",
+      "contact": "Kontakt"
+    },
+    "Footer": {
+      "copyright": "© {year} Urban Space Memory. Alle Rechte vorbehalten.",
+      "all_rights_reserved": "Alle Rechte vorbehalten",
+      "links": "Links",
+      "privacy_policy": "Datenschutzerklärung",
+      "terms_of_service": "Nutzungsbedingungen",
+      "accessibility_statement": "Barrierefreiheitserklärung",
+      "footer_navigation_label": "Footer-Navigation",
+      "address_placeholder": "Geben Sie Ihre Adresse ein",
+      "contact_us_label": "Kontaktieren Sie uns",
+      "cookie_policy": "Cookie-Richtlinie",
+      "sitemap": "Sitemap",
+      "follow_us": "Folgen Sie uns",
+      "multilingual_site": "Mehrsprachige Website",
+      "last_updated": "Zuletzt aktualisiert",
+      "address_label": "Adresse",
+      "newsletter_signup": "Newsletter",
+    "newsletter_description": "Abonnieren Sie, um Updates zu erhalten", 
+    "subscribe": "Abonnieren"
+    },
+    "News": {
+      "eu_updates": "EU- und nationale Updates",
+      "news_title": "Nachrichtentitel",
+      "view_all_news": "Alle Nachrichten anzeigen"
+    },
+    "Index": {
+      "hero_title": "Wir fördern finanzielle und ethische Bildung",
+      "hero_subtitle": "in ganz Europa, in fünf Sprachen, für eine bewusstere und integrativere Bürgerschaft",
+      "discover_articles": "Entdecken Sie unsere Artikel",
+      "join_courses": "Nehmen Sie an kostenlosen Kursen teil"
+    },
+    "Blog": {
+      "title": "Blog",
+      "view_all": "Alle anzeigen",
+      "read_more": "Weiterlesen"
+    }
   }
-}

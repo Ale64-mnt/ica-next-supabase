@@ -1,6 +1,4 @@
-'use client';
-
-import { useTranslations } from 'next-intl';
+﻿import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 
 interface HomeContentProps {
@@ -8,59 +6,49 @@ interface HomeContentProps {
   initialPosts: any[];
 }
 
-export default function HomeContent({ locale, initialPosts }: HomeContentProps) {
-  const t = useTranslations('Blog');
+export default async function HomeContent({ locale, initialPosts }: HomeContentProps) {
+  const t = await getTranslations('Blog');
 
   return (
     <section className="mb-12">
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-2xl font-bold text-gray-900">{t('title')}</h2>
-        <Link 
-          href={`/${locale}/blog`} 
+        <Link
+          href={`/${locale}/blog`}
           className="text-blue-600 hover:text-blue-800 font-semibold"
         >
-          Vedi tutti →
+          {t('view_all')}
         </Link>
       </div>
 
-      {initialPosts && initialPosts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {initialPosts.map((post) => (
-            <div key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-lg transition-shadow">
-              {post.image_url && (
-                <img 
-                  src={post.image_url} 
-                  alt={post.image_alt || post.title}
-                  className="w-full h-48 object-cover"
-                />
-              )}
-              <div className="p-6">
-                <h3 className="font-bold text-lg mb-2 line-clamp-2">{post.title}</h3>
-                <p className="text-gray-600 text-sm mb-4">
-                  {new Date(post.created_at).toLocaleDateString(locale, {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  })}
-                </p>
-                <p className="text-gray-700 mb-4 line-clamp-3">
-                  {post.body_md?.substring(0, 150)}...
-                </p>
-                <Link 
-                  href={`/${locale}/blog/${post.id}`}
-                  className="text-blue-600 hover:text-blue-800 font-semibold text-sm"
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {initialPosts.map((post) => (
+          <article
+            key={post.id}
+            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+          >
+            <div className="p-6">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                {post.title}
+              </h3>
+              <p className="text-gray-600 mb-4 line-clamp-3">
+                {post.excerpt}
+              </p>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-500">
+                  {new Date(post.created_at).toLocaleDateString(locale)}
+                </span>
+                <Link
+                  href={`/${locale}/blog/${post.slug}`}
+                  className="text-blue-600 hover:text-blue-800 font-medium text-sm"
                 >
-                  {t('read_post')}
+                  {t('read_more')}
                 </Link>
               </div>
             </div>
-          ))}
-        </div>
-      ) : (
-        <div className="text-center py-12">
-          <p className="text-gray-500 text-lg">{t('no_posts')}</p>
-        </div>
-      )}
+          </article>
+        ))}
+      </div>
     </section>
   );
 }

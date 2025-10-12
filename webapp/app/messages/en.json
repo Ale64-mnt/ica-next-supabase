@@ -1,49 +1,55 @@
 {
-  "Index": {
-    "title": "Setup complete!"
-  },
-  "Blog": {
-    "skip_to_main_content": "Skip to Main Content",
-    "hero_image_for": "Hero Image for",
-    "published_on": "Published on",
-    "back_to_blog": "Back to Blog",
-    "title": "Blog",
-    "read_post": "Read Post"
-  },
-  "Footer": {
-    "copyright": "© 2025 Urban Space Memory. All rights reserved.",
-    "all_rights_reserved": "All Rights Reserved",
-    "links": "Links",
-    "privacy_policy": "Privacy Policy",
-    "terms_of_service": "Terms of Service",
-    "accessibility_statement": "Accessibility Statement",
-    "footer_navigation_label": "Footer Navigation",
-    "contact_us_label": "Contact Us"
-  },
-  "Navigation": {
-    "home": "Home",
-    "home_link": "Home Link",
-    "blog": "Blog",
-    "blog_link": "Blog",
-    "news": "News",
-    "articles": "Articles",
-    "about": "About",
-    "contact": "Contact",
-    "site_logo_alt": "Urban Space Memory Logo",
-    "site_title": "Urban Space Memory",
-    "main_navigation_label": "Main Navigation",
-    "menu_toggle": "Toggle Menu",
-    "mobile_navigation_label": "Mobile navigation"
-  },
-  "LocaleSwitcher": {
-    "select": "Select Language",
-    "select_language": "Select Language",
-    "it": "Italian",
-    "it_label": "Italian",
-    "en": "English",
-    "en_label": "English",
-    "de": "German",
-    "es": "Spanish",
-    "fr": "French"
+    "Common": {
+      "skip_to_content": "Skip to main content",
+      "change_language": "Change language"
+    },
+    "Navigation": {
+      "site_logo_alt": "ICA Logo",
+      "main_navigation_label": "Main navigation",
+      "open_menu": "Open menu",
+      "close_menu": "Close menu",
+      "home_link": "Home",
+      "articles": "Articles",
+      "news": "News",
+      "blog_link": "Blog",
+      "support": "Support",
+      "contact": "Contact"
+    },
+    "Footer": {
+      "copyright": "© {year} Urban Space Memory. All rights reserved.",
+      "all_rights_reserved": "All rights reserved",
+      "links": "Links",
+      "privacy_policy": "Privacy Policy",
+      "terms_of_service": "Terms of Service",
+      "accessibility_statement": "Accessibility Statement",
+      "footer_navigation_label": "Footer Navigation",
+      "address_placeholder": "Enter your address",
+      "contact_us_label": "Contact Us",
+      "cookie_policy": "Cookie Policy",
+      "sitemap": "Sitemap",
+      "follow_us": "Follow Us",
+      "multilingual_site": "Multilingual Site",
+      "last_updated": "Last Updated",
+      "address_label": "Address",
+      "newsletter_signup": "Newsletter", 
+    "newsletter_description": "Subscribe to receive updates",
+    "subscribe": "Subscribe"
+      
+    },
+    "News": {
+      "eu_updates": "EU and national updates",
+      "news_title": "News title",
+      "view_all_news": "View all news"
+    },
+    "Index": {
+      "hero_title": "We promote financial and ethical education",
+      "hero_subtitle": "across Europe, in five languages, for a more aware and inclusive citizenship",
+      "discover_articles": "Discover our articles",
+      "join_courses": "Join free courses"
+    },
+    "Blog": {
+      "title": "Blog",
+      "view_all": "View All",
+      "read_more": "Read More"
+    }
   }
-}

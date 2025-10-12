@@ -1,12 +1,12 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { LocaleSwitcher } from './LocaleSwitcher';
 
 type DesktopHeaderProps = { locale: string };
 
-export function DesktopHeader({ locale }: DesktopHeaderProps) {
-  const t = useTranslations('Navigation');
+export async function DesktopHeader({ locale }: DesktopHeaderProps) {
+  const t = await getTranslations('Navigation');
 
   const navLinks = [
     { href: '/', labelKey: 'home_link' },
@@ -56,7 +56,7 @@ export function DesktopHeader({ locale }: DesktopHeaderProps) {
 
           {/* MENU LINGUE - DESTRA con MOLTO margine */}
           <div className="flex items-center flex-shrink-0 mr-[60px]">
-            <LocaleSwitcher />
+            <LocaleSwitcher currentLocale={locale} currentPath={`/${locale}`}  />
           </div>
 
         </div>

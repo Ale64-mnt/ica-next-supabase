@@ -1,8 +1,10 @@
-import { useTranslations } from 'next-intl';
+
+import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 
-export default function HomePage() {
-  const t = useTranslations('Index');
+export default async function HomePage({ params }: { params: { locale: string } }) {
+  const t = await getTranslations('Index');
+  const newsT = await getTranslations('News');
   
   return (
     <div style={{ minHeight: '100vh', fontFamily: 'Arial, sans-serif' }}>
@@ -32,7 +34,7 @@ export default function HomePage() {
 
       <section style={{ padding: '2rem 1rem', maxWidth: '1000px', margin: '0 auto' }}>
         <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center' }}>
-          Aggiornamenti UE e nazionali
+          {newsT('eu_updates')}
         </h3>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
           {[1, 2, 3].map((item) => (
@@ -41,14 +43,14 @@ export default function HomePage() {
                 {item}8 apr. 2025
               </div>
               <div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
-                Titolo della notizia
+                {newsT('news_title')}
               </div>
             </div>
           ))}
         </div>
         <div style={{ textAlign: 'center' }}>
           <Link href="/news" style={{ color: '#0056b3', fontSize: '0.9rem', textDecoration: 'none' }}>
-            Vedi tutte le notizie
+            {newsT('view_all_news')}
           </Link>
         </div>
       </section>
@@ -56,3 +58,5 @@ export default function HomePage() {
     </div>
   );
 }
+
+

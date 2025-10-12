@@ -1,9 +1,8 @@
-'use client';
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+﻿import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 
-export default function Footer({ locale }: { locale: string }) {
-  const t = useTranslations('Footer');
+export default async function Footer({ locale }: { locale: string }) {
+  const t = await getTranslations('Footer');
 
   // Link Legali e Utili
   const legalLinks = [
@@ -16,113 +15,116 @@ export default function Footer({ locale }: { locale: string }) {
 
   // Link Social con icone (segnaposto)
   const socialLinks = [
-    { name: 'LinkedIn', href: '#', icon: '🔗' },
-    { name: 'X (Twitter)', href: '#', icon: '🐦' },
-    { name: 'YouTube', href: '#', icon: '📺' },
-    { name: 'Instagram', href: '#', icon: '📷' },
+    { name: 'LinkedIn', href: '#', icon: '' },
+    { name: 'X (Twitter)', href: '#', icon: '' },
+    { name: 'YouTube', href: '#', icon: '' },
+    { name: 'Facebook', href: '#', icon: '' },
   ];
 
   return (
-    <footer 
-      style={{ 
-        backgroundColor: '#f4f4f4', 
-        borderTop: '1px solid #eee', 
-        padding: '2rem',
-        marginTop: '3rem',
-        color: '#666',
-        fontSize: '0.9em',
-      }}
-    >
-      <div 
-        style={{ 
-          maxWidth: '1200px', 
-          margin: '0 auto',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          textAlign: 'center',
-          gap: '1.5rem',
-        }}
-      >
-        {/* Link Legali e Utili */}
-        <nav aria-label={t('footer_navigation_label')}>
-          <ul style={{ 
-            listStyle: 'none', 
-            padding: 0, 
-            margin: 0, 
-            display: 'flex', 
-            gap: '1rem', 
-            marginBottom: '1rem', 
-            flexWrap: 'wrap', 
-            justifyContent: 'center' 
-          }}>
-            {legalLinks.map((item) => (
-              <li key={item.href}>
-                <Link 
-                  href={`/${locale}${item.href}`} 
-                  style={{ textDecoration: 'none', color: '#666' }}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Social Links */}
-        <div>
-          <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>{t('follow_us')}</p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-            {socialLinks.map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                aria-label={social.name}
-                style={{ 
-                  fontSize: '1.5rem',
-                  textDecoration: 'none',
-                  color: '#666',
-                  transition: 'color 0.2s'
-                }}
-                onMouseOver={(e) => e.currentTarget.style.color = '#0070f3'}
-                onMouseOut={(e) => e.currentTarget.style.color = '#666'}
-              >
-                {social.icon}
-              </a>
-            ))}
+    <footer style={{ backgroundColor: '#f4f4f4', borderTop: '1px solid #eee', padding: '2rem', marginTop: '3rem', color: '#666', fontSize: '0.9em' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        
+        {/* Sezione Link Utili e Social */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginBottom: '2rem' }}>
+          
+          {/* Link Utili */}
+          <div>
+            <h4 style={{ fontWeight: 'bold', marginBottom: '1rem', color: '#333' }}>{t('links')}</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+              {legalLinks.map((link, index) => (
+                <li key={index} style={{ marginBottom: '0.5rem' }}>
+                  <Link 
+                    href={`/${locale}${link.href}`}
+                    style={{ color: '#666', textDecoration: 'none' }}
+                    className="hover:text-blue-600 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
+
+          {/* Social Links */}
+          <div>
+            <h4 style={{ fontWeight: 'bold', marginBottom: '1rem', color: '#333' }}>{t('follow_us')}</h4>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              {socialLinks.map((social, index) => (
+                <a
+                  key={index}
+                  href={social.href}
+                  style={{
+                    display: 'inline-block',
+                    width: '40px',
+                    height: '40px',
+                    backgroundColor: '#0056b3',
+                    color: 'white',
+                    borderRadius: '50%',
+                    textAlign: 'center',
+                    lineHeight: '40px',
+                    textDecoration: 'none',
+                    fontSize: '1.2rem'
+                  }}
+                  className="hover:bg-blue-700 transition-colors"
+                  aria-label={social.name}
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Newsletter Signup */}
+<div>
+  <h4 style={{ fontWeight: 'bold', marginBottom: '1rem', color: '#333' }}>
+    {t('newsletter_signup')} {/* 🔥 AGGIUNGI QUESTA TRADUZIONE */}
+  </h4>
+  <p style={{ marginBottom: '1rem', lineHeight: '1.5' }}>
+    {t('newsletter_description')} {/* 🔥 AGGIUNGI QUESTA TRADUZIONE */}
+  </p>
+  <div style={{ display: 'flex', gap: '0.5rem' }}>
+    <input
+      type="email"
+      placeholder={t('address_placeholder')}
+      style={{
+        padding: '0.5rem',
+        border: '1px solid #ddd',
+        borderRadius: '4px',
+        flex: 1,
+        fontSize: '0.9rem'
+      }}
+    />
+    <button
+      style={{
+        padding: '0.5rem 1rem',
+        backgroundColor: '#0056b3',
+        color: 'white',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+        fontSize: '0.9rem'
+      }}
+      className="hover:bg-blue-700 transition-colors"
+    >
+      {t('subscribe')} {/* 🔥 AGGIUNGI QUESTA TRADUZIONE */}
+    </button>
+  </div>
+</div>
+</div>
+        {/* Copyright e Informazioni */}
+        <div style={{ borderTop: '1px solid #ddd', paddingTop: '1.5rem', textAlign: 'center' }}>
+          <p style={{ margin: '0.5rem 0', fontSize: '0.8rem' }}>
+            {t('copyright', { year: new Date().getFullYear() })}
+          </p>
+          <p style={{ margin: '0.5rem 0', fontSize: '0.8rem' }}>
+            {t('last_updated')}: {new Date().toLocaleDateString(locale, { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
+          <p style={{ margin: '0.5rem 0', fontSize: '0.8rem', fontWeight: 'bold' }}>
+            {t('all_rights_reserved')}
+          </p>
         </div>
 
-        {/* Informazioni Multilingue */}
-        <div style={{ 
-          padding: '0.5rem 1rem', 
-          backgroundColor: '#e9ecef', 
-          borderRadius: '4px',
-          fontSize: '0.8em'
-        }}>
-          <p style={{ margin: 0 }}>
-            🌐 {t('multilingual_site')}
-          </p>
-        </div>
-
-        {/* Sezione Copyright, Contatti e Data Aggiornamento */}
-        <div style={{ lineHeight: 1.6 }}>
-          <p>
-            &copy; {new Date().getFullYear()} EduEthica. {t('all_rights_reserved')}.
-          </p>
-          <p style={{ fontSize: '0.8em', margin: '0.5rem 0' }}>
-            📅 {t('last_updated')}: {new Date().toLocaleDateString(locale)}
-          </p>
-          <p>
-            📧 {t('contact_us_label')}:{' '}
-            <a href="mailto:info@eduethica.com" style={{ color: '#0070f3' }}>
-              info@eduethica.com
-            </a>
-            <br />
-            📍 {t('address_label')}:{' '}
-            <span style={{ fontStyle: 'italic' }}>{t('address_placeholder')}</span>
-          </p>
-        </div>
       </div>
     </footer>
   );
