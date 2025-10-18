@@ -1,4 +1,4 @@
-// app/components/navigation/LocaleSwitcher.tsx - SERVER-SIDE VERSION
+﻿// app/components/navigation/LocaleSwitcher.tsx - SERVER-SIDE VERSION
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { ChevronDown } from 'lucide-react';
@@ -12,11 +12,11 @@ export async function LocaleSwitcher({ currentLocale, currentPath }: LocaleSwitc
   const t = await getTranslations('Common');
 
   const languages = [
-    { code: 'it', name: 'Italiano', flag: '🇮🇹' },
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' }
+    { code: 'it', name: 'Italiano', abbr: 'IT' },
+    { code: 'en', name: 'English', abbr: 'EN' },
+    { code: 'de', name: 'Deutsch', abbr: 'DE' },
+    { code: 'es', name: 'Español', abbr: 'ES' },
+    { code: 'fr', name: 'Français', abbr: 'FR' }
   ];
 
   const currentLanguage = languages.find(lang => lang.code === currentLocale);
@@ -24,11 +24,10 @@ export async function LocaleSwitcher({ currentLocale, currentPath }: LocaleSwitc
   return (
     <div className="relative group">
       <button 
-        className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 border border-gray-300 rounded-md hover:border-gray-400 transition-colors"
+        className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 border border-gray-300 rounded-md hover:border-gray-400 transition-colors"
         aria-label={t('change_language')}
       >
-        <span>{currentLanguage?.flag}</span>
-        <span className="hidden sm:block">{currentLanguage?.name}</span>
+        <span>{currentLanguage?.name}</span>
         <ChevronDown className="w-4 h-4" />
       </button>
       
@@ -37,12 +36,12 @@ export async function LocaleSwitcher({ currentLocale, currentPath }: LocaleSwitc
           <Link
             key={language.code}
             href={currentPath.replace(`/${currentLocale}`, `/${language.code}`)}
-            className={`flex items-center gap-3 px-4 py-2 text-sm hover:bg-gray-50 transition-colors ${
+            className={`flex items-center justify-between px-4 py-3 text-sm hover:bg-gray-50 transition-colors ${
               currentLocale === language.code ? 'bg-blue-50 text-blue-700' : 'text-gray-700'
             }`}
           >
-            <span>{language.flag}</span>
-            <span>{language.name}</span>
+            <span className="font-medium">{language.name}</span>
+            <span className="text-xs text-gray-500 font-mono">{language.abbr}</span>
           </Link>
         ))}
       </div>
