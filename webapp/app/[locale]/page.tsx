@@ -1,15 +1,18 @@
-
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
+import { getLatestNews } from '@/app/lib/supabase/news-queries';
 
 export default async function HomePage({ params }: { params: { locale: string } }) {
   const t = await getTranslations('Index');
   const newsT = await getTranslations('News');
   
+  // 🆕 Recupera le news reali dal database
+  const latestNews = await getLatestNews(params.locale, 3);
+
   return (
     <div style={{ minHeight: '100vh', fontFamily: 'Arial, sans-serif' }}>
       
-      {/* Hero Section */}
+      {/* Hero Section - invariata */}
       <section style={{ padding: '3rem 1rem', textAlign: 'center', backgroundColor: '#f8f9fa' }}>
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
           <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#333', marginBottom: '1rem' }}>
@@ -29,25 +32,50 @@ export default async function HomePage({ params }: { params: { locale: string } 
         </div>
       </section>
 
-      {/* Resto della homepage invariato */}
       <hr style={{ border: 'none', borderTop: '1px solid #ddd', margin: '0' }} />
 
+      {/* 🆕 Sezione News Aggiornata con dati reali */}
       <section style={{ padding: '2rem 1rem', maxWidth: '1000px', margin: '0 auto' }}>
         <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center' }}>
           {newsT('eu_updates')}
         </h3>
+        
+        {/* News reali dal database */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
-          {[1, 2, 3].map((item) => (
-            <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.5rem 0' }}>
-              <div style={{ minWidth: '80px', fontSize: '0.8rem', color: '#666' }}>
-                {item}8 apr. 2025
+          {latestNews.length > 0 ? (
+            latestNews.map((news) => (
+              <Link 
+                key={news.id} 
+                href={`/${params.locale}/news/${news.slug}`}
+                style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.5rem 0', textDecoration: 'none', color: 'inherit' }}
+              >
+                <div style={{ minWidth: '80px', fontSize: '0.8rem', color: '#666' }}>
+                  {new Date(news.published_at).toLocaleDateString(params.locale, {
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric'
+                  })}
+                </div>
+                <div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
+                  {news.title}
+                </div>
+              </Link>
+            ))
+          ) : (
+            // Fallback se non ci sono news
+            [1, 2, 3].map((item) => (
+              <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.5rem 0' }}>
+                <div style={{ minWidth: '80px', fontSize: '0.8rem', color: '#666' }}>
+                  {item}8 apr. 2025
+                </div>
+                <div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
+                  {newsT('news_title')}
+                </div>
               </div>
-              <div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
-                {newsT('news_title')}
-              </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
+        
         <div style={{ textAlign: 'center' }}>
           <Link href="/news" style={{ color: '#0056b3', fontSize: '0.9rem', textDecoration: 'none' }}>
             {newsT('view_all_news')}
@@ -58,5 +86,3 @@ export default async function HomePage({ params }: { params: { locale: string } 
     </div>
   );
 }
-
-
