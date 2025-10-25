@@ -525,3 +525,48 @@ File verificati (nessuna modifica):
 - Docker environment - Tutti i servizi Supabase locali
 
 ⏱ 3h
+
+### 📌 2025-10-24 | RF-19 | Integrazione News System e Alert Management
+
+- **Setup struttura Supabase in App Router** - Spostamento client Supabase in `app/lib/supabase/`
+- **Implementazione news queries** - Sistema di query per tabella alert con TypeScript
+- **Sviluppo componente NewsCard** - Componente React per display news in homepage
+- **Integrazione homepage con dati reali** - Sostituzione dati statici con alert dal database
+- **Risoluzione configurazione environment variables** - Fix caricamento variabili d'ambiente in server components
+- **Cleanup struttura duplicata** - Rimozione file obsoleti da `lib/supabase/`
+
+**Risultati:**
+- Homepage news integration: **OPERATIVA**
+- Alert system: **FUNZIONANTE** con dati reali
+- Environment configuration: **RISOLTA**
+- Code structure: **OTTIMIZZATA** per App Router
+
+**File/modifiche principali:**
+- `app/lib/supabase/` - Nuova struttura client Supabase
+- `app/lib/supabase/news-queries.ts` - Query sistema news
+- `app/components/NewsCard.tsx` - Componente card news
+- `app/[locale]/page.tsx` - Homepage aggiornata con dati reali
+- Rimozione `lib/supabase/` - Cleanup duplicati
+
+⏱ 3h
+###  2025-10-24 | RF-20 | Multilingual News System Completion
+
+- **Complete translation system implementation** - Updated all locale files (it, de, en, es, fr) with news keys
+- **News pages development** - Created dynamic routing for news list and detail pages
+- **Multilingual content support** - Full i18n integration for news system across all languages
+- **Code cleanup** - Removed obsolete Supabase files and optimized structure
+- **Hydration fixes** - Resolved React hydration errors in homepage
+
+**Risultati:**
+- News system: **COMPLETE** in 5 languages
+- Translation coverage: **100%** for news features
+- Routing: **FUNCTIONAL** for all locales
+- User experience: **OPTIMIZED** with proper i18n
+
+**File/modifiche principali:**
+- `app/[locale]/news/` - Complete news pages structure
+- `app/messages/*.json` - Updated translations for all languages
+- Removal of obsolete `lib/supabase/` files
+- Homepage hydration fixes
+
+ 1h

@@ -1,54 +1,62 @@
 {
-    "Common": {
-      "skip_to_content": "Aller au contenu principal",
-      "change_language": "Changer de langue" 
-    },
-    "Navigation": {
-      "site_logo_alt": "Logo ICA",
-      "main_navigation_label": "Navigation principale",
-      "open_menu": "Ouvrir le menu",
-      "close_menu": "Fermer le menu",
-      "home_link": "Accueil",
-      "articles": "Articles",
-      "news": "Actualités",
-      "blog_link": "Blog",
-      "support": "Support",
-      "contact": "Contact"
-    },
-    "Footer": {
-      "copyright": "© {year} Urban Space Memory. Tous droits réservés.",
-      "all_rights_reserved": "Tous droits réservés",
-      "links": "Liens",
-      "privacy_policy": "Politique de confidentialité",
-      "terms_of_service": "Conditions d'utilisation",
-      "accessibility_statement": "Déclaration d'accessibilité",
-      "footer_navigation_label": "Navigation du pied de page",
-      "address_placeholder": "Entrez votre adresse",
-      "contact_us_label": "Contactez-nous",
-      "cookie_policy": "Politique des Cookies",
-      "sitemap": "Plan du site",
-      "follow_us": "Suivez-nous",
-      "multilingual_site": "Site Multilingue",
-      "last_updated": "Dernière mise à jour",
-      "address_label": "Adresse",
-      "newsletter_signup": "Newsletter",
+  "Common": {
+    "skip_to_content": "Aller au contenu principal",
+    "change_language": "Changer de langue"
+  },
+  "Navigation": {
+    "site_logo_alt": "Logo ICA",
+    "main_navigation_label": "Navigation principale",
+    "open_menu": "Ouvrir le menu",
+    "close_menu": "Fermer le menu",
+    "home_link": "Accueil",
+    "articles": "Articles",
+    "news": "Actualités",
+    "blog_link": "Blog",
+    "support": "Support",
+    "contact": "Contact"
+  },
+  "Footer": {
+    "copyright": "© {year} Urban Space Memory. Tous droits réservés.",
+    "all_rights_reserved": "Tous droits réservés",
+    "links": "Liens",
+    "privacy_policy": "Politique de confidentialité",
+    "terms_of_service": "Conditions d'utilisation",
+    "accessibility_statement": "Déclaration d'accessibilité",
+    "footer_navigation_label": "Navigation du pied de page",
+    "address_placeholder": "Entrez votre adresse",
+    "contact_us_label": "Contactez-nous",
+    "cookie_policy": "Politique des Cookies",
+    "sitemap": "Plan du site",
+    "follow_us": "Suivez-nous",
+    "multilingual_site": "Site Multilingue",
+    "last_updated": "Dernière mise à jour",
+    "address_label": "Adresse",
+    "newsletter_signup": "Newsletter",
     "newsletter_description": "Abonnez-vous pour recevoir des mises à jour",
     "subscribe": "S'abonner"
-    },
-    "News": {
-      "eu_updates": "Mises à jour UE et nationales",
-      "news_title": "Titre de l'actualité",
-      "view_all_news": "Voir toutes les actualités"
-    },
-    "Index": {
-      "hero_title": "Nous promouvons l'éducation financière et éthique",
-      "hero_subtitle": "à travers l'Europe, en cinq langues, pour une citoyenneté plus consciente et inclusive",
-      "discover_articles": "Découvrez nos articles",
-      "join_courses": "Rejoignez des cours gratuits"
-    },
-    "Blog": {
-      "title": "Blog",
-      "view_all": "Voir tout",
-      "read_more": "Lire la suite"
-    }
+  },
+  "News": {
+    "eu_updates": "Mises à jour UE et nationales",
+    "news_title": "Titre de l'actualité",
+    "view_all_news": "Voir toutes les actualités",
+    "all_news": "Toutes les actualités",
+    "news_description": "Dernières actualités et mises à jour",
+    "read_more": "Lire la suite",
+    "no_news": "Aucune actualité disponible",
+    "home": "Accueil",
+    "news": "Actualités",
+    "back_to_news": "Retour aux actualités",
+    "published_on": "Publié le"
+  },
+  "Index": {
+    "hero_title": "Nous promouvons l'éducation financière et éthique",
+    "hero_subtitle": "à travers l'Europe, en cinq langues, pour une citoyenneté plus consciente et inclusive",
+    "discover_articles": "Découvrez nos articles",
+    "join_courses": "Rejoignez des cours gratuits"
+  },
+  "Blog": {
+    "title": "Blog",
+    "view_all": "Voir tout",
+    "read_more": "Lire la suite"
   }
+}

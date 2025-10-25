@@ -6,7 +6,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
   const t = await getTranslations('Index');
   const newsT = await getTranslations('News');
   
-  // 🆕 Recupera le news reali dal database
+  // Recupera le news ma formatta le date SOLO in modo semplice
   const latestNews = await getLatestNews(params.locale, 3);
 
   return (
@@ -34,35 +34,33 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
       <hr style={{ border: 'none', borderTop: '1px solid #ddd', margin: '0' }} />
 
-      {/* 🆕 Sezione News Aggiornata con dati reali */}
+      {/* Sezione News - IBRIDA: dati reali ma formattazione semplice */}
       <section style={{ padding: '2rem 1rem', maxWidth: '1000px', margin: '0 auto' }}>
         <h3 style={{ fontSize: '1.2rem', fontWeight: 'bold', marginBottom: '1.5rem', textAlign: 'center' }}>
           {newsT('eu_updates')}
         </h3>
         
-        {/* News reali dal database */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1.5rem' }}>
-          {latestNews.length > 0 ? (
-            latestNews.map((news) => (
-              <Link 
-                key={news.id} 
-                href={`/${params.locale}/news/${news.slug}`}
-                style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.5rem 0', textDecoration: 'none', color: 'inherit' }}
-              >
-                <div style={{ minWidth: '80px', fontSize: '0.8rem', color: '#666' }}>
-                  {new Date(news.published_at).toLocaleDateString(params.locale, {
-                    day: 'numeric',
-                    month: 'short',
-                    year: 'numeric'
-                  })}
+          {latestNews && latestNews.length > 0 ? (
+            latestNews.map((news) => {
+              // Formattazione data SEMPLICE e CONSISTENTE server/client
+              const date = news.published_at 
+                ? new Date(news.published_at).toLocaleDateString('it-IT') 
+                : '';
+              
+              return (
+                <div key={news.id} style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.5rem 0' }}>
+                  <div style={{ minWidth: '80px', fontSize: '0.8rem', color: '#666' }}>
+                    {date}
+                  </div>
+                  <div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
+                    {news.title}
+                  </div>
                 </div>
-                <div style={{ fontSize: '0.9rem', fontWeight: 'bold' }}>
-                  {news.title}
-                </div>
-              </Link>
-            ))
+              );
+            })
           ) : (
-            // Fallback se non ci sono news
+            // Fallback STATICO (come nella versione vecchia)
             [1, 2, 3].map((item) => (
               <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '0.5rem 0' }}>
                 <div style={{ minWidth: '80px', fontSize: '0.8rem', color: '#666' }}>

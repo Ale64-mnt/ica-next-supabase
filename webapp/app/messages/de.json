@@ -1,10 +1,10 @@
-{
+﻿{
     "Common": {
       "skip_to_content": "Zum Hauptinhalt springen",
-      "change_language": "Sprache ändern" 
+      "change_language": "Sprache ändern"
     },
     "Navigation": {
-      "site_logo_alt": "Logo ICA",
+      "site_logo_alt": "ICA-Logo",
       "main_navigation_label": "Hauptnavigation",
       "open_menu": "Menü öffnen",
       "close_menu": "Menü schließen",
@@ -32,13 +32,18 @@
       "last_updated": "Zuletzt aktualisiert",
       "address_label": "Adresse",
       "newsletter_signup": "Newsletter",
-    "newsletter_description": "Abonnieren Sie, um Updates zu erhalten", 
-    "subscribe": "Abonnieren"
+      "newsletter_description": "Abonnieren Sie, um Updates zu erhalten",
+      "subscribe": "Abonnieren"
     },
     "News": {
-      "eu_updates": "EU- und nationale Updates",
-      "news_title": "Nachrichtentitel",
-      "view_all_news": "Alle Nachrichten anzeigen"
+      "news": "Nachrichten",
+      "back_to_news": "Zurück zu den Nachrichten",
+      "all_news": "Alle Nachrichten",
+      "home": "Startseite",
+      "news_description": "Aktuelle Nachrichten und Updates",
+      "read_more": "Weiterlesen",
+      "no_news": "Keine Nachrichten verfügbar",
+      "published_on": "Veröffentlicht am"
     },
     "Index": {
       "hero_title": "Wir fördern finanzielle und ethische Bildung",
@@ -52,3 +57,4 @@
       "read_more": "Weiterlesen"
     }
   }
+  
