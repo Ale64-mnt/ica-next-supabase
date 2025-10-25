@@ -1,61 +1,62 @@
 ﻿{
-    "Common": {
-      "skip_to_content": "Salta al contenuto principale",
-      "change_language": "Cambia lingua"
-    },
-    "Navigation": {
-      "site_logo_alt": "Logo ICA",
-      "main_navigation_label": "Navigazione principale",
-      "open_menu": "Apri menu",
-      "close_menu": "Chiudi menu",
-      "home_link": "Home",
-      "articles": "Articoli",
-      "news": "Notizie",
-      "blog_link": "Blog",
-      "support": "Supporto",
-      "contact": "Contatti"
-    },
-    "Footer": {
-      "copyright": "© {year} Tutti i diritti riservati.",
-      "all_rights_reserved": "Tutti i diritti riservati",
-      "links": "Link utili",
-      "privacy_policy": "Informativa sulla privacy",
-      "terms_of_service": "Termini di servizio",
-      "accessibility_statement": "Dichiarazione di accessibilità",
-      "footer_navigation_label": "Navigazione footer",
-      "address_placeholder": "Inserisci il tuo indirizzo",
-      "contact_us_label": "Contattaci",
-      "cookie_policy": "Cookie policy",
-      "sitemap": "Mappa del sito",
-      "follow_us": "Seguici",
-      "multilingual_site": "Sito multilingue",
-      "address_label": "Indirizzo",
-      "last_updated": "Ultimo aggiornamento",
-      "newsletter_signup": "Newsletter",
-      "newsletter_description": "Iscriviti per ricevere aggiornamenti",
-      "subscribe": "Iscriviti"
-    },
-    "News": {
-      "news": "Notizie",
-      "back_to_news": "Torna alle notizie",
-      "all_news": "Tutte le notizie",
-      "home": "Home",
-      "news_description": "Ultime notizie e aggiornamenti",
-      "read_more": "Leggi di più",
-      "no_news": "Nessuna notizia disponibile",
-      "published_on": "Pubblicato il"
-    },
-    "Index": {
-      "hero_title": "Promuoviamo l'educazione finanziaria ed etica",
-      "hero_subtitle": "in tutta Europa, in cinque lingue, per una cittadinanza più consapevole e inclusiva",
-      "discover_articles": "Scopri i nostri articoli",
-      "join_courses": "Partecipa ai corsi gratuiti"
-    },
-    "Blog": {
-      "title": "Il nostro blog",
-      "read_post": "Leggi il post completo →",
-      "published_on": "Pubblicato il",
-      "back_to_blog": "Torna al blog"
-    }
-  }
-  
+    "Common":  {
+                   "skip_to_content":  "Salta al contenuto principale",
+                   "change_language":  "Cambia lingua"
+               },
+    "Navigation":  {
+                       "site_logo_alt":  "Logo ICA",
+                       "main_navigation_label":  "Navigazione principale",
+                       "open_menu":  "Apri menu",
+                       "close_menu":  "Chiudi menu",
+                       "home_link":  "Home",
+                       "articles":  "Articoli",
+                       "news":  "Notizie",
+                       "blog_link":  "Blog",
+                       "support":  "Supporto",
+                       "contact":  "Contatti"
+                   },
+    "Footer":  {
+                   "copyright":  "© {year} Tutti i diritti riservati.",
+                   "all_rights_reserved":  "Tutti i diritti riservati",
+                   "links":  "Link utili",
+                   "privacy_policy":  "Informativa sulla privacy",
+                   "terms_of_service":  "Termini di servizio",
+                   "accessibility_statement":  "Dichiarazione di accessibilità",
+                   "footer_navigation_label":  "Navigazione footer",
+                   "address_placeholder":  "Inserisci il tuo indirizzo",
+                   "contact_us_label":  "Contattaci",
+                   "cookie_policy":  "Cookie policy",
+                   "sitemap":  "Mappa del sito",
+                   "follow_us":  "Seguici",
+                   "multilingual_site":  "Sito multilingue",
+                   "address_label":  "Indirizzo",
+                   "last_updated":  "Ultimo aggiornamento",
+                   "newsletter_signup":  "Newsletter",
+                   "newsletter_description":  "Iscriviti per ricevere aggiornamenti",
+                   "subscribe":  "Iscriviti"
+               },
+    "News":  {
+                 "news":  "Notizie",
+                 "eu_updates" : "Aggiornamenti UE e nazionali",
+                 "back_to_news":  "Torna alle notizie",
+                 "view_all_news" :"Vedi tutte le notizie",
+                 "all_news" :"Tutte le notizie",
+                 "home":  "Home",
+                 "news_description":  "Ultime notizie e aggiornamenti",
+                 "read_more":  "Leggi di più",
+                 "no_news":  "Nessuna notizia disponibile",
+                 "published_on":  "Pubblicato il"
+             },
+    "Index":  {
+                  "hero_title":  "Promuoviamo l'educazione finanziaria ed etica",
+                  "hero_subtitle":  "in tutta Europa, in cinque lingue, per una cittadinanza più consapevole e inclusiva",
+                  "discover_articles":  "Scopri i nostri articoli",
+                  "join_courses":  "Partecipa ai corsi gratuiti"
+              },
+    "Blog":  {
+                 "title":  "Il nostro blog",
+                 "read_post":  "Leggi il post completo →",
+                 "published_on":  "Pubblicato il",
+                 "back_to_blog":  "Torna al blog"
+             }
+}

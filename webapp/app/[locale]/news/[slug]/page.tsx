@@ -1,3 +1,4 @@
+
 // app/[locale]/news/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
@@ -103,15 +104,16 @@ export default async function NewsDetailPage({ params }: Props) {
   );
 }
 
-export async function generateStaticParams() {
-  const supabase = createClient();
-  const { data: news } = await supabase
-    .from('alert')
-    .select('slug, locale')
-    .eq('published', true);
-
-  return news?.map((item) => ({
-    slug: item.slug,
-    locale: item.locale,
-  })) || [];
-}
+// COMMENTA O RIMUOVI generateStaticParams - causa errori con cookies()
+// export async function generateStaticParams() {
+//   const supabase = createClient();
+//   const { data: news } = await supabase
+//     .from('alert')
+//     .select('slug, locale')
+//     .eq('published', true);
+//
+//   return news?.map((item) => ({
+//     slug: item.slug,
+//     locale: item.locale,
+//   })) || [];
+// }

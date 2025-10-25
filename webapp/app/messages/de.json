@@ -36,6 +36,9 @@
       "subscribe": "Abonnieren"
     },
     "News": {
+      "eu_updates": "EU- und nationale Updates",
+      "news_title": "Nachrichtentitel",
+      "view_all_news": "Alle Nachrichten anzeigen",
       "news": "Nachrichten",
       "back_to_news": "Zurück zu den Nachrichten",
       "all_news": "Alle Nachrichten",

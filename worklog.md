@@ -570,3 +570,19 @@ File verificati (nessuna modifica):
 - Homepage hydration fixes
 
  1h
+
+###  2025-10-24 | RF-21 | Translation Keys Fix
+
+- **Missing translation key resolution** - Fixed missing 'eu_updates' key in German and Italian locale files
+- **Translation consistency** - Ensured all News keys are present across all supported languages
+
+**Risultati:**
+- German translations: **COMPLETE** with all required News keys
+- Italian translations: **COMPLETE** with all required News keys
+- Translation errors: **ELIMINATED** across all locales
+
+**File modificati:**
+- `app/messages/de.json` - Added missing 'eu_updates' key
+- `app/messages/it.json` - Added missing 'eu_updates' key
+
+ 1h
