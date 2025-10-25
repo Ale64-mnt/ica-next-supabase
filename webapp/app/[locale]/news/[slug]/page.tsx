@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { createClient } from '@/app/lib/supabase/server';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface Props {
   params: {
@@ -35,55 +36,118 @@ export default async function NewsDetailPage({ params }: Props) {
   });
 
   return (
-    <div style={{ minHeight: '100vh', fontFamily: 'Arial, sans-serif', padding: '2rem 1rem' }}>
-      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-        
-        <nav style={{ marginBottom: '2rem' }}>
+    <div style={{ minHeight: '100vh', fontFamily: 'Arial, sans-serif' }}>
+      
+      {/* Breadcrumb */}
+      <div style={{ padding: '2rem 1rem 0 1rem', maxWidth: '800px', margin: '0 auto' }}>
+        <nav aria-label="Percorso di navigazione" style={{ marginBottom: '1rem' }}>
           <Link href={`/${locale}`} style={{ color: '#0056b3', textDecoration: 'none' }}>
             {t('home')}
           </Link>
-          <span style={{ margin: '0 0.5rem' }}>›</span>
+          <span style={{ margin: '0 0.5rem' }} aria-hidden="true">›</span>
           <Link href={`/${locale}/news`} style={{ color: '#0056b3', textDecoration: 'none' }}>
             {t('news')}
           </Link>
-          <span style={{ margin: '0 0.5rem' }}>›</span>
+          <span style={{ margin: '0 0.5rem' }} aria-hidden="true">›</span>
           <span style={{ color: '#666' }}>{news.title}</span>
         </nav>
+      </div>
 
+      {/* IMMAGINE PRINCIPALE - SENZA DIDASCALIA */}
+      {news.image_url && (
+        <div style={{ 
+          width: '100%', 
+          backgroundColor: '#f8f9fa', 
+          padding: '2rem 0',
+          marginBottom: '0'
+        }}>
+          <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 1rem' }}>
+            <div style={{ textAlign: 'center' }}>
+              <div style={{ 
+                position: 'relative', 
+                width: '100%', 
+                height: '400px'
+              }}>
+                <Image
+                  src={news.image_url}
+                  alt={news.image_alt || news.title}
+                  fill
+                  style={{ 
+                    objectFit: 'contain'
+                  }}
+                  sizes="(max-width: 768px) 100vw, 800px"
+                  priority
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CONTENUTO PRINCIPALE */}
+      <div style={{ padding: '0 1rem 2rem 1rem', maxWidth: '800px', margin: '0 auto' }}>
         <article>
-          <header style={{ marginBottom: '2rem' }}>
-            <time style={{ color: '#666', fontSize: '0.9rem', display: 'block', marginBottom: '0.5rem' }}>
+          
+          {/* Header articolo */}
+          <header style={{ marginBottom: '2rem', paddingTop: '2rem' }}>
+            <time 
+              style={{ color: '#666', fontSize: '0.9rem', display: 'block', marginBottom: '0.5rem' }}
+              dateTime={news.published_at}
+            >
               {t('published_on')} {formattedDate}
             </time>
-            <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#333', marginBottom: '1rem' }}>
+            <h1 style={{ 
+              fontSize: '2rem', 
+              fontWeight: 'bold', 
+              color: '#1a1a1a', 
+              marginBottom: '1rem',
+              lineHeight: '1.3'
+            }}>
               {news.title}
             </h1>
             {news.excerpt && (
-              <p style={{ fontSize: '1.2rem', color: '#666', lineHeight: '1.6' }}>
+              <p style={{ 
+                fontSize: '1.2rem', 
+                color: '#4a5568', 
+                lineHeight: '1.6',
+                marginBottom: '1.5rem'
+              }}>
                 {news.excerpt}
               </p>
             )}
           </header>
 
-          {news.image_url && (
-            <div style={{ marginBottom: '2rem' }}>
-              <img 
-                src={news.image_url} 
-                alt={news.image_alt || news.title}
-                style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-              />
-            </div>
-          )}
-
-          <div style={{ lineHeight: '1.8', color: '#333' }}>
+          {/* Contenuto testo */}
+          <div 
+            style={{ 
+              lineHeight: '1.7',
+              color: '#2d3748',
+              fontSize: '1.125rem'
+            }}
+          >
             {news.body_md ? (
-              <div dangerouslySetInnerHTML={{ __html: news.body_md }} />
+              <div 
+                dangerouslySetInnerHTML={{ 
+                  __html: news.body_md
+                    .replace(/<h1/g, '<h2')
+                    .replace(/<\/h1>/g, '</h2>')
+                    .replace(/<h2/g, '<h3')
+                    .replace(/<\/h2>/g, '</h3>')
+                }} 
+              />
             ) : (
-              <p>Contenuto non disponibile.</p>
+              <p style={{ color: '#666', fontStyle: 'italic' }}>
+                Contenuto non disponibile.
+              </p>
             )}
           </div>
 
-          <footer style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid #eee' }}>
+          {/* Footer con link di ritorno */}
+          <footer style={{ 
+            marginTop: '3rem', 
+            paddingTop: '2rem', 
+            borderTop: '1px solid #e2e8f0' 
+          }}>
             <Link 
               href={`/${locale}/news`}
               style={{ 
@@ -91,29 +155,15 @@ export default async function NewsDetailPage({ params }: Props) {
                 textDecoration: 'none',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.5rem'
+                gap: '0.5rem',
+                fontWeight: '500'
               }}
             >
               ← {t('back_to_news')}
             </Link>
           </footer>
         </article>
-
       </div>
     </div>
   );
 }
-
-// COMMENTA O RIMUOVI generateStaticParams - causa errori con cookies()
-// export async function generateStaticParams() {
-//   const supabase = createClient();
-//   const { data: news } = await supabase
-//     .from('alert')
-//     .select('slug, locale')
-//     .eq('published', true);
-//
-//   return news?.map((item) => ({
-//     slug: item.slug,
-//     locale: item.locale,
-//   })) || [];
-// }

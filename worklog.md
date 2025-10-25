@@ -569,7 +569,7 @@ File verificati (nessuna modifica):
 - Removal of obsolete `lib/supabase/` files
 - Homepage hydration fixes
 
- 1h
+⏱1h
 
 ###  2025-10-24 | RF-21 | Translation Keys Fix
 
@@ -585,4 +585,22 @@ File verificati (nessuna modifica):
 - `app/messages/de.json` - Added missing 'eu_updates' key
 - `app/messages/it.json` - Added missing 'eu_updates' key
 
- 1h
+⏱ 1h
+
+### 📌 2025-10-24 | RF-22 | News Page Image Layout Finalization
+
+- **Image caption removal** - Eliminated figcaption that was displaying alt text below news images
+- **Layout optimization** - Finalized image positioning at the top of articles
+- **Visual cleanup** - Removed unnecessary captions for cleaner presentation
+- **User experience improvement** - Cleaner article layout without redundant text
+
+**Risultati:**
+- Image display: **CLEAN** without distracting captions
+- Layout: **OPTIMIZED** with proper visual hierarchy
+- User experience: **IMPROVED** with focused content presentation
+- Accessibility: **MAINTAINED** with proper alt text (but no visible caption)
+
+**File modificati:**
+- `app/[locale]/news/[slug]/page.tsx` - Removed figcaption from image display
+
+⏱ 1h
