@@ -626,3 +626,25 @@ File verificati (nessuna modifica):
 - \`package.json\` & \`package-lock.json\` - Added react-markdown and remark-gfm dependencies
 
 ⏱ 2h
+
+### 📌 2025-10-24 | RF-23 | Homepage Layout Optimization & Image Responsiveness
+
+- **Layout redesign** - Implemented Edutopia-style card layout with fixed image dimensions (220x150px)
+- **Image optimization** - Fixed aspect ratio issues and improved thumbnail display
+- **Responsive improvements** - Enhanced mobile/desktop layout consistency
+- **Performance enhancements** - Updated news queries to include thumb_url for optimized loading
+- **Visual hierarchy** - Improved content structure with clear typography and spacing
+
+**Risultati:**
+- Image display: **OPTIMIZED** with consistent 220x150px dimensions
+- Layout: **PROFESSIONAL** Edutopia-inspired design
+- Performance: **IMPROVED** with proper thumbnail usage
+- User experience: **ENHANCED** with clear visual hierarchy
+- Responsiveness: **MAINTAINED** across all devices
+
+**File modificati:**
+- \`app/[locale]/page.tsx\` - Complete homepage layout redesign
+- \`app/[locale]/news/page.tsx\` - Responsive layout improvements
+- \`app/lib/supabase/news-queries.ts\` - Added thumb_url support
+
+⏱ 2h
