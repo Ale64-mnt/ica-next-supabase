@@ -1,10 +1,10 @@
-
 // app/[locale]/news/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { createClient } from '@/app/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
+import AlertMarkdown from '@/app/components/AlertMarkdown'; // <-- AGGIUNGI QUESTA RIGA
 
 interface Props {
   params: {
@@ -117,7 +117,7 @@ export default async function NewsDetailPage({ params }: Props) {
             )}
           </header>
 
-          {/* Contenuto testo */}
+          {/* Contenuto testo - MODIFICA SOLO QUESTA PARTE */}
           <div 
             style={{ 
               lineHeight: '1.7',
@@ -126,15 +126,7 @@ export default async function NewsDetailPage({ params }: Props) {
             }}
           >
             {news.body_md ? (
-              <div 
-                dangerouslySetInnerHTML={{ 
-                  __html: news.body_md
-                    .replace(/<h1/g, '<h2')
-                    .replace(/<\/h1>/g, '</h2>')
-                    .replace(/<h2/g, '<h3')
-                    .replace(/<\/h2>/g, '</h3>')
-                }} 
-              />
+              <AlertMarkdown content={news.body_md} /> // <-- SOSTITUISCI QUI
             ) : (
               <p style={{ color: '#666', fontStyle: 'italic' }}>
                 Contenuto non disponibile.

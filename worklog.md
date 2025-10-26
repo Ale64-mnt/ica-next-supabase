@@ -604,3 +604,25 @@ File verificati (nessuna modifica):
 - `app/[locale]/news/[slug]/page.tsx` - Removed figcaption from image display
 
 ⏱ 1h
+
+### 📌 2025-10-24 | RF-22 | News Page Image Layout Finalization & Markdown Integration
+
+- **Image caption removal** - Eliminated figcaption that was displaying alt text below news images
+- **Markdown integration** - Added AlertMarkdown component with react-markdown for proper content rendering
+- **Layout optimization** - Finalized image positioning at the top of articles with clean presentation
+- **Visual cleanup** - Removed unnecessary captions and added proper markdown formatting support
+- **User experience improvement** - Cleaner article layout with formatted content (lists, tables, code blocks)
+
+**Risultati:**
+- Image display: **CLEAN** without distracting captions
+- Markdown rendering: **FULLY FUNCTIONAL** with proper formatting
+- Layout: **OPTIMIZED** with proper visual hierarchy
+- User experience: **IMPROVED** with focused content presentation
+- Accessibility: **MAINTAINED** with proper alt text (but no visible caption)
+
+**File modificati:**
+- \`app/[locale]/news/[slug]/page.tsx\` - Removed figcaption and integrated AlertMarkdown component
+- \`app/components/AlertMarkdown.tsx\` - New component for markdown rendering
+- \`package.json\` & \`package-lock.json\` - Added react-markdown and remark-gfm dependencies
+
+⏱ 2h
