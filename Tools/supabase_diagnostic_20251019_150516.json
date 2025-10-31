@@ -1,0 +1,14 @@
+{
+  "timestamp": "2025-10-19T15:05:16.416512",
+  "checks": {
+    "environment_variables": {
+      "missing": [
+        "NEXT_PUBLIC_SUPABASE_URL",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY"
+      ],
+      "present": [],
+      "status": "FAIL"
+    }
+  },
+  "status": "FAILED"
+}
