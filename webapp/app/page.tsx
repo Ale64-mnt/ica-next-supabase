@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { createClient } from '@/app/lib/supabase/server';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default async function HomePage({
   params: { locale }
@@ -10,23 +11,24 @@ export default async function HomePage({
   const t = await getTranslations('Index');
   const supabase = createClient();
 
-  // Recupera i post del blog per la homepage
-  const { data: posts, error } = await supabase
-    .from('blog_posts')
+  // ✅ USA LA TABELLA ARTICLES ESISTENTE
+  const { data: articles, error } = await supabase
+    .from('articles')
     .select('*')
     .eq('locale', locale)
-    .order('created_at', { ascending: false })
+    .eq('published', true)
+    .order('published_at', { ascending: false })
     .limit(6);
 
   if (error) {
-    console.error('Error fetching blog posts:', error);
+    console.error('Error fetching articles:', error);
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Hero Section - Font aggiornati con classi standard */}
+      {/* Hero Section */}
       <section className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
           {t('title')}
         </h1>
         <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
@@ -34,43 +36,42 @@ export default async function HomePage({
         </p>
       </section>
 
-      {/* Sezione Blog Posts - Font aggiornati */}
+      {/* Sezione Articoli - CORRETTA */}
       <section className="mb-12">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-2xl font-bold text-gray-900">Ultimi Articoli</h2>
           <Link 
-            href={`/${locale}/blog`} 
+            href={`/${locale}/articles`}  // ✅ LINK CORRETTO
             className="text-blue-600 hover:text-blue-800 font-semibold"
           >
             Vedi tutti →
           </Link>
         </div>
 
-        {posts && posts.length > 0 ? (
+        {articles && articles.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {posts.map((post) => (
-              <div key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-lg transition-shadow">
-                {post.image_url && (
-                  <img 
-                    src={post.image_url} 
-                    alt={post.image_alt || post.title}
+            {articles.map((article) => (
+              <div key={article.id} className="bg-white rounded-lg shadow-md overflow-hidden border hover:shadow-lg transition-shadow">
+                {(article.cover_url || article.image_url) && (
+                  <Image 
+                    src={article.cover_url || article.image_url!}
+                    alt={article.title}
+                    width={400}
+                    height={200}
                     className="w-full h-48 object-cover"
+                    unoptimized={true}
                   />
                 )}
                 <div className="p-6">
-                  <h3 className="font-bold text-lg mb-2">{post.title}</h3>
+                  <h3 className="font-bold text-lg mb-2">{article.title}</h3>
                   <p className="text-gray-600 text-sm mb-4">
-                    {new Date(post.created_at).toLocaleDateString(locale, {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
+                    {new Date(article.published_at).toLocaleDateString(locale)}
                   </p>
                   <p className="text-gray-700 mb-4">
-                    {post.body_md?.substring(0, 150)}...
+                    {article.excerpt || article.body_md?.substring(0, 150)}...
                   </p>
                   <Link 
-                    href={`/${locale}/blog/${post.id}`}
+                    href={`/${locale}/articles/${article.slug}`}  // ✅ SLUG CORRETTO
                     className="text-blue-600 hover:text-blue-800 font-semibold text-sm"
                   >
                     Leggi di più →
@@ -81,12 +82,12 @@ export default async function HomePage({
           </div>
         ) : (
           <div className="text-center py-12">
-            <p className="text-gray-500 text-lg">{t('no_articles_found')}</p>
+            <p className="text-gray-500 text-lg">Nessun articolo trovato</p>
           </div>
         )}
       </section>
 
-      {/* Additional Sections - Font aggiornati */}
+      {/* Sezioni Additionali */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         <div className="bg-gray-50 rounded-lg p-6">
           <h3 className="font-bold text-xl mb-3">News</h3>
@@ -112,17 +113,4 @@ export default async function HomePage({
       </section>
     </div>
   );
-}
-
-export async function generateMetadata({
-  params: { locale }
-}: {
-  params: { locale: string };
-}) {
-  const t = await getTranslations('Index');
-
-  return {
-    title: t('title'),
-    description: t('subtitle_articles'),
-  };
 }
