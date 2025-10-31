@@ -58,5 +58,16 @@
     "title": "Blog",
     "view_all": "View All",
     "read_more": "Read More"
+  },
+
+ "Articles": {
+    "home": "Home",
+    "articles": "Articles",
+    "published_on": "Published on",
+    "back_to_articles": "Back to articles",
+    "latest_articles": "Latest Articles",
+    "view_all_articles": "View all articles",
+    "article_title": "Article Title",
+    "article_excerpt": "Article excerpt"
   }
 }

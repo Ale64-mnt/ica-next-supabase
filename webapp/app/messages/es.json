@@ -58,5 +58,15 @@
     "title": "Blog",
     "view_all": "Ver todo",
     "read_more": "Leer más"
+  },
+  "Articles": {
+    "home": "Inicio",
+    "articles": "Artículos",
+    "published_on": "Publicado el",
+    "back_to_articles": "Volver a los artículos",
+    "latest_articles": "Últimos Artículos",
+    "view_all_articles": "Ver todos los artículos",
+    "article_title": "Título del Artículo",
+    "article_excerpt": "Extracto del artículo"
   }
 }

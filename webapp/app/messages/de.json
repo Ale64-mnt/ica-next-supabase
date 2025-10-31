@@ -58,6 +58,15 @@
       "title": "Blog",
       "view_all": "Alle anzeigen",
       "read_more": "Weiterlesen"
+    },
+      "Articles": {
+      "home": "Startseite",
+      "articles": "Artikel",
+      "published_on": "Veröffentlicht am",
+      "back_to_articles": "Zurück zu den Artikeln",
+      "latest_articles": "Neueste Artikel",
+      "view_all_articles": "Alle Artikel anzeigen",
+      "article_title": "Artikel-Titel",
+      "article_excerpt": "Artikel-Auszug"
     }
   }
-  

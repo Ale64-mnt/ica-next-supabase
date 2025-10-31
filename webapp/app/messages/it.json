@@ -58,5 +58,17 @@
                  "read_post":  "Leggi il post completo →",
                  "published_on":  "Pubblicato il",
                  "back_to_blog":  "Torna al blog"
-             }
-}
+             },
+
+
+    "Articles": {
+      "home": "Home",
+      "articles": "Articoli",
+      "published_on": "Pubblicato il",
+      "back_to_articles": "Torna agli articoli",
+      "latest_articles": "Ultimi Articoli",
+      "view_all_articles": "Vedi tutti gli articoli",
+      "article_title": "Titolo Articolo",
+      "article_excerpt": "Estratto dell'articolo"
+    }
+  }
