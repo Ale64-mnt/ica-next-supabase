@@ -648,3 +648,29 @@ File verificati (nessuna modifica):
 - \`app/lib/supabase/news-queries.ts\` - Added thumb_url support
 
 ⏱ 2h
+
+### 📌 2025-10-29 | RF-24 |Implementazione Sistema Articoli + Scripts Tools
+
+### 🎯 Sistema Articoli Multilingua 
+- ✅ Creata struttura completa per gestione articoli
+- ✅ Implementato sistema multilingua con locale 'multilingual'
+- ✅ Pagina dettaglio articolo con layout responsive
+- ✅ Componente AlertMarkdown per formattazione contenuti
+- ✅ Sistema di priorità immagini (cover_url > image_url > thumb_url)
+- ✅ Aggiunte traduzioni per 5 lingue (IT, EN, ES, FR, DE)
+- ✅ Integrazione con Supabase e query ottimizzate
+
+### 🔧 Scripts Tools e Diagnostica 
+- ✅ Suite completa di script di testing e diagnostica
+- ✅ Utilities per verifica connessione database
+- ✅ Script per automazione inserimento alert
+- ✅ Tools per debug configurazione ambiente
+
+### 📊 File Principali
+- `webapp/app/[locale]/articles/[slug]/page.tsx` (NEW)
+- `webapp/app/components/AlertMarkdown.tsx` (NEW/UPDATED)
+- `webapp/app/lib/supabase/articles.ts` (NEW)
+- `webapp/messages/{it,en,es,fr,de}.json` (UPDATED)
+- `Tools/*.py` (NEW - multiple diagnostic scripts)
+
+⏱ 2h
