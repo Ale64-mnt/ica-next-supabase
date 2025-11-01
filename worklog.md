@@ -674,3 +674,56 @@ File verificati (nessuna modifica):
 - `Tools/*.py` (NEW - multiple diagnostic scripts)
 
 ⏱ 2h
+
+📌 2025-11-01 | RF-27 | Stabilizzazione i18n + Hero 2 Colonne + Diagnostica
+🎯 Home & i18n
+
+✅ Hero convertito a 2 colonne (testo sx, immagine dx) con grid responsiva
+
+✅ Fix layout: colonna immagine con w-full min-w-0 justify-self-end e card con w-full
+
+✅ Wrapper immagine con altezze responsive (h-56 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem]) ⇒ no collasso
+
+✅ Rimosso app/page.tsx (sorgente di ambiguità) → homepage servita da app/[locale]/page.tsx
+
+✅ app/[locale]/layout.tsx: setRequestLocale(locale) + NextIntlClientProvider con messaggi tipizzati
+
+✅ app/layout.tsx mantiene <html>/<body> (evitata duplicazione e hydration mismatch)
+
+📰 News Cards (UX)
+
+✅ Contenitore allargato a max-w-7xl
+
+✅ Layout card robusto: flex flex-col md:flex-row, thumb full-width su mobile e 300px da desktop, testo con flex-1 basis-0 min-w-0
+
+✅ Immagini esterne lasciate unoptimized finché non si configura images.remotePatterns in next.config.mjs
+
+🔧 Diagnostica & Tools
+
+✅ Script route-map per mappatura rotte (Tools/route-map.mjs)
+
+✅ Snippet DevTools per verifiche DOM/CSS (chain height/width, min-w-0, flex/gap)
+
+✅ update_homepage.js (utility locale di aggiornamento)
+
+📊 File Principali
+
+webapp/app/[locale]/page.tsx (UPDATED)
+
+webapp/app/[locale]/layout.tsx (UPDATED)
+
+webapp/app/layout.tsx (UPDATED)
+
+webapp/app/globals.css (UPDATED)
+
+webapp/app/page.tsx (REMOVED)
+
+webapp/public/images/homepage-hero.png (NEW)
+
+Tools/route-map.mjs (NEW)
+
+update_homepage.js (NEW)
+
+webapp/app/components/HeroDebug.tsx (NEW)
+
+⏱ 4h 30m 

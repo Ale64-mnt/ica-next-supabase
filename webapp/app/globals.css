@@ -1,29 +1,15 @@
-/* app/globals.css */
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@source "./**/*.{ts,tsx,js,jsx,mdx}" "../components/**/*.{ts,tsx,js,jsx,mdx}";
 
-/* 1. Direttive Tailwind CSS */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* 2. Regole di Responsività di Base */
-
-/* Assicura che padding e border siano inclusi nella larghezza e altezza (cruciale per layout responsive) */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  img, picture, svg, video { max-width: 100%; height: auto; }
+  body { margin: 0; }
 }
 
-/* Le immagini non superano la larghezza del contenitore su mobile */
-img,
-picture,
-svg,
-video {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Rimuove i margini di default che possono causare scroll indesiderato */
-body {
-  margin: 0;
+@layer utilities {
+  @media (min-width: 900px) {
+    #hero .hero-grid { grid-template-columns: 1.05fr 0.95fr; }
+  }
 }

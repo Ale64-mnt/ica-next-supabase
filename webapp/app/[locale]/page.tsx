@@ -1,313 +1,168 @@
-import { getTranslations } from 'next-intl/server';
+// webapp/app/[locale]/page.tsx
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getLatestNews } from '@/app/lib/supabase/news-queries';
 
-export default async function HomePage({ params }: { params: { locale: string } }) {
+type PageProps = { params: { locale: string } };
+
+export default async function Page({ params }: PageProps) {
+  const { locale } = params;
+  setRequestLocale(locale);
+
   const t = await getTranslations('Index');
   const newsT = await getTranslations('News');
-  
-  const latestNews = await getLatestNews(params.locale, 3);
+  const latestNews = await getLatestNews(locale, 3);
 
   return (
-    <div style={{ minHeight: '100vh', fontFamily: 'Arial, sans-serif' }}>
-      
-      {/* Hero Section - invariata */}
-      <section style={{ padding: '3rem 1rem', textAlign: 'center', backgroundColor: '#f8f9fa' }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-          <h1 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#333', marginBottom: '1rem' }}>
-            {t('hero_title')}
-          </h1>
-          <p style={{ fontSize: '1.1rem', color: '#666', lineHeight: '1.6', marginBottom: '2rem' }}>
-            {t('hero_subtitle')}
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-            <Link href="/articles" style={{ backgroundColor: '#0056b3', color: 'white', padding: '0.6rem 1.2rem', borderRadius: '4px', textDecoration: 'none', fontSize: '0.9rem' }}>
-              {t('discover_articles')}
-            </Link>
-            <Link href="/courses" style={{ backgroundColor: '#0056b3', color: 'white', padding: '0.6rem 1.2rem', borderRadius: '4px', textDecoration: 'none', fontSize: '0.9rem' }}>
-              {t('join_courses')}
-            </Link>
+    <div className="min-h-screen">
+      {/* HERO */}
+      <section id="hero" className="bg-slate-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
+          {/* items-stretch per evitare collassi, 2 colonne da md */}
+          <div className="grid items-stretch md:items-center gap-8 md:gap-12 lg:gap-16 md:grid-cols-2">
+            {/* Colonna testo: permetti espansione orizzontale */}
+            <div className="min-w-0">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
+                {t('hero_title')}
+              </h1>
+
+              <p className="mt-4 max-w-xl text-base sm:text-lg text-slate-600">
+                {t('hero_subtitle')}
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Link
+                  href={`/${locale}/articles`}
+                  className="inline-flex items-center justify-center rounded-md bg-orange-500 px-5 py-3 text-white font-semibold hover:bg-orange-600 active:bg-orange-700 transition"
+                >
+                  {t('discover_articles')}
+                </Link>
+
+                <Link
+                  href={`/${locale}/news`}
+                  className="inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-5 py-3 text-slate-700 font-semibold hover:bg-slate-50 transition"
+                >
+                  {t('join_courses')}
+                </Link>
+              </div>
+            </div>
+
+            {/* Colonna immagine: forza larghezza piena della colonna */}
+            <div className="md:ml-auto w-full min-w-0 justify-self-end">
+              {/* Card: assicurati che non restringa la larghezza */}
+              <div className="w-full rounded-2xl bg-[#eef3f8] p-4 sm:p-6 md:p-8 shadow-sm ring-1 ring-black/5">
+                {/* Wrapper immagine: altezza responsive > 0 */}
+                <div className="relative w-full max-w-[640px] h-56 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem]">
+                  <Image
+                    src="/images/homepage-hero.png"
+                    alt={t('hero_image_alt') || 'Educazione finanziaria e digitale etica e inclusiva'}
+                    fill
+                    className="object-contain"
+                    priority
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <hr style={{ border: 'none', borderTop: '1px solid #ddd', margin: '0' }} />
+      {/* NEWS */}
+      <section className="py-10 md:py-12">
+        <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+          <h3 className="text-center text-2xl font-bold text-slate-900 mb-8">
+            {newsT('eu_updates')}
+          </h3>
 
-      {/* Sezione News - LAYOUT PULITO EDUTOPIA-STYLE */}
-      <section style={{ padding: '2rem 1rem', maxWidth: '1000px', margin: '0 auto' }}>
-        <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold', marginBottom: '2rem', textAlign: 'center' }}>
-          {newsT('eu_updates')}
-        </h3>
-        
-        <div style={{ 
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '2rem',
-          marginBottom: '2rem'
-        }}>
-          {latestNews && latestNews.length > 0 ? (
-            latestNews.map((news) => {
-              const date = news.published_at 
-                ? new Date(news.published_at).toLocaleDateString(params.locale, {
-                    day: 'numeric',
-                    month: 'short',
-                    year: 'numeric'
-                  }) 
-                : '';
-              
-              return (
-                <article key={news.id} style={{ 
-                  backgroundColor: 'white',
-                  borderRadius: '8px',
-                  padding: '0',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-                }}>
-                  <Link 
-                    href={`/${params.locale}/news/${news.slug}`}
-                    style={{ 
-                      textDecoration: 'none',
-                      color: 'inherit',
-                      display: 'flex',
-                      gap: '1.5rem',
-                      alignItems: 'flex-start',
-                      padding: '0'
-                    }}
-                  >
-                    {/* IMMAGINE - DIMENSIONI FISSE EDUTOPIA-STYLE */}
-                    <div style={{ 
-                      position: 'relative', 
-                      width: '220px', 
-                      height: '150px',
-                      flexShrink: 0,
-                      overflow: 'hidden',
-                      borderRadius: '8px 0 0 8px'
-                    }}>
-                      {(news.thumb_url || news.image_url) ? (
-                        <Image
-                          src={news.thumb_url || news.image_url}
-                          alt={news.image_alt || news.title}
-                          fill
-                          style={{ 
-                            objectFit: 'cover'
-                          }}
-                          sizes="220px"
-                        />
-                      ) : (
-                        <div style={{
-                          width: '100%',
-                          height: '100%',
-                          backgroundColor: '#f3f4f6',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: '#9ca3af',
-                          fontSize: '0.8rem'
-                        }}>
-                          📷
+          <div className="flex flex-col gap-6 md:gap-8">
+            {latestNews?.length
+              ? latestNews.map((news: any) => {
+                  const date = news?.published_at
+                    ? new Date(news.published_at).toLocaleDateString(locale, {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric',
+                      })
+                    : '';
+
+                  const imgSrc: string | null = news?.thumb_url || news?.image_url || null;
+                  const imgAlt: string = news?.image_alt || news?.title || 'news image';
+
+                  return (
+                    <article
+                      key={news.id}
+                      className="bg-white rounded-xl shadow-sm ring-1 ring-black/5 overflow-hidden"
+                    >
+                      <Link
+                        href={`/${locale}/news/${news.slug}`}
+                        className="flex flex-col md:flex-row gap-6 min-w-0"
+                      >
+                        {/* Thumb: full-width su mobile, fissa da md */}
+                        <div className="relative w-full md:w-[260px] lg:w-[300px] h-48 md:h-[170px] shrink-0 bg-slate-100">
+                          {imgSrc ? (
+                            <Image
+                              src={imgSrc}
+                              alt={imgAlt}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 300px"
+                              className="object-cover"
+                              unoptimized
+                            />
+                          ) : (
+                            <div className="w-full h-full grid place-items-center text-slate-400 text-sm">
+                              📷
+                            </div>
+                          )}
                         </div>
-                      )}
-                    </div>
-                    
-                    {/* CONTENUTO TESTO */}
-                    <div style={{ 
-                      padding: '1.5rem 1.5rem 1.5rem 0',
-                      flex: 1,
-                      display: 'flex',
-                      flexDirection: 'column',
-                      minWidth: 0
-                    }}>
-                      {/* Data - come "eyebrow" di Edutopia */}
-                      {date && (
-                        <div style={{ 
-                          fontSize: '0.8rem', 
-                          color: '#666',
-                          fontWeight: '600',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.5px',
-                          marginBottom: '0.75rem'
-                        }}>
-                          {date}
+
+                        {/* Testo: lascia espandere correttamente */}
+                        <div className="flex-1 basis-0 min-w-0 pr-4 py-4 md:py-5">
+                          {date && (
+                            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">
+                              {date}
+                            </div>
+                          )}
+
+                          <h4 className="text-lg md:text-xl font-bold text-slate-900 mb-2">
+                            {news.title}
+                          </h4>
+
+                          {news?.excerpt && (
+                            <p className="text-sm md:text-base text-slate-600 mb-3">
+                              {news.excerpt}
+                            </p>
+                          )}
+
+                          <div className="flex items-center justify-between mt-auto">
+                            {news?.locale && (
+                              <span className="inline-block rounded-full bg-slate-100 text-slate-600 text-xs px-3 py-1">
+                                {String(news.locale).toUpperCase()}
+                              </span>
+                            )}
+                            <span className="text-blue-700 font-medium">
+                              {newsT('read_more')} →
+                            </span>
+                          </div>
                         </div>
-                      )}
-                      
-                      {/* Titolo */}
-                      <h4 style={{ 
-                        fontSize: '1.3rem', 
-                        fontWeight: 'bold', 
-                        marginBottom: '0.75rem',
-                        lineHeight: '1.3',
-                        color: '#1a1a1a'
-                      }}>
-                        {news.title}
-                      </h4>
-                      
-                      {/* Estratto */}
-                      {news.excerpt && (
-                        <p style={{ 
-                          fontSize: '0.95rem', 
-                          color: '#666',
-                          lineHeight: '1.5',
-                          marginBottom: '1rem'
-                        }}>
-                          {news.excerpt}
-                        </p>
-                      )}
-                      
-                      {/* Badge lingua + eventuale autore */}
-                      <div style={{ 
-                        display: 'flex', 
-                        justifyContent: 'space-between', 
-                        alignItems: 'center',
-                        marginTop: 'auto'
-                      }}>
-                        {news.locale && (
-                          <span style={{ 
-                            display: 'inline-block',
-                            backgroundColor: '#f3f4f6',
-                            color: '#4b5563',
-                            fontSize: '0.7rem',
-                            padding: '0.25rem 0.75rem',
-                            borderRadius: '12px',
-                            fontWeight: '500'
-                          }}>
-                            {news.locale.toUpperCase()}
-                          </span>
-                        )}
-                        
-                        <span style={{ 
-                          color: '#0056b3', 
-                          fontSize: '0.9rem',
-                          fontWeight: '500'
-                        }}>
-                          {newsT('read_more')} →
-                        </span>
-                      </div>
-                    </div>
-                  </Link>
-                </article>
-              );
-            })
-          ) : (
-            // Fallback STATICO con stesso layout
-            [1, 2, 3].map((item) => (
-              <article 
-                key={item} 
-                style={{ 
-                  backgroundColor: 'white',
-                  borderRadius: '8px',
-                  padding: '0',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-                }}
-              >
-                <div style={{ 
-                  display: 'flex',
-                  gap: '1.5rem',
-                  alignItems: 'flex-start',
-                  padding: '0'
-                }}>
-                  <div style={{ 
-                    width: '220px', 
-                    height: '150px',
-                    backgroundColor: '#f3f4f6',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#9ca3af',
-                    flexShrink: 0,
-                    borderRadius: '8px 0 0 8px'
-                  }}>
-                    📷
-                  </div>
-                  
-                  <div style={{ 
-                    padding: '1.5rem 1.5rem 1.5rem 0',
-                    flex: 1,
-                    display: 'flex',
-                    flexDirection: 'column'
-                  }}>
-                    <div style={{ 
-                      fontSize: '0.8rem', 
-                      color: '#666',
-                      fontWeight: '600',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.5px',
-                      marginBottom: '0.75rem'
-                    }}>
-                      {item} Oct 2024
-                    </div>
-                    
-                    <h4 style={{ 
-                      fontSize: '1.3rem', 
-                      fontWeight: 'bold', 
-                      marginBottom: '0.75rem',
-                      lineHeight: '1.3',
-                      color: '#1a1a1a'
-                    }}>
-                      {newsT('news_title')}
-                    </h4>
-                    
-                    <p style={{ 
-                      fontSize: '0.95rem', 
-                      color: '#666',
-                      lineHeight: '1.5',
-                      marginBottom: '1rem'
-                    }}>
-                      {newsT('news_excerpt')}
-                    </p>
-                    
-                    <div style={{ 
-                      display: 'flex', 
-                      justifyContent: 'space-between', 
-                      alignItems: 'center',
-                      marginTop: 'auto'
-                    }}>
-                      <span style={{ 
-                        display: 'inline-block',
-                        backgroundColor: '#f3f4f6',
-                        color: '#4b5563',
-                        fontSize: '0.7rem',
-                        padding: '0.25rem 0.75rem',
-                        borderRadius: '12px',
-                        fontWeight: '500'
-                      }}>
-                        {params.locale.toUpperCase()}
-                      </span>
-                      
-                      <span style={{ 
-                        color: '#0056b3', 
-                        fontSize: '0.9rem',
-                        fontWeight: '500'
-                      }}>
-                        {newsT('read_more')} →
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            ))
-          )}
-        </div>
-        
-        <div style={{ textAlign: 'center' }}>
-          <Link 
-            href="/news" 
-            style={{ 
-              color: '#0056b3', 
-              fontSize: '1rem', 
-              textDecoration: 'none',
-              fontWeight: '500',
-              padding: '0.75rem 1.5rem',
-              border: '2px solid #0056b3',
-              borderRadius: '6px',
-              display: 'inline-block'
-            }}
-          >
-            {newsT('view_all_news')}
-          </Link>
+                      </Link>
+                    </article>
+                  );
+                })
+              : null}
+          </div>
+
+          <div className="text-center mt-8">
+            <Link
+              href={`/${locale}/news`}
+              className="inline-flex items-center justify-center rounded-md border-2 border-blue-700 px-5 py-3 text-blue-700 font-semibold hover:bg-blue-50 transition"
+            >
+              {newsT('view_all_news')}
+            </Link>
+          </div>
         </div>
       </section>
-
     </div>
   );
 }

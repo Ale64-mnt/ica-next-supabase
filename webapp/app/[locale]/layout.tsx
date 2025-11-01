@@ -1,8 +1,8 @@
 // app/[locale]/layout.tsx
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { notFound } from 'next/navigation';
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { NextIntlClientProvider, type AbstractIntlMessages } from 'next-intl';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { Header } from '@/components/navigation/Header';
 import Footer from '@/components/navigation/Footer';
@@ -12,39 +12,40 @@ type Props = {
   params: { locale: string };
 };
 
+// (opzionale) pre-build locali
+export function generateStaticParams() {
+  return [{ locale: 'it' }, { locale: 'en' }, { locale: 'fr' }, { locale: 'de' }, { locale: 'es' }];
+}
+
 export default async function LocaleLayout({ children, params: { locale } }: Props) {
-  // Carica i messaggi SUL SERVER per evitare mismatch
-  let messages: Record<string, any>;
+  // informa next-intl della locale (SSR-safe)
+  setRequestLocale(locale);
+
+  // carica messaggi tipizzati per NextIntlClientProvider
+  let messages: AbstractIntlMessages;
   try {
-    messages = await getMessages();
+    messages = (await getMessages()) as AbstractIntlMessages;
   } catch {
-    // Se la locale non è supportata, 404
     notFound();
   }
 
-  // Prendi la traduzione dello "skip link" sul server
-  const t = await getTranslations({ locale, namespace: 'Common' }); // usa il tuo namespace
+  // testo server-side per evitare mismatch di idratazione
+  const t = await getTranslations({ locale, namespace: 'Common' });
 
+  // ⚠️ niente <html>/<body> qui: sono nel root app/layout.tsx
   return (
-    <html lang={locale}>
-      <body>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          {/* Skip link tradotto server-side per evitare hydration mismatch */}
-          <a href="#main-content" className="skip-link" suppressHydrationWarning>
-  {t('skip_to_content')}
-</a>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <a href="#main-content" className="skip-link">
+        {t('skip_to_content')}
+      </a>
 
-          <Header locale={locale} />
+      <Header locale={locale} />
 
-          <main id="main-content" className="min-h-screen">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              {children}
-            </div>
-          </main>
+      <main id="main-content" className="min-h-screen">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">{children}</div>
+      </main>
 
-          <Footer locale={locale} />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+      <Footer locale={locale} />
+    </NextIntlClientProvider>
   );
 }

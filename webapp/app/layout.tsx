@@ -1,25 +1,26 @@
 // app/layout.tsx
-import { ReactNode } from 'react';
-import { Metadata } from 'next'; 
-import './globals.css'; // Importa gli stili globali qui
+import type { ReactNode } from 'react';
+import type { Metadata, Viewport } from 'next';
+import './globals.css';
 
-// Viewport export separato (Next.js 14)
-export const viewport = {
+// Viewport (Next.js 14)
+export const viewport: Viewport = {
   width: 'device-width',
-  initialScale: 1,
-}
-
-// Metadata senza viewport
-export const metadata: Metadata = {
-  title: 'ICA Next Supabase App',
-  description: 'Progetto Next.js con Supabase e i18n',
+  initialScale: 1
 };
 
-// Il RootLayout deve solo wrappare i Children (che saranno il Layout Locale)
+// Metadata (senza viewport dentro)
+export const metadata: Metadata = {
+  title: 'ICA Next Supabase App',
+  description: 'Progetto Next.js con Supabase e i18n'
+};
+
+// Root layout: unico punto con <html>/<body>
+// Nota: il lang qui è statico per evitare mismatch.
+// Se in futuro vuoi dinamico, spostalo nel layout locale oppure leggi la locale dal pathname.
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    // Il tag HTML è qui, ma la lingua viene gestita dal layout locale
-    <html lang="en">
+    <html lang="it" suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );
