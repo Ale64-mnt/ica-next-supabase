@@ -19,10 +19,9 @@ export default async function Page({ params }: PageProps) {
       {/* HERO */}
       <section id="hero" className="bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
-          {/* ✅ CORRETTO: flexbox responsive */}
           <div className="flex flex-col lg:flex-row items-stretch gap-8 md:gap-12 lg:gap-16 w-full">
             
-            {/* ✅ Colonna testo - con flex-1 */}
+            {/* Colonna testo */}
             <div className="flex-1 min-w-0">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
                 {t('hero_title')}
@@ -49,7 +48,7 @@ export default async function Page({ params }: PageProps) {
               </div>
             </div>
 
-            {/* ✅ Colonna immagine - con flex-1 */}
+            {/* Colonna immagine */}
             <div className="flex-1 min-w-0">
               <div className="w-full rounded-2xl bg-[#eef3f8] p-4 sm:p-6 md:p-8 shadow-sm ring-1 ring-black/5">
                 <div className="relative w-full max-w-[640px] h-56 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem]">
@@ -69,7 +68,7 @@ export default async function Page({ params }: PageProps) {
         </div>
       </section>
 
-      {/* NEWS - invariato */}
+      {/* NEWS */}
       <section className="py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
           <h3 className="text-center text-2xl font-bold text-slate-900 mb-8">
@@ -102,15 +101,23 @@ export default async function Page({ params }: PageProps) {
                       {/* Thumbnail */}
                       <div className="relative w-full md:w-[260px] lg:w-[300px] h-48 md:h-[170px] shrink-0 bg-slate-100 overflow-hidden">
                         {imgSrc ? (
-                          <Image
-                            src={imgSrc}
-                            alt={imgAlt}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 300px"
-                            className="object-cover"
-                          />
+                          <div className="w-full h-full relative">
+                            <Image
+                              src={imgSrc}
+                              alt={imgAlt}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 300px"
+                              className="object-cover"
+                              style={{
+                                width: '100%',
+                                height: '100%',
+                                objectFit: 'cover',
+                                objectPosition: 'center'
+                              }}
+                            />
+                          </div>
                         ) : (
-                          <div className="w-full h-full grid place-items-center text-slate-400 text-sm">
+                          <div className="w-full h-full flex items-center justify-center text-slate-400 text-sm bg-slate-100">
                             📷
                           </div>
                         )}
