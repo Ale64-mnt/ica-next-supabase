@@ -1,23 +1,11 @@
-// MOBILEHEADER.TSX - Versione completa
 import Link from 'next/link';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 
 type MobileHeaderProps = { locale: string };
 
-export async function MobileHeader({ locale }: DesktopHeaderProps) {
+export async function MobileHeader({ locale }: MobileHeaderProps) { // ✅ CORRETTO: MobileHeaderProps
   const t = await getTranslations('Navigation');
-
-  const navLinks = [
-    { href: '/', labelKey: 'home_link' },
-    { href: '/articles', labelKey: 'articles' },
-    { href: '/news', labelKey: 'news' },
-    { href: '/blog', labelKey: 'blog_link' },
-    { href: '/support', labelKey: 'support' },
-    { href: '/contact', labelKey: 'contact' },
-  ];
-
-  const buildHref = (path: string) => (path === '/' ? `/${locale}` : `/${locale}${path}`);
 
   return (
     <header 
@@ -54,9 +42,6 @@ export async function MobileHeader({ locale }: DesktopHeaderProps) {
           </button>
 
         </div>
-
-        {/* Menu mobile espanso (da implementare con stato) */}
-        {/* <div className="mt-2 hidden">Menu content</div> */}
       </div>
     </header>
   );

@@ -39,14 +39,11 @@ export default async function LocaleLayout({ children, params: { locale } }: Pro
         {t('skip_to_content')}
       </a>
 
-      {/* ✅ HEADER FIX: Aggiunto stile inline per larghezza garantita */}
-      <Header 
-        locale={locale} 
-        style={{ width: '100vw', maxWidth: '100%', left: 0, right: 0 }}
-      />
+      {/* ✅ CORRETTO: Senza style prop - il fix è già nei componenti Header */}
+      <Header locale={locale} />
 
       <main id="main-content" className="min-h-screen">
-        {/* ✅ CONTAINER FIX: Rimosso container che limitava la larghezza */}
+        {/* ✅ Container rimosso per larghezza completa */}
         {children}
       </main>
 
