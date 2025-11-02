@@ -100,7 +100,7 @@ export default async function Page({ params }: PageProps) {
                       className="flex flex-col md:flex-row gap-6 min-w-0 hover:bg-slate-50 transition"
                     >
                       {/* Thumbnail */}
-                      <div className="relative w-full md:w-[260px] lg:w-[300px] h-48 md:h-[170px] shrink-0 bg-slate-100">
+                      <div className="relative w-full md:w-[260px] lg:w-[300px] h-48 md:h-[170px] shrink-0 bg-slate-100 overflow-hidden">
                         {imgSrc ? (
                           <Image
                             src={imgSrc}
