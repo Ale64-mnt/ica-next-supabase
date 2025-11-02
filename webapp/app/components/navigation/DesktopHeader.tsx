@@ -20,8 +20,17 @@ export async function DesktopHeader({ locale }: DesktopHeaderProps) {
   const buildHref = (path: string) => (path === '/' ? `/${locale}` : `/${locale}${path}`);
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white border-b border-gray-200 py-2">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header 
+      className="sticky top-0 z-40 w-full bg-white border-b border-gray-200 py-2"
+      style={{ 
+        width: '100vw', 
+        maxWidth: '100%', 
+        left: 0, 
+        right: 0 
+      }}
+    >
+      {/* ✅ FIX: Container senza max-width limitante */}
+      <div style={{ maxWidth: 'none', width: '100%', padding: '0 1rem' }}>
         <div className="flex items-center justify-between">
 
           {/* LOGO - SINISTRA */}
@@ -38,9 +47,9 @@ export async function DesktopHeader({ locale }: DesktopHeaderProps) {
             </Link>
           </div>
 
-          {/* NAVIGAZIONE - CENTRO con MOLTO più spazio */}
+          {/* NAVIGAZIONE - CENTRO (nascosta su mobile) */}
           <nav
-            className="flex items-center gap-[40px] mx-[60px]"
+            className="hidden md:flex items-center gap-[40px] mx-[60px]"
             aria-label={t('main_navigation_label')}
           >
             {navLinks.map((link) => (
@@ -54,10 +63,17 @@ export async function DesktopHeader({ locale }: DesktopHeaderProps) {
             ))}
           </nav>
 
-          {/* MENU LINGUE - DESTRA con MOLTO margine */}
-          <div className="flex items-center flex-shrink-0 mr-[60px]">
+          {/* MENU LINGUE - DESTRA (nascosto su mobile) */}
+          <div className="hidden md:flex items-center flex-shrink-0 mr-[60px]">
             <LocaleSwitcher currentLocale={locale} currentPath={`/${locale}`}  />
           </div>
+
+          {/* ✅ HAMBURGER MENU per mobile (visibile solo su mobile) */}
+          <button className="md:hidden p-2">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
 
         </div>
       </div>

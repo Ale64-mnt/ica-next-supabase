@@ -19,10 +19,11 @@ export default async function Page({ params }: PageProps) {
       {/* HERO */}
       <section id="hero" className="bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
-          {/* items-stretch per evitare collassi, 2 colonne da md */}
-          <div className="grid items-stretch md:items-center gap-8 md:gap-12 lg:gap-16 md:grid-cols-2">
-            {/* Colonna testo: permetti espansione orizzontale */}
-            <div className="min-w-0">
+          {/* ✅ CORRETTO: flexbox responsive */}
+          <div className="flex flex-col lg:flex-row items-stretch gap-8 md:gap-12 lg:gap-16 w-full">
+            
+            {/* ✅ Colonna testo - con flex-1 */}
+            <div className="flex-1 min-w-0">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
                 {t('hero_title')}
               </h1>
@@ -48,11 +49,9 @@ export default async function Page({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Colonna immagine: forza larghezza piena della colonna */}
-            <div className="md:ml-auto w-full min-w-0 justify-self-end">
-              {/* Card: assicurati che non restringa la larghezza */}
+            {/* ✅ Colonna immagine - con flex-1 */}
+            <div className="flex-1 min-w-0">
               <div className="w-full rounded-2xl bg-[#eef3f8] p-4 sm:p-6 md:p-8 shadow-sm ring-1 ring-black/5">
-                {/* Wrapper immagine: altezza responsive > 0 */}
                 <div className="relative w-full max-w-[640px] h-56 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem]">
                   <Image
                     src="/images/homepage-hero.png"
@@ -65,11 +64,12 @@ export default async function Page({ params }: PageProps) {
                 </div>
               </div>
             </div>
+            
           </div>
         </div>
       </section>
 
-      {/* NEWS */}
+      {/* NEWS - invariato */}
       <section className="py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
           <h3 className="text-center text-2xl font-bold text-slate-900 mb-8">
@@ -77,80 +77,83 @@ export default async function Page({ params }: PageProps) {
           </h3>
 
           <div className="flex flex-col gap-6 md:gap-8">
-            {latestNews?.length
-              ? latestNews.map((news: any) => {
-                  const date = news?.published_at
-                    ? new Date(news.published_at).toLocaleDateString(locale, {
-                        day: 'numeric',
-                        month: 'short',
-                        year: 'numeric',
-                      })
-                    : '';
+            {latestNews?.length ? (
+              latestNews.map((news: any) => {
+                const date = news?.published_at
+                  ? new Date(news.published_at).toLocaleDateString(locale, {
+                      day: 'numeric',
+                      month: 'short',
+                      year: 'numeric',
+                    })
+                  : '';
 
-                  const imgSrc: string | null = news?.thumb_url || news?.image_url || null;
-                  const imgAlt: string = news?.image_alt || news?.title || 'news image';
+                const imgSrc: string | null = news?.thumb_url || news?.image_url || null;
+                const imgAlt: string = news?.image_alt || news?.title || 'news image';
 
-                  return (
-                    <article
-                      key={news.id}
-                      className="bg-white rounded-xl shadow-sm ring-1 ring-black/5 overflow-hidden"
+                return (
+                  <article
+                    key={news.id}
+                    className="bg-white rounded-xl shadow-sm ring-1 ring-black/5 overflow-hidden"
+                  >
+                    <Link
+                      href={`/${locale}/news/${news.slug}`}
+                      className="flex flex-col md:flex-row gap-6 min-w-0 hover:bg-slate-50 transition"
                     >
-                      <Link
-                        href={`/${locale}/news/${news.slug}`}
-                        className="flex flex-col md:flex-row gap-6 min-w-0"
-                      >
-                        {/* Thumb: full-width su mobile, fissa da md */}
-                        <div className="relative w-full md:w-[260px] lg:w-[300px] h-48 md:h-[170px] shrink-0 bg-slate-100">
-                          {imgSrc ? (
-                            <Image
-                              src={imgSrc}
-                              alt={imgAlt}
-                              fill
-                              sizes="(max-width: 768px) 100vw, 300px"
-                              className="object-cover"
-                              unoptimized
-                            />
-                          ) : (
-                            <div className="w-full h-full grid place-items-center text-slate-400 text-sm">
-                              📷
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Testo: lascia espandere correttamente */}
-                        <div className="flex-1 basis-0 min-w-0 pr-4 py-4 md:py-5">
-                          {date && (
-                            <div className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">
-                              {date}
-                            </div>
-                          )}
-
-                          <h4 className="text-lg md:text-xl font-bold text-slate-900 mb-2">
-                            {news.title}
-                          </h4>
-
-                          {news?.excerpt && (
-                            <p className="text-sm md:text-base text-slate-600 mb-3">
-                              {news.excerpt}
-                            </p>
-                          )}
-
-                          <div className="flex items-center justify-between mt-auto">
-                            {news?.locale && (
-                              <span className="inline-block rounded-full bg-slate-100 text-slate-600 text-xs px-3 py-1">
-                                {String(news.locale).toUpperCase()}
-                              </span>
-                            )}
-                            <span className="text-blue-700 font-medium">
-                              {newsT('read_more')} →
-                            </span>
+                      {/* Thumbnail */}
+                      <div className="relative w-full md:w-[260px] lg:w-[300px] h-48 md:h-[170px] shrink-0 bg-slate-100">
+                        {imgSrc ? (
+                          <Image
+                            src={imgSrc}
+                            alt={imgAlt}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 300px"
+                            className="object-cover"
+                          />
+                        ) : (
+                          <div className="w-full h-full grid place-items-center text-slate-400 text-sm">
+                            📷
                           </div>
+                        )}
+                      </div>
+
+                      {/* Contenuto testo */}
+                      <div className="flex-1 basis-0 min-w-0 p-4 md:p-5">
+                        {date && (
+                          <div className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">
+                            {date}
+                          </div>
+                        )}
+
+                        <h4 className="text-lg md:text-xl font-bold text-slate-900 mb-2 line-clamp-2">
+                          {news.title}
+                        </h4>
+
+                        {news?.excerpt && (
+                          <p className="text-sm md:text-base text-slate-600 mb-3 line-clamp-3">
+                            {news.excerpt}
+                          </p>
+                        )}
+
+                        <div className="flex items-center justify-between mt-auto">
+                          {news?.locale && (
+                            <span className="inline-block rounded-full bg-slate-100 text-slate-600 text-xs px-3 py-1">
+                              {String(news.locale).toUpperCase()}
+                            </span>
+                          )}
+                          <span className="text-blue-700 font-medium">
+                            {newsT('read_more')} →
+                          </span>
                         </div>
-                      </Link>
-                    </article>
-                  );
-                })
-              : null}
+                      </div>
+                    </Link>
+                  </article>
+                );
+              })
+            ) : (
+              <div className="text-center py-12 bg-slate-50 rounded-lg">
+                <p className="text-slate-500">{newsT('no_news') || 'Nessuna news disponibile'}</p>
+              </div>
+            )}
           </div>
 
           <div className="text-center mt-8">

@@ -1,6 +1,9 @@
 @import "tailwindcss";
+
 @plugin "@tailwindcss/typography";
-@source "./**/*.{ts,tsx,js,jsx,mdx}" "../components/**/*.{ts,tsx,js,jsx,mdx}";
+
+@source "../components";
+@source "./**/*.{js,ts,jsx,tsx,mdx}";
 
 @layer base {
   *, *::before, *::after { box-sizing: border-box; }
@@ -10,6 +13,98 @@
 
 @layer utilities {
   @media (min-width: 900px) {
-    #hero .hero-grid { grid-template-columns: 1.05fr 0.95fr; }
+    #hero .hero-grid { 
+      grid-template-columns: 1.05fr 0.95fr !important;
+    }
   }
+  
+  /* Fix per la responsività della grid */
+  .hero-responsive-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  @media (min-width: 768px) {
+    .hero-responsive-grid {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+}
+
+/* ==================== */
+/* FIX HEADER RESPONSIVE */
+/* ==================== */
+
+/* Fix larghezza header garantita */
+header.sticky.top-0.z-40.w-full.bg-white.border-b.border-gray-200.py-2 {
+  width: 100vw !important;
+  max-width: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  position: sticky !important;
+}
+
+/* Container interno header - larghezza completa */
+header > div:first-child {
+  max-width: none !important;
+  width: 100% !important;
+  padding: 0 1rem !important;
+}
+
+/* MOBILE: Nascondi nav e locale switcher, mostra hamburger */
+@media (max-width: 767px) {
+  /* Nascondi navigazione desktop */
+  header nav.flex.items-center.gap-\[40px\].mx-\[60px\] {
+    display: none !important;
+  }
+  
+  /* Nascondi selettore lingua desktop */
+  header .flex.items-center.flex-shrink-0.mr-\[60px\] {
+    display: none !important;
+  }
+  
+  /* Mostra hamburger menu */
+  header button.md\:hidden {
+    display: block !important;
+    visibility: visible !important;
+  }
+  
+  /* Logo più piccolo su mobile */
+  header .h-16 {
+    height: 3rem !important;
+  }
+}
+
+/* DESKTOP: Mostra nav e locale switcher, nascondi hamburger */
+@media (min-width: 768px) {
+  /* Mostra navigazione desktop */
+  header nav.flex.items-center.gap-\[40px\].mx-\[60px\] {
+    display: flex !important;
+  }
+  
+  /* Mostra selettore lingua desktop */
+  header .flex.items-center.flex-shrink-0.mr-\[60px\] {
+    display: flex !important;
+  }
+  
+  /* Nascondi hamburger menu */
+  header button.md\:hidden {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+/* ==================== */
+/* FIX LAYOUT GENERALE */
+/* ==================== */
+
+/* Assicura che il main non sia limitato */
+main#main-content {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* Fix per container che potrebbero limitare la larghezza */
+.container.mx-auto {
+  max-width: none !important;
+  width: 100% !important;
 }
