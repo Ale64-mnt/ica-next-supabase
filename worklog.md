@@ -777,3 +777,27 @@ Risultati:
 - Layout finalmente stabile e coerente
 
 ⏱ 3h 40m
+
+### 📌 2025-11-08 | RF-28 | Translation Keys & Mobile Fixes
+
+Modifiche Implementate:
+- **✅ Translation Keys**: Added missing `hero_image_alt` to all language files
+- **✅ Mobile LocaleSwitcher**: Fixed stuck dropdown with proper state management
+- **✅ Error Resolution**: Solved 'Could not resolve Index.hero_image_alt' error
+- **✅ Mobile UX**: Improved touch interactions for language selection
+
+File Modificati:
+- `app/messages/it.json` - Added hero_image_alt key
+- `app/messages/en.json` - Added hero_image_alt key  
+- `app/messages/es.json` - Added hero_image_alt key
+- `app/messages/de.json` - Added hero_image_alt key
+- `app/messages/fr.json` - Added hero_image_alt key
+- `app/components/navigation/LocaleSwitcher.client.tsx` - Fixed mobile dropdown
+
+Risultati:
+- All translation keys now complete across all languages
+- Mobile locale switcher works correctly on touch devices
+- No more missing translation warnings
+- Consistent user experience across all devices
+
+⏱ 30m
