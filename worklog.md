@@ -801,3 +801,22 @@ Risultati:
 - Consistent user experience across all devices
 
 ⏱ 30m
+
+### 📌 2025-11-08 | RF-27 | LocaleSwitcher UX Improvements
+
+Modifiche Implementate:
+- **✅ Visual Feedback**: Added check icon and blue highlighting for selected language
+- **✅ No Flash Fix**: Eliminated previous language flash during dropdown close
+- **✅ Smooth Transitions**: Improved animations and state management
+- **✅ Better UX**: Enhanced visual hierarchy and interaction feedback
+
+File Modificati:
+- `app/components/navigation/LocaleSwitcher.client.tsx` - Complete UX overhaul
+
+Risultati:
+- Immediate visual feedback when selecting languages
+- No more flashing of previous language selection
+- Smoother, more professional user experience
+- Clear indication of currently selected language
+
+⏱ 15m
