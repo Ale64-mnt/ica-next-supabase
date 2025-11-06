@@ -1,20 +1,32 @@
-﻿import Link from 'next/link';
+﻿// app/components/navigation/DesktopHeader.tsx
+'use client';
+
+import Link from 'next/link';
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
-import { LocaleSwitcher } from './LocaleSwitcher';
+import { LocaleSwitcher } from './LocaleSwitcher.client';
 
-type DesktopHeaderProps = { locale: string };
+type DesktopHeaderProps = { 
+  locale: string;
+  translations: {
+    site_logo_alt: string;
+    main_navigation_label: string;
+    home_link: string;
+    articles: string;
+    news: string;
+    blog_link: string;
+    support: string;
+    contact: string;
+  };
+};
 
-export async function DesktopHeader({ locale }: DesktopHeaderProps) {
-  const t = await getTranslations('Navigation');
-
+export function DesktopHeader({ locale, translations }: DesktopHeaderProps) {
   const navLinks = [
-    { href: '/', labelKey: 'home_link' },
-    { href: '/articles', labelKey: 'articles' },
-    { href: '/news', labelKey: 'news' },
-    { href: '/blog', labelKey: 'blog_link' },
-    { href: '/support', labelKey: 'support' },
-    { href: '/contact', labelKey: 'contact' },
+    { href: '/', label: translations.home_link },
+    { href: '/articles', label: translations.articles },
+    { href: '/news', label: translations.news },
+    { href: '/blog', label: translations.blog_link },
+    { href: '/support', label: translations.support },
+    { href: '/contact', label: translations.contact },
   ];
 
   const buildHref = (path: string) => (path === '/' ? `/${locale}` : `/${locale}${path}`);
@@ -29,7 +41,6 @@ export async function DesktopHeader({ locale }: DesktopHeaderProps) {
         right: 0 
       }}
     >
-      {/* ✅ FIX: Container senza max-width limitante */}
       <div style={{ maxWidth: 'none', width: '100%', padding: '0 1rem' }}>
         <div className="flex items-center justify-between">
 
@@ -38,42 +49,35 @@ export async function DesktopHeader({ locale }: DesktopHeaderProps) {
             <Link href={`/${locale}`}>
               <Image
                 src="/logo.png"
-                alt={t('site_logo_alt')}
+                alt={translations.site_logo_alt}
                 width={156}
-                height={78}
-                className="h-16 w-auto"
+                height={156}
+                className="h-40 w-auto"
                 priority
               />
             </Link>
           </div>
 
-          {/* NAVIGAZIONE - CENTRO (nascosta su mobile) */}
+          {/* NAVIGAZIONE - CENTRO */}
           <nav
             className="hidden md:flex items-center gap-[40px] mx-[60px]"
-            aria-label={t('main_navigation_label')}
+            aria-label={translations.main_navigation_label}
           >
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={buildHref(link.href)}
-                className="text-[15px] font-semibold text-gray-700 no-underline hover:text-gray-900 hover:underline underline-offset-4 transition-all duration-200 [color:inherit] [text-decoration-color:inherit]"
+                className="text-[15px] font-semibold text-gray-700 no-underline hover:text-gray-900 hover:underline underline-offset-4 transition-all duration-200"
               >
-                {t(link.labelKey)}
+                {link.label}
               </Link>
             ))}
           </nav>
 
-          {/* MENU LINGUE - DESTRA (nascosto su mobile) */}
+          {/* MENU LINGUE - DESTRA */}
           <div className="hidden md:flex items-center flex-shrink-0 mr-[60px]">
-            <LocaleSwitcher currentLocale={locale} currentPath={`/${locale}`}  />
+            <LocaleSwitcher />
           </div>
-
-          {/* ✅ HAMBURGER MENU per mobile (visibile solo su mobile) */}
-          <button className="md:hidden p-2">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
 
         </div>
       </div>

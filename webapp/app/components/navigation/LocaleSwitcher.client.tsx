@@ -1,15 +1,17 @@
-﻿// app/components/navigation/LocaleSwitcher.tsx - SERVER-SIDE VERSION
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { getTranslations } from 'next-intl/server';
+import { useParams, usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { ChevronDown } from 'lucide-react';
 
-type LocaleSwitcherProps = {
-  currentLocale: string;
-  currentPath: string;
-};
-
-export async function LocaleSwitcher({ currentLocale, currentPath }: LocaleSwitcherProps) {
-  const t = await getTranslations('Common');
+export function LocaleSwitcher() {
+  const params = useParams();
+  const pathname = usePathname();
+  const t = useTranslations('Common');
+  
+  const [isMounted, setIsMounted] = useState(false);
 
   const languages = [
     { code: 'it', name: 'Italiano', abbr: 'IT' },
@@ -19,7 +21,24 @@ export async function LocaleSwitcher({ currentLocale, currentPath }: LocaleSwitc
     { code: 'fr', name: 'Français', abbr: 'FR' }
   ];
 
+  // 🔒 Sync client-side after mount
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // 🎯 Use params only after hydration
+  const currentLocale = isMounted ? (params.locale as string) : 'it';
   const currentLanguage = languages.find(lang => lang.code === currentLocale);
+
+  // ⏳ Show placeholder during hydration
+  if (!isMounted) {
+    return (
+      <div className="flex items-center gap-2 px-4 py-2 text-sm border border-gray-300 rounded-md">
+        <div className="w-20 h-4 bg-gray-200 animate-pulse rounded"></div>
+        <ChevronDown className="w-4 h-4 text-gray-400" />
+      </div>
+    );
+  }
 
   return (
     <div className="relative group">
@@ -35,7 +54,7 @@ export async function LocaleSwitcher({ currentLocale, currentPath }: LocaleSwitc
         {languages.map((language) => (
           <Link
             key={language.code}
-            href={currentPath.replace(`/${currentLocale}`, `/${language.code}`)}
+            href={pathname.replace(`/${currentLocale}`, `/${language.code}`)}
             className={`flex items-center justify-between px-4 py-3 text-sm hover:bg-gray-50 transition-colors ${
               currentLocale === language.code ? 'bg-blue-50 text-blue-700' : 'text-gray-700'
             }`}
