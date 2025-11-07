@@ -11,6 +11,7 @@ type DesktopHeaderProps = {
     site_logo_alt: string;
     main_navigation_label: string;
     home_link: string;
+    about: string;
     articles: string;
     news: string;
     blog_link: string;
@@ -22,6 +23,7 @@ type DesktopHeaderProps = {
 export function DesktopHeader({ locale, translations }: DesktopHeaderProps) {
   const navLinks = [
     { href: '/', label: translations.home_link },
+    { href: '/about', label: translations.about },
     { href: '/articles', label: translations.articles },
     { href: '/news', label: translations.news },
     { href: '/blog', label: translations.blog_link },

@@ -13,6 +13,7 @@ export async function Header({ locale }: HeaderProps) {
     open_menu: t('open_menu'),
     close_menu: t('close_menu'),
     home_link: t('home_link'),
+    about: t('about'),
     articles: t('articles'),
     news: t('news'),
     blog_link: t('blog_link'),

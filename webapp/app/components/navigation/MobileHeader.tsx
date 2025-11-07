@@ -15,6 +15,7 @@ type MobileHeaderProps = {
     open_menu: string;
     close_menu: string;
     home_link: string;
+    about: string;
     articles: string;
     news: string;
     blog_link: string;
@@ -43,6 +44,7 @@ export function MobileHeader({ locale, translations }: MobileHeaderProps) {
 
   const navLinks = [
     { href: '/', label: translations.home_link },
+    { href: '/about', label: translations.about },
     { href: '/articles', label: translations.articles },
     { href: '/news', label: translations.news },
     { href: '/blog', label: translations.blog_link },
