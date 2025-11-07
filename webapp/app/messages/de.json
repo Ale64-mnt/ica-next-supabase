@@ -70,5 +70,42 @@
       "view_all_articles": "Alle Artikel anzeigen",
       "article_title": "Artikel-Titel",
       "article_excerpt": "Artikel-Auszug"
+    },
+  
+  
+    "About": {
+      "hero": {
+        "title": "Über Uns",
+        "subtitle": "Ihr Partner für ethische und inklusive digitale Finanzbildung"
+      },
+      "mission": {
+        "title": "Unsere Mission",
+        "description": "Wir glauben an eine für alle zugängliche Finanzbildung, die auf ethischen Grundsätzen, Transparenz und digitaler Innovation basiert.",
+        "values": {
+          "mission_title": "Zugänglichkeit",
+          "mission_description": "Wir machen Finanzen für alle verständlich, unabhängig vom Hintergrund.",
+          "passion_title": "Innovation",
+          "passion_description": "Wir nutzen die modernsten Technologien, um ansprechende Bildungserlebnisse zu schaffen.",
+          "trust_title": "Ethik",
+          "trust_description": "Absolute Priorität für Transparenz und die Interessen unserer Nutzer."
+        }
+      },
+      "team": {
+        "title": "Unser Team",
+        "subtitle": "Leidenschaft für Finanzbildung vereint uns",
+        "team_description": "Wir sind in erster Linie Brüder, vereint durch unsere Leidenschaft für Finanzbildung, und gemeinsam Profis, die sich der Revolutionierung des Lernens durch innovative und inklusive digitale Lösungen verschrieben haben.",
+        "founders": {
+          "Alessandro": {
+            "name": "Alessandro Mantovani",
+            "role": "Gründer & Finanzexperte",
+            "bio": "Leidenschaftlich für Finanzbildung mit dem Ziel, den Zugang zu Wirtschaftswissen zu demokratisieren."
+          },
+          "Egle": {
+            "name": "Egle Mantovani",
+            "role": "Mitgründerin & Digital Strategist",
+            "bio": "Spezialisiert auf digitale Innovation und die Schaffung ansprechender Benutzererlebnisse."
+          }
+        }
+      }
     }
   }

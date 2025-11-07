@@ -70,5 +70,42 @@
     "view_all_articles": "Ver todos los artículos",
     "article_title": "Título del Artículo",
     "article_excerpt": "Extracto del artículo"
+  },
+
+
+  "About": {
+    "hero": {
+      "title": "Quiénes Somos",
+      "subtitle": "Tu partner para la educación financiera digital ética e inclusiva"
+    },
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Creemos en una educación financiera accesible para todos, basada en principios éticos, transparencia e innovación digital.",
+      "values": {
+        "mission_title": "Accesibilidad",
+        "mission_description": "Hacemos las finanzas comprensibles para todos, independientemente de su origen.",
+        "passion_title": "Innovación",
+        "passion_description": "Utilizamos las tecnologías más avanzadas para crear experiencias educativas atractivas.",
+        "trust_title": "Ética",
+        "trust_description": "Prioridad absoluta a la transparencia y los intereses de nuestros usuarios."
+      }
+    },
+    "team": {
+      "title": "Nuestro Equipo",
+      "subtitle": "La pasión por la educación financiera nos une",
+      "team_description": "Somos ante todo hermanos, unidos por la pasión por la educación financiera, y juntos profesionales dedicados a revolucionar el aprendizaje a través de soluciones digitales innovadoras e inclusivas.",
+      "founders": {
+        "Alessandro": {
+          "name": "Alessandro Mantovani",
+          "role": "Fundador & Experto Financiero",
+          "bio": "Apasionado por la educación financiera con el objetivo de democratizar el acceso al conocimiento económico."
+        },
+        "Egle": {
+          "name": "Egle Mantovani",
+          "role": "Co-fundadora & Estratega Digital",
+          "bio": "Especializada en innovación digital y en la creación de experiencias de usuario atractivas."
+        }
+      }
+    }
   }
 }

@@ -70,5 +70,48 @@
     "view_all_articles": "Voir tous les articles",
     "article_title": "Titre de l'Article",
     "article_excerpt": "Extrait de l'article"
+  },
+
+
+  "About": {
+    "hero": {
+      "title": "Qui Sommes-Nous",
+      "subtitle": "Votre partenaire pour l'éducation financière numérique éthique et inclusive"
+    },
+    "mission": {
+      "title": "Notre Mission", 
+      "description": "Nous croyons en une éducation financière accessible à tous, basée sur des principes éthiques, la transparence et l'innovation numérique.",
+      "values": {
+        "mission_title": "Accessibilité",
+        "mission_description": "Nous rendons la finance compréhensible pour tous, quel que soit le background.",
+        "passion_title": "Innovation",
+        "passion_description": "Nous utilisons les technologies les plus avancées pour créer des expériences éducatives engageantes.",
+        "trust_title": "Éthique",
+        "trust_description": "Priorité absolue à la transparence et aux intérêts de nos utilisateurs."
+      }
+    },
+    "team": {
+      "title": "Notre Équipe",
+      "subtitle": "La passion pour l'éducation financière nous unit",
+      "team_description": {
+  "About": {
+    "team": {
+      "team_description": "Nous sommes avant tout des frères, unis par notre passion pour l'éducation financière, et ensemble des professionnels dédiés à révolutionner l'apprentissage grâce à des solutions numériques innovantes et inclusives."
+    }
+  }
+},
+      "founders": {
+        "Alessandro": {
+          "name": "Alessandro Mantovani",
+          "role": "Fondateur & Expert Financier",
+          "bio": "Passionné d'éducation financière avec pour objectif de démocratiser l'accès à la connaissance économique."
+        },
+        "Egle": {
+          "name": "Egle Mantovani", 
+          "role": "Co-fondatrice & Stratège Digitale",
+          "bio": "Spécialisée dans l'innovation numérique et la création d'expériences utilisateur engageantes."
+        }
+      }
+    }
   }
 }
