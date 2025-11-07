@@ -802,7 +802,7 @@ Risultati:
 
 ⏱ 30m
 
-### 📌 2025-11-08 | RF-27 | LocaleSwitcher UX Improvements
+### 📌 2025-11-08 | RF-29 | LocaleSwitcher UX Improvements
 
 Modifiche Implementate:
 - **✅ Visual Feedback**: Added check icon and blue highlighting for selected language
@@ -820,3 +820,22 @@ Risultati:
 - Clear indication of currently selected language
 
 ⏱ 15m
+
+### 📌 2025-11-08 | RF-30 | Mobile Language Switcher Enhancement
+
+Modifiche Implementate:
+- **✅ External Switcher**: Moved language switcher outside hamburger menu
+- **✅ Globe Icon**: Added world map icon for language selection
+- **✅ Compact Design**: Implemented responsive switcher with icon-only for small screens
+- **✅ Better Accessibility**: Improved language switching accessibility in mobile header
+
+File Modificati:
+- `app/components/navigation/MobileHeader.tsx` - Restructured header layout
+
+Risultati:
+- Language switcher now immediately accessible without opening menu
+- Cleaner mobile header with intuitive globe icon
+- Improved user experience for multilingual users
+- Consistent language switching across all screen sizes
+
+⏱ 20m
