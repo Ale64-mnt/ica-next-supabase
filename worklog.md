@@ -839,3 +839,22 @@ Risultati:
 - Consistent language switching across all screen sizes
 
 ⏱ 20m
+
+### 📌 2025-11-08 | RF-27 | Fix Language Switcher 404 Errors
+
+Modifiche Implementate:
+- **✅ Smart Redirects**: Implemented intelligent redirects for content pages
+- **✅ No More 404s**: Fixed 404 errors when switching languages on detail pages
+- **✅ Better UX**: Redirect to content lists instead of non-existent detail pages
+- **✅ Debug Console**: Added comprehensive logging for future troubleshooting
+
+File Modificati:
+- `app/components/navigation/LocaleSwitcher.client.tsx` - Enhanced redirect logic
+
+Risultati:
+- Language switcher now works flawlessly on all page types
+- Users are redirected to appropriate content lists when switching languages
+- No more 404 errors on news/blog/article detail pages
+- Clean and predictable navigation experience
+
+⏱ 15m

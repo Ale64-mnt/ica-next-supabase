@@ -2,7 +2,6 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { ChevronDown, Check } from 'lucide-react';
@@ -28,7 +27,6 @@ export function LocaleSwitcher() {
 
   useEffect(() => {
     setIsMounted(true);
-    // Imposta la lingua corrente appena il componente è montato
     setSelectedLocale(params.locale as string);
   }, [params.locale]);
 
@@ -48,18 +46,55 @@ export function LocaleSwitcher() {
 
   const currentLanguage = languages.find(lang => lang.code === selectedLocale);
 
+  // ✅ FUNZIONE CORRETTA per costruire l'URL
+  const buildLocalizedHref = (targetLocale: string) => {
+    // Se siamo sulla home page
+    if (pathname === `/${params.locale}` || pathname === `/${params.locale}/`) {
+      return `/${targetLocale}`;
+    }
+    
+    // Per altre pagine, sostituisci la lingua nel path
+    const pathWithoutLocale = pathname.replace(`/${params.locale}`, '');
+    return `/${targetLocale}${pathWithoutLocale}`;
+  };
+
   const toggleDropdown = () => setIsOpen(!isOpen);
   
   const handleLocaleChange = (languageCode: string) => {
-    // Aggiorna immediatamente lo stato locale
     setSelectedLocale(languageCode);
-    
-    // Chiudi il dropdown
     setIsOpen(false);
-    
-    // Naviga alla nuova lingua
-    const newPath = pathname.replace(`/${params.locale}`, `/${languageCode}`);
-    router.push(newPath);
+
+    // ✅ OPCIONE 3 IMPLEMENTATA:
+    // Identifica il tipo di pagina
+    const isNewsDetail = pathname.includes('/news/');
+    const isBlogDetail = pathname.includes('/blog/');
+    const isArticleDetail = pathname.includes('/articles/');
+
+    console.log('🔍 DEBUG LOCALE SWITCHER:');
+    console.log('📍 Pathname corrente:', pathname);
+    console.log('🎯 Nuovo locale:', languageCode);
+    console.log('📰 News detail:', isNewsDetail);
+    console.log('✍️ Blog detail:', isBlogDetail);
+    console.log('📄 Article detail:', isArticleDetail);
+
+    if (isNewsDetail) {
+      // Per dettaglio news → vai alla lista news
+      console.log('🔄 Reindirizzamento a:', `/${languageCode}/news`);
+      router.push(`/${languageCode}/news`);
+    } else if (isBlogDetail) {
+      // Per dettaglio blog → vai alla lista blog
+      console.log('🔄 Reindirizzamento a:', `/${languageCode}/blog`);
+      router.push(`/${languageCode}/blog`);
+    } else if (isArticleDetail) {
+      // Per dettaglio articoli → vai alla lista articoli
+      console.log('🔄 Reindirizzamento a:', `/${languageCode}/articles`);
+      router.push(`/${languageCode}/articles`);
+    } else {
+      // Per pagine statiche (about, contact, home, etc.)
+      const newPath = buildLocalizedHref(languageCode);
+      console.log('🔄 Reindirizzamento a:', newPath);
+      router.push(newPath);
+    }
   };
 
   if (!isMounted) {
