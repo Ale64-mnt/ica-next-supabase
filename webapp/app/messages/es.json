@@ -107,5 +107,19 @@
         }
       }
     }
+  },
+  "Cybercrime": {
+    "title": "Reporte de Cibercrimen UE",
+    "subtitle": "Contactos de autoridades policiales para cibercrimen en toda la Unión Europea",
+    "eu_countries": "Países de la Unión Europea",
+    "select_country": "Selecciona un país para contactos locales"
+  },
+  
+    "CybercrimeLink": {
+      "title": "🚨 ¿Eres víctima de un ciberdelito?",
+      "description": "Contacta inmediatamente con las autoridades policiales especializadas en cibercrimen de tu país",
+      "button": "Encuentra Autoridades de Cibercrimen en tu Región",
+      "subtext": "✅ Contactos oficiales de los 27 países de la UE"
+    
   }
 }

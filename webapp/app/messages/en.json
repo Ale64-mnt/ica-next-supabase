@@ -61,8 +61,7 @@
     "view_all": "View All",
     "read_more": "Read More"
   },
-
- "Articles": {
+  "Articles": {
     "home": "Home",
     "articles": "Articles",
     "published_on": "Published on",
@@ -72,7 +71,6 @@
     "article_title": "Article Title",
     "article_excerpt": "Article excerpt"
   },
-  
   "About": {
     "hero": {
       "title": "About Us",
@@ -86,7 +84,7 @@
         "mission_description": "We make finance understandable for everyone, regardless of background.",
         "passion_title": "Innovation",
         "passion_description": "We use the most advanced technologies to create engaging educational experiences.",
-        "trust_title": "Ethics", 
+        "trust_title": "Ethics",
         "trust_description": "Absolute priority to transparency and the interests of our users."
       }
     },
@@ -107,5 +105,17 @@
         }
       }
     }
+  },
+  "CybercrimeLink": {
+    "title": "🚨 Are you a victim of cybercrime?",
+    "description": "Immediately contact the specialized cybercrime police authorities in your country",
+    "button": "Find Cybercrime Authorities in Your Region",
+    "subtext": "✅ Official contacts for all 27 EU countries"
+  },
+  "Cybercrime": {
+    "title": "EU Cybercrime Report",
+    "subtitle": "Police authority contacts for cybercrime across the European Union",
+    "eu_countries": "European Union Countries",
+    "select_country": "Select a country for local contacts"
   }
 }

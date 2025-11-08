@@ -1,10 +1,11 @@
-// app/[locale]/news/[slug]/page.tsx
+// webapp/app/[locale]/news/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { createClient } from '@/app/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
-import AlertMarkdown from '@/app/components/AlertMarkdown'; // <-- AGGIUNGI QUESTA RIGA
+import AlertMarkdown from '@/app/components/AlertMarkdown';
+import { InternationalCybercrimeLink } from '../../cybercrime-report/components/InternationalCybercrimeLink'; // <-- USA QUELLO CHE HAI GIÀ
 
 interface Props {
   params: {
@@ -53,7 +54,7 @@ export default async function NewsDetailPage({ params }: Props) {
         </nav>
       </div>
 
-      {/* IMMAGINE PRINCIPALE - SENZA DIDASCALIA */}
+      {/* IMMAGINE PRINCIPALE */}
       {news.image_url && (
         <div style={{ 
           width: '100%', 
@@ -117,7 +118,7 @@ export default async function NewsDetailPage({ params }: Props) {
             )}
           </header>
 
-          {/* Contenuto testo - MODIFICA SOLO QUESTA PARTE */}
+          {/* Contenuto testo */}
           <div 
             style={{ 
               lineHeight: '1.7',
@@ -126,12 +127,17 @@ export default async function NewsDetailPage({ params }: Props) {
             }}
           >
             {news.body_md ? (
-              <AlertMarkdown content={news.body_md} /> // <-- SOSTITUISCI QUI
+              <AlertMarkdown content={news.body_md} />
             ) : (
               <p style={{ color: '#666', fontStyle: 'italic' }}>
                 Contenuto non disponibile.
               </p>
             )}
+          </div>
+
+          {/* === INSERISCI QUI IL LINK ALLA PAGINA CYBERCRIME === */}
+          <div style={{ margin: '3rem 0' }}>
+            <InternationalCybercrimeLink />
           </div>
 
           {/* Footer con link di ritorno */}

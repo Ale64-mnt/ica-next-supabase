@@ -72,4 +72,12 @@
     "main_navigation_label": "Navegación principal",
     "mobile_navigation_label": "Navegación móvil",
     "menu_toggle": "Alternar menú"
+  },
+  {
+  "Cybercrime": {
+    "title": "Reporte de Cibercrimen UE",
+    "subtitle": "Contactos de autoridades policiales para cibercrimen en toda la Unión Europea",
+    "eu_countries": "Países de la Unión Europea",
+    "select_country": "Selecciona un país para contactos locales"
   }
+}

@@ -11,7 +11,7 @@ export const viewport: Viewport = {
 
 // Metadata (senza viewport dentro)
 export const metadata: Metadata = {
-  title: 'ICA Next Supabase App',
+  title: 'EduEthica -We promote financial and ethical education',
   description: 'Progetto Next.js con Supabase e i18n'
 };
 
