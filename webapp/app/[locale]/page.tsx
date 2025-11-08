@@ -31,21 +31,7 @@ export default async function Page({ params }: PageProps) {
                 {t('hero_subtitle')}
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  href={`/${locale}/articles`}
-                  className="inline-flex items-center justify-center rounded-md bg-orange-500 px-5 py-3 text-white font-semibold hover:bg-orange-600 active:bg-orange-700 transition"
-                >
-                  {t('discover_articles')}
-                </Link>
-
-                <Link
-                  href={`/${locale}/news`}
-                  className="inline-flex items-center justify-center rounded-md border border-slate-300 bg-white px-5 py-3 text-slate-700 font-semibold hover:bg-slate-50 transition"
-                >
-                  {t('join_courses')}
-                </Link>
-              </div>
+              {/* BOTTONI RIMOSSI */}
             </div>
 
             {/* Colonna immagine */}
@@ -71,9 +57,9 @@ export default async function Page({ params }: PageProps) {
       {/* NEWS */}
       <section className="py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
-          <h3 className="text-center text-2xl font-bold text-slate-900 mb-8">
+          <h2 className="text-center text-2xl font-bold text-slate-900 mb-8">
             {newsT('eu_updates')}
-          </h3>
+          </h2>
 
           <div className="flex flex-col gap-6 md:gap-8">
             {latestNews?.length ? (
@@ -131,9 +117,9 @@ export default async function Page({ params }: PageProps) {
                           </div>
                         )}
 
-                        <h4 className="text-lg md:text-xl font-bold text-slate-900 mb-2 line-clamp-2">
+                        <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2 line-clamp-2">
                           {news.title}
-                        </h4>
+                        </h3>
 
                         {news?.excerpt && (
                           <p className="text-sm md:text-base text-slate-600 mb-3 line-clamp-3">

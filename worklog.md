@@ -995,3 +995,36 @@ Risultati:
 - SEO-friendly URL structure with slugs
 
 ⏱ 2h
+
+### 📌 2025-11-08 | RF-32 | WCAG Accessibility Optimization
+
+
+**Modifiche Implementate:**
+- ✅ **Contrast Optimization**: Fixed footer text colors from #666666 to #4B5563 for WCAG compliance
+- ✅ **Heading Hierarchy**: Corrected H3→H2 for main sections and H4→H3 for subsections
+- ✅ **Button Cleanup**: Removed unnecessary call-to-action buttons from hero section
+- ✅ **Accessibility Testing**: Performed comprehensive contrast and heading structure analysis
+
+**File Modificati:**
+- `app/[locale]/page.tsx` - Removed hero buttons, fixed heading hierarchy
+- `app/components/navigation/Footer.tsx` - Improved color contrast, fixed heading tags
+- `app/messages/*.json` - Verified translations for accessibility elements
+
+**Risultati Raggiunti:**
+- WCAG contrast compliance (4.5:1 ratio achieved)
+- Proper heading hierarchy (H1→H2→H3 sequence)
+- Reduced interactive elements for better focus management
+- Lighthouse accessibility score improvements
+
+**Testing Eseguito:**
+- Automated contrast analysis with custom scripts
+- Manual heading hierarchy verification
+- Keyboard navigation testing
+- Lighthouse accessibility audits
+
+**Prossimi Passi:**
+- Monitor Lighthouse scores post-optimization
+- Consider additional contrast improvements if needed
+- Document accessibility standards for future development
+
+⏱ 2h
