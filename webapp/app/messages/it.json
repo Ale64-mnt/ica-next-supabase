@@ -55,13 +55,8 @@
       "hero_image_alt": "Educazione finanziaria e digitale etica e inclusiva",
       "join_courses": "Partecipa ai corsi gratuiti"
   },
-  "Blog": {
-      "title": "Il nostro blog",
-      "read_post": "Leggi il post completo →",
-      "published_on": "Pubblicato il",
-      "back_to_blog": "Torna al blog"
-  },
-  "Articles": {
+  
+    "Articles": {
       "home": "Home",
       "articles": "Articoli",
       "published_on": "Pubblicato il",
@@ -118,5 +113,18 @@
       "subtitle": "Contatti delle autorità di polizia per cybercrime in tutta l'Unione Europea",
       "eu_countries": "Paesi dell'Unione Europea", 
       "select_country": "Seleziona un paese per i contatti locali"
-    }
+    },
+    
+        "Blog": {
+          "title": "Il Nostro Blog",
+          "subtitle": "Articoli e approfondimenti su educazione finanziaria e digitale",
+          "back_to_blog": "Torna al blog",
+          "read_more": "Leggi di più",
+          "no_posts": "Nessun articolo disponibile",
+          "all_posts": "Tutti gli articoli",
+          "featured": "In evidenza",
+          "categories": "Categorie",
+          "reading_time": "min di lettura"
+        }
+      
   }

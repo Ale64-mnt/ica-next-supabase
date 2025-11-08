@@ -57,9 +57,15 @@
       "hero_image_alt": "Ethische und inklusive finanzielle und digitale Bildung"
     },
     "Blog": {
-      "title": "Blog",
-      "view_all": "Alle anzeigen",
-      "read_more": "Weiterlesen"
+    "title": "Unser Blog",
+    "subtitle": "Artikel und Einblicke in finanzielle und digitale Bildung",
+    "back_to_blog": "Zurück zum Blog",
+    "read_more": "Weiterlesen",
+    "no_posts": "Keine Beiträge verfügbar",
+    "all_posts": "Alle Beiträge",
+    "featured": "Ausgewählt",
+    "categories": "Kategorien",
+    "reading_time": "Min. Lesezeit"
     },
       "Articles": {
       "home": "Startseite",

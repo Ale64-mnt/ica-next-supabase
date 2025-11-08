@@ -56,10 +56,19 @@
     "hero_image_alt": "Éducation financière et numérique éthique et inclusive",
     "join_courses": "Rejoignez des cours gratuits"
   },
-  "Blog": {
-    "title": "Blog",
-    "view_all": "Voir tout",
-    "read_more": "Lire la suite"
+  
+  
+    "Blog": {
+      "title": "Notre Blog",
+      "subtitle": "Articles et perspectives sur l'éducation financière et numérique",
+      "back_to_blog": "Retour au blog",
+      "read_more": "Lire la suite",
+      "no_posts": "Aucun article disponible",
+      "all_posts": "Tous les articles",
+      "featured": "À la une",
+      "categories": "Catégories",
+      "reading_time": "min de lecture"
+          
   },
   "Articles": {
     "home": "Accueil",

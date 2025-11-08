@@ -56,10 +56,19 @@
     "hero_image_alt": "Ethical and inclusive financial and digital education",
     "join_courses": "Join free courses"
   },
-  "Blog": {
-    "title": "Blog",
-    "view_all": "View All",
-    "read_more": "Read More"
+  
+    "Blog": {
+      "title": "Our Blog",
+      "subtitle": "Articles and insights about financial and digital education",
+      "back_to_blog": "Back to blog",
+      "read_more": "Read more",
+      "no_posts": "No posts available",
+      "all_posts": "All posts",
+      "featured": "Featured",
+      "categories": "Categories",
+      "reading_time": "min read"
+    
+
   },
   "Articles": {
     "home": "Home",

@@ -57,9 +57,15 @@
     "join_courses": "Participa en cursos gratuitos"
   },
   "Blog": {
-    "title": "Blog",
-    "view_all": "Ver todo",
-    "read_more": "Leer más"
+    "title": "Nuestro Blog",
+    "subtitle": "Artículos y perspectivas sobre educación financiera y digital",
+    "back_to_blog": "Volver al blog",
+    "read_more": "Leer más",
+    "no_posts": "No hay artículos disponibles",
+    "all_posts": "Todos los artículos",
+    "featured": "Destacados",
+    "categories": "Categorías",
+    "reading_time": "min de lectura"
   },
   "Articles": {
     "home": "Inicio",
