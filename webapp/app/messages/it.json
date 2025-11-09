@@ -125,6 +125,19 @@
           "featured": "In evidenza",
           "categories": "Categorie",
           "reading_time": "min di lettura"
-        }
+    },
+    
+        "BlogCategories": {
+          "financial-education-eu": "Educazione Finanziaria UE",
+          "cybersecurity-frauds": "Cybersecurity & Frodi",
+          "digital-ethics": "Etica Digitale", 
+          "eu-updates": "Aggiornamenti UE",
+          "company-news": "News Aziendali",
+          "practical-guides": "Guide Pratiche",
+          "multilingual-education": "Educazione Multilingue"
+    }
+      
+    
+           
       
   }

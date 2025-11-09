@@ -127,5 +127,16 @@
       "button": "Encuentra Autoridades de Cibercrimen en tu Región",
       "subtext": "✅ Contactos oficiales de los 27 países de la UE"
     
+  },
+  
+    "BlogCategories": {
+      "financial-education-eu": "Educación Financiera UE",
+      "cybersecurity-frauds": "Ciberseguridad y Fraudes",
+      "digital-ethics": "Ética Digital",
+      "eu-updates": "Actualizaciones UE",
+      "company-news": "Noticias Empresariales",
+      "practical-guides": "Guías Prácticas",
+      "multilingual-education": "Educación Multilingüe"
+    
   }
 }

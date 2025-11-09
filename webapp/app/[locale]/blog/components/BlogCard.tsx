@@ -1,29 +1,51 @@
-// app/[locale]/blog/components/BlogCard.tsx
 import Link from 'next/link';
 import Image from 'next/image';
 
-interface BlogPost {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  thumb_url?: string;
-  category: string;
-  published_at: string;
-  reading_time_min: number;
-}
-
 interface BlogCardProps {
-  post: BlogPost;
+  post: {
+    slug: string;
+    title: string;
+    excerpt: string;
+    thumb_url?: string;
+    category: string;
+    published_at: string;
+    reading_time_min: number;
+  };
   locale: string;
+  translations?: { // Opzionale con fallback
+    categories: Record<string, string>;
+    readMore: string;
+    minRead: string;
+  };
 }
 
-export default function BlogCard({ post, locale }: BlogCardProps) {
+export default function BlogCard({ post, locale, translations }: BlogCardProps) {
   const formattedDate = new Date(post.published_at).toLocaleDateString(locale, {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
   });
+
+  // Mappa colori categorie
+  const categoryColors: Record<string, string> = {
+    'financial-education-eu': 'bg-blue-100 text-blue-800 border-blue-200',
+    'cybersecurity-frauds': 'bg-red-100 text-red-800 border-red-200',
+    'digital-ethics': 'bg-purple-100 text-purple-800 border-purple-200',
+    'eu-updates': 'bg-green-100 text-green-800 border-green-200',
+    'company-news': 'bg-orange-100 text-orange-800 border-orange-200',
+    'practical-guides': 'bg-yellow-100 text-yellow-800 border-yellow-200',
+    'multilingual-education': 'bg-indigo-100 text-indigo-800 border-indigo-200'
+  };
+
+  // Fallback sicuro
+  const safeTranslations = translations || {
+    categories: {},
+    readMore: 'Leggi più →',
+    minRead: 'min read'
+  };
+
+  const categoryStyle = categoryColors[post.category] || 'bg-gray-100 text-gray-800 border-gray-200';
+  const categoryLabel = safeTranslations.categories[post.category] || post.category;
 
   return (
     <Link href={`/${locale}/blog/${post.slug}`}>
@@ -43,20 +65,22 @@ export default function BlogCard({ post, locale }: BlogCardProps) {
         
         {/* Contenuto */}
         <div className="p-6 flex-1 flex flex-col">
-          {/* Categoria e Data */}
-          <div className="flex justify-between items-center mb-3">
-            <span className="inline-block bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">
-              {post.category}
-            </span>
-            <span className="text-sm text-gray-500">
-              {formattedDate}
+          {/* CATEGORIA */}
+          <div className="mb-3">
+            <span className={`inline-block ${categoryStyle} text-xs font-medium px-3 py-1 rounded-full border`}>
+              {categoryLabel}
             </span>
           </div>
 
+          {/* Data */}
+          <time className="text-xs text-gray-500 mb-2 block">
+            {formattedDate}
+          </time>
+
           {/* Titolo */}
-          <h2 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
+          <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
             {post.title}
-          </h2>
+          </h3>
 
           {/* Estratto */}
           <p className="text-gray-600 mb-4 line-clamp-3 flex-1">
@@ -66,10 +90,10 @@ export default function BlogCard({ post, locale }: BlogCardProps) {
           {/* Tempo di lettura */}
           <div className="flex justify-between items-center mt-auto pt-4 border-t border-gray-100">
             <span className="text-sm text-gray-500">
-              {post.reading_time_min} min read
+              {post.reading_time_min} {safeTranslations.minRead}
             </span>
             <span className="text-blue-600 font-medium text-sm">
-              Leggi più →
+              {safeTranslations.readMore}
             </span>
           </div>
         </div>

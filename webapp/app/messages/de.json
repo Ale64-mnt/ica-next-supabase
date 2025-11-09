@@ -129,5 +129,16 @@
         "button": "Finden Sie Cybercrime-Behörden in Ihrer Region",
         "subtext": "✅ Offizielle Kontakte aller 27 EU-Länder"
       
+    },
+    
+      "BlogCategories": {
+        "financial-education-eu": "EU Finanzbildung",
+        "cybersecurity-frauds": "Cybersicherheit & Betrug",
+        "digital-ethics": "Digitale Ethik",
+        "eu-updates": "EU Updates",
+        "company-news": "Unternehmensnachrichten", 
+        "practical-guides": "Praktische Anleitungen",
+        "multilingual-education": "Mehrsprachige Bildung"
+      
     }
   }

@@ -15,14 +15,19 @@ interface BlogPost {
 interface BlogGridProps {
   posts: BlogPost[];
   locale: string;
-  noPostsText: string; // <-- NUOVA PROP PER LA TRADUZIONE
+  noPostsText: string;
+  translations: { // <-- AGGIUNGI QUESTA PROP
+    categories: Record<string, string>;
+    readMore: string;
+    minRead: string;
+  };
 }
 
-export default function BlogGrid({ posts, locale, noPostsText }: BlogGridProps) {
+export default function BlogGrid({ posts, locale, noPostsText, translations }: BlogGridProps) {
   if (!posts || posts.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-500 text-lg">{noPostsText}</p> {/* <-- USA LA TRADUZIONE */}
+        <p className="text-gray-500 text-lg">{noPostsText}</p>
       </div>
     );
   }
@@ -30,7 +35,12 @@ export default function BlogGrid({ posts, locale, noPostsText }: BlogGridProps) 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {posts.map((post) => (
-        <BlogCard key={post.id} post={post} locale={locale} />
+        <BlogCard 
+          key={post.id} 
+          post={post} 
+          locale={locale}
+          translations={translations} // <-- PASSALA QUI
+        />
       ))}
     </div>
   );

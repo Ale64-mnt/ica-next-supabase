@@ -126,5 +126,16 @@
     "subtitle": "Police authority contacts for cybercrime across the European Union",
     "eu_countries": "European Union Countries",
     "select_country": "Select a country for local contacts"
+  },
+  
+    "BlogCategories": {
+      "financial-education-eu": "EU Financial Education",
+      "cybersecurity-frauds": "Cybersecurity & Frauds",
+      "digital-ethics": "Digital Ethics",
+      "eu-updates": "EU Updates", 
+      "company-news": "Company News",
+      "practical-guides": "Practical Guides",
+      "multilingual-education": "Multilingual Education"
+    
   }
 }
