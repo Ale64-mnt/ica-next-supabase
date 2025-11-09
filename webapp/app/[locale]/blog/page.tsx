@@ -37,7 +37,12 @@ export default async function BlogPage({ params }: { params: { locale: string } 
         <BlogGrid 
           posts={posts || []} 
           locale={params.locale}
-          noPostsText={t('no_posts')} // <-- TRADUZIONE PASSATA COME PROP
+          noPostsText={t('no_posts')}
+          translations={{
+            categories: t.raw('categories'), // <-- CORRETTO: usa t.raw() per oggetto
+            readMore: t('readMore'),
+            minRead: t('minRead')
+          }}
         />
       </div>
     </div>

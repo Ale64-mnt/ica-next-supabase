@@ -56,19 +56,25 @@
     "hero_image_alt": "Éducation financière et numérique éthique et inclusive",
     "join_courses": "Rejoignez des cours gratuits"
   },
-  
-  
-    "Blog": {
-      "title": "Notre Blog",
-      "subtitle": "Articles et perspectives sur l'éducation financière et numérique",
-      "back_to_blog": "Retour au blog",
-      "read_more": "Lire la suite",
-      "no_posts": "Aucun article disponible",
-      "all_posts": "Tous les articles",
-      "featured": "À la une",
-      "categories": "Catégories",
-      "reading_time": "min de lecture"
-          
+  "Blog": {
+    "title": "Notre Blog",
+    "subtitle": "Articles et perspectives sur l'éducation financière et numérique",
+    "back_to_blog": "Retour au blog",
+    "read_more": "Lire la suite",
+    "no_posts": "Aucun article disponible",
+    "all_posts": "Tous les articles",
+    "featured": "À la une",
+    "categories": {
+      "financial-education-eu": "Éducation Financière UE",
+      "cybersecurity-frauds": "Cybersécurité & Fraudes",
+      "digital-ethics": "Éthique Numérique",
+      "eu-updates": "Actualités UE",
+      "company-news": "Actualités d'Entreprise",
+      "practical-guides": "Guides Pratiques",
+      "multilingual-education": "Éducation Multilingue"
+    },
+    "readMore": "Lire la suite →",
+    "minRead": "min de lecture"
   },
   "Articles": {
     "home": "Accueil",
@@ -80,15 +86,13 @@
     "article_title": "Titre de l'Article",
     "article_excerpt": "Extrait de l'article"
   },
-
-
   "About": {
     "hero": {
       "title": "Qui Sommes-Nous",
       "subtitle": "Votre partenaire pour l'éducation financière numérique éthique et inclusive"
     },
     "mission": {
-      "title": "Notre Mission", 
+      "title": "Notre Mission",
       "description": "Nous croyons en une éducation financière accessible à tous, basée sur des principes éthiques, la transparence et l'innovation numérique.",
       "values": {
         "mission_title": "Accessibilité",
@@ -102,13 +106,7 @@
     "team": {
       "title": "Notre Équipe",
       "subtitle": "La passion pour l'éducation financière nous unit",
-      "team_description": {
-  "About": {
-    "team": {
-      "team_description": "Nous sommes avant tout des frères, unis par notre passion pour l'éducation financière, et ensemble des professionnels dédiés à révolutionner l'apprentissage grâce à des solutions numériques innovantes et inclusives."
-    }
-  }
-},
+      "team_description": "Nous sommes avant tout des frères, unis par notre passion pour l'éducation financière, et ensemble des professionnels dédiés à révolutionner l'apprentissage grâce à des solutions numériques innovantes et inclusives.",
       "founders": {
         "Alessandro": {
           "name": "Alessandro Mantovani",
@@ -116,36 +114,23 @@
           "bio": "Passionné d'éducation financière avec pour objectif de démocratiser l'accès à la connaissance économique."
         },
         "Egle": {
-          "name": "Egle Mantovani", 
+          "name": "Egle Mantovani",
           "role": "Co-fondatrice & Stratège Digitale",
           "bio": "Spécialisée dans l'innovation numérique et la création d'expériences utilisateur engageantes."
         }
       }
     }
   },
-      "Cybercrime": {
-      "title": "Rapport Cybercriminalité UE",
-      "subtitle": "Contacts des autorités policières pour la cybercriminalité dans toute l'Union Européenne",
-      "eu_countries": "Pays de l'Union Européenne",
-      "select_country": "Sélectionnez un pays pour les contacts locaux"
-    },
-    
-      "CybercrimeLink": {
-        "title": "🚨 Êtes-vous victime d'une cybercriminalité ?",
-        "description": "Contactez immédiatement les autorités policières spécialisées en cybercriminalité de votre pays",
-        "button": "Trouvez les Autorités Cybercriminalité dans votre Région",
-        "subtext": "✅ Contacts officiels des 27 pays de l'UE"
-      
-    },
-    
-      "BlogCategories": {
-        "financial-education-eu": "Éducation Financière UE",
-        "cybersecurity-frauds": "Cybersécurité & Fraudes", 
-        "digital-ethics": "Éthique Numérique",
-        "eu-updates": "Actualités UE",
-        "company-news": "Actualités d'Entreprise",
-        "practical-guides": "Guides Pratiques",
-        "multilingual-education": "Éducation Multilingue"
-      
-    }
+  "Cybercrime": {
+    "title": "Rapport Cybercriminalité UE",
+    "subtitle": "Contacts des autorités policières pour la cybercriminalité dans toute l'Union Européenne",
+    "eu_countries": "Pays de l'Union Européenne",
+    "select_country": "Sélectionnez un pays pour les contacts locaux"
+  },
+  "CybercrimeLink": {
+    "title": "🚨 Êtes-vous victime d'une cybercriminalité ?",
+    "description": "Contactez immédiatement les autorités policières spécialisées en cybercriminalité de votre pays",
+    "button": "Trouvez les Autorités Cybercriminalité dans votre Région",
+    "subtext": "✅ Contacts officiels des 27 pays de l'UE"
   }
+}

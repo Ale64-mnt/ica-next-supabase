@@ -1,9 +1,9 @@
 ﻿{
-  "Common": {
+    "Common": {
       "skip_to_content": "Salta al contenuto principale",
       "change_language": "Cambia lingua"
-  },
-  "Navigation": {
+    },
+    "Navigation": {
       "site_logo_alt": "Logo ICA",
       "main_navigation_label": "Navigazione principale",
       "open_menu": "Apri menu",
@@ -15,8 +15,8 @@
       "blog_link": "Blog",
       "support": "Supporto",
       "contact": "Contatti"
-  },
-  "Footer": {
+    },
+    "Footer": {
       "copyright": "© {year} Tutti i diritti riservati.",
       "all_rights_reserved": "Tutti i diritti riservati",
       "links": "Link utili",
@@ -35,8 +35,8 @@
       "newsletter_signup": "Newsletter",
       "newsletter_description": "Iscriviti per ricevere aggiornamenti",
       "subscribe": "Iscriviti"
-  },
-  "News": {
+    },
+    "News": {
       "news": "Notizie",
       "eu_updates": "Aggiornamenti UE e nazionali",
       "back_to_news": "Torna alle notizie",
@@ -47,15 +47,14 @@
       "read_more": "Leggi di più",
       "no_news": "Nessuna notizia disponibile",
       "published_on": "Pubblicato il"
-  },
-  "Index": {
+    },
+    "Index": {
       "hero_title": "Promuoviamo l'educazione finanziaria ed etica",
       "hero_subtitle": "in tutta Europa, in cinque lingue, per una cittadinanza più consapevole e inclusiva",
       "discover_articles": "Scopri i nostri articoli",
       "hero_image_alt": "Educazione finanziaria e digitale etica e inclusiva",
       "join_courses": "Partecipa ai corsi gratuiti"
-  },
-  
+    },
     "Articles": {
       "home": "Home",
       "articles": "Articoli",
@@ -65,79 +64,72 @@
       "view_all_articles": "Vedi tutti gli articoli",
       "article_title": "Titolo Articolo",
       "article_excerpt": "Estratto dell'articolo"
-  },
-  "About": {
+    },
+    "About": {
       "hero": {
-          "title": "Chi Siamo",
-          "subtitle": "Il tuo partner per l'educazione finanziaria digitale etica e inclusiva"
+        "title": "Chi Siamo",
+        "subtitle": "Il tuo partner per l'educazione finanziaria digitale etica e inclusiva"
       },
       "mission": {
-          "title": "La Nostra Missione",
-          "description": "Crediamo in un'educazione finanziaria accessibile a tutti, basata su principi etici, trasparenza e innovazione digitale.",
-          "values": {
-              "mission_title": "Accessibilità",
-              "mission_description": "Rendiamo la finanza comprensibile per tutti, indipendentemente dal background.",
-              "passion_title": "Innovazione",
-              "passion_description": "Utilizziamo le tecnologie più avanzate per creare esperienze educative coinvolgenti.",
-              "trust_title": "Etica",
-              "trust_description": "Priorità assoluta alla trasparenza e agli interessi dei nostri utenti."
-          }
+        "title": "La Nostra Missione",
+        "description": "Crediamo in un'educazione finanziaria accessibile a tutti, basata su principi etici, trasparenza e innovazione digitale.",
+        "values": {
+          "mission_title": "Accessibilità",
+          "mission_description": "Rendiamo la finanza comprensibile per tutti, indipendentemente dal background.",
+          "passion_title": "Innovazione",
+          "passion_description": "Utilizziamo le tecnologie più avanzate per creare esperienze educative coinvolgenti.",
+          "trust_title": "Etica",
+          "trust_description": "Priorità assoluta alla trasparenza e agli interessi dei nostri utenti."
+        }
       },
       "team": {
-          "title": "Il Nostro Team",
-          "subtitle": "La passione per l'educazione finanziaria ci unisce",
-          "team_description": "Siamo innanzitutto fratelli, uniti dalla passione per l'educazione finanziaria, e insieme professionisti dedicati a rivoluzionare l'apprendimento attraverso soluzioni digitali innovative e inclusive.",
-          "founders": {
-              "Alessandro": {
-                  "name": "Alessandro Mantovani",
-                  "role": "Fondatore & Esperto Finanziario",
-                  "bio": "Appassionato di educazione finanziaria con l'obiettivo di democratizzare l'accesso alla conoscenza economica."
-              },
-              "Egle": {
-                  "name": "Egle Mantovani",
-                  "role": "Co-fondatrice & Digital Strategist",
-                  "bio": "Specializzata nell'innovazione digitale e nella creazione di esperienze utente coinvolgenti."
-              }
+        "title": "Il Nostro Team",
+        "subtitle": "La passione per l'educazione finanziaria ci unisce",
+        "team_description": "Siamo innanzitutto fratelli, uniti dalla passione per l'educazione finanziaria, e insieme professionisti dedicati a rivoluzionare l'apprendimento attraverso soluzioni digitali innovative e inclusive.",
+        "founders": {
+          "Alessandro": {
+            "name": "Alessandro Mantovani",
+            "role": "Fondatore & Esperto Finanziario",
+            "bio": "Appassionato di educazione finanziaria con l'obiettivo di democratizzare l'accesso alla conoscenza economica."
+          },
+          "Egle": {
+            "name": "Egle Mantovani",
+            "role": "Co-fondatrice & Digital Strategist",
+            "bio": "Specializzata nell'innovazione digitale e nella creazione di esperienze utente coinvolgenti."
           }
+        }
       }
-  },
-  "CybercrimeLink": {
+    },
+    "CybercrimeLink": {
       "title": "🚨 Sei vittima di crimine informatico?",
       "description": "Contatta immediatamente le autorità di polizia specializzate in cybercrime della tua nazione",
       "button": "Trova Autorità Cybercrime nella tua Regione",
       "subtext": "✅ Contatti ufficiali di tutti i 27 paesi UE"
-  },
-  
+    },
     "Cybercrime": {
       "title": "Report Crimini Informatici UE",
       "subtitle": "Contatti delle autorità di polizia per cybercrime in tutta l'Unione Europea",
-      "eu_countries": "Paesi dell'Unione Europea", 
+      "eu_countries": "Paesi dell'Unione Europea",
       "select_country": "Seleziona un paese per i contatti locali"
     },
-    
-        "Blog": {
-          "title": "Il Nostro Blog",
-          "subtitle": "Articoli e approfondimenti su educazione finanziaria e digitale",
-          "back_to_blog": "Torna al blog",
-          "read_more": "Leggi di più",
-          "no_posts": "Nessun articolo disponibile",
-          "all_posts": "Tutti gli articoli",
-          "featured": "In evidenza",
-          "categories": "Categorie",
-          "reading_time": "min di lettura"
-    },
-    
-        "BlogCategories": {
-          "financial-education-eu": "Educazione Finanziaria UE",
-          "cybersecurity-frauds": "Cybersecurity & Frodi",
-          "digital-ethics": "Etica Digitale", 
-          "eu-updates": "Aggiornamenti UE",
-          "company-news": "News Aziendali",
-          "practical-guides": "Guide Pratiche",
-          "multilingual-education": "Educazione Multilingue"
+    "Blog": {
+      "title": "Il Nostro Blog",
+      "subtitle": "Articoli e approfondimenti su educazione finanziaria e digitale",
+      "back_to_blog": "Torna al blog",
+      "read_more": "Leggi di più",
+      "no_posts": "Nessun articolo disponibile",
+      "all_posts": "Tutti gli articoli",
+      "featured": "In evidenza",
+      "categories": {
+        "financial-education-eu": "Educazione Finanziaria UE",
+        "cybersecurity-frauds": "Cybersecurity & Frodi",
+        "digital-ethics": "Etica Digitale",
+        "eu-updates": "Aggiornamenti UE",
+        "company-news": "News Aziendali",
+        "practical-guides": "Guide Pratiche",
+        "multilingual-education": "Educazione Multilingue"
+      },
+      "readMore": "Leggi più →",
+      "minRead": "min read"
     }
-      
-    
-           
-      
   }

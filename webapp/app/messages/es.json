@@ -64,8 +64,17 @@
     "no_posts": "No hay artículos disponibles",
     "all_posts": "Todos los artículos",
     "featured": "Destacados",
-    "categories": "Categorías",
-    "reading_time": "min de lectura"
+    "categories": {
+      "financial-education-eu": "Educación Financiera UE",
+      "cybersecurity-frauds": "Ciberseguridad y Fraudes",
+      "digital-ethics": "Ética Digital",
+      "eu-updates": "Actualizaciones UE",
+      "company-news": "Noticias Empresariales",
+      "practical-guides": "Guías Prácticas",
+      "multilingual-education": "Educación Multilingüe"
+    },
+    "readMore": "Leer más →",
+    "minRead": "min de lectura"
   },
   "Articles": {
     "home": "Inicio",
@@ -77,8 +86,6 @@
     "article_title": "Título del Artículo",
     "article_excerpt": "Extracto del artículo"
   },
-
-
   "About": {
     "hero": {
       "title": "Quiénes Somos",
@@ -120,23 +127,10 @@
     "eu_countries": "Países de la Unión Europea",
     "select_country": "Selecciona un país para contactos locales"
   },
-  
-    "CybercrimeLink": {
-      "title": "🚨 ¿Eres víctima de un ciberdelito?",
-      "description": "Contacta inmediatamente con las autoridades policiales especializadas en cibercrimen de tu país",
-      "button": "Encuentra Autoridades de Cibercrimen en tu Región",
-      "subtext": "✅ Contactos oficiales de los 27 países de la UE"
-    
-  },
-  
-    "BlogCategories": {
-      "financial-education-eu": "Educación Financiera UE",
-      "cybersecurity-frauds": "Ciberseguridad y Fraudes",
-      "digital-ethics": "Ética Digital",
-      "eu-updates": "Actualizaciones UE",
-      "company-news": "Noticias Empresariales",
-      "practical-guides": "Guías Prácticas",
-      "multilingual-education": "Educación Multilingüe"
-    
+  "CybercrimeLink": {
+    "title": "🚨 ¿Eres víctima de un ciberdelito?",
+    "description": "Contacta inmediatamente con las autoridades policiales especializadas en cibercrimen de tu país",
+    "button": "Encuentra Autoridades de Cibercrimen en tu Región",
+    "subtext": "✅ Contactos oficiales de los 27 países de la UE"
   }
 }

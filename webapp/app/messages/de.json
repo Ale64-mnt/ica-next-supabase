@@ -1,62 +1,62 @@
 ﻿{
-    "Common": {
-      "skip_to_content": "Zum Hauptinhalt springen",
-      "change_language": "Sprache ändern"
-    },
-    "Navigation": {
-      "site_logo_alt": "ICA-Logo",
-      "main_navigation_label": "Hauptnavigation",
-      "open_menu": "Menü öffnen",
-      "close_menu": "Menü schließen",
-      "home_link": "Startseite",
-      "about": "Über uns",
-      "articles": "Artikel",
-      "news": "Nachrichten",
-      "blog_link": "Blog",
-      "support": "Support",
-      "contact": "Kontakt"
-    },
-    "Footer": {
-      "copyright": "© {year} Urban Space Memory. Alle Rechte vorbehalten.",
-      "all_rights_reserved": "Alle Rechte vorbehalten",
-      "links": "Links",
-      "privacy_policy": "Datenschutzerklärung",
-      "terms_of_service": "Nutzungsbedingungen",
-      "accessibility_statement": "Barrierefreiheitserklärung",
-      "footer_navigation_label": "Footer-Navigation",
-      "address_placeholder": "Geben Sie Ihre Adresse ein",
-      "contact_us_label": "Kontaktieren Sie uns",
-      "cookie_policy": "Cookie-Richtlinie",
-      "sitemap": "Sitemap",
-      "follow_us": "Folgen Sie uns",
-      "multilingual_site": "Mehrsprachige Website",
-      "last_updated": "Zuletzt aktualisiert",
-      "address_label": "Adresse",
-      "newsletter_signup": "Newsletter",
-      "newsletter_description": "Abonnieren Sie, um Updates zu erhalten",
-      "subscribe": "Abonnieren"
-    },
-    "News": {
-      "eu_updates": "EU- und nationale Updates",
-      "news_title": "Nachrichtentitel",
-      "view_all_news": "Alle Nachrichten anzeigen",
-      "news": "Nachrichten",
-      "back_to_news": "Zurück zu den Nachrichten",
-      "all_news": "Alle Nachrichten",
-      "home": "Startseite",
-      "news_description": "Aktuelle Nachrichten und Updates",
-      "read_more": "Weiterlesen",
-      "no_news": "Keine Nachrichten verfügbar",
-      "published_on": "Veröffentlicht am"
-    },
-    "Index": {
-      "hero_title": "Wir fördern finanzielle und ethische Bildung",
-      "hero_subtitle": "in ganz Europa, in fünf Sprachen, für eine bewusstere und integrativere Bürgerschaft",
-      "discover_articles": "Entdecken Sie unsere Artikel",
-      "join_courses": "Nehmen Sie an kostenlosen Kursen teil",
-      "hero_image_alt": "Ethische und inklusive finanzielle und digitale Bildung"
-    },
-    "Blog": {
+  "Common": {
+    "skip_to_content": "Zum Hauptinhalt springen",
+    "change_language": "Sprache ändern"
+  },
+  "Navigation": {
+    "site_logo_alt": "ICA-Logo",
+    "main_navigation_label": "Hauptnavigation",
+    "open_menu": "Menü öffnen",
+    "close_menu": "Menü schließen",
+    "home_link": "Startseite",
+    "about": "Über uns",
+    "articles": "Artikel",
+    "news": "Nachrichten",
+    "blog_link": "Blog",
+    "support": "Support",
+    "contact": "Kontakt"
+  },
+  "Footer": {
+    "copyright": "© {year} Urban Space Memory. Alle Rechte vorbehalten.",
+    "all_rights_reserved": "Alle Rechte vorbehalten",
+    "links": "Links",
+    "privacy_policy": "Datenschutzerklärung",
+    "terms_of_service": "Nutzungsbedingungen",
+    "accessibility_statement": "Barrierefreiheitserklärung",
+    "footer_navigation_label": "Footer-Navigation",
+    "address_placeholder": "Geben Sie Ihre Adresse ein",
+    "contact_us_label": "Kontaktieren Sie uns",
+    "cookie_policy": "Cookie-Richtlinie",
+    "sitemap": "Sitemap",
+    "follow_us": "Folgen Sie uns",
+    "multilingual_site": "Mehrsprachige Website",
+    "last_updated": "Zuletzt aktualisiert",
+    "address_label": "Adresse",
+    "newsletter_signup": "Newsletter",
+    "newsletter_description": "Abonnieren Sie, um Updates zu erhalten",
+    "subscribe": "Abonnieren"
+  },
+  "News": {
+    "eu_updates": "EU- und nationale Updates",
+    "news_title": "Nachrichtentitel",
+    "view_all_news": "Alle Nachrichten anzeigen",
+    "news": "Nachrichten",
+    "back_to_news": "Zurück zu den Nachrichten",
+    "all_news": "Alle Nachrichten",
+    "home": "Startseite",
+    "news_description": "Aktuelle Nachrichten und Updates",
+    "read_more": "Weiterlesen",
+    "no_news": "Keine Nachrichten verfügbar",
+    "published_on": "Veröffentlicht am"
+  },
+  "Index": {
+    "hero_title": "Wir fördern finanzielle und ethische Bildung",
+    "hero_subtitle": "in ganz Europa, in fünf Sprachen, für eine bewusstere und integrativere Bürgerschaft",
+    "discover_articles": "Entdecken Sie unsere Artikel",
+    "join_courses": "Nehmen Sie an kostenlosen Kursen teil",
+    "hero_image_alt": "Ethische und inklusive finanzielle und digitale Bildung"
+  },
+  "Blog": {
     "title": "Unser Blog",
     "subtitle": "Artikel und Einblicke in finanzielle und digitale Bildung",
     "back_to_blog": "Zurück zum Blog",
@@ -64,81 +64,73 @@
     "no_posts": "Keine Beiträge verfügbar",
     "all_posts": "Alle Beiträge",
     "featured": "Ausgewählt",
-    "categories": "Kategorien",
-    "reading_time": "Min. Lesezeit"
+    "categories": {
+      "financial-education-eu": "EU Finanzbildung",
+      "cybersecurity-frauds": "Cybersicherheit & Betrug",
+      "digital-ethics": "Digitale Ethik",
+      "eu-updates": "EU Updates",
+      "company-news": "Unternehmensnachrichten",
+      "practical-guides": "Praktische Anleitungen",
+      "multilingual-education": "Mehrsprachige Bildung"
     },
-      "Articles": {
-      "home": "Startseite",
-      "articles": "Artikel",
-      "published_on": "Veröffentlicht am",
-      "back_to_articles": "Zurück zu den Artikeln",
-      "latest_articles": "Neueste Artikel",
-      "view_all_articles": "Alle Artikel anzeigen",
-      "article_title": "Artikel-Titel",
-      "article_excerpt": "Artikel-Auszug"
+    "readMore": "Weiterlesen →",
+    "minRead": "Min. Lesezeit"
+  },
+  "Articles": {
+    "home": "Startseite",
+    "articles": "Artikel",
+    "published_on": "Veröffentlicht am",
+    "back_to_articles": "Zurück zu den Artikeln",
+    "latest_articles": "Neueste Artikel",
+    "view_all_articles": "Alle Artikel anzeigen",
+    "article_title": "Artikel-Titel",
+    "article_excerpt": "Artikel-Auszug"
+  },
+  "About": {
+    "hero": {
+      "title": "Über Uns",
+      "subtitle": "Ihr Partner für ethische und inklusive digitale Finanzbildung"
     },
-  
-  
-    "About": {
-      "hero": {
-        "title": "Über Uns",
-        "subtitle": "Ihr Partner für ethische und inklusive digitale Finanzbildung"
-      },
-      "mission": {
-        "title": "Unsere Mission",
-        "description": "Wir glauben an eine für alle zugängliche Finanzbildung, die auf ethischen Grundsätzen, Transparenz und digitaler Innovation basiert.",
-        "values": {
-          "mission_title": "Zugänglichkeit",
-          "mission_description": "Wir machen Finanzen für alle verständlich, unabhängig vom Hintergrund.",
-          "passion_title": "Innovation",
-          "passion_description": "Wir nutzen die modernsten Technologien, um ansprechende Bildungserlebnisse zu schaffen.",
-          "trust_title": "Ethik",
-          "trust_description": "Absolute Priorität für Transparenz und die Interessen unserer Nutzer."
-        }
-      },
-      "team": {
-        "title": "Unser Team",
-        "subtitle": "Leidenschaft für Finanzbildung vereint uns",
-        "team_description": "Wir sind in erster Linie Brüder, vereint durch unsere Leidenschaft für Finanzbildung, und gemeinsam Profis, die sich der Revolutionierung des Lernens durch innovative und inklusive digitale Lösungen verschrieben haben.",
-        "founders": {
-          "Alessandro": {
-            "name": "Alessandro Mantovani",
-            "role": "Gründer & Finanzexperte",
-            "bio": "Leidenschaftlich für Finanzbildung mit dem Ziel, den Zugang zu Wirtschaftswissen zu demokratisieren."
-          },
-          "Egle": {
-            "name": "Egle Mantovani",
-            "role": "Mitgründerin & Digital Strategist",
-            "bio": "Spezialisiert auf digitale Innovation und die Schaffung ansprechender Benutzererlebnisse."
-          }
-        }
+    "mission": {
+      "title": "Unsere Mission",
+      "description": "Wir glauben an eine für alle zugängliche Finanzbildung, die auf ethischen Grundsätzen, Transparenz und digitaler Innovation basiert.",
+      "values": {
+        "mission_title": "Zugänglichkeit",
+        "mission_description": "Wir machen Finanzen für alle verständlich, unabhängig vom Hintergrund.",
+        "passion_title": "Innovation",
+        "passion_description": "Wir nutzen die modernsten Technologien, um ansprechende Bildungserlebnisse zu schaffen.",
+        "trust_title": "Ethik",
+        "trust_description": "Absolute Priorität für Transparenz und die Interessen unserer Nutzer."
       }
     },
-    
-      "Cybercrime": {
-        "title": "EU Cybercrime-Bericht",
-        "subtitle": "Kontakte zu Polizeibehörden für Cyberkriminalität in der gesamten Europäischen Union",
-        "eu_countries": "Länder der Europäischen Union",
-        "select_country": "Wählen Sie ein Land für lokale Kontakte"
-      
-    },
-    
-      "CybercrimeLink": {
-        "title": "🚨 Sind Sie Opfer einer Cybercrime-Straftat?",
-        "description": "Setzen Sie sich umgehend mit den spezialisierten Polizeibehörden für Cyberkriminalität in Ihrem Land in Verbindung",
-        "button": "Finden Sie Cybercrime-Behörden in Ihrer Region",
-        "subtext": "✅ Offizielle Kontakte aller 27 EU-Länder"
-      
-    },
-    
-      "BlogCategories": {
-        "financial-education-eu": "EU Finanzbildung",
-        "cybersecurity-frauds": "Cybersicherheit & Betrug",
-        "digital-ethics": "Digitale Ethik",
-        "eu-updates": "EU Updates",
-        "company-news": "Unternehmensnachrichten", 
-        "practical-guides": "Praktische Anleitungen",
-        "multilingual-education": "Mehrsprachige Bildung"
-      
+    "team": {
+      "title": "Unser Team",
+      "subtitle": "Leidenschaft für Finanzbildung vereint uns",
+      "team_description": "Wir sind in erster Linie Brüder, vereint durch unsere Leidenschaft für Finanzbildung, und gemeinsam Profis, die sich der Revolutionierung des Lernens durch innovative und inklusive digitale Lösungen verschrieben haben.",
+      "founders": {
+        "Alessandro": {
+          "name": "Alessandro Mantovani",
+          "role": "Gründer & Finanzexperte",
+          "bio": "Leidenschaftlich für Finanzbildung mit dem Ziel, den Zugang zu Wirtschaftswissen zu demokratisieren."
+        },
+        "Egle": {
+          "name": "Egle Mantovani",
+          "role": "Mitgründerin & Digital Strategist",
+          "bio": "Spezialisiert auf digitale Innovation und die Schaffung ansprechender Benutzererlebnisse."
+        }
+      }
     }
+  },
+  "Cybercrime": {
+    "title": "EU Cybercrime-Bericht",
+    "subtitle": "Kontakte zu Polizeibehörden für Cyberkriminalität in der gesamten Europäischen Union",
+    "eu_countries": "Länder der Europäischen Union",
+    "select_country": "Wählen Sie ein Land für lokale Kontakte"
+  },
+  "CybercrimeLink": {
+    "title": "🚨 Sind Sie Opfer einer Cybercrime-Straftat?",
+    "description": "Setzen Sie sich umgehend mit den spezialisierten Polizeibehörden für Cyberkriminalität in Ihrem Land in Verbindung",
+    "button": "Finden Sie Cybercrime-Behörden in Ihrer Region",
+    "subtext": "✅ Offizielle Kontakte aller 27 EU-Länder"
   }
+}

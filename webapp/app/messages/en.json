@@ -56,19 +56,25 @@
     "hero_image_alt": "Ethical and inclusive financial and digital education",
     "join_courses": "Join free courses"
   },
-  
-    "Blog": {
-      "title": "Our Blog",
-      "subtitle": "Articles and insights about financial and digital education",
-      "back_to_blog": "Back to blog",
-      "read_more": "Read more",
-      "no_posts": "No posts available",
-      "all_posts": "All posts",
-      "featured": "Featured",
-      "categories": "Categories",
-      "reading_time": "min read"
-    
-
+  "Blog": {
+    "title": "Our Blog",
+    "subtitle": "Articles and insights about financial and digital education",
+    "back_to_blog": "Back to blog",
+    "read_more": "Read more",
+    "no_posts": "No posts available",
+    "all_posts": "All posts",
+    "featured": "Featured",
+    "categories": {
+      "financial-education-eu": "EU Financial Education",
+      "cybersecurity-frauds": "Cybersecurity & Frauds",
+      "digital-ethics": "Digital Ethics",
+      "eu-updates": "EU Updates",
+      "company-news": "Company News",
+      "practical-guides": "Practical Guides",
+      "multilingual-education": "Multilingual Education"
+    },
+    "readMore": "Read more →",
+    "minRead": "min read"
   },
   "Articles": {
     "home": "Home",
@@ -126,16 +132,5 @@
     "subtitle": "Police authority contacts for cybercrime across the European Union",
     "eu_countries": "European Union Countries",
     "select_country": "Select a country for local contacts"
-  },
-  
-    "BlogCategories": {
-      "financial-education-eu": "EU Financial Education",
-      "cybersecurity-frauds": "Cybersecurity & Frauds",
-      "digital-ethics": "Digital Ethics",
-      "eu-updates": "EU Updates", 
-      "company-news": "Company News",
-      "practical-guides": "Practical Guides",
-      "multilingual-education": "Multilingual Education"
-    
   }
 }
