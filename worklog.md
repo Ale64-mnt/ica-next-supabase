@@ -1144,3 +1144,68 @@ Prossimi Passi:
 ⏱  30 m
 
 
+📌 2025-11-08 | RF-33.2 | News Categories Implementation
+
+Modifiche Implementate:
+
+    ✅ Database Schema: Added category field to news table in Supabase
+
+    ✅ News Components: Updated all news pages to display categories with color coding
+
+    ✅ Homepage Integration: Added category badges to news section in homepage
+
+    ✅ News Listing Page: Created/updated news listing page with category display
+
+    ✅ News Detail Page: Enhanced individual news pages with category badges
+
+    ✅ Query Optimization: Fixed database queries to include category field
+
+File Modificati:
+
+    webapp/app/[locale]/page.tsx - Added category badges to news cards in homepage
+
+    webapp/app/[locale]/news/page.tsx - Created/updated news listing with categories
+
+    webapp/app/[locale]/news/[slug]/page.tsx - Added category to news detail page
+
+    webapp/app/lib/supabase/news-queries.ts - Updated queries to include category field
+
+    webapp/app/messages/*.json - Added news categories translations for all languages
+
+Risultati Raggiunti:
+
+    Complete category system implementation for news articles
+
+    Consistent color coding across all news components (same as blogs)
+
+    Multi-language support for news categories
+
+    Fixed database query errors and missing field issues
+
+    Responsive category badge design
+
+Testing Eseguito:
+
+    Database query validation for category field
+
+    Category display verification across all news pages
+
+    Translation accuracy check for all languages
+
+    Color contrast validation for accessibility
+
+    Responsive design testing
+
+
+Note Tecniche:
+
+    Used same color system as blog categories for consistency
+
+    All news automatically assigned to 'cybersecurity-frauds' category (matching alert content)
+
+    Database queries optimized to include category field in selections
+
+    Fallback mechanisms in place for missing categories
+
+ ⏱ 1 h   
+

@@ -47,7 +47,16 @@
     "news_description": "Aktuelle Nachrichten und Updates",
     "read_more": "Weiterlesen",
     "no_news": "Keine Nachrichten verfügbar",
-    "published_on": "Veröffentlicht am"
+    "published_on": "Veröffentlicht am",
+    "categories": {
+      "financial-education-eu": "EU Finanzbildung",
+      "cybersecurity-frauds": "Cybersicherheit & Betrug",
+      "digital-ethics": "Digitale Ethik",
+      "eu-updates": "EU Updates",
+      "company-news": "Unternehmensnachrichten",
+      "practical-guides": "Praktische Anleitungen",
+      "multilingual-education": "Mehrsprachige Bildung"
+    }
   },
   "Index": {
     "hero_title": "Wir fördern finanzielle und ethische Bildung",

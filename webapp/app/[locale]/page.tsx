@@ -14,6 +14,17 @@ export default async function Page({ params }: PageProps) {
   const newsT = await getTranslations('News');
   const latestNews = await getLatestNews(locale, 3);
 
+  // Mappa colori categorie (stessa di BlogCard)
+  const categoryColors: Record<string, string> = {
+    'financial-education-eu': 'bg-blue-100 text-blue-800 border-blue-200',
+    'cybersecurity-frauds': 'bg-red-100 text-red-800 border-red-200',
+    'digital-ethics': 'bg-purple-100 text-purple-800 border-purple-200',
+    'eu-updates': 'bg-green-100 text-green-800 border-green-200',
+    'company-news': 'bg-orange-100 text-orange-800 border-orange-200',
+    'practical-guides': 'bg-yellow-100 text-yellow-800 border-yellow-200',
+    'multilingual-education': 'bg-indigo-100 text-indigo-800 border-indigo-200'
+  };
+
   return (
     <div className="min-h-screen">
       {/* HERO */}
@@ -74,6 +85,10 @@ export default async function Page({ params }: PageProps) {
 
                 const imgSrc: string | null = news?.thumb_url || news?.image_url || null;
                 const imgAlt: string = news?.image_alt || news?.title || 'news image';
+                
+                // Ottieni stile categoria e traduzione
+                const categoryStyle = categoryColors[news.category] || 'bg-gray-100 text-gray-800 border-gray-200';
+                const categoryLabel = newsT.raw('categories')[news.category] || news.category;
 
                 return (
                   <article
@@ -111,6 +126,15 @@ export default async function Page({ params }: PageProps) {
 
                       {/* Contenuto testo */}
                       <div className="flex-1 basis-0 min-w-0 p-4 md:p-5">
+                        {/* CATEGORIA - SOPRA LA DATA */}
+                        {news.category && (
+                          <div className="mb-2">
+                            <span className={`inline-block ${categoryStyle} text-xs font-medium px-3 py-1 rounded-full border`}>
+                              {categoryLabel}
+                            </span>
+                          </div>
+                        )}
+
                         {date && (
                           <div className="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-2">
                             {date}

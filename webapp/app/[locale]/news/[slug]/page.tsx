@@ -5,7 +5,7 @@ import { createClient } from '@/app/lib/supabase/server';
 import Link from 'next/link';
 import Image from 'next/image';
 import AlertMarkdown from '@/app/components/AlertMarkdown';
-import { InternationalCybercrimeLink } from '../../cybercrime-report/components/InternationalCybercrimeLink'; // <-- USA QUELLO CHE HAI GIÀ
+import { InternationalCybercrimeLink } from '../../cybercrime-report/components/InternationalCybercrimeLink';
 
 interface Props {
   params: {
@@ -20,7 +20,7 @@ export default async function NewsDetailPage({ params }: Props) {
   
   const supabase = createClient();
   const { data: news, error } = await supabase
-    .from('alert')
+    .from('news')  // <-- CAMBIATO DA 'alert' A 'news'
     .select('*')
     .eq('slug', slug)
     .eq('locale', locale)
@@ -35,6 +35,21 @@ export default async function NewsDetailPage({ params }: Props) {
     month: 'long',
     year: 'numeric'
   });
+
+  // Mappa colori categorie (stessa di BlogCard e Homepage)
+  const categoryColors: Record<string, string> = {
+    'financial-education-eu': 'bg-blue-100 text-blue-800 border-blue-200',
+    'cybersecurity-frauds': 'bg-red-100 text-red-800 border-red-200',
+    'digital-ethics': 'bg-purple-100 text-purple-800 border-purple-200',
+    'eu-updates': 'bg-green-100 text-green-800 border-green-200',
+    'company-news': 'bg-orange-100 text-orange-800 border-orange-200',
+    'practical-guides': 'bg-yellow-100 text-yellow-800 border-yellow-200',
+    'multilingual-education': 'bg-indigo-100 text-indigo-800 border-indigo-200'
+  };
+
+  // Ottieni stile categoria e traduzione
+  const categoryStyle = categoryColors[news.category] || 'bg-gray-100 text-gray-800 border-gray-200';
+  const categoryLabel = t.raw('categories')[news.category] || news.category;
 
   return (
     <div style={{ minHeight: '100vh', fontFamily: 'Arial, sans-serif' }}>
@@ -91,6 +106,24 @@ export default async function NewsDetailPage({ params }: Props) {
           
           {/* Header articolo */}
           <header style={{ marginBottom: '2rem', paddingTop: '2rem' }}>
+            {/* CATEGORIA - SOPRA LA DATA */}
+            {news.category && (
+              <div style={{ marginBottom: '0.75rem' }}>
+                <span 
+                  className={`inline-block ${categoryStyle} text-xs font-medium px-3 py-1 rounded-full border`}
+                  style={{ 
+                    fontSize: '0.75rem',
+                    fontWeight: '600',
+                    padding: '0.25rem 0.75rem',
+                    borderRadius: '9999px',
+                    borderWidth: '1px'
+                  }}
+                >
+                  {categoryLabel}
+                </span>
+              </div>
+            )}
+
             <time 
               style={{ color: '#666', fontSize: '0.9rem', display: 'block', marginBottom: '0.5rem' }}
               dateTime={news.published_at}

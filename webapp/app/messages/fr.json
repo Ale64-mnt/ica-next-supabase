@@ -47,7 +47,16 @@
     "home": "Accueil",
     "news": "Actualités",
     "back_to_news": "Retour aux actualités",
-    "published_on": "Publié le"
+    "published_on": "Publié le",
+    "categories": {
+      "financial-education-eu": "Éducation Financière UE",
+      "cybersecurity-frauds": "Cybersécurité & Fraudes",
+      "digital-ethics": "Éthique Numérique",
+      "eu-updates": "Actualités UE",
+      "company-news": "Actualités d'Entreprise",
+      "practical-guides": "Guides Pratiques",
+      "multilingual-education": "Éducation Multilingue"
+    }
   },
   "Index": {
     "hero_title": "Nous promouvons l'éducation financière et éthique",

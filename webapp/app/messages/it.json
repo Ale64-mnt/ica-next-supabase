@@ -46,7 +46,16 @@
       "news_description": "Ultime notizie e aggiornamenti",
       "read_more": "Leggi di più",
       "no_news": "Nessuna notizia disponibile",
-      "published_on": "Pubblicato il"
+      "published_on": "Pubblicato il",
+      "categories": {
+      "financial-education-eu": "Educazione Finanziaria UE",
+      "cybersecurity-frauds": "Cybersecurity & Frodi",
+      "digital-ethics": "Etica Digitale",
+      "eu-updates": "Aggiornamenti UE",
+      "company-news": "News Aziendali",
+      "practical-guides": "Guide Pratiche",
+      "multilingual-education": "Educazione Multilingue"
+    }
     },
     "Index": {
       "hero_title": "Promuoviamo l'educazione finanziaria ed etica",
