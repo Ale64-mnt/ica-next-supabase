@@ -59,10 +59,13 @@
     }
   },
   "Index": {
-    "hero_title": "Promovemos la educación financiera y ética",
-    "hero_subtitle": "en toda Europa, en cinco idiomas, para una ciudadanía más consciente e inclusiva",
+    "hero_title": "Herramientas para la educación financiera ética en Europa",
+    "hero_subtitle": "Proporcionamos recursos multilingües para apoyar la estrategia UE de competencia financiera",
+    "hero_quote": "La competencia financiera es una habilidad esencial para la vida. No se trata solo de entender números: se trata de permitir que todos los ciudadanos adquieran los conocimientos y habilidades adecuados para tomar decisiones informadas",
+    "hero_quote_continuation": "para una ciudadanía activa y consciente.",
+    "eu_strategy_link": "Descubrir la estrategia UE para la competencia financiera",
+    "hero_image_alt": "Herramientas para la educación financiera ética en Europa",
     "discover_articles": "Descubre nuestros artículos",
-    "hero_image_alt": "Educación financiera y digital ética e inclusiva",
     "join_courses": "Participa en cursos gratuitos"
   },
   "Blog": {

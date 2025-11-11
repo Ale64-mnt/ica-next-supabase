@@ -59,10 +59,13 @@
     }
   },
   "Index": {
-    "hero_title": "We promote financial and ethical education",
-    "hero_subtitle": "across Europe, in five languages, for a more aware and inclusive citizenship",
+    "hero_title": "Tools for ethical financial education in Europe",
+    "hero_subtitle": "We provide multilingual resources to support the EU financial literacy strategy",
+    "hero_quote": "Financial literacy is an essential life skill. It is not just about understanding numbers: it is about enabling all citizens to acquire the right knowledge and skills to make informed decisions",
+    "hero_quote_continuation": "for an active and aware citizenship.",
+    "eu_strategy_link": "Discover the EU strategy for financial literacy",
+    "hero_image_alt": "Tools for ethical financial education in Europe",
     "discover_articles": "Discover our articles",
-    "hero_image_alt": "Ethical and inclusive financial and digital education",
     "join_courses": "Join free courses"
   },
   "Blog": {

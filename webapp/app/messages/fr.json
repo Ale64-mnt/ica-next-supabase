@@ -59,10 +59,13 @@
     }
   },
   "Index": {
-    "hero_title": "Nous promouvons l'éducation financière et éthique",
-    "hero_subtitle": "à travers l'Europe, en cinq langues, pour une citoyenneté plus consciente et inclusive",
+    "hero_title": "Outils pour l'éducation financière éthique en Europe",
+    "hero_subtitle": "Nous fournissons des ressources multilingues pour soutenir la stratégie UE d'alphabétisation financière",
+    "hero_quote": "La culture financière est une compétence essentielle dans la vie. Il ne s'agit pas seulement de comprendre les chiffres : il s'agit de permettre à tous les citoyens d'acquérir les bonnes connaissances et compétences pour prendre des décisions éclairées",
+    "hero_quote_continuation": "pour une citoyenneté active et consciente.",
+    "eu_strategy_link": "Découvrir la stratégie UE pour l'alphabétisation financière",
+    "hero_image_alt": "Outils pour l'éducation financière éthique en Europe",
     "discover_articles": "Découvrez nos articles",
-    "hero_image_alt": "Éducation financière et numérique éthique et inclusive",
     "join_courses": "Rejoignez des cours gratuits"
   },
   "Blog": {

@@ -59,11 +59,14 @@
     }
   },
   "Index": {
-    "hero_title": "Wir fördern finanzielle und ethische Bildung",
-    "hero_subtitle": "in ganz Europa, in fünf Sprachen, für eine bewusstere und integrativere Bürgerschaft",
+    "hero_title": "Werkzeuge für ethische Finanzbildung in Europa",
+    "hero_subtitle": "Wir bieten mehrsprachige Ressourcen zur Unterstützung der EU-Strategie für Finanzwissen",
+    "hero_quote": "Finanzkompetenz ist eine wesentliche Lebensfertigkeit. Es geht nicht nur um das Verständnis von Zahlen: Es geht darum, allen Bürgern die Möglichkeit zu geben, das richtige Wissen und die richtigen Fähigkeiten zu erwerben, um fundierte Entscheidungen zu treffen",
+    "hero_quote_continuation": "für eine aktive und bewusste Bürgerschaft.",
+    "eu_strategy_link": "Entdecken Sie die EU-Strategie für Finanzwissen",
+    "hero_image_alt": "Werkzeuge für ethische Finanzbildung in Europa",
     "discover_articles": "Entdecken Sie unsere Artikel",
-    "join_courses": "Nehmen Sie an kostenlosen Kursen teil",
-    "hero_image_alt": "Ethische und inklusive finanzielle und digitale Bildung"
+    "join_courses": "Nehmen Sie an kostenlosen Kursen teil"
   },
   "Blog": {
     "title": "Unser Blog",

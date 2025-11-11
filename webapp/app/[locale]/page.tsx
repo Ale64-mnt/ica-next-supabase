@@ -14,7 +14,7 @@ export default async function Page({ params }: PageProps) {
   const newsT = await getTranslations('News');
   const latestNews = await getLatestNews(locale, 3);
 
-  // Mappa colori categorie (stessa di BlogCard)
+  // Mappa colori categorie (stessa di BlogCard e altre pagine)
   const categoryColors: Record<string, string> = {
     'financial-education-eu': 'bg-blue-100 text-blue-800 border-blue-200',
     'cybersecurity-frauds': 'bg-red-100 text-red-800 border-red-200',
@@ -27,7 +27,7 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div className="min-h-screen">
-      {/* HERO */}
+      {/* HERO AGGIORNATO */}
       <section id="hero" className="bg-slate-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-12 md:py-16">
           <div className="flex flex-col lg:flex-row items-stretch gap-8 md:gap-12 lg:gap-16 w-full">
@@ -38,9 +38,34 @@ export default async function Page({ params }: PageProps) {
                 {t('hero_title')}
               </h1>
 
-              <p className="mt-4 max-w-xl text-base sm:text-lg text-slate-600">
-                {t('hero_subtitle')}
-              </p>
+              <div className="mt-4 max-w-xl space-y-4">
+                <p className="text-base sm:text-lg text-slate-600">
+                  {t('hero_subtitle')}
+                </p>
+
+                {/* Citazione in corsivo */}
+                <div className="border-l-4 border-blue-600 pl-4 py-2">
+                  <p className="italic text-sm sm:text-base text-slate-700 leading-relaxed">
+                    "{t('hero_quote')}"
+                  </p>
+                  <p className="text-sm sm:text-base text-slate-700 mt-2">
+                    {t('hero_quote_continuation')}
+                  </p>
+                </div>
+
+                {/* Link alla strategia UE */}
+                <div className="pt-2">
+                  <a 
+                    href="https://finance.ec.europa.eu/consumer-finance-and-payments/financial-literacy_en"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-blue-700 hover:text-blue-800 font-medium text-sm sm:text-base transition-colors"
+                  >
+                    <span>🔗</span>
+                    {t('eu_strategy_link')}
+                  </a>
+                </div>
+              </div>
 
               {/* BOTTONI RIMOSSI */}
             </div>
@@ -51,7 +76,7 @@ export default async function Page({ params }: PageProps) {
                 <div className="relative w-full max-w-[640px] h-56 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem]">
                   <Image
                     src="/images/homepage-hero.png"
-                    alt={t('hero_image_alt') || 'Educazione finanziaria e digitale etica e inclusiva'}
+                    alt={t('hero_image_alt')}
                     fill
                     className="object-contain"
                     priority
@@ -65,7 +90,7 @@ export default async function Page({ params }: PageProps) {
         </div>
       </section>
 
-      {/* NEWS */}
+      {/* NEWS SECTION - RESTA INVARIATA */}
       <section className="py-10 md:py-12">
         <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
           <h2 className="text-center text-2xl font-bold text-slate-900 mb-8">

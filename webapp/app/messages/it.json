@@ -58,11 +58,14 @@
     }
     },
     "Index": {
-      "hero_title": "Promuoviamo l'educazione finanziaria ed etica",
-      "hero_subtitle": "in tutta Europa, in cinque lingue, per una cittadinanza più consapevole e inclusiva",
-      "discover_articles": "Scopri i nostri articoli",
-      "hero_image_alt": "Educazione finanziaria e digitale etica e inclusiva",
-      "join_courses": "Partecipa ai corsi gratuiti"
+    "hero_title": "Strumenti per l'educazione finanziaria etica in Europa",
+    "hero_subtitle": "Forniamo risorse multilingue per supportare la strategia UE sull'alfabetizzazione finanziaria",
+    "hero_quote": "L'alfabetizzazione finanziaria è una competenza essenziale per la vita. Non si limita a comprendere i numeri: si tratta di consentire a tutti i cittadini di acquisire le giuste conoscenze e competenze per prendere decisioni informate",
+    "hero_quote_continuation": "per una cittadinanza attiva e consapevole.",
+    "eu_strategy_link": "Scopri la strategia UE per l'alfabetizzazione finanziaria",
+    "hero_image_alt": "Strumenti per l'educazione finanziaria etica in Europa",
+    "discover_articles": "Scopri i nostri articoli",
+    "join_courses": "Partecipa ai corsi gratuiti"
     },
     "Articles": {
       "home": "Home",
