@@ -20,7 +20,7 @@ export default async function NewsDetailPage({ params }: Props) {
   
   const supabase = createClient();
   const { data: news, error } = await supabase
-    .from('news')  // <-- CAMBIATO DA 'alert' A 'news'
+    .from('news')
     .select('*')
     .eq('slug', slug)
     .eq('locale', locale)
@@ -36,7 +36,7 @@ export default async function NewsDetailPage({ params }: Props) {
     year: 'numeric'
   });
 
-  // Mappa colori categorie (stessa di BlogCard e Homepage)
+  // Mappa colori categorie
   const categoryColors: Record<string, string> = {
     'financial-education-eu': 'bg-blue-100 text-blue-800 border-blue-200',
     'cybersecurity-frauds': 'bg-red-100 text-red-800 border-red-200',
@@ -47,7 +47,6 @@ export default async function NewsDetailPage({ params }: Props) {
     'multilingual-education': 'bg-indigo-100 text-indigo-800 border-indigo-200'
   };
 
-  // Ottieni stile categoria e traduzione
   const categoryStyle = categoryColors[news.category] || 'bg-gray-100 text-gray-800 border-gray-200';
   const categoryLabel = t.raw('categories')[news.category] || news.category;
 
@@ -168,10 +167,12 @@ export default async function NewsDetailPage({ params }: Props) {
             )}
           </div>
 
-          {/* === INSERISCI QUI IL LINK ALLA PAGINA CYBERCRIME === */}
-          <div style={{ margin: '3rem 0' }}>
-            <InternationalCybercrimeLink />
-          </div>
+          {/* === BOTTONE CYBERCRIME SOLO PER CATEGORIA CYBERSECURITY === */}
+          {news.category === 'cybersecurity-frauds' && (
+            <div style={{ margin: '3rem 0' }}>
+              <InternationalCybercrimeLink />
+            </div>
+          )}
 
           {/* Footer con link di ritorno */}
           <footer style={{ 
