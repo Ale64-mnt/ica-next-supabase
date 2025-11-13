@@ -12,7 +12,6 @@ export default async function NewsPage({ params }: { params: { locale: string } 
     .from('news')
     .select('*')
     .eq('locale', params.locale)
-    // .eq('published', true) // <-- RIMOSSO PERCHÉ LA COLONNA NON ESISTE
     .order('published_at', { ascending: false });
 
   if (error) {
@@ -33,15 +32,48 @@ export default async function NewsPage({ params }: { params: { locale: string } 
   return (
     <div style={{ minHeight: '100vh', fontFamily: 'Arial, sans-serif' }}>
       
-      {/* Header */}
-      <div style={{ padding: '3rem 1rem', textAlign: 'center', backgroundColor: '#f8f9fa' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#333', marginBottom: '1rem' }}>
-            {t('news')}
-          </h1>
-          <p style={{ fontSize: '1.1rem', color: '#666', lineHeight: '1.6' }}>
-            {t('news_description')}
-          </p>
+      {/* HERO CON IMMAGINE AGGIORNATO */}
+      <div className="relative w-full h-64 md:h-80 lg:h-96 bg-gray-100 overflow-hidden">
+        <Image
+          src="/images/News/news-1200x800.webp"
+          alt={t('news') || 'News e aggiornamenti'}
+          fill
+          style={{ 
+            objectFit: 'contain',
+            position: 'absolute',
+            top: '0',
+            left: '0'
+          }}
+          sizes="100vw"
+          priority
+        />
+        <div style={{
+          position: 'absolute',
+          inset: '0',
+          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}>
+          <div style={{ textAlign: 'center', color: 'white' }}>
+            <h1 style={{ 
+              fontSize: '3rem', 
+              fontWeight: 'bold', 
+              marginBottom: '1.5rem',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
+            }}>
+              {t('news')}
+            </h1>
+            <p style={{ 
+              fontSize: '1.5rem', 
+              maxWidth: '800px',
+              margin: '0 auto',
+              textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
+              lineHeight: '1.6'
+            }}>
+              {t('news_description')}
+            </p>
+          </div>
         </div>
       </div>
 

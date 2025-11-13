@@ -124,30 +124,24 @@ export default async function Page({ params }: PageProps) {
                       href={`/${locale}/news/${news.slug}`}
                       className="flex flex-col md:flex-row gap-6 min-w-0 hover:bg-slate-50 transition"
                     >
-                      {/* Thumbnail */}
-                      <div className="relative w-full md:w-[260px] lg:w-[300px] h-48 md:h-[170px] shrink-0 bg-slate-100 overflow-hidden">
-                        {imgSrc ? (
-                          <div className="w-full h-full relative">
-                            <Image
-                              src={imgSrc}
-                              alt={imgAlt}
-                              fill
-                              sizes="(max-width: 768px) 100vw, 300px"
-                              className="object-cover"
-                              style={{
-                                width: '100%',
-                                height: '100%',
-                                objectFit: 'cover',
-                                objectPosition: 'center'
-                              }}
-                            />
-                          </div>
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center text-slate-400 text-sm bg-slate-100">
-                            📷
-                          </div>
-                        )}
-                      </div>
+                      {/* Thumbnail - ASPECT 16:9 (video) */}
+<div className="relative w-full md:w-[260px] lg:w-[300px] h-auto aspect-video shrink-0 bg-slate-100 overflow-hidden">
+  {imgSrc ? (
+    <div className="w-full h-full relative">
+      <Image
+        src={news.thumb_url || news.image_url}
+        alt={imgAlt}
+        fill
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 260px, 300px"
+        className="object-cover"
+      />
+    </div>
+  ) : (
+    <div className="w-full h-full flex items-center justify-center text-slate-400 text-sm bg-slate-100">
+      📷
+    </div>
+  )}
+</div>
 
                       {/* Contenuto testo */}
                       <div className="flex-1 basis-0 min-w-0 p-4 md:p-5">

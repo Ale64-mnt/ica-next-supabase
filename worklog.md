@@ -1029,7 +1029,7 @@ Risultati:
 
 ⏱ 2h
 
-📌 2025-11-08 | RF-33 | Blog Categories Implementation
+### 📌 2025-11-08 | RF-33 | Blog Categories Implementation
 
 Modifiche Implementate:
 
@@ -1091,7 +1091,7 @@ Prossimi Passi:
 
 ⏱  2h
 
-📌 2025-11-08 | RF-33.1 | Blog Categories Translations Fix
+### 📌 2025-11-08 | RF-33.1 | Blog Categories Translations Fix
 
 Modifiche Implementate:
 
@@ -1144,7 +1144,7 @@ Prossimi Passi:
 ⏱  30 m
 
 
-📌 2025-11-08 | RF-33.2 | News Categories Implementation
+### 📌 2025-11-08 | RF-33.2 | News Categories Implementation
 
 Modifiche Implementate:
 
@@ -1209,7 +1209,8 @@ Note Tecniche:
 
  ⏱ 1 h   
 
- 📌 2025-11-08 | RF-34 | Hero Section Rewrite & EU Strategy Integration
+
+ ### 📌 2025-11-08 | RF-34 | Hero Section Rewrite & EU Strategy Integration
 
 Modifiche Implementate:
 
@@ -1275,7 +1276,8 @@ Note Tecniche:
 
 ⏱  1 h
 
-📌 2025-11-08 | RF-35 | Content Optimization & Category-Specific Features
+
+### 📌 2025-11-08 | RF-35 | Content Optimization & Category-Specific Features
 
 Modifiche Implementate:
 
@@ -1333,5 +1335,70 @@ Note Tecniche:
     Ensured all external links open in new tabs with proper attributes
 
 ⏱  2h
+
+
+### 📌 2025-11-08 | RF-36 | Responsive Images Optimization
+
+Modifiche Implementate:
+
+    ✅ Hero Image Optimization: Fixed aspect ratio issues in news page hero section
+
+    ✅ Card Images Responsive: Completely redesigned image containers to maintain aspect ratios across all devices
+
+    ✅ Mobile Landscape Support: Fixed image cropping issues in mobile horizontal orientation
+
+    ✅ Aspect Ratio Consistency: Implemented consistent aspect ratios (4:3 or 16:9) across all card components
+
+    ✅ Tablet Layout Fix: Resolved image cropping on tablet devices in homepage news cards
+
+File Modificati:
+
+    webapp/app/[locale]/page.tsx - Updated news card thumbnails with responsive aspect ratios
+
+    webapp/app/[locale]/news/page.tsx - Enhanced hero section with proper image display
+
+Risultati Raggiunti:
+
+    Consistent image display across all screen sizes and orientations
+
+    Elimination of image cropping on mobile landscape and tablet devices
+
+    Improved visual hierarchy with proper aspect ratio maintenance
+
+    Enhanced user experience with predictable image behavior
+
+    Optimized responsive design for all breakpoints
+
+Testing Eseguito:
+
+    Mobile vertical/horizontal orientation testing
+
+    Tablet layout validation
+
+    Desktop responsive behavior verification
+
+    Cross-browser aspect ratio consistency check
+
+    Image loading performance optimization
+
+Prossimi Passi:
+
+    Monitor image loading performance across devices
+
+    Consider implementing lazy loading for below-fold images
+
+    Gather user feedback on new image presentation
+
+    Optimize image compression for different aspect ratios
+
+⏱ Tempo Impiegato: 2h
+
+Note Tecniche:
+
+    Replaced fixed heights with aspect-[4/3] and aspect-video classes
+
+    Used h-auto for flexible height management
+
+    Optimized sizes attribute for proper responsive image loading
 
 
