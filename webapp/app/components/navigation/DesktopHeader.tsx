@@ -12,6 +12,7 @@ type DesktopHeaderProps = {
     main_navigation_label: string;
     home_link: string;
     about: string;
+    financial_education: string; // 🔥 NUOVA VOCE
     articles: string;
     news: string;
     blog_link: string;
@@ -24,6 +25,7 @@ export function DesktopHeader({ locale, translations }: DesktopHeaderProps) {
   const navLinks = [
     { href: '/', label: translations.home_link },
     { href: '/about', label: translations.about },
+    { href: '/education', label: translations.financial_education }, // 🔥 NUOVA VOCE
     { href: '/articles', label: translations.articles },
     { href: '/news', label: translations.news },
     { href: '/blog', label: translations.blog_link },

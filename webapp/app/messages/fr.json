@@ -10,6 +10,7 @@
     "close_menu": "Fermer le menu",
     "home_link": "Accueil",
     "about": "Qui sommes-nous",
+    "financial_education": "Éducation Financière",
     "articles": "Articles",
     "news": "Actualités",
     "blog_link": "Blog",
@@ -144,5 +145,10 @@
     "description": "Contactez immédiatement les autorités policières spécialisées en cybercriminalité de votre pays",
     "button": "Trouvez les Autorités Cybercriminalité dans votre Région",
     "subtext": "✅ Contacts officiels des 27 pays de l'UE"
+  },
+  "EducationPage": {
+    "title": "Éducation Financière",
+    "description": "Ressources éducatives pour améliorer vos connaissances financières et prendre des décisions éclairées.",
+    "coming_soon": "Contenu à venir. Nous préparons des matériels éducatifs de qualité."
   }
 }

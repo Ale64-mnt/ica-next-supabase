@@ -10,6 +10,7 @@
       "close_menu": "Chiudi menu",
       "home_link": "Home",
       "about": "Chi siamo",
+      "financial_education": "Educazione finanziaria",
       "articles": "Articoli",
       "news": "Notizie",
       "blog_link": "Blog",
@@ -142,6 +143,11 @@
         "multilingual-education": "Educazione Multilingue"
       },
       "readMore": "Leggi più →",
-      "minRead": "min read"
-    }
+    "minRead": "min read"
+  },
+  "EducationPage": {
+    "title": "Educazione Finanziaria",
+    "description": "Risorse educative per migliorare la tua conoscenza finanziaria e prendere decisioni informate.",
+    "coming_soon": "Contenuto in arrivo. Stiamo preparando materiali educativi di qualità."
   }
+}

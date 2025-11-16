@@ -10,6 +10,7 @@
     "close_menu": "Menü schließen",
     "home_link": "Startseite",
     "about": "Über uns",
+    "financial_education": "Finanzbildung",
     "articles": "Artikel",
     "news": "Nachrichten",
     "blog_link": "Blog",
@@ -144,5 +145,10 @@
     "description": "Setzen Sie sich umgehend mit den spezialisierten Polizeibehörden für Cyberkriminalität in Ihrem Land in Verbindung",
     "button": "Finden Sie Cybercrime-Behörden in Ihrer Region",
     "subtext": "✅ Offizielle Kontakte aller 27 EU-Länder"
+  },
+  "EducationPage": {
+    "title": "Finanzbildung",
+    "description": "Bildungsressourcen zur Verbesserung Ihrer Finanzkenntnisse und für fundierte Entscheidungen.",
+    "coming_soon": "Inhalt kommt bald. Wir bereiten qualitativ hochwertige Bildungsmaterialien vor."
   }
 }

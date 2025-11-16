@@ -14,6 +14,8 @@ export async function Header({ locale }: HeaderProps) {
     close_menu: t('close_menu'),
     home_link: t('home_link'),
     about: t('about'),
+    // 🔥 NUOVA VOCE AGGIUNTA
+    financial_education: t('financial_education'),
     articles: t('articles'),
     news: t('news'),
     blog_link: t('blog_link'),

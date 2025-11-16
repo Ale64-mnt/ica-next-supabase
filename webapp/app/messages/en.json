@@ -10,6 +10,7 @@
     "close_menu": "Close menu",
     "home_link": "Home",
     "about": "About us",
+    "financial_education": "Financial Education",
     "articles": "Articles",
     "news": "News",
     "blog_link": "Blog",
@@ -144,5 +145,10 @@
     "subtitle": "Police authority contacts for cybercrime across the European Union",
     "eu_countries": "European Union Countries",
     "select_country": "Select a country for local contacts"
+  },
+  "EducationPage": {
+    "title": "Financial Education",
+    "description": "Educational resources to improve your financial knowledge and make informed decisions.",
+    "coming_soon": "Content coming soon. We are preparing quality educational materials."
   }
 }
