@@ -148,8 +148,22 @@
   },
   "Education": {
     "title": "Éducation Financière",
-    "subtitle": "Apprenez les compétences financières essentielles pour chaque étape de la vie, basé sur les cadres officiels UE/OCSE",
+    "subtitle": "Apprenez les compétences financières essentielles pour chaque étape de la vie, basé sur les cadres officiels UE/OCDE",
     "select_age_group": "Sélectionnez votre groupe d'âge",
-    "learning_areas": "Domaines d'Apprentissage"
+    "learning_areas": "Domaines d'Apprentissage",
+    "loading_areas": "Chargement des domaines d'apprentissage...",
+    "areas_loaded": "{count} domaines d'apprentissage chargés",
+    "load_error_title": "Impossible de charger les domaines d'apprentissage",
+    "load_error": "Erreur : {error}",
+    "try_again": "Réessayer",
+    "available_areas": "Domaines d'apprentissage disponibles",
+    "areas_list": "Liste des domaines d'apprentissage",
+    "areas_available": "{count} domaines d'apprentissage disponibles",
+    "macro_areas": {
+      "money_transactions": "Apprenez la gestion de l'argent, les paiements numériques et les transactions financières",
+      "planning_budgeting": "Développez des compétences en planification financière, budgétisation et objectifs d'épargne",
+      "managing_risks_insurance": "Comprenez la gestion des risques, l'assurance et la protection financière",
+      "financial_landscape": "Explorez le système financier, les droits des consommateurs et les concepts économiques"
+    }
   }
 }

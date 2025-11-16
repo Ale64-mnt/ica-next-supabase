@@ -150,6 +150,20 @@
     "title": "Finanzielle Bildung",
     "subtitle": "Lernen Sie wesentliche Finanzkompetenzen für jede Lebensphase, basierend auf den offiziellen EU/OECD-Rahmen",
     "select_age_group": "Wählen Sie Ihre Altersgruppe",
-    "learning_areas": "Lernbereiche"
+    "learning_areas": "Lernbereiche",
+    "loading_areas": "Lernbereiche werden geladen...",
+    "areas_loaded": "{count} Lernbereiche geladen",
+    "load_error_title": "Lernbereiche konnten nicht geladen werden",
+    "load_error": "Fehler: {error}",
+    "try_again": "Erneut versuchen",
+    "available_areas": "Verfügbare Lernbereiche",
+    "areas_list": "Liste der Lernbereiche",
+    "areas_available": "{count} Lernbereiche verfügbar",
+    "macro_areas": {
+      "money_transactions": "Lernen Sie Geldmanagement, digitale Zahlungen und Finanztransaktionen",
+      "planning_budgeting": "Entwickeln Sie Fähigkeiten in Finanzplanung, Budgetierung und Sparzielen",
+      "managing_risks_insurance": "Verstehen Sie Risikomanagement, Versicherungen und finanziellen Schutz",
+      "financial_landscape": "Erkunden Sie das Finanzsystem, Verbraucherrechte und Wirtschaftskonzepte"
+    }
   }
 }

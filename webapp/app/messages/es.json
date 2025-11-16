@@ -147,9 +147,24 @@
     "subtext": "✅ Contactos oficiales de los 27 países de la UE"
   },
   "Education": {
-    "title": "Educación Financiera", 
+    "title": "Educación Financiera",
     "subtitle": "Aprende habilidades financieras esenciales para cada etapa de la vida, basado en los marcos oficiales UE/OCDE",
     "select_age_group": "Selecciona tu grupo de edad",
-    "learning_areas": "Áreas de Aprendizaje"
+    "learning_areas": "Áreas de Aprendizaje",
+    "loading_areas": "Cargando áreas de aprendizaje...",
+    "areas_loaded": "Cargadas {count} áreas de aprendizaje",
+    "load_error_title": "No se pueden cargar las áreas de aprendizaje",
+    "load_error": "Error: {error}",
+    "try_again": "Intentar de nuevo",
+    "available_areas": "Áreas de aprendizaje disponibles",
+    "areas_list": "Lista de áreas de aprendizaje",
+    "areas_available": "{count} áreas de aprendizaje disponibles",
+    "macro_areas": {
+      "money_transactions": "Aprende sobre gestión del dinero, pagos digitales y transacciones financieras",
+      "planning_budgeting": "Desarrolla habilidades para la planificación financiera, presupuestos y objetivos de ahorro",
+      "managing_risks_insurance": "Comprende la gestión de riesgos, seguros y protección financiera",
+      "financial_landscape": "Explora el sistema financiero, derechos del consumidor y conceptos económicos"
+    }
   }
+  
 }

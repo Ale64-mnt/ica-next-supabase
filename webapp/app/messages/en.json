@@ -149,7 +149,21 @@
   "Education": {
     "title": "Financial Education",
     "subtitle": "Learn essential financial skills for every stage of life, based on official EU/OECD frameworks",
-    "select_age_group": "Select your age group", 
-    "learning_areas": "Learning Areas"
+    "select_age_group": "Select your age group",
+    "learning_areas": "Learning Areas",
+    "loading_areas": "Loading learning areas...",
+    "areas_loaded": "Loaded {count} learning areas",
+    "load_error_title": "Unable to load learning areas",
+    "load_error": "Error: {error}",
+    "try_again": "Try Again",
+    "available_areas": "Available Learning Areas",
+    "areas_list": "Learning areas list",
+    "areas_available": "{count} learning areas available",
+    "macro_areas": {
+      "money_transactions": "Learn about money management, digital payments, and financial transactions",
+      "planning_budgeting": "Develop skills for financial planning, budgeting, and savings goals",
+      "managing_risks_insurance": "Understand risk management, insurance, and financial protection",
+      "financial_landscape": "Explore the financial system, consumer rights, and economic concepts"
+    }
   }
 }
