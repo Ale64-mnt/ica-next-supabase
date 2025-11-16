@@ -46,7 +46,7 @@ export default async function Page({ params }: PageProps) {
                 {/* Citazione in corsivo */}
                 <div className="border-l-4 border-blue-600 pl-4 py-2">
                   <p className="italic text-sm sm:text-base text-slate-700 leading-relaxed">
-                    "{t('hero_quote')}"
+                  {t('hero_quote')}
                   </p>
                   <p className="text-sm sm:text-base text-slate-700 mt-2">
                     {t('hero_quote_continuation')}
