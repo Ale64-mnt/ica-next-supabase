@@ -146,9 +146,10 @@
     "button": "Finden Sie Cybercrime-Behörden in Ihrer Region",
     "subtext": "✅ Offizielle Kontakte aller 27 EU-Länder"
   },
-  "EducationPage": {
-    "title": "Finanzbildung",
-    "description": "Bildungsressourcen zur Verbesserung Ihrer Finanzkenntnisse und für fundierte Entscheidungen.",
-    "coming_soon": "Inhalt kommt bald. Wir bereiten qualitativ hochwertige Bildungsmaterialien vor."
+  "Education": {
+    "title": "Finanzielle Bildung",
+    "subtitle": "Lernen Sie wesentliche Finanzkompetenzen für jede Lebensphase, basierend auf den offiziellen EU/OECD-Rahmen",
+    "select_age_group": "Wählen Sie Ihre Altersgruppe",
+    "learning_areas": "Lernbereiche"
   }
 }

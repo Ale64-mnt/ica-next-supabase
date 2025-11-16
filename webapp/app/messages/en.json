@@ -146,9 +146,10 @@
     "eu_countries": "European Union Countries",
     "select_country": "Select a country for local contacts"
   },
-  "EducationPage": {
+  "Education": {
     "title": "Financial Education",
-    "description": "Educational resources to improve your financial knowledge and make informed decisions.",
-    "coming_soon": "Content coming soon. We are preparing quality educational materials."
+    "subtitle": "Learn essential financial skills for every stage of life, based on official EU/OECD frameworks",
+    "select_age_group": "Select your age group", 
+    "learning_areas": "Learning Areas"
   }
 }

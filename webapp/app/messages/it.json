@@ -145,9 +145,10 @@
       "readMore": "Leggi più →",
     "minRead": "min read"
   },
-  "EducationPage": {
+  "Education": {
     "title": "Educazione Finanziaria",
-    "description": "Risorse educative per migliorare la tua conoscenza finanziaria e prendere decisioni informate.",
-    "coming_soon": "Contenuto in arrivo. Stiamo preparando materiali educativi di qualità."
+    "subtitle": "Impara le competenze finanziarie essenziali per ogni fase della vita, basato sui framework ufficiali UE/OCSE",
+    "select_age_group": "Seleziona la tua fascia d'età",
+    "learning_areas": "Aree di Apprendimento"
   }
 }

@@ -146,9 +146,10 @@
     "button": "Trouvez les Autorités Cybercriminalité dans votre Région",
     "subtext": "✅ Contacts officiels des 27 pays de l'UE"
   },
-  "EducationPage": {
+  "Education": {
     "title": "Éducation Financière",
-    "description": "Ressources éducatives pour améliorer vos connaissances financières et prendre des décisions éclairées.",
-    "coming_soon": "Contenu à venir. Nous préparons des matériels éducatifs de qualité."
+    "subtitle": "Apprenez les compétences financières essentielles pour chaque étape de la vie, basé sur les cadres officiels UE/OCSE",
+    "select_age_group": "Sélectionnez votre groupe d'âge",
+    "learning_areas": "Domaines d'Apprentissage"
   }
 }
