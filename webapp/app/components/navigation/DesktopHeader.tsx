@@ -52,7 +52,7 @@ export function DesktopHeader({ locale, translations }: DesktopHeaderProps) {
           <div className="flex items-center flex-shrink-0">
             <Link href={`/${locale}`}>
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt={translations.site_logo_alt}
                 width={156}
                 height={156}

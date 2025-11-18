@@ -79,7 +79,7 @@ export function MobileHeader({ locale, translations }: MobileHeaderProps) {
             <div className="flex items-center flex-shrink-0">
               <Link href={`/${locale}`} onClick={closeMenu}>
                 <Image
-                  src="/logo.png"
+                  src="/logo.webp"
                   alt={translations.site_logo_alt}
                   width={120}
                   height={60}

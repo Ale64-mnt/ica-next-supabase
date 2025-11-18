@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+﻿import { useTranslations } from 'next-intl';
 import { notFound } from 'next/navigation';
 import AgeLevelsGrid from '@/app/components/education/AgeLevelsGrid';
 
@@ -9,20 +9,12 @@ interface PageProps {
   };
 }
 
-// Metadata dinamica per SEO
-export async function generateMetadata({ params }: PageProps) {
-  const { macro_area, locale } = params;
-  
-  return {
-    title: `${macro_area} - Financial Education`,
-  };
-}
-
 export default function MacroAreaPage({ params }: PageProps) {
   const { macro_area } = params;
   const t = useTranslations('Education');
 
-  // Validazione macro area
+  console.log('🚀 Macro Area Page Loaded:', macro_area);
+
   const validMacroAreas = ['money_transactions', 'planning_budgeting', 'managing_risks_insurance', 'financial_landscape'];
   if (!validMacroAreas.includes(macro_area)) {
     notFound();
@@ -37,7 +29,6 @@ export default function MacroAreaPage({ params }: PageProps) {
 
   return (
     <div className="max-w-6xl mx-auto">
-      {/* Header */}
       <div className="mb-8">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           {macroAreaTitles[macro_area as keyof typeof macroAreaTitles]}
@@ -47,7 +38,6 @@ export default function MacroAreaPage({ params }: PageProps) {
         </p>
       </div>
 
-      {/* Griglia Fasce d'Età */}
       <AgeLevelsGrid macroArea={macro_area} />
     </div>
   );

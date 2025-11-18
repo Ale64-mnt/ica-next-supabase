@@ -1,4 +1,4 @@
-import createMiddleware from 'next-intl/middleware';
+﻿import createMiddleware from 'next-intl/middleware';
  
 export default createMiddleware({
   locales: ['it', 'en', 'de', 'es', 'fr'],
@@ -6,5 +6,6 @@ export default createMiddleware({
 });
  
 export const config = {
-  matcher: ['/', '/(it|en|de|es|fr)/:path*']
+  // Escludi le API routes
+  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)']
 };

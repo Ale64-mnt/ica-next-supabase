@@ -75,7 +75,7 @@ export default async function Page({ params }: PageProps) {
               <div className="w-full rounded-2xl bg-[#eef3f8] p-4 sm:p-6 md:p-8 shadow-sm ring-1 ring-black/5">
                 <div className="relative w-full max-w-[640px] h-56 sm:h-64 md:h-80 lg:h-96 xl:h-[28rem]">
                   <Image
-                    src="/images/homepage-hero.png"
+                    src="/images/homepage-hero.webp"
                     alt={t('hero_image_alt')}
                     fill
                     className="object-contain"
