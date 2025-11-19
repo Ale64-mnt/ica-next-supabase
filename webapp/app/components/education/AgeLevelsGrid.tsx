@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 interface AgeLevel {
   id: string;
   label: string;
-  age_range: string; // ✅ Nuovo campo: fascia numerica
+  age_range: string;
   description: string;
   sort_order: number;
 }
@@ -38,7 +38,6 @@ export default function AgeLevelsGrid({ macroArea, locale }: AgeLevelsGridProps)
         const data = await response.json();
         console.log('📦 API Response data:', data);
         
-        // ✅ FIX: Usa data direttamente (ora è un array)
         setAgeLevels(data);
       } catch (err) {
         console.error('❌ Fetch error:', err);
@@ -81,7 +80,7 @@ export default function AgeLevelsGrid({ macroArea, locale }: AgeLevelsGridProps)
   if (safeAgeLevels.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-500 text-lg">Nessuna fascia d'età disponibile per questa area</p>
+        <p className="text-gray-500 text-lg">Nessuna fascia d&apos;età disponibile per questa area</p>
       </div>
     );
   }
@@ -96,7 +95,6 @@ export default function AgeLevelsGrid({ macroArea, locale }: AgeLevelsGridProps)
           aria-label={`Esplora moduli per ${ageLevel.label} (${ageLevel.age_range} anni) - ${t('macro_areas.' + macroArea)}`}
         >
           <div className="text-center">
-            {/* ✅ Fascia numerica in evidenza */}
             <div className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium mb-3">
               {ageLevel.age_range} anni
             </div>
