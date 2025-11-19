@@ -1685,3 +1685,80 @@ Note Tecniche:
     Translation fallback system functioning properly
 
 ⏱ 2h 30m
+
+### 📌 2025-11-19 | RF-49 | Education Database Structure & API Optimization
+
+Modifiche Implementate:
+
+✅ Database Schema Completion: Implemented age-specific relationships for all macro areas according to UE education plan
+✅ API Endpoint Fix: Resolved 500 errors with optimized two-step query approach
+✅ Age Levels Filtering: Correctly filtered age levels per macro area (4 for Money & Transactions, 7 for others)
+✅ UI Component Enhancement: Added age range badges and improved card design with numerical ranges
+✅ Data Validation: Verified all database relationships and i18n content consistency
+
+Problemi Risolti:
+text
+
+API 500 Error: Fixed Supabase query issues with safe two-step approach (relations → details)
+
+Column Reference Error: Resolved 'macro_areas.slug does not exist' in complex joins
+
+Data Filtering: Corrected age level filtering to show only relevant levels per macro area
+
+Component Mapping: Fixed 'ageLevels.map is not a function' with proper array validation
+
+Locale Propagation: Resolved undefined locale parameter in API calls
+
+File Modificati:
+text
+
+webapp/app/api/education/age-levels/route.ts - Complete rewrite with safe query approach
+
+webapp/app/components/education/AgeLevelsGrid.tsx - Enhanced with age range badges and error handling
+
+webapp/app/[locale]/education/[macro_area]/page.tsx - Fixed locale parameter propagation
+
+Database: macro_area_age_levels table - Updated with correct age level relationships
+
+Risultati Raggiunti:
+text
+
+Accurate age level distribution: Money & Transactions (4), Other Areas (7)
+
+Robust API endpoints with comprehensive error handling
+
+Enhanced UI with numerical age ranges and improved accessibility
+
+Complete database integrity with verified relationships
+
+Zero API errors across all education endpoints
+
+Testing Eseguito:
+text
+
+API endpoint validation for all macro areas and locales
+
+Database relationship verification with SQL queries
+
+UI responsiveness testing across mobile/tablet/desktop
+
+WCAG 2.1 AA compliance validation for new components
+
+Cross-browser compatibility testing
+
+Error scenario testing (missing data, network failures)
+
+Note Tecniche:
+text
+
+Two-step query approach: relations lookup → details fetch for reliability
+
+Safe array validation: Array.isArray() checks before mapping operations
+
+Age range badges: Visual enhancement showing numerical ranges (6-10 anni)
+
+Enhanced error states: User-friendly error messages with retry functionality
+
+Performance optimization: Efficient data fetching with proper indexing
+
+⏱ 2h 30m

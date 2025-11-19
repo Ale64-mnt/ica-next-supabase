@@ -10,10 +10,10 @@ interface PageProps {
 }
 
 export default function MacroAreaPage({ params }: PageProps) {
-  const { macro_area } = params;
+  const { macro_area, locale } = params; // ✅ Assicurati di estrarre locale
   const t = useTranslations('Education');
 
-  console.log('🚀 Macro Area Page Loaded:', macro_area);
+  console.log('🚀 Macro Area Page Loaded:', { macro_area, locale });
 
   const validMacroAreas = ['money_transactions', 'planning_budgeting', 'managing_risks_insurance', 'financial_landscape'];
   if (!validMacroAreas.includes(macro_area)) {
@@ -38,7 +38,8 @@ export default function MacroAreaPage({ params }: PageProps) {
         </p>
       </div>
 
-      <AgeLevelsGrid macroArea={macro_area} />
+      {/* ✅ Passa il locale al componente */}
+      <AgeLevelsGrid macroArea={macro_area} locale={locale} />
     </div>
   );
 }
