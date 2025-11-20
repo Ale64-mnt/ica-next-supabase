@@ -117,7 +117,8 @@ export default function MacroAreasGrid() {
             key={area.id}
             title={area.title}
             description={t(`macro_areas.${area.id}`)}
-            href={`/education/${area.id}`}
+            // ✅ FIX: Aggiungi il locale al link
+            href={`/${locale}/education/${area.id}`}
             role="link"
           />
         ))}
