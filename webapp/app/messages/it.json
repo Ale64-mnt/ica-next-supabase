@@ -164,11 +164,27 @@
     "available_age_groups": "Fasce d'età disponibili",
     "age_groups_list": "Elenco fasce d'età",
     "age_group_description": "Contenuti educativi personalizzati per questa fascia d'età",
+    
+   
+    "explore_modules": "Esplora Moduli",
+    "modules_available_description": "Esplora i moduli educativi progettati per questa fascia d'età",
+    "modules_coming_soon": "I moduli educativi saranno disponibili a breve!",
+    
+    "age_groups": {
+      "6_10": "6-10 Anni",
+      "11_13": "11-13 Anni", 
+      "14_17": "14-17 Anni",
+      "18_25": "18-25 Anni",
+      "26_45": "26-45 Anni",
+      "46_65": "46-65 Anni",
+      "65_plus": "65+ Anni"
+    },
+
     "macro_areas": {
       "money_transactions": "Impara la gestione del denaro, i pagamenti digitali e le operazioni finanziarie",
       "planning_budgeting": "Sviluppa competenze per la pianificazione finanziaria, il budget e gli obiettivi di risparmio",
       "managing_risks_insurance": "Comprendi la gestione dei rischi, le assicurazioni e la protezione finanziaria",
-      "financial_landscape": "Esplora il sistema finanziario, i diritti dei consumatori e i concetti economici"
+     "financial_landscape": "Esplora il sistema finanziario, i diritti dei consumatori e i concetti economici"
     }
   }
 }

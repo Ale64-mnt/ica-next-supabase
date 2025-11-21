@@ -146,31 +146,47 @@
     "button": "Encuentra Autoridades de Cibercrimen en tu Región",
     "subtext": "✅ Contactos oficiales de los 27 países de la UE"
   },
-  "Education": {
-    "title": "Educación Financiera",
-    "subtitle": "Aprende habilidades financieras esenciales para cada etapa de la vida, basado en los marcos oficiales UE/OCDE",
-    "select_age_group": "Selecciona tu grupo de edad",
-    "select_age_group_instruction": "Selecciona tu grupo de edad para ver contenido educativo personalizado",
-    "learning_areas": "Áreas de Aprendizaje",
-    "loading_areas": "Cargando áreas de aprendizaje...",
-    "areas_loaded": "Cargadas {count} áreas de aprendizaje",
-    "load_error_title": "No se pueden cargar las áreas de aprendizaje",
-    "load_error": "Error: {error}",
-    "try_again": "Intentar de nuevo",
-    "available_areas": "Áreas de aprendizaje disponibles",
-    "areas_list": "Lista de áreas de aprendizaje",
-    "areas_available": "{count} áreas de aprendizaje disponibles",
-    "loading_age_groups": "Cargando grupos de edad...",
-    "load_error_age_groups": "Error cargando grupos de edad",
-    "available_age_groups": "Grupos de edad disponibles", 
-    "age_groups_list": "Lista de grupos de edad",
-    "age_group_description": "Contenido educativo personalizado para este grupo de edad",
-    "macro_areas": {
-      "money_transactions": "Aprende sobre gestión del dinero, pagos digitales y transacciones financieras",
-      "planning_budgeting": "Desarrolla habilidades para la planificación financiera, presupuestos y objetivos de ahorro",
-      "managing_risks_insurance": "Comprende la gestión de riesgos, seguros y protección financiera",
-      "financial_landscape": "Explora el sistema financiero, derechos del consumidor y conceptos económicos"
+  
+    "Education": {
+      "title": "Educación Financiera",
+      "subtitle": "Aprende habilidades financieras esenciales para cada etapa de la vida, basado en los marcos oficiales UE/OCDE",
+      "select_age_group": "Selecciona tu grupo de edad",
+      "select_age_group_instruction": "Selecciona tu grupo de edad para ver contenido educativo personalizado",
+      "learning_areas": "Áreas de Aprendizaje",
+      "loading_areas": "Cargando áreas de aprendizaje...",
+      "areas_loaded": "Cargadas {count} áreas de aprendizaje",
+      "load_error_title": "No se pueden cargar las áreas de aprendizaje",
+      "load_error": "Error: {error}",
+      "try_again": "Intentar de nuevo",
+      "available_areas": "Áreas de aprendizaje disponibles",
+      "areas_list": "Lista de áreas de aprendizaje",
+      "areas_available": "{count} áreas de aprendizaje disponibles",
+      "loading_age_groups": "Cargando grupos de edad...",
+      "load_error_age_groups": "Error cargando grupos de edad",
+      "available_age_groups": "Grupos de edad disponibles", 
+      "age_groups_list": "Lista de grupos de edad",
+      "age_group_description": "Contenido educativo personalizado para este grupo de edad",
+      
+      
+      "explore_modules": "Explorar Módulos",
+      "modules_available_description": "Explora módulos educativos diseñados para este grupo de edad",
+      "modules_coming_soon": "¡Los módulos educativos estarán disponibles pronto!",
+      
+      "age_groups": {
+        "6_10": "6-10 Años",
+        "11_13": "11-13 Años",
+        "14_17": "14-17 Años",
+        "18_25": "18-25 Años",
+        "26_45": "26-45 Años",
+        "46_65": "46-65 Años",
+        "65_plus": "65+ Años"
+      },
+  
+      "macro_areas": {
+        "money_transactions": "Aprende sobre gestión del dinero, pagos digitales y transacciones financieras",
+        "planning_budgeting": "Desarrolla habilidades para la planificación financiera, presupuestos y objetivos de ahorro",
+        "managing_risks_insurance": "Comprende la gestión de riesgos, seguros y protección financiera",
+        "financial_landscape": "Explora el sistema financiero, derechos del consumidor y conceptos económicos"
+      }
     }
   }
-  
-}

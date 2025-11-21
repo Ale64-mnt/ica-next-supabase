@@ -25,15 +25,6 @@ export default function MacroAreasGrid() {
   const [error, setError] = useState<string | null>(null);
   const [announcement, setAnnouncement] = useState('');
 
-  // DEBUG: Monitora macroAreas
-  useEffect(() => {
-    console.log('🔄 MacroAreas updated:', {
-      count: macroAreas.length,
-      type: typeof macroAreas.length,
-      data: macroAreas
-    });
-  }, [macroAreas]);
-
   useEffect(() => {
     async function fetchMacroAreas() {
       try {
@@ -117,7 +108,6 @@ export default function MacroAreasGrid() {
             key={area.id}
             title={area.title}
             description={t(`macro_areas.${area.id}`)}
-            // ✅ FIX: Aggiungi il locale al link
             href={`/${locale}/education/${area.id}`}
             role="link"
           />

@@ -146,30 +146,47 @@
     "button": "Trouvez les Autorités Cybercriminalité dans votre Région",
     "subtext": "✅ Contacts officiels des 27 pays de l'UE"
   },
-  "Education": {
-    "title": "Éducation Financière",
-    "subtitle": "Apprenez les compétences financières essentielles pour chaque étape de la vie, basé sur les cadres officiels UE/OCDE",
-    "select_age_group": "Sélectionnez votre groupe d'âge",
-    "select_age_group_instruction": "Sélectionnez votre groupe d'âge pour voir le contenu éducatif personnalisé",
-    "learning_areas": "Domaines d'Apprentissage",
-    "loading_areas": "Chargement des domaines d'apprentissage...",
-    "areas_loaded": "{count} domaines d'apprentissage chargés",
-    "load_error_title": "Impossible de charger les domaines d'apprentissage",
-    "load_error": "Erreur : {error}",
-    "try_again": "Réessayer",
-    "available_areas": "Domaines d'apprentissage disponibles",
-    "areas_list": "Liste des domaines d'apprentissage",
-    "areas_available": "{count} domaines d'apprentissage disponibles",
-    "loading_age_groups": "Chargement des groupes d'âge...",
-    "load_error_age_groups": "Erreur de chargement des groupes d'âge",
-    "available_age_groups": "Groupes d'âge disponibles",
-    "age_groups_list": "Liste des groupes d'âge", 
-    "age_group_description": "Contenu éducatif personnalisé pour ce groupe d'âge",
-    "macro_areas": {
-      "money_transactions": "Apprenez la gestion de l'argent, les paiements numériques et les transactions financières",
-      "planning_budgeting": "Développez des compétences en planification financière, budgétisation et objectifs d'épargne",
-      "managing_risks_insurance": "Comprenez la gestion des risques, l'assurance et la protection financière",
-      "financial_landscape": "Explorez le système financier, les droits des consommateurs et les concepts économiques"
+  
+    "Education": {
+      "title": "Éducation Financière",
+      "subtitle": "Apprenez les compétences financières essentielles pour chaque étape de la vie, basé sur les cadres officiels UE/OCDE",
+      "select_age_group": "Sélectionnez votre groupe d'âge",
+      "select_age_group_instruction": "Sélectionnez votre groupe d'âge pour voir le contenu éducatif personnalisé",
+      "learning_areas": "Domaines d'Apprentissage",
+      "loading_areas": "Chargement des domaines d'apprentissage...",
+      "areas_loaded": "{count} domaines d'apprentissage chargés",
+      "load_error_title": "Impossible de charger les domaines d'apprentissage",
+      "load_error": "Erreur : {error}",
+      "try_again": "Réessayer",
+      "available_areas": "Domaines d'apprentissage disponibles",
+      "areas_list": "Liste des domaines d'apprentissage",
+      "areas_available": "{count} domaines d'apprentissage disponibles",
+      "loading_age_groups": "Chargement des groupes d'âge...",
+      "load_error_age_groups": "Erreur de chargement des groupes d'âge",
+      "available_age_groups": "Groupes d'âge disponibles",
+      "age_groups_list": "Liste des groupes d'âge", 
+      "age_group_description": "Contenu éducatif personnalisé pour ce groupe d'âge",
+      
+      
+      "explore_modules": "Explorer les Modules",
+      "modules_available_description": "Explorez les modules éducatifs conçus pour ce groupe d'âge",
+      "modules_coming_soon": "Les modules éducatifs arrivent bientôt !",
+      
+      "age_groups": {
+        "6_10": "6-10 Ans",
+        "11_13": "11-13 Ans",
+        "14_17": "14-17 Ans",
+        "18_25": "18-25 Ans",
+        "26_45": "26-45 Ans",
+        "46_65": "46-65 Ans",
+        "65_plus": "65+ Ans"
+      },
+  
+      "macro_areas": {
+        "money_transactions": "Apprenez la gestion de l'argent, les paiements numériques et les transactions financières",
+        "planning_budgeting": "Développez des compétences en planification financière, budgétisation et objectifs d'épargne",
+        "managing_risks_insurance": "Comprenez la gestion des risques, l'assurance et la protection financière",
+        "financial_landscape": "Explorez le système financier, les droits des consommateurs et les concepts économiques"
+      }
     }
   }
-}

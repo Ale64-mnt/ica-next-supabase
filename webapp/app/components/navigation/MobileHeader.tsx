@@ -83,7 +83,7 @@ export function MobileHeader({ locale, translations }: MobileHeaderProps) {
                   alt={translations.site_logo_alt}
                   width={120}
                   height={60}
-                  className="h-12 w-auto"
+                  className="h-36 w-auto"
                   priority
                 />
               </Link>

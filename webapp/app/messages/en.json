@@ -146,42 +146,45 @@
     "eu_countries": "European Union Countries",
     "select_country": "Select a country for local contacts"
   },
-  "Education": {
-    "title": "Financial Education",
-    "subtitle": "Learn essential financial skills for every life stage, based on official EU/OECD frameworks",
-    "select_age_group": "Select your age group",
-    "select_age_group_instruction": "Select your age group to see personalized educational content",
-    "learning_areas": "Learning Areas",
-    "loading_areas": "Loading learning areas...",
-    "areas_loaded": "Loaded {count} learning areas",
-    "load_error_title": "Unable to load learning areas",
-    "load_error": "Error: {error}",
-    "try_again": "Try again",
-    "available_areas": "Available learning areas",
-    "areas_list": "Learning areas list",
-    "areas_available": "{count} learning areas available",
-    "loading_age_groups": "Loading age groups...",
-    "load_error_age_groups": "Error loading age groups",
-    "available_age_groups": "Available age groups",
-    "age_groups_list": "Age groups list",
-    "age_group_description": "Personalized educational content for this age group",
-    "explore_modules": "Explore Modules",
-    "modules_available_description": "Explore educational modules designed for this age group",
-    "modules_coming_soon": "Educational modules are coming soon!",
-    "age_groups": {
-      "6_10": "6-10 Years",
-      "11_13": "11-13 Years",
-      "14_16": "14-16 Years",
-      "17_19": "17-19 Years",
-      "20_25": "20-25 Years",
-      "26_35": "26-35 Years",
-      "36_plus": "36+ Years"
-    },
-    "macro_areas": {
-      "money_transactions": "Learn about money management, digital payments, and financial transactions",
-      "planning_budgeting": "Develop skills for financial planning, budgeting, and savings goals",
-      "managing_risks_insurance": "Understand risk management, insurance, and financial protection",
-      "financial_landscape": "Explore the financial system, consumer rights, and economic concepts"
+  
+    "Education": {
+      "title": "Financial Education",
+      "subtitle": "Learn essential financial skills for every life stage, based on official EU/OECD frameworks",
+      "select_age_group": "Select your age group",
+      "select_age_group_instruction": "Select your age group to see personalized educational content",
+      "learning_areas": "Learning Areas",
+      "loading_areas": "Loading learning areas...",
+      "areas_loaded": "Loaded {count} learning areas",
+      "load_error_title": "Unable to load learning areas",
+      "load_error": "Error: {error}",
+      "try_again": "Try again",
+      "available_areas": "Available learning areas",
+      "areas_list": "Learning areas list",
+      "areas_available": "{count} learning areas available",
+      "loading_age_groups": "Loading age groups...",
+      "load_error_age_groups": "Error loading age groups",
+      "available_age_groups": "Available age groups",
+      "age_groups_list": "Age groups list",
+      "age_group_description": "Personalized educational content for this age group",
+      "explore_modules": "Explore Modules",
+      "modules_available_description": "Explore educational modules designed for this age group",
+      "modules_coming_soon": "Educational modules are coming soon!",
+      
+      "age_groups": {
+        "6_10": "6-10 Years",
+        "11_13": "11-13 Years",
+        "14_17": "14-17 Years",
+        "18_25": "18-25 Years",
+        "26_45": "26-45 Years",
+        "46_65": "46-65 Years",
+        "65_plus": "65+ Years"
+      },
+  
+      "macro_areas": {
+        "money_transactions": "Learn about money management, digital payments, and financial transactions",
+        "planning_budgeting": "Develop skills for financial planning, budgeting, and savings goals",
+        "managing_risks_insurance": "Understand risk management, insurance, and financial protection",
+        "financial_landscape": "Explore the financial system, consumer rights, and economic concepts"
+      }
     }
   }
-}
