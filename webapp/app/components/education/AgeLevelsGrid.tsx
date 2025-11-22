@@ -90,7 +90,7 @@ export default function AgeLevelsGrid({ macroArea, locale }: AgeLevelsGridProps)
       {safeAgeLevels.map((ageLevel) => (
         <Link
           key={ageLevel.id}
-          href={`/education/${macroArea}/${ageLevel.id}`}
+          href={`/${locale}/education/${macroArea}/${ageLevel.id}`}
           className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-all duration-200 border-2 border-transparent hover:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 group"
           aria-label={`Esplora moduli per ${ageLevel.label} (${ageLevel.age_range} anni) - ${t('macro_areas.' + macroArea)}`}
         >

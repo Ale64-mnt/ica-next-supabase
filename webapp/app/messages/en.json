@@ -186,5 +186,90 @@
         "managing_risks_insurance": "Understand risk management, insurance, and financial protection",
         "financial_landscape": "Explore the financial system, consumer rights, and economic concepts"
       }
+    },
+    
+      "NeedsVsWantsGame": {
+        "title": "The Treasure Box and Necessities",
+        "subtitle": "Discover the difference between needs and wants!",
+        "score": "Score",
+        "itemsTitle": "Drag items to the correct boxes",
+        "completed": "Completed!",
+        "voice": {
+          "welcome": "Hello! I'm your voice assistant! Today we play with two magic boxes: one for needs and one for treasures. Needs are things we need to live, treasures are things that make us happy!",
+          "instructions": "Drag each item to the right box. If it's something we need to live, put it in needs. If it's something that makes us happy but not essential, put it in treasures!",
+          "correct": "Perfect!",
+          "almost": "Almost there!",
+          "reflection": "Great job! You learned that needs are fundamental like fuel for a car, while wants make life more colorful like confetti!",
+          "complete": "Congratulations! You completed the game!"
+        },
+        "difficulty": {
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard"
+       },
+        "boxes": {
+          "need": "Needs",
+          "want": "Treasures", 
+          "dropHere": "Drag items here"
+        },
+        "items": {
+          "water": {
+            "name": "water",
+            "explanation": "Without water we couldn't live, it's a fundamental need!"
+          },
+          "food": {
+            "name": "food",
+            "explanation": "Food gives us energy to live, it's essential!"
+          },
+          "house": {
+            "name": "house",
+            "explanation": "The house protects us and keeps us safe, it's a need!"
+          },
+          "clothes": {
+            "name": "clothes",
+            "explanation": "Clothes protect us from cold, they are necessary!"
+          },
+          "bed": {
+            "name": "bed",
+            "explanation": "The bed helps us rest well, it's important!"
+          },
+          "icecream": {
+            "name": "ice cream",
+            "explanation": "Ice cream is delicious but we can live without it, it's a want!"
+          },
+          "videogame": {
+            "name": "video game",
+            "explanation": "Video games are fun but not essential for living!"
+          },
+          "toy": {
+            "name": "toy",
+            "explanation": "Toys are fun but not indispensable!"
+          },
+          "chocolate": {
+            "name": "chocolate",
+            "explanation": "Chocolate is tasty but we can live without it!"
+          },
+          "balloon": {
+            "name": "balloon",
+            "explanation": "Balloons are colorful but we don't need them to live!"
+          }
+        },
+        "reflection": {
+          "title": "Great job!",
+          "message": "You learned the difference between needs and wants!",
+          "needsTitle": "Needs",
+          "needsDescription": "These are fundamental things we need to live: food, water, house, clothes.",
+          "wantsTitle": "Wants", 
+          "wantsDescription": "These are things that make us happy but not essential: toys, sweets, entertainment."
+        }
+      },
+      "VoiceControls": {
+        "narration": "Narration",
+        "repeat": "Repeat",
+        "pause": "Pause",
+        "resume": "Resume", 
+        "stop": "Stop",
+        "speaking": "Speaking...",
+        "notSupported": "Voice narration is not supported by your browser"
+      }
     }
-  }

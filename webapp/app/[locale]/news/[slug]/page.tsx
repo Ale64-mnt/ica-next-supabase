@@ -138,7 +138,7 @@ export default async function NewsDetailPage({ params }: Props) {
             }}>
               {news.title}
             </h1>
-            {news.excerpt && (
+            {/*news.excerpt && (
               <p style={{ 
                 fontSize: '1.2rem', 
                 color: '#4a5568', 
@@ -147,7 +147,7 @@ export default async function NewsDetailPage({ params }: Props) {
               }}>
                 {news.excerpt}
               </p>
-            )}
+            )*/}
           </header>
 
           {/* Contenuto testo */}

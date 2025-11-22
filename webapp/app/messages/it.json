@@ -186,5 +186,89 @@
       "managing_risks_insurance": "Comprendi la gestione dei rischi, le assicurazioni e la protezione finanziaria",
      "financial_landscape": "Esplora il sistema finanziario, i diritti dei consumatori e i concetti economici"
     }
+  },
+  "NeedsVsWantsGame": {
+    "title": "La Scatola dei Tesori e delle Necessità",
+    "subtitle": "Scopri la differenza tra bisogni e desideri!",
+    "score": "Punteggio",
+    "itemsTitle": "Trascina gli oggetti nelle scatole giuste",
+    "completed": "Completato!",
+    "voice": {
+      "welcome": "Ciao! Sono il tuo assistente vocale! Oggi giochiamo con due scatole magiche: una per i bisogni e una per i tesori. I bisogni sono cose che ci servono per vivere, i tesori sono cose che ci rendono felici!",
+      "instructions": "Trascina ogni oggetto nella scatola giusta. Se è qualcosa che ci serve per vivere, mettilo nei bisogni. Se è qualcosa che ci rende felici ma non essenziale, mettilo nei tesori!",
+      "correct": "Perfetto!",
+      "almost": "Ci sei quasi!",
+      "reflection": "Ottimo lavoro! Hai imparato che i bisogni sono fondamentali come il carburante per una macchina, mentre i desideri rendono la vita più colorata come i coriandoli!",
+      "complete": "Complimenti! Hai completato il gioco!"
+    },
+    "difficulty": {
+      "easy": "Facile",
+      "medium": "Medio", 
+      "hard": "Difficile"
+    },
+    "boxes": {
+      "need": "Bisogni",
+      "want": "Tesori",
+      "dropHere": "Trascina qui gli oggetti"
+    },
+    "items": {
+      "water": {
+        "name": "l'acqua",
+        "explanation": "Senza acqua non potremmo vivere, è un bisogno fondamentale!"
+      },
+      "food": {
+        "name": "il cibo",
+        "explanation": "Il cibo ci dà energia per vivere, è essenziale!"
+      },
+      "house": {
+        "name": "la casa",
+        "explanation": "La casa ci protegge e ci tiene al sicuro, è un bisogno!"
+      },
+      "clothes": {
+        "name": "i vestiti",
+        "explanation": "I vestiti ci proteggono dal freddo, sono necessari!"
+      },
+      "bed": {
+        "name": "il letto",
+        "explanation": "Il letto ci serve per riposare bene, è importante!"
+      },
+      "icecream": {
+        "name": "il gelato",
+        "explanation": "Il gelato è buonissimo ma possiamo vivere senza, è un desiderio!"
+      },
+      "videogame": {
+        "name": "il videogioco",
+        "explanation": "I videogiochi sono divertenti ma non essenziali per vivere!"
+      },
+      "toy": {
+        "name": "il giocattolo",
+        "explanation": "I giocattoli ci fanno divertire ma non sono indispensabili!"
+      },
+      "chocolate": {
+        "name": "la cioccolata",
+        "explanation": "La cioccolata è gustosa ma possiamo vivere senza!"
+      },
+      "balloon": {
+        "name": "il palloncino",
+        "explanation": "I palloncini sono colorati ma non ci servono per vivere!"
+      }
+    },
+    "reflection": {
+      "title": "Ottimo lavoro!",
+      "message": "Hai imparato la differenza tra bisogni e desideri!",
+      "needsTitle": "Bisogni",
+      "needsDescription": "Sono cose fondamentali che ci servono per vivere: cibo, acqua, casa, vestiti.",
+      "wantsTitle": "Desideri",
+      "wantsDescription": "Sono cose che ci rendono felici ma non essenziali: giocattoli, dolci, divertimenti."
+    }
+  },
+  "VoiceControls": {
+    "narration": "Narrazione",
+    "repeat": "Ripeti",
+    "pause": "Pausa", 
+    "resume": "Riprendi",
+    "stop": "Ferma",
+    "speaking": "Sto parlando...",
+    "notSupported": "La narrazione vocale non è supportata dal tuo browser"
   }
 }
