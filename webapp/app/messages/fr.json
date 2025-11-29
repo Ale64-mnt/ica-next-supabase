@@ -196,6 +196,11 @@
         "score": "Score",
         "itemsTitle": "Fais glisser les objets dans les bonnes boîtes",
         "completed": "Terminé !",
+        "loading": "Chargement...",
+        "preparingGame": "Préparation du jeu...",
+        "listeningInstructions": "Écoute des instructions...",
+        "dragWillEnable": "Glisser-déposer sera activé bientôt",
+
         "voice": {
           "welcome": "Bonjour ! Je suis ton assistant vocal ! Aujourd'hui nous jouons avec deux boîtes magiques : une pour les besoins et une pour les trésors. Les besoins sont des choses dont nous avons besoin pour vivre, les trésors sont des choses qui nous rendent heureux !",
           "instructions": "Fais glisser chaque objet dans la bonne boîte. Si c'est quelque chose dont nous avons besoin pour vivre, mets-le dans les besoins. Si c'est quelque chose qui nous rend heureux mais pas essentiel, mets-le dans les trésors !",
@@ -212,7 +217,12 @@
         "boxes": {
           "need": "Besoins",
           "want": "Trésors",
-          "dropHere": "Déposer les objets ici"
+          "dropHere": "Déposer les objets ici",
+          "needDescription": "Choses essentielles pour vivre",
+          "wantDescription": "Choses qui rendent la vie heureuse",
+          "droppedItems": "Objets déposés",
+          "empty": "Toujours vide...",
+          "releaseToDrop": "Relâchez pour déposer"
         },
         "items": {
           "water": {

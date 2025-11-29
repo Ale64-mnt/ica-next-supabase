@@ -194,6 +194,11 @@
         "score": "Score",
         "itemsTitle": "Drag items to the correct boxes",
         "completed": "Completed!",
+        "loading": "Loading...",
+        "preparingGame": "Preparing game...",
+        "listeningInstructions": "Listening to instructions...",
+        "dragWillEnable": "Drag & drop will be enabled shortly",
+        
         "voice": {
           "welcome": "Hello! I'm your voice assistant! Today we play with two magic boxes: one for needs and one for treasures. Needs are things we need to live, treasures are things that make us happy!",
           "instructions": "Drag each item to the right box. If it's something we need to live, put it in needs. If it's something that makes us happy but not essential, put it in treasures!",
@@ -210,7 +215,12 @@
         "boxes": {
           "need": "Needs",
           "want": "Treasures", 
-          "dropHere": "Drag items here"
+          "dropHere": "Drag items here",
+          "needDescription": "Essential things for living",
+          "wantDescription": "Things that make life happy",
+          "droppedItems": "Dropped items",
+          "empty": "Still empty...",
+          "releaseToDrop": "Release to drop"
         },
         "items": {
           "water": {

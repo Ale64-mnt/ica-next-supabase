@@ -195,6 +195,10 @@
     "score": "Puntuación",
     "itemsTitle": "Arrastra los objetos a las cajas correctas",
     "completed": "¡Completado!",
+    "loading": "Cargando...",
+    "preparingGame": "Preparando juego...",
+    "listeningInstructions": "Escuchando instrucciones...",
+    "dragWillEnable": "Arrastrar y soltar se habilitará pronto",
     "voice": {
       "welcome": "¡Hola! ¡Soy tu asistente de voz! Hoy jugamos con dos cajas mágicas: una para necesidades y otra para tesoros. ¡Las necesidades son cosas que necesitamos para vivir, los tesoros son cosas que nos hacen felices!",
       "instructions": "Arrastra cada objeto a la caja correcta. Si es algo que necesitamos para vivir, ponlo en necesidades. Si es algo que nos hace felices pero no es esencial, ¡ponlo en tesoros!",
@@ -211,7 +215,12 @@
     "boxes": {
       "need": "Necesidades",
       "want": "Tesoros",
-      "dropHere": "Arrastra objetos aquí"
+      "dropHere": "Arrastra objetos aquí",
+      "needDescription": "Cosas esenciales para vivir",
+      "wantDescription": "Cosas que hacen la vida feliz",
+      "droppedItems": "Objetos soltados",
+      "empty": "Todavía vacío...",
+      "releaseToDrop": "Suelta para soltar"
     },
     "items": {
       "water": {
