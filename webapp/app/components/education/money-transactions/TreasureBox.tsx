@@ -1,4 +1,3 @@
-// app/components/education/money-transactions/TreasureBox.tsx
 'use client';
 
 import { GameItem } from '@/types/game';
@@ -10,6 +9,7 @@ interface TreasureBoxProps {
   droppedItems: GameItem[];
   isCorrect?: boolean;
   showIncorrectFeedback?: boolean;
+  isAudioPlaying?: boolean; // ✅ MANTENUTA MA NON BLOCCANTE
 }
 
 export default function TreasureBox({ 
@@ -17,7 +17,8 @@ export default function TreasureBox({
   onDrop, 
   droppedItems, 
   isCorrect,
-  showIncorrectFeedback 
+  showIncorrectFeedback,
+  isAudioPlaying = false // ✅ VALORE DEFAULT
 }: TreasureBoxProps) {
   const t = useTranslations('NeedsVsWantsGame');
 
@@ -27,6 +28,8 @@ export default function TreasureBox({
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
+    
+    // ✅ RIMOSSO IL BLOCCO AUDIO - SEMPRE PERMESSO IL DROP
     const itemId = e.dataTransfer.getData('text/plain');
     onDrop(itemId);
   };
@@ -65,17 +68,27 @@ export default function TreasureBox({
         hover:${config.hoverBorderColor} hover:border-solid hover:shadow-lg
         ${isCorrect ? 'ring-4 ring-green-400 border-green-400' : ''}
         ${showIncorrectFeedback ? 'ring-4 ring-red-400 border-red-400 animate-pulse' : ''}
-        group cursor-pointer
+        cursor-pointer group // ✅ SEMPRE CURSOR POINTER
       `}
     >
       {/* Icona Scatola con animazione */}
-      <div className="text-6xl mb-4 transition-transform duration-300 group-hover:scale-110">
+      <div className={`text-6xl mb-4 transition-transform duration-300 group-hover:scale-110`}>
         {config.emoji}
+        {isAudioPlaying && ( // ✅ INDICATORE AUDIO OPZIONALE
+          <div className="absolute -top-2 -right-2 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+            <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+          </div>
+        )}
       </div>
       
       {/* Titolo */}
       <h3 className={`text-2xl font-bold mb-3 ${config.textColor}`}>
         {config.title}
+        {isAudioPlaying && ( // ✅ INDICATORE VISIVO OPZIONALE
+          <span className="ml-2 text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
+            🔊
+          </span>
+        )}
       </h3>
       
       {/* Descrizione */}
@@ -84,9 +97,9 @@ export default function TreasureBox({
       </p>
       
       {/* Istruzioni Drop */}
-      <div className="bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2 mb-4 border">
-        <p className="text-sm font-medium text-gray-700 text-center">
-          {t('boxes.dropHere')}
+      <div className={`bg-white/80 backdrop-blur-sm rounded-lg px-4 py-2 mb-4 border`}>
+        <p className={`text-sm font-medium text-center text-gray-700`}>
+          {t('boxes.dropHere')} {/* ✅ SEMPRE "DROP HERE" */}
         </p>
       </div>
       
@@ -138,6 +151,8 @@ export default function TreasureBox({
       <div className="absolute bottom-4 text-gray-400 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {t('boxes.releaseToDrop')}
       </div>
+      
+      {/* ✅ RIMOSSO OVERLAY CHE BLOCCAVA - SEMPRE INTERATTIVO */}
     </div>
   );
 }

@@ -2,8 +2,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useMemo, useState, useEffect } from 'react';
-import { useVoiceEvents } from '@/hooks/useVoiceEvents';
+import { useState, useEffect, useRef } from 'react';
 import { useMultilingualTTS } from '@/hooks/useMultilingualTTS';
 import VoiceControls from '@/components/education/money-transactions/VoiceControls';
 import ItemCard from '@/components/education/money-transactions/ItemCard';
@@ -21,10 +20,9 @@ interface Props {
 }
 
 export default function NeedsVsWantsGame({ params }: Props) {
-  const { locale, macro_area, age_level, module: moduleId } = params;
+  const { locale, macro_area, age_level, module } = params;
   const t = useTranslations('NeedsVsWantsGame');
-  const { triggerVoiceEvent, isVoiceSupported } = useVoiceEvents(locale);
-  const { speak: speakText } = useMultilingualTTS(locale);
+  const { speakText, stopSpeaking, isSpeaking } = useMultilingualTTS(locale);
   
   const [currentStep, setCurrentStep] = useState<'intro' | 'playing' | 'reflection'>('intro');
   const [draggedItem, setDraggedItem] = useState<GameItem | null>(null);
@@ -34,84 +32,75 @@ export default function NeedsVsWantsGame({ params }: Props) {
   const [score, setScore] = useState(0);
   const [showIncorrectFeedback, setShowIncorrectFeedback] = useState(false);
   const [lastIncorrectBox, setLastIncorrectBox] = useState<'need' | 'want' | null>(null);
+  
+  const hasIntroPlayed = useRef(false);
+  const isCompleting = useRef(false);
 
-  // Trova un item per ID
   const findItemById = (id: string) => {
     return NEEDS_WANTS_ITEMS.find(item => item.id === id);
   };
 
-  // Reset del gioco
   const resetGame = () => {
+    stopSpeaking(); // 🔥 CORRETTO: stopSpeaking invece di stopAudio
+    hasIntroPlayed.current = false;
+    isCompleting.current = false;
     setNeedsItems([]);
     setWantsItems([]);
     setRemainingItems(NEEDS_WANTS_ITEMS);
     setScore(0);
     setShowIncorrectFeedback(false);
     setLastIncorrectBox(null);
-    setCurrentStep('intro');
+    setCurrentStep('playing');
   };
 
-  // Testi per la narrazione - useMemo per evitare warning React
-  const voiceMessages = useMemo(() => ({
-    welcome: t('voice.welcome'),
-    instructions: t('voice.instructions'),
-    correct: t('voice.correct'),
-    almost: t('voice.almost'),
-    reflection: t('voice.reflection'),
-    complete: t('voice.complete')
-  }), [t]);
-
-  // Narrazione automatica all'avvio
   useEffect(() => {
-    if (isVoiceSupported && currentStep === 'intro') {
+    if (currentStep === 'intro' && !hasIntroPlayed.current) {
+      hasIntroPlayed.current = true;
+      
       const timer = setTimeout(() => {
-        triggerVoiceEvent('intro').then(() => {
+        speakText('intro'); // 🔥 CORRETTO: speakText invece di playAudio
+        
+        // Passa automaticamente al gioco dopo un tempo ragionevole
+        setTimeout(() => {
           setCurrentStep('playing');
-        });
+        }, 4000);
       }, 1000);
 
       return () => clearTimeout(timer);
-    } else if (!isVoiceSupported && currentStep === 'intro') {
-      setTimeout(() => setCurrentStep('playing'), 3000);
     }
-  }, [isVoiceSupported, currentStep, triggerVoiceEvent]);
+  }, [currentStep, speakText]); // 🔥 CORRETTO: speakText invece di playAudio
 
   const handleDragStart = (item: GameItem) => {
     setDraggedItem(item);
   };
 
-  const handleDrop = async (boxType: 'need' | 'want', itemId: string) => {
+  const handleDrop = (boxType: 'need' | 'want', itemId: string) => {
+    if (isSpeaking) return; // 🔥 CORRETTO: isSpeaking invece di isAudioPlaying/isAudioLoading
+    
     const item = findItemById(itemId);
     if (!item) return;
 
     const isCorrect = item.category === boxType;
     
     if (isCorrect) {
-      // ✅ CORRETTO: +1 punto, elemento rimane nella scatola
       setScore(prev => prev + 1);
       
       if (boxType === 'need') {
-        await triggerVoiceEvent('need_correct');
+        speakText('need_correct'); // 🔥 CORRETTO: speakText invece di playAudio
         setNeedsItems(prev => [...prev, item]);
       } else {
-        await triggerVoiceEvent('desire_correct');
+        speakText('desire_correct'); // 🔥 CORRETTO: speakText invece di playAudio
         setWantsItems(prev => [...prev, item]);
       }
       
-      // Rimuove dalla lista degli elementi disponibili
       setRemainingItems(prev => prev.filter(i => i.id !== item.id));
     } else {
-      // ❌ SBAGLIATO: 0 punti, elemento RITORNA con feedback
-      // LOGICA CORRETTA: determina l'evento in base alla scatola sbagliata
       if (boxType === 'need') {
-        // Desiderio messo nei bisogni
-        await triggerVoiceEvent('need_wro');
+        speakText('desire_wrong'); // 🔥 CORRETTO: speakText invece di playAudio
       } else {
-        // Bisogno messo nei desideri
-        await triggerVoiceEvent('desire');
+        speakText('need_wrong'); // 🔥 CORRETTO: speakText invece di playAudio
       }
       
-      // Memorizza quale scatola ha ricevuto l'elemento sbagliato
       setLastIncorrectBox(boxType);
       setShowIncorrectFeedback(true);
       setTimeout(() => {
@@ -122,10 +111,12 @@ export default function NeedsVsWantsGame({ params }: Props) {
 
     setDraggedItem(null);
 
-    // Controlla se il gioco è completato
-    if (remainingItems.length === 1 && isCorrect) {
+    if (remainingItems.length === 1 && isCorrect && !isCompleting.current) {
+      isCompleting.current = true;
+      
       setTimeout(() => {
-        triggerVoiceEvent('level_complete');
+        speakText('level_complete'); // 🔥 CORRETTO: speakText invece di playAudio
+        
         setTimeout(() => {
           setCurrentStep('reflection');
         }, 3000);
@@ -136,21 +127,51 @@ export default function NeedsVsWantsGame({ params }: Props) {
   const getCurrentInstruction = () => {
     switch(currentStep) {
       case 'intro': 
-        return voiceMessages.welcome;
+        return t('voice.welcome');
       case 'playing': 
         return remainingItems.length > 0 
-          ? voiceMessages.instructions 
-          : voiceMessages.complete;
+          ? t('voice.instructions') 
+          : t('voice.complete');
       case 'reflection': 
-        return voiceMessages.reflection;
+        return t('voice.reflection');
       default: 
-        return voiceMessages.instructions;
+        return t('voice.instructions');
     }
+  };
+
+  const handleVoiceControlSpeak = () => {
+    stopSpeaking(); // 🔥 CORRETTO: stopSpeaking invece di stopAudio
+    
+    switch(currentStep) {
+      case 'intro':
+        speakText('intro'); // 🔥 CORRETTO: speakText invece di playAudio
+        break;
+      case 'reflection':
+        speakText('level_complete'); // 🔥 CORRETTO: speakText invece di playAudio
+        break;
+      case 'playing':
+        if (remainingItems.length > 0) {
+          speakText('need_correct'); // 🔥 CORRETTO: speakText invece di playAudio
+        } else {
+          speakText('level_complete'); // 🔥 CORRETTO: speakText invece di playAudio
+        }
+        break;
+      default:
+        speakText('intro'); // 🔥 CORRETTO: speakText invece di playAudio
+    }
+  };
+
+  // 🔥 FUNZIONI PLACEHOLDER per pausa/riprendi
+  const handlePause = () => {
+    console.log('Pausa audio - da implementare');
+  };
+
+  const handleResume = () => {
+    console.log('Riprendi audio - da implementare');
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-purple-50 p-4">
-      {/* Header */}
       <header className="text-center mb-8 pt-8">
         <h1 className="text-4xl font-bold text-gray-800 mb-3">
           {t('title')}
@@ -159,41 +180,46 @@ export default function NeedsVsWantsGame({ params }: Props) {
           {t('subtitle')}
         </p>
         
-        {/* Info percorso */}
         <div className="mt-2 text-sm text-gray-500">
-          {macro_area} • {age_level} • {moduleId}
+          {macro_area} • {age_level} • {module} • {t('difficulty.easy')}
         </div>
         
-        {/* Punteggio */}
         <div className="mt-4 inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm">
           <span className="text-lg">⭐</span>
           <span className="font-semibold text-gray-700">
             {t('score')}: {score}/{NEEDS_WANTS_ITEMS.length}
           </span>
+          {isSpeaking && ( // 🔥 CORRETTO: isSpeaking invece di isAudioLoading/isAudioPlaying
+            <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
+              🔊 In riproduzione
+            </span>
+          )}
         </div>
       </header>
 
-      {/* Controlli Audio */}
       <div className="max-w-4xl mx-auto mb-8">
         <VoiceControls 
           locale={locale}
-          onSpeak={() => speakText(getCurrentInstruction())}
+          onSpeak={handleVoiceControlSpeak}
+          onStop={stopSpeaking} // 🔥 CORRETTO: stopSpeaking invece di stopAudio
+          onPause={handlePause}
+          onResume={handleResume}
           currentText={getCurrentInstruction()}
+          isPlaying={isSpeaking} // 🔥 CORRETTO: isSpeaking invece di isAudioPlaying
+          isPaused={false}
         />
       </div>
 
-      {/* Area di Gioco */}
       <main className="max-w-6xl mx-auto">
-        {/* Fase di Gioco */}
         {currentStep === 'playing' && (
           <>
-            {/* Scatole */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               <TreasureBox
                 type="need"
                 onDrop={(itemId) => handleDrop('need', itemId)}
                 droppedItems={needsItems}
                 showIncorrectFeedback={showIncorrectFeedback && lastIncorrectBox === 'need'}
+                isAudioPlaying={isSpeaking} // 🔥 CORRETTO: isSpeaking invece di isAudioPlaying
               />
               
               <TreasureBox
@@ -201,11 +227,11 @@ export default function NeedsVsWantsGame({ params }: Props) {
                 onDrop={(itemId) => handleDrop('want', itemId)}
                 droppedItems={wantsItems}
                 showIncorrectFeedback={showIncorrectFeedback && lastIncorrectBox === 'want'}
+                isAudioPlaying={isSpeaking} // 🔥 CORRETTO: isSpeaking invece di isAudioPlaying
               />
             </div>
 
-            {/* Items Draggabili */}
-            <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
               <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
                 {t('itemsTitle')} ({remainingItems.length})
               </h2>
@@ -218,6 +244,7 @@ export default function NeedsVsWantsGame({ params }: Props) {
                       item={item}
                       onDragStart={handleDragStart}
                       isDragging={draggedItem?.id === item.id}
+                      disabled={isSpeaking} // 🔥 CORRETTO: isSpeaking invece di isAudioPlaying/isAudioLoading
                     />
                   ))}
                 </div>
@@ -230,7 +257,7 @@ export default function NeedsVsWantsGame({ params }: Props) {
                     onClick={resetGame}
                     className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full font-semibold transition-colors"
                   >
-                    {t('playAgain')}
+                    {t('playAgain')} 🔄
                   </button>
                 </div>
               )}
@@ -238,7 +265,6 @@ export default function NeedsVsWantsGame({ params }: Props) {
           </>
         )}
 
-        {/* Schermata Riflessione */}
         {currentStep === 'reflection' && (
           <div className="bg-white rounded-2xl shadow-lg p-8 text-center max-w-4xl mx-auto">
             <div className="text-6xl mb-6">🎉</div>
@@ -276,7 +302,7 @@ export default function NeedsVsWantsGame({ params }: Props) {
             </div>
             
             <div className="bg-gradient-to-r from-green-400 to-blue-400 p-6 rounded-xl text-white">
-              <h3 className="text-2xl font-bold mb-3">⭐ {t('reflection.finalScore')}</h3>
+              <h3 className="text-2xl font-bold mb-3">⭐ {t('reflection.finalResult')}</h3>
               <p className="text-xl mb-4">
                 {t('score')}: <strong>{score}</strong> {t('reflection.outOf')} <strong>{NEEDS_WANTS_ITEMS.length}</strong>
               </p>

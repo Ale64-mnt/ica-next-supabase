@@ -190,6 +190,10 @@
     "itemsTitle": "Trascina gli oggetti nelle scatole giuste",
     "completed": "Completato!",
     "playAgain": "Gioca di nuovo",
+    "loading": "Caricamento...",
+    "preparingGame": "Preparazione del gioco in corso...",
+    "listeningInstructions": "Ascoltando le istruzioni...",
+    "dragWillEnable": "Il trascinamento sarà abilitato a breve",
     "difficulty": {
       "easy": "Facile",
       "medium": "Medio", 
@@ -262,17 +266,15 @@
       "needsDescription": "Sono cose fondamentali che ci servono per vivere: cibo, acqua, casa, vestiti.",
       "wantsTitle": "Desideri",
       "wantsDescription": "Sono cose che ci rendono felici ma non essenziali: giocattoli, dolci, divertimenti.",
-      "finalScore": "Punteggio Finale",
+      "finalResult": "Risultato Finale",
       "outOf": "su"
     }
   },
   "VoiceControls": {
     "narration": "Narrazione",
     "repeat": "Ripeti",
-    "pause": "Pausa", 
-    "resume": "Riprendi",
-    "stop": "Ferma",
-    "speaking": "Sto parlando...",
-    "notSupported": "La narrazione vocale non è supportata dal tuo browser"
+    "stop": "Ferma", 
+    "speaking": "In riproduzione...",
+    "notSupported": "Sintesi vocale non supportata"
   }
 }

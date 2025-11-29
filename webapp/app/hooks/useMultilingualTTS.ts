@@ -1,107 +1,100 @@
 // app/hooks/useMultilingualTTS.ts
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { Locale } from '@/types/game';
 
-interface VoiceConfig {
-  lang: string;
-  rate: number;
-  pitch: number;
-}
-
-const VOICE_CONFIG: Record<Locale, VoiceConfig> = {
-  'it': { lang: 'it-IT', rate: 0.9, pitch: 1.2 },
-  'en': { lang: 'en-GB', rate: 0.9, pitch: 1.2 },
-  'fr': { lang: 'fr-FR', rate: 0.85, pitch: 1.1 },
-  'de': { lang: 'de-DE', rate: 0.85, pitch: 1.1 },
-  'es': { lang: 'es-ES', rate: 0.9, pitch: 1.2 },
-  'pl': { lang: 'pl-PL', rate: 0.8, pitch: 1.0 }
+// 🔥 Mapping SOLO per italiano
+const AUDIO_MAPPING: Record<string, string> = {
+  'intro': 'https://twwgfrbcndouazujgcma.supabase.co/storage/v1/object/public/audio/voice/need-vs-wants/it/intro.mp3',
+  'need_correct': 'https://twwgfrbcndouazujgcma.supabase.co/storage/v1/object/public/audio/voice/need-vs-wants/it/need_correct.mp3',
+  'desire_correct': 'https://twwgfrbcndouazujgcma.supabase.co/storage/v1/object/public/audio/voice/need-vs-wants/it/desire_correct.mp3',
+  'need_wrong': 'https://twwgfrbcndouazujgcma.supabase.co/storage/v1/object/public/audio/voice/need-vs-wants/it/need_wrong.mp3',
+  'desire_wrong': 'https://twwgfrbcndouazujgcma.supabase.co/storage/v1/object/public/audio/voice/need-vs-wants/it/desire_wrong.mp3',
+  'level_complete': 'https://twwgfrbcndouazujgcma.supabase.co/storage/v1/object/public/audio/voice/need-vs-wants/it/level_complete.mp3'
 };
 
-export const useMultilingualTTS = (locale: Locale) => {
-  const [isSupported, setIsSupported] = useState(false);
+export function useMultilingualTTS(locale: Locale = 'it') {
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  useEffect(() => {
-    setIsSupported('speechSynthesis' in window);
-    
-    const loadVoices = () => {
-      const availableVoices = speechSynthesis.getVoices();
-      setVoices(availableVoices);
-    };
-
-    loadVoices();
-    speechSynthesis.onvoiceschanged = loadVoices;
-
-    return () => {
-      speechSynthesis.onvoiceschanged = null;
-      speechSynthesis.cancel();
-    };
-  }, []);
-
-  const findBestVoice = useCallback((targetLang: string): SpeechSynthesisVoice | null => {
-    const nativeVoice = voices.find(voice => 
-      voice.lang === targetLang && voice.localService
-    );
-    if (nativeVoice) return nativeVoice;
-
-    const anyVoice = voices.find(voice => 
-      voice.lang.startsWith(targetLang.split('-')[0])
-    );
-    
-    return anyVoice || null;
-  }, [voices]);
-
-  const speak = useCallback((text: string) => {
-    if (!isSupported) {
-      console.warn('TTS non supportato dal browser');
+  const speakText = useCallback((textKey: string): void => { // 🔥 RIMOSSO async e Promise
+    // 🔥 Supporta solo italiano
+    if (locale !== 'it') {
+      console.log(`🔇 Audio disponibile solo per italiano (richiesto: ${locale})`);
       return;
     }
 
-    speechSynthesis.cancel();
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    const config = VOICE_CONFIG[locale];
+    const audioUrl = AUDIO_MAPPING[textKey];
     
-    utterance.lang = config.lang;
-    utterance.rate = config.rate;
-    utterance.pitch = config.pitch;
-
-    const bestVoice = findBestVoice(config.lang);
-    if (bestVoice) {
-      utterance.voice = bestVoice;
+    if (!audioUrl) {
+      console.warn(`🔇 Audio non trovato per chiave: ${textKey}`);
+      return;
     }
 
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
+    // 🔥 Se già sta parlando, ferma prima
+    if (isSpeaking && audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
 
-    speechSynthesis.speak(utterance);
-  }, [isSupported, locale, findBestVoice]);
+    try {
+      setIsSpeaking(true);
+      console.log(`🔊 Riproduco audio: ${textKey}`, audioUrl);
 
-  const stop = useCallback(() => {
-    speechSynthesis.cancel();
+      // Crea nuovo elemento audio
+      const audio = new Audio(audioUrl);
+      audioRef.current = audio;
+
+      // 🔥 Gestione eventi semplificata
+      const cleanup = () => {
+        setIsSpeaking(false);
+        audioRef.current = null;
+        audio.removeEventListener('ended', cleanup);
+        audio.removeEventListener('error', cleanup);
+        audio.removeEventListener('canplaythrough', playAudio);
+      };
+
+      const playAudio = () => {
+        audio.play().catch(error => {
+          console.error('❌ Errore riproduzione audio:', error);
+          cleanup();
+        });
+      };
+
+      // Aspetta che l'audio sia caricato prima di riprodurre
+      if (audio.readyState >= 3) { // HAVE_FUTURE_DATA o HAVE_ENOUGH_DATA
+        playAudio();
+      } else {
+        audio.addEventListener('canplaythrough', playAudio, { once: true });
+        // Timeout di sicurezza
+        setTimeout(() => {
+          if (audio.readyState >= 2) { // HAVE_CURRENT_DATA
+            playAudio();
+          }
+        }, 500);
+      }
+
+      audio.addEventListener('ended', cleanup, { once: true });
+      audio.addEventListener('error', cleanup, { once: true });
+
+    } catch (error) {
+      console.error('❌ Errore creazione audio:', error);
+      setIsSpeaking(false);
+    }
+  }, [locale, isSpeaking]); // 🔥 Aggiunto isSpeaking alle dipendenze
+
+  const stopSpeaking = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
     setIsSpeaking(false);
-  }, []);
-
-  const pause = useCallback(() => {
-    speechSynthesis.pause();
-    setIsSpeaking(false);
-  }, []);
-
-  const resume = useCallback(() => {
-    speechSynthesis.resume();
-    setIsSpeaking(true);
   }, []);
 
   return {
-    speak,
-    stop,
-    pause,
-    resume,
-    isSpeaking,
-    isSupported
+    speakText,    // ✅ Non più async
+    stopSpeaking, // ✅ Compatibile
+    isSpeaking    // ✅ Compatibile
   };
-};
+}
