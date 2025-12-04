@@ -1,14 +1,16 @@
 // app/[locale]/education/money_transactions/6-10/needs-vs-wants/page.tsx
+// VERSIONE FINALE SENZA PROP DISABLED
+
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useGameAudio } from '@/hooks/useGameAudio';
-import VoiceControls from '@/components/education/money-transactions/VoiceControls';
 import ItemCard from '@/components/education/money-transactions/ItemCard';
 import TreasureBox from '@/components/education/money-transactions/TreasureBox';
 import { NEEDS_WANTS_ITEMS } from '@/data/education/needs-wants-items';
 import { GameItem, Locale } from '@/types/game';
+import { VolumeX, Volume2 } from 'lucide-react';
 
 interface Props {
   params: {
@@ -21,8 +23,16 @@ interface Props {
 export default function NeedsVsWantsGame({ params }: Props) {
   const { locale, macro_area, age_level } = params;
   const t = useTranslations('NeedsVsWantsGame');
-  const { playAudio, stopAudio, isLoading: isAudioLoading, isPlaying: isAudioPlaying } = useGameAudio(locale);
   
+  const { 
+    playAudio, 
+    stopAudio, 
+    isPlaying: isAudioPlaying,
+    toggleMusic,
+    isMusicPlaying 
+  } = useGameAudio(locale);
+  
+  // Stati principali
   const [currentStep, setCurrentStep] = useState<'intro' | 'playing' | 'reflection'>('intro');
   const [draggedItem, setDraggedItem] = useState<GameItem | null>(null);
   const [needsItems, setNeedsItems] = useState<GameItem[]>([]);
@@ -31,46 +41,132 @@ export default function NeedsVsWantsGame({ params }: Props) {
   const [score, setScore] = useState(0);
   const [showIncorrectFeedback, setShowIncorrectFeedback] = useState(false);
   const [lastIncorrectBox, setLastIncorrectBox] = useState<'need' | 'want' | null>(null);
-  
-  // ✅ NUOVO STATO: feedback visivo per risposte corrette
   const [showCorrectFeedback, setShowCorrectFeedback] = useState(false);
   const [lastCorrectBox, setLastCorrectBox] = useState<'need' | 'want' | null>(null);
   
+  // Stati di controllo per drag & audio
   const [isDragDisabled, setIsDragDisabled] = useState(true);
-  const [hasIntroPlayed, setHasIntroPlayed] = useState(false); // ✅ EVITA DOPPIA RIPRODUZIONE INTRO
+  const [hasIntroPlayed, setHasIntroPlayed] = useState(false);
+  const [isProcessingLastItem, setIsProcessingLastItem] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isInitializing, setIsInitializing] = useState(true);
 
-  console.log('🎮 COMPONENTE MONTATO - currentStep:', currentStep, 'isDragDisabled:', isDragDisabled);
-
-  // ✅ CORREZIONE 1: Intro audio senza doppia riproduzione
+  // ✅ 1. Cleanup quando si esce dalla pagina
   useEffect(() => {
-    console.log('🎯 USEEFFECT ESEGUITO - hasIntroPlayed:', hasIntroPlayed);
+    console.log('🔇 Setup: componente montato');
+    setIsInitializing(false);
     
-    if (!hasIntroPlayed) {
+    return () => {
+      console.log('🔇 Cleanup: fermo tutto quando si lascia la pagina');
+      stopAudio();
+    };
+  }, [stopAudio]);
+
+  // ✅ 2. LOGICA CENTRALE PER CONTROLLO DRAG - VERSIONE FINALE
+  useEffect(() => {
+    console.log('🎮 Controllo stato drag:', { 
+      currentStep,
+      isAudioPlaying,
+      isDragDisabled,
+      isTransitioning,
+      isInitializing
+    });
+
+    let shouldBeDisabled = true;
+
+    switch(currentStep) {
+      case 'intro':
+        // Intro: sempre disabilitato
+        shouldBeDisabled = true;
+        console.log('🚫 Intro: drag sempre disabilitato');
+        break;
+        
+      case 'playing':
+        // Playing: disabilitato solo se:
+        // 1. Audio sta suonando
+        // 2. Stiamo processando l'ultimo item
+        // 3. Siamo in transizione
+        // 4. Componente si sta ancora inizializzando
+        shouldBeDisabled = isAudioPlaying || isProcessingLastItem || isTransitioning || isInitializing;
+        console.log(`🎮 Playing: drag ${shouldBeDisabled ? 'disabilitato' : 'ABILITATO'}, ragioni:`, {
+          isAudioPlaying,
+          isProcessingLastItem,
+          isTransitioning,
+          isInitializing
+        });
+        break;
+        
+      case 'reflection':
+        // Reflection: sempre disabilitato
+        shouldBeDisabled = true;
+        console.log('🏆 Reflection: drag sempre disabilitato');
+        break;
+    }
+
+    // Aggiorna solo se necessario
+    if (isDragDisabled !== shouldBeDisabled) {
+      console.log(`🔄 Cambio stato drag: ${isDragDisabled ? 'disabilitato' : 'abilitato'} → ${shouldBeDisabled ? 'disabilitato' : 'abilitato'}`);
+      setIsDragDisabled(shouldBeDisabled);
+      
+      // Quando riabiliti il drag, pulisci i feedback visivi
+      if (!shouldBeDisabled) {
+        setShowCorrectFeedback(false);
+        setShowIncorrectFeedback(false);
+        setLastCorrectBox(null);
+        setLastIncorrectBox(null);
+      }
+    }
+  }, [
+    currentStep, 
+    isAudioPlaying, 
+    isDragDisabled, 
+    isTransitioning, 
+    isProcessingLastItem,
+    isInitializing
+  ]);
+
+  // ✅ 3. INTRO AUDIO CON GESTIONE ROBUSTA DELLE TRANSAZIONI
+  useEffect(() => {
+    if (!hasIntroPlayed && currentStep === 'intro' && !isInitializing) {
       const playIntro = async () => {
         try {
-          setIsDragDisabled(true);
+          console.log('🎬 Inizio intro audio');
+          setIsTransitioning(true); // Blocca drag durante la transizione
+          
           await playAudio('intro');
-          console.log('✅ Intro audio completato - abilito drag & drop');
-          setIsDragDisabled(false);
-          setCurrentStep('playing');
-          setHasIntroPlayed(true); // ✅ IMPEDISCE RIPETIZIONE
+          console.log('✅ Intro audio completata con successo');
+          
         } catch (error) {
-          console.log('❌ Errore audio intro:', error);
-          setIsDragDisabled(false);
+          console.log('⚠️ Intro fallita o non disponibile:', error);
+          // Continua comunque il gioco
+        } finally {
+          console.log('🚀 Passaggio a playing step');
+          
+          // Pulisci e prepara per il prossimo step
+          await new Promise(resolve => setTimeout(resolve, 300));
+          
           setCurrentStep('playing');
           setHasIntroPlayed(true);
+          
+          // Attendi un momento extra prima di abilitare il drag
+          setTimeout(() => {
+            setIsTransitioning(false);
+            console.log('✅ Transizione completata, drag ora disponibile');
+          }, 500);
         }
       };
 
       playIntro();
     }
-  }, [hasIntroPlayed]);
+  }, [hasIntroPlayed, currentStep, playAudio, isInitializing]);
 
-  const findItemById = (id: string) => {
+  // ✅ 4. FUNZIONI DI GIOCO
+  const findItemById = useCallback((id: string) => {
     return NEEDS_WANTS_ITEMS.find(item => item.id === id);
-  };
+  }, []);
 
-  const resetGame = () => {
+  const resetGame = useCallback(() => {
+    console.log('🔄 Reset del gioco');
     stopAudio();
     setIsDragDisabled(true);
     setNeedsItems([]);
@@ -78,38 +174,45 @@ export default function NeedsVsWantsGame({ params }: Props) {
     setRemainingItems(NEEDS_WANTS_ITEMS);
     setScore(0);
     setShowIncorrectFeedback(false);
-    setShowCorrectFeedback(false); // ✅ RESET FEEDBACK CORRETTO
+    setShowCorrectFeedback(false);
     setLastIncorrectBox(null);
     setLastCorrectBox(null);
-    setHasIntroPlayed(false); // ✅ RESET PER NUOVA INTRO
+    setHasIntroPlayed(false);
+    setIsProcessingLastItem(false);
+    setIsTransitioning(false);
     setCurrentStep('intro');
-  };
+  }, [stopAudio]);
 
-  const handleDragStart = (item: GameItem) => {
+  const handleDragStart = useCallback((item: GameItem) => {
     if (isDragDisabled) {
-      console.log('⏸️ Drag bloccato - audio in riproduzione');
+      console.log('🚫 Drag bloccato! Stato attuale:', { isDragDisabled });
       return;
     }
-    console.log('🎯 Inizio drag:', item.id);
+    console.log('🖱️ Inizio drag di:', item.id);
     setDraggedItem(item);
-  };
+  }, [isDragDisabled]);
 
-  const handleDrop = async (boxType: 'need' | 'want', itemId: string) => {
+  const handleDrop = useCallback(async (boxType: 'need' | 'want', itemId: string) => {
     if (isDragDisabled) {
-      console.log('⏸️ Drop bloccato - audio in riproduzione');
+      console.log('🚫 Drop bloccato! Drag disabilitato');
       return;
     }
     
     const item = findItemById(itemId);
-    if (!item) return;
+    if (!item) {
+      console.log('❌ Item non trovato:', itemId);
+      return;
+    }
 
     const isCorrect = item.category === boxType;
+    const isLastItem = remainingItems.length === 1;
+    
+    console.log(`🎯 Drop su ${boxType}: ${isCorrect ? 'CORRETTO' : 'ERRATO'} ${isLastItem ? '(ULTIMO ITEM)' : ''}`);
+    
+    // Aggiorna punteggio
+    setScore(prev => prev + (isCorrect ? 1 : 0));
     
     if (isCorrect) {
-      console.log('✅ Drop CORRETTO - sequenza iniziata');
-      
-      // ✅ 1. SPOSTA NELLA SCATOLA immediatamente
-      setScore(prev => prev + 1);
       setRemainingItems(prev => prev.filter(i => i.id !== item.id));
       
       if (boxType === 'need') {
@@ -117,104 +220,93 @@ export default function NeedsVsWantsGame({ params }: Props) {
       } else {
         setWantsItems(prev => [...prev, item]);
       }
+    }
 
-      // ✅ 2. FEEDBACK VISIVO CORRETTO IMMEDIATO
+    // Feedback visivo
+    if (isCorrect) {
       setShowCorrectFeedback(true);
       setLastCorrectBox(boxType);
-
-      // ✅ 3. DISABILITA DRAG & DROP
-      setIsDragDisabled(true);
-
-      try {
-        // ✅ 4. AUDIO CORRISPONDENTE
-        console.log('🔊 Avvio audio feedback corretto');
-        if (boxType === 'need') {
-          await playAudio('need_correct');
-        } else {
-          await playAudio('desire_correct');
-        }
-        
-        // ✅ 5. RIMUOVI FEEDBACK VISIVO DOPO AUDIO
-        setShowCorrectFeedback(false);
-        setLastCorrectBox(null);
-        
-        // ✅ 6. CONTROLLA COMPLETAMENTO
-        const newRemainingCount = remainingItems.length - 1;
-        console.log('📊 Item rimanenti:', newRemainingCount);
-        
-        if (newRemainingCount === 0) {
-          console.log('🎯 Ultimo item - PRIMA attivo reflection, POI audio finale');
-          setCurrentStep('reflection');
-          await playAudio('level_complete');
-        } else {
-          // ✅ 7. RIABILITA DRAG & DROP se non è l'ultimo item
-          console.log('🎵 Audio completato - riattivo drag & drop');
-          setIsDragDisabled(false);
-        }
-
-      } catch (error) {
-        console.log('❌ Errore audio:', error);
-        // ✅ GARANZIA: riattiva drag & drop anche in caso di errore
-        setShowCorrectFeedback(false);
-        setLastCorrectBox(null);
-        setIsDragDisabled(false);
-      }
-
     } else {
-      // ❌ CASO ERRATO
-      console.log('❌ Drop ERRATO');
-      
-      // ✅ 1. FEEDBACK VISIVO IMMEDIATO
-      setLastIncorrectBox(boxType);
       setShowIncorrectFeedback(true);
-      
-      // ✅ 2. DISABILITA DRAG & DROP
-      setIsDragDisabled(true);
+      setLastIncorrectBox(boxType);
+    }
 
-      try {
-        // ✅ 3. AUDIO DOPO FEEDBACK VISIVO
-        console.log('🔊 Avvio audio feedback errore');
-        if (boxType === 'need') {
-          await playAudio('desire_wrong');
-        } else {
-          await playAudio('need_wrong');
-        }
-      } catch (error) {
-        console.log('❌ Errore audio:', error);
-      } finally {
-        // ✅ 4. RIABILITA DOPO 2 SECONDI
-        setTimeout(() => {
-          setShowIncorrectFeedback(false);
-          setLastIncorrectBox(null);
-          setIsDragDisabled(false);
-          console.log('🔄 Feedback errore completato - riattivo drag & drop');
-        }, 2000);
+    try {
+      let audioType;
+      if (isCorrect) {
+        audioType = boxType === 'need' ? 'need_correct' : 'desire_correct';
+      } else {
+        audioType = boxType === 'need' ? 'desire_wrong' : 'need_wrong';
       }
+      
+      console.log(`🔊 Riproduco audio feedback: ${audioType}`);
+      await playAudio(audioType);
+      
+      if (isCorrect && isLastItem) {
+        console.log('🎯 ULTIMO OGGETTO - Inizio transizione a reflection');
+        setIsProcessingLastItem(true);
+        
+        await new Promise(resolve => setTimeout(resolve, 500));
+        
+        setCurrentStep('reflection');
+        
+        console.log('🔊 Audio level_complete');
+        await playAudio('level_complete');
+        
+        setIsProcessingLastItem(false);
+      }
+      
+    } catch (error) {
+      console.log('❌ Errore nella riproduzione audio:', error);
+      setShowCorrectFeedback(false);
+      setShowIncorrectFeedback(false);
+      setLastCorrectBox(null);
+      setLastIncorrectBox(null);
     }
 
     setDraggedItem(null);
-  };
+  }, [isDragDisabled, findItemById, remainingItems.length, playAudio]);
 
-  const getCurrentInstruction = () => {
-    if (currentStep === 'intro') return t('voice.welcome');
-    return remainingItems.length > 0 ? t('voice.instructions') : t('voice.complete');
-  };
-
-  const handleVoiceControlSpeak = () => {
-    if (isAudioPlaying) {
-      stopAudio();
-      return;
+  // ✅ 5. FUNZIONI DI UTILITÀ
+  const getDragStatusText = useCallback(() => {
+    if (isInitializing) {
+      return locale === 'it' ? '🔄 Caricamento...' : '🔄 Loading...';
     }
-    
-    if (currentStep === 'intro') {
-      playAudio('intro');
-    } else if (remainingItems.length > 0) {
-      playAudio('instructions');
-    } else {
-      playAudio('level_complete');
+    if (showCorrectFeedback) {
+      return locale === 'it' ? '✅ Corretto!' : '✅ Correct!';
     }
-  };
+    if (showIncorrectFeedback) {
+      return locale === 'it' ? '❌ Riprova!' : '❌ Try again!';
+    }
+    if (isDragDisabled) {
+      if (isAudioPlaying) {
+        return locale === 'it' ? '🔊 Ascoltando...' : '🔊 Listening...';
+      }
+      if (isTransitioning) {
+        return locale === 'it' ? '🔄 Preparazione...' : '🔄 Preparing...';
+      }
+      if (isProcessingLastItem) {
+        return locale === 'it' ? '🎯 Completamento...' : '🎯 Completing...';
+      }
+      return locale === 'it' ? '⏳ Attendi...' : '⏳ Please wait...';
+    }
+    return locale === 'it' ? '✅ Pronto a trascinare' : '✅ Ready to drag';
+  }, [
+    showCorrectFeedback, 
+    showIncorrectFeedback, 
+    isDragDisabled, 
+    isAudioPlaying, 
+    isTransitioning, 
+    isProcessingLastItem,
+    isInitializing,
+    locale
+  ]);
 
+  const musicButtonText = locale === 'it' 
+    ? (isMusicPlaying ? 'Musica ON' : 'Musica OFF')
+    : (isMusicPlaying ? 'Music ON' : 'Music OFF');
+
+  // ✅ 6. RENDER (SENZA PROP DISABLED)
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-purple-50 p-4">
       <header className="text-center mb-8 pt-8">
@@ -229,44 +321,66 @@ export default function NeedsVsWantsGame({ params }: Props) {
           {macro_area} • {age_level} • {t('difficulty.easy')}
         </div>
         
-        <div className="mt-4 inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm">
-          <span className="text-lg">⭐</span>
-          <span className="font-semibold text-gray-700">
-            {t('score')}: {score}/{NEEDS_WANTS_ITEMS.length}
-          </span>
+        <div className="mt-4 flex items-center justify-center gap-4 flex-wrap">
+          <button
+            onClick={toggleMusic}
+            className={`flex items-center gap-2 px-4 py-2 rounded-full font-semibold transition-all ${
+              isMusicPlaying 
+                ? 'bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow' 
+                : 'bg-gradient-to-r from-gray-400 to-gray-500 text-white'
+            }`}
+            aria-label={musicButtonText}
+          >
+            {isMusicPlaying ? (
+              <>
+                <Volume2 className="w-4 h-4" />
+                <span>{musicButtonText}</span>
+              </>
+            ) : (
+              <>
+                <VolumeX className="w-4 h-4" />
+                <span>{musicButtonText}</span>
+              </>
+            )}
+          </button>
           
-          {/* ✅ CORREZIONE 2: Un solo messaggio "in riproduzione" */}
-          {isDragDisabled && (
-            <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">
-              ⏸️ {currentStep === 'intro' ? 'Intro...' : 'Attendi...'}
+          <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm">
+            <span className="text-lg">⭐</span>
+            <span className="font-semibold text-gray-700">
+              {t('score')}: {score}/{NEEDS_WANTS_ITEMS.length}
             </span>
-          )}
+          </div>
+          
+          {/* Indicatore di stato drag */}
+          <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm min-w-[180px]">
+            <div className={`w-3 h-3 rounded-full flex-shrink-0 ${
+              isDragDisabled 
+                ? (isTransitioning || isInitializing ? 'bg-yellow-500 animate-pulse' : 'bg-red-500') 
+                : 'bg-green-500'
+            }`}></div>
+            <span className={`text-sm font-medium ${
+              isDragDisabled 
+                ? (isTransitioning || isInitializing ? 'text-yellow-700' : 'text-red-700')
+                : 'text-green-700'
+            }`}>
+              {getDragStatusText()}
+            </span>
+          </div>
         </div>
       </header>
-
-      <div className="max-w-4xl mx-auto mb-8">
-        <VoiceControls 
-          locale={locale}
-          onSpeak={handleVoiceControlSpeak}
-          onStop={stopAudio}
-          currentText={getCurrentInstruction()}
-          isPlaying={isAudioPlaying}
-          isPaused={false}
-        />
-      </div>
 
       <main className="max-w-6xl mx-auto">
         {(currentStep === 'intro' || currentStep === 'playing') && (
           <>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-              {/* ✅ CORREZIONE 3: Aggiungi feedback corretto alle TreasureBox */}
               <TreasureBox
                 type="need"
                 onDrop={(itemId) => handleDrop('need', itemId)}
                 droppedItems={needsItems}
                 showIncorrectFeedback={showIncorrectFeedback && lastIncorrectBox === 'need'}
-                isCorrect={showCorrectFeedback && lastCorrectBox === 'need'} // ✅ FEEDBACK CORRETTO
+                isCorrect={showCorrectFeedback && lastCorrectBox === 'need'}
                 isAudioPlaying={isDragDisabled}
+                // RIMOSSO: disabled={isDragDisabled}
               />
               
               <TreasureBox
@@ -274,27 +388,21 @@ export default function NeedsVsWantsGame({ params }: Props) {
                 onDrop={(itemId) => handleDrop('want', itemId)}
                 droppedItems={wantsItems}
                 showIncorrectFeedback={showIncorrectFeedback && lastIncorrectBox === 'want'}
-                isCorrect={showCorrectFeedback && lastCorrectBox === 'want'} // ✅ FEEDBACK CORRETTO
+                isCorrect={showCorrectFeedback && lastCorrectBox === 'want'}
                 isAudioPlaying={isDragDisabled}
+                // RIMOSSO: disabled={isDragDisabled}
               />
             </div>
 
             <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-              <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
-                {t('itemsTitle')} ({remainingItems.length})
-              </h2>
-              
-              {currentStep === 'intro' && (
-                <div className="text-center py-8 bg-blue-50 rounded-lg mb-4">
-                  <div className="text-4xl mb-3">🎮</div>
-                  <p className="text-blue-700 font-semibold text-lg">
-                    {t('listeningInstructions')} 🔊
-                  </p>
-                  <p className="text-blue-600 text-sm mt-2">
-                    {t('dragWillEnable')}
-                  </p>
-                </div>
-              )}
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-bold text-gray-800">
+                  {t('itemsTitle')}
+                </h2>
+                <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-semibold">
+                  {remainingItems.length} {locale === 'it' ? 'rimanenti' : 'remaining'}
+                </span>
+              </div>
               
               {remainingItems.length > 0 ? (
                 <div className="flex flex-wrap gap-4 justify-center">
@@ -321,12 +429,23 @@ export default function NeedsVsWantsGame({ params }: Props) {
                   </button>
                 </div>
               )}
+              
+              {/* Messaggio di aiuto per l'utente */}
+              {isDragDisabled && currentStep === 'playing' && (
+                <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
+                  <p className="text-yellow-700 text-sm">
+                    {locale === 'it' 
+                      ? 'Aspetta che il messaggio audio finisca, poi potrai trascinare gli oggetti!' 
+                      : 'Wait for the audio message to finish, then you can drag items!'}
+                  </p>
+                </div>
+              )}
             </div>
           </>
         )}
 
         {currentStep === 'reflection' && (
-          <div className="bg-white rounded-2xl shadow-lg p-8 text-center max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-lg p-8 text-center max-w-4xl mx-auto animate-fadeIn">
             <div className="text-6xl mb-6">🎉</div>
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
               {t('reflection.title')}
@@ -368,7 +487,7 @@ export default function NeedsVsWantsGame({ params }: Props) {
               </p>
               <button
                 onClick={resetGame}
-                className="bg-white text-gray-800 hover:bg-gray-100 px-8 py-3 rounded-full font-bold text-lg transition-colors shadow-lg"
+                className="bg-white text-gray-800 hover:bg-gray-100 px-8 py-3 rounded-full font-bold text-lg transition-colors shadow-lg hover:shadow-xl"
               >
                 {t('playAgain')} 🔄
               </button>

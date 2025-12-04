@@ -25,8 +25,8 @@ headers = {
 }
 
 # Configurazione fissa per le immagini (stesse per tutte le lingue)
-IMAGE_URL = "https://twwgfrbcndouazujgcma.supabase.co/storage/v1/object/public/images/Alert/news/alert_symbol_full.png"
-THUMB_URL = "https://twwgfrbcndouazujgcma.supabase.co/storage/v1/object/public/images/Alert/news/alert_symbol_thum.png"
+IMAGE_URL = "https://twwgfrbcndouazujgcma.supabase.co/storage/v1/object/public/images/News/alert/alert_symbol_full_tra.png"
+THUMB_URL = "https://twwgfrbcndouazujgcma.supabase.co/storage/v1/object/public/images/News/alert/alert_symbol_thum.png"
 
 # CATEGORIA FISSA
 CATEGORIA = "cybersecurity-frauds"
@@ -43,162 +43,26 @@ IMAGE_ALT_TEXTS = {
 # Dati per ogni news in diverse lingue
 NEWS_DATA = [
     # Italiano
-    {
-        'title': 'Truffa ESMA - Guida alla Sicurezza',
-        'slug': 'truffa-esma',
-        'excerpt': 'Come riconoscere le truffe che utilizzano il nome e il logo dell ESMA',
-        'body_md': '''**In breve**
-I truffatori possono usare nome e logo ESMA, numeri di telefono, email e siti molto simili a quelli ufficiali. Possono spacciarsi per funzionari ESMA, inviare documenti/certificati falsi o clonare il sito ESMA per indurti a pagare o condividere dati.
+{
+    'title': "Attenzione alle truffe: Consob oscura 6 siti di servizi finanziari abusivi",
+    'slug': "consob-oscura-siti-finanziari-abusivi-attenti-alle-truffe",
+    'excerpt': "Consob oscura sei siti illegali che usavano pagine clonate, finti personaggi noti e contenuti generati con IA.",
+    'body_md': r"""
+**Fonte:** CONSOB – consob.it  
+**Data di pubblicazione:** 27 novembre 2025  
+**Consob**  
+**Link ufficiale:** https://www.consob.it/documents/d/asset-library-1912910/pr_20251127  
 
-**Come riconoscere una truffa**
+La Consob comunica di aver ordinato il blocco di sei siti web che offrivano servizi finanziari in modo abusivo o promuovevano piattaforme di trading non autorizzate, tra cui un sito che sfruttava in modo improprio l’immagine di un noto giornalista per promuovere un broker illegale. Il comunicato segnala che i truffatori ricorrono sempre più a tecniche sofisticate: siti “clonati”, falsi profili social, video e contenuti generati con sistemi di intelligenza artificiale per rendere credibili offerte di investimento inesistenti.
 
-- Arriva inaspettata (email, telefonata, SMS, social) ed è "troppo bella per essere vera"
-- Chiede dati personali o ti invita a trasferire denaro (es. "tassa amministrativa")
-- Dice di agire per recuperare fondi o "indagare" su un intermediario, chiedendo un pagamento
-- Mostra logo ESMA e riferimenti "ufficiali", ma i contenuti contengono errori o link sospetti
+Viene ricordato che, dal 2019, sono stati complessivamente oscurati quasi 1.500 siti abusivi e che la lista completa è consultabile sul portale Consob nella sezione “Watch for Scams!”.
 
-**Importante:** ESMA non ti contatterà mai per chiedere dati personali o pagamenti''',
-        'locale': 'it'
-    },
-    # English
-    {
-        'title': 'OLAF Scam Alert – What Citizens Should Do',
-        'slug': 'olaf-scam-alert-what-citizens-should-do',
-        'excerpt': 'How to spot and respond to emails, letters and calls that impersonate OLAF.',
-        'body_md': '''# **Beware of hoax emails, letters and scam phone calls claiming to be from OLAF**
+Tipicamente, lo schema funziona così: l’utente vede una pubblicità o un video con il volto di un personaggio famoso che “consiglia” una piattaforma; dopo aver lasciato i propri dati, viene contattato da falsi consulenti che lo guidano ad aprire un conto, fare un primo versamento e visualizzare “guadagni” su una schermata di trading creata ad arte; quando prova a ritirare il denaro, vengono richiesti pagamenti aggiuntivi (tasse, costi di sblocco) oppure l’accesso viene bloccato e il sito sparisce.
 
-## **At a glance**
-Fraudsters use the **name and logo of the European Commission/OLAF** and sometimes the **identity of officials** to look credible. They promise money transfers **only if you pay a "fee"** and **provide personal/financial data**. They often re-contact people **who were already scammed**, quoting the **exact amount lost**: this is **another scam**.
-
-## **What it means for citizens**
-* If you receive requests that **appear** to come from OLAF or its staff, it's **a scam**.  
-* **OLAF does not offer or request money transfers** to/from citizens and **does not recover** amounts lost in past scams.  
-* OLAF investigates **fraud affecting the EU budget** and **suspected misconduct** by EU staff; **not** personal finances or **cryptocurrencies**.
-
-## **What to do now**
-* **Do not reply**, **do not click** links and **do not open** attachments.  
-* **Do not share** personal or banking data; **do not pay** any fees.  
-* **Keep evidence**: screenshots, full links/URLs, sender email or caller number.  
-* **Report** the fraud/phishing attempt to your **national competent authorities** for crime and/or cybercrime.  
-* If you already paid or shared data: **contact your bank** and **file a police report**.
-
-## **Red flags to recognise fakes**
-* **Suspicious bank accounts**, **inaccurate logos**, **wrong email addresses** or **fake websites**.  
-* Genuine Commission/OLAF emails end with `@ec.europa.eu`.  
-* **Official OLAF website**: `https://anti-fraud.ec.europa.eu/index_en` (always check the exact URL).
-
-> **Remember:** OLAF investigators **do not call or email citizens** to **ask for or offer money**.
-
----
-
-**Source (OLAF – European Anti-Fraud Office)**: <https://anti-fraud.ec.europa.eu/index_en>''',
-        'locale': 'en'
-    },
-
-    # Español
-    {
-        'title': 'Alerta OLAF – Qué deben hacer los ciudadanos',
-        'slug': 'alerta-olaf-que-deben-hacer-los-ciudadanos',
-        'excerpt': 'Cómo detectar y responder a correos, cartas y llamadas que suplantan a OLAF.',
-        'body_md': '''# **Atención a correos, cartas y llamadas fraudulentas que dicen ser de OLAF**
-
-## **En breve**
-Los estafadores usan el **nombre y el logotipo de la Comisión Europea/OLAF** y, a veces, la **identidad de funcionarios** para parecer creíbles. Prometen transferencias de dinero **solo si pagas una "tasa"** y **facilitas datos personales/financieros**. A menudo vuelven a contactar a **quienes ya fueron estafados**, citando el **importe exacto perdido**: es **otra estafa**.
-
-## **Qué significa para los ciudadanos**
-* Si recibes solicitudes que **parecen** proceder de OLAF o de su personal, es **una estafa**.  
-* **OLAF no ofrece ni solicita transferencias de dinero** a/desde ciudadanos y **no recupera** importes perdidos en estafas anteriores.  
-* OLAF investiga **fraudes que afectan al presupuesto de la UE** y **sospechas de mala conducta** del personal de la UE; **no** finanzas personales ni **criptomonedas**.
-
-## **Qué hacer ahora**
-* **No respondas**, **no hagas clic** en enlaces y **no abras** adjuntos.  
-* **No compartas** datos personales o bancarios; **no pagues** comisiones.  
-* **Guarda pruebas**: capturas, enlaces/URLs completos, email del remitente o número llamante.  
-* **Denuncia** el intento de fraude/phishing ante las **autoridades nacionales competentes** en materia penal y/o ciberdelincuencia.  
-* Si ya pagaste o compartiste datos: **contacta con tu banco** y **presenta denuncia**.
-
-## **Señales para reconocer falsificaciones**
-* **Cuentas bancarias sospechosas**, **logotipos inexactos**, **emails incorrectos** o **sitios web falsos**.  
-* Los correos genuinos de la Comisión/OLAF terminan en `@ec.europa.eu`.  
-* **Sitio oficial de OLAF**: `https://anti-fraud.ec.europa.eu/index_en` (verifica siempre la URL exacta).
-
-> **Recuerda:** los investigadores de OLAF **no llaman ni escriben a los ciudadanos** para **pedir u ofrecer dinero**.
-
----
-
-**Fuente (OLAF – Oficina Europea de Lucha contra el Fraude)**: <https://anti-fraud.ec.europa.eu/index_en>''',
-        'locale': 'es'
-    },
-
-    # Deutsch
-    {
-        'title': 'OLAF-Betrugswarnung – Was Bürger tun sollten',
-        'slug': 'olaf-betrugswarnung-was-buerger-tun-sollten',
-        'excerpt': 'So erkennen und reagieren Sie auf E-Mails, Briefe und Anrufe, die OLAF vortäuschen.',
-        'body_md': '''# **Achtung vor gefälschten E-Mails, Briefen und Anrufen im Namen von OLAF**
-
-## **Auf einen Blick**
-Betrüger nutzen **Name und Logo der Europäischen Kommission/OLAF** und mitunter die **Identität von Bediensteten**, um glaubwürdig zu wirken. Sie versprechen Geldüberweisungen **nur gegen Zahlung einer "Gebühr"** und fordern **persönliche/finanzielle Daten**. Häufig kontaktieren sie **bereits Betroffene** erneut und nennen den **exakt verlorenen Betrag**: das ist **ein weiterer Betrug**.
-
-## **Was das für Bürger bedeutet**
-* Wenn Sie Anfragen erhalten, die **scheinbar** von OLAF oder dessen Mitarbeitenden stammen, ist es **Betrug**.  
-* **OLAF bietet oder verlangt keine Geldtransfers** an/von Bürgern und **holt** keine in der Vergangenheit verlorenen Gelder **zurück**.  
-* OLAF ermittelt zu **Betrug zulasten des EU-Haushalts** und **mutmaßlichem Fehlverhalten** von EU-Bediensteten; **nicht** zu privaten Finanzen oder **Kryptowährungen**.
-
-## **Was ist jetzt zu tun**
-* **Nicht antworten**, **keine Links anklicken**, **keine Anhänge öffnen**.  
-* **Keine** persönlichen oder Bankdaten **weitergeben**; **keine Gebühren** zahlen.  
-* **Beweise sichern**: Screenshots, vollständige Links/URLs, Absender-E-Mail oder Rufnummer.  
-* **Melden** Sie den Betrugs-/Phishingversuch den **zuständigen nationalen Behörden** für Straf- und/oder Cyberkriminalität.  
-* Wenn Sie bereits gezahlt oder Daten weitergegeben haben: **Bank kontaktieren** und **Anzeige erstatten**.
-
-## **Warnzeichen für Fälschungen**
-* **Verdächtige Bankkonten**, **ungenaue Logos**, **falsche E-Mail-Adressen** oder **gefälschte Websites**.  
-* Echte E-Mails der Kommission/OLAF enden auf `@ec.europa.eu`.  
-* **Offizielle OLAF-Website**: `https://anti-fraud.ec.europa.eu/index_en` (prüfen Sie stets die exakte URL).
-
-> **Merken Sie sich:** OLAF-Ermittler **rufen Bürger nicht an und schreiben sie nicht an**, um **Geld zu verlangen oder anzubieten**.
-
----
-
-**Quelle (OLAF – Europäisches Amt für Betrugsbekämpfung)**: <https://anti-fraud.ec.europa.eu/index_en>''',
-        'locale': 'de'
-    },
-
-    # Français
-    {
-        'title': 'Alerte OLAF – Que doivent faire les citoyens',
-        'slug': 'alerte-olaf-que-doivent-faire-les-citoyens',
-        'excerpt': 'Comment repérer et réagir face aux e-mails, lettres et appels usurpant l\'OLAF.',
-        'body_md': '''# **Attention aux e-mails, lettres et appels frauduleux prétendant venir de l'OLAF**
-
-## **En bref**
-Des fraudeurs utilisent le **nom et le logo de la Commission européenne/de l'OLAF** et parfois l'**identité d'agents** pour paraître crédibles. Ils promettent des virements **seulement si vous payez des "frais"** et **fournissez des données personnelles/financières**. Ils recontactent souvent **des victimes antérieures**, en citant le **montant exact perdu** : c'est **une autre arnaque**.
-
-## **Ce que cela signifie pour les citoyens**
-* Si vous recevez des demandes qui **semblent** provenir de l'OLAF ou de ses agents, c'est **une arnaque**.  
-* **L'OLAF n'offre ni ne demande de transferts d'argent** aux citoyens et **ne récupère pas** les sommes perdues lors d'arnaques passées.  
-* L'OLAF enquête sur les **fraudes portant atteinte au budget de l'UE** et les **soupçons de mauvaise conduite** du personnel de l'UE ; **pas** sur les finances personnelles ni les **cryptomonnaies**.
-
-## **Que faire maintenant**
-* **Ne répondez pas**, **ne cliquez pas** sur les liens et **n'ouvrez pas** les pièces jointes.  
-* **Ne communiquez pas** de données personnelles ou bancaires ; **ne payez** aucun frais.  
-* **Conservez des preuves** : captures d'écran, liens/URL complets, e-mail de l'expéditeur ou numéro appelant.  
-* **Signalez** la tentative de fraude/hameçonnage aux **autorités nationales compétentes** en matière pénale et/ou de cybercriminalité.  
-* Si vous avez déjà payé ou transmis des données : **contactez votre banco** et **déposez plainte**.
-
-## **Signaux pour reconnaître les faux**
-* **Comptes bancaires suspects**, **logos imprécis**, **adresses e-mail erronées** ou **sites web factices**.  
-* Les e-mails authentiques de la Commission/de l'OLAF se terminent par `@ec.europa.eu`.  
-* **Site officiel de l'OLAF** : `https://anti-fraud.ec.europa.eu/index_en` (vérifiez toujours l'URL exacte).
-
-> **À retenir :** les enquêteurs de l'OLAF **n'appellent ni n'écrivent aux citoyens** pour **demander ou offrir de l'argent**.
-
----
-
-**Source (OLAF – Office européen de lutte antifraude)**: <https://anti-fraud.ec.europa.eu/index_en>''',
-        'locale': 'fr'
-    }
+Per proteggersi è essenziale: verificare sempre sul sito Consob se il soggetto è autorizzato; non fidarsi di offerte che promettono rendimenti elevati e garantiti; non inviare documenti o credenziali di home banking a soggetti contattati via social o messaggistica; considerare sospetto qualsiasi sito che usa volti noti o loghi istituzionali senza link verso domini ufficiali (.gov, .eu, .it).
+""",
+    'locale': 'it',
+},
 ]
 
 def check_connection():

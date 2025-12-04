@@ -59,7 +59,7 @@ def generate_image_markdown(slug, image_files):
     if not image_files:
         return ""
     
-    markdown_lines = ["\n\n## 📊 Infografiche\n"]
+    markdown_lines = ["\n\n## "]
     
     for i, image_file in enumerate(image_files, 1):
         image_url = f"https://twwgfrbcndouazujgcma.supabase.co/storage/v1/object/public/images/News/{slug}/{image_file}"
