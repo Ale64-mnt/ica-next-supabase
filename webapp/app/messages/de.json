@@ -190,98 +190,94 @@
       }
     },
     "NeedsVsWantsGame": {
-    "title": "Die Schatz- und Notwendigkeiten-Box",
-    "subtitle": "Entdecke den Unterschied zwischen Bedürfnissen und Wünschen!",
-    "score": "Punktestand",
-    "itemsTitle": "Ziehe die Gegenstände in die richtigen Boxen",
-    "completed": "Abgeschlossen!",
-    "loading": "Laden...",
-    "preparingGame": "Spiel wird vorbereitet...",
-    "listeningInstructions": "Höre Anweisungen zu...",
-    "dragWillEnable": "Drag & Drop wird bald aktiviert",
-    "voice": {
-      "welcome": "Hallo! Ich bin deine Sprachassistentin! Heute spielen wir mit zwei magischen Boxen: eine für Bedürfnisse und eine für Schätze. Bedürfnisse sind Dinge, die wir zum Leben brauchen, Schätze sind Dinge, die uns glücklich machen!",
-      "instructions": "Ziehe jeden Gegenstand in die richtige Box. Wenn es etwas ist, das wir zum Leben brauchen, lege es in Bedürfnisse. Wenn es etwas ist, das uns glücklich macht aber nicht essentiell ist, lege es in Schätze!",
-      "correct": "Perfekt!",
-      "almost": "Fast geschafft!",
-      "reflection": "Tolle Arbeit! Du hast gelernt, dass Bedürfnisse fundamental sind wie Treibstoff für ein Auto, während Wünsche das Leben bunter machen wie Konfetti!",
-      "complete": "Herzlichen Glückwunsch! Du hast das Spiel abgeschlossen!"
+  "title": "Die Schatzkiste der Bedürfnisse",
+  "subtitle": "Entdecke den Unterschied zwischen Bedürfnissen und Wünschen!",
+  "score": "Punkte",
+  "itemsTitle": "Ziehe die Gegenstände in die richtigen Kisten",
+  "completed": "Abgeschlossen!",
+  "playAgain": "Nochmal spielen",
+  "difficulty": {
+    "easy": "Einfach"
+  },
+  "dragStatus": {
+    "ready": "Bereit zum Ziehen",
+    "listening": "🔊 Höre zu...",
+    "preparing": "🔄 Vorbereiten...",
+    "completing": "🎯 Abschließen...",
+    "waiting": "⏳ Bitte warten...",
+    "loading": "🔄 Laden..."
+  },
+  "remainingText": "übrig",
+  "audioWaitMessage": "Warte bis die Audio-Nachricht beendet ist, dann kannst du die Gegenstände ziehen!",
+  "feedback": {
+    "correct": "✅ Richtig!",
+    "incorrect": "❌ Versuche es nochmal!"
+  },
+  "boxes": {
+    "need": "Bedürfnisse",
+    "want": "Schätze",
+    "dropHere": "Gegenstände hier ablegen",
+    "needDescription": "Wichtige Dinge zum Leben",
+    "wantDescription": "Dinge, die das Leben glücklich machen",
+    "droppedItems": "Abgelegte Gegenstände",
+    "empty": "Noch leer...",
+    "releaseToDrop": "Loslassen zum Ablegen"
+  },
+  "items": {
+    "water": {
+      "name": "Wasser"
     },
-    "difficulty": {
-      "easy": "Einfach",
-      "medium": "Mittel",
-      "hard": "Schwer"
+    "food": {
+      "name": "Essen"
     },
-    "boxes": {
-      "need": "Bedürfnisse",
-      "want": "Schätze",
-      "dropHere": "Gegenstände hier ablegen",
-      "needDescription": "Wesentliche Dinge zum Leben",
-      "wantDescription": "Dinge, die das Leben glücklich machen",
-      "droppedItems": "Abgelegte Gegenstände",
-      "empty": "Noch leer...",
-      "releaseToDrop": "Loslassen zum Ablegen"
+    "house": {
+      "name": "Haus"
     },
-    "items": {
-      "water": {
-        "name": "Wasser",
-        "explanation": "Ohne Wasser könnten wir nicht leben, es ist ein grundlegendes Bedürfnis!"
-      },
-      "food": {
-        "name": "Essen",
-        "explanation": "Essen gibt uns Energie zum Leben, es ist essentiell!"
-      },
-      "house": {
-        "name": "Haus",
-        "explanation": "Das Haus schützt uns und hält uns sicher, es ist ein Bedürfnis!"
-      },
-      "clothes": {
-        "name": "Kleidung",
-        "explanation": "Kleidung schützt uns vor Kälte, sie ist notwendig!"
-      },
-      "bed": {
-        "name": "Bett",
-        "explanation": "Das Bett hilft uns gut zu schlafen, es ist wichtig!"
-      },
-      "icecream": {
-        "name": "Eis",
-        "explanation": "Eis ist lecker aber wir können ohne es leben, es ist ein Wunsch!"
-      },
-      "videogame": {
-        "name": "Videospiel",
-        "explanation": "Videospiele machen Spaß aber sind nicht essentiell zum Leben!"
-      },
-      "toy": {
-        "name": "Spielzeug",
-        "explanation": "Spielzeug macht Spaß aber ist nicht unverzichtbar!"
-      },
-      "chocolate": {
-        "name": "Schokolade",
-        "explanation": "Schokolade ist lecker aber wir können ohne sie leben!"
-      },
-      "balloon": {
-        "name": "Luftballon",
-        "explanation": "Luftballons sind bunt aber wir brauchen sie nicht zum Leben!"
-      }
+    "clothes": {
+      "name": "Kleidung"
     },
-    "reflection": {
-      "title": "Tolle Arbeit!",
-      "message": "Du hast den Unterschied zwischen Bedürfnissen und Wünschen gelernt!",
-      "needsTitle": "Bedürfnisse",
-      "needsDescription": "Das sind grundlegende Dinge, die wir zum Leben brauchen: Essen, Wasser, Haus, Kleidung.",
-      "wantsTitle": "Wünsche",
-      "wantsDescription": "Das sind Dinge, die uns glücklich machen aber nicht essentiell sind: Spielzeug, Süßigkeiten, Unterhaltung."
+    "bed": {
+      "name": "Bett"
+    },
+    "icecream": {
+      "name": "Eis"
+    },
+    "videogame": {
+      "name": "Videospiel"
+    },
+    "toy": {
+      "name": "Spielzeug"
+    },
+    "chocolate": {
+      "name": "Schokolade"
+    },
+    "balloon": {
+      "name": "Luftballon"
     }
   },
-  "VoiceControls": {
-    "narration": "Erzählung",
-    "repeat": "Wiederholen",
-    "pause": "Pause",
-    "resume": "Fortsetzen",
-    "stop": "Stoppen",
-    "speaking": "Ich spreche...",
-    "notSupported": "Sprachausgabe wird von Ihrem Browser nicht unterstützt"
+  "reflection": {
+    "title": "Großartige Arbeit!",
+    "message": "Du hast den Unterschied zwischen Bedürfnissen und Wünschen gelernt!",
+    "needsTitle": "Bedürfnisse",
+    "needsDescription": "Das sind wichtige Dinge, die wir zum Leben brauchen: Essen, Wasser, Haus, Kleidung.",
+    "wantsTitle": "Wünsche",
+    "wantsDescription": "Das sind Dinge, die uns glücklich machen, aber nicht wichtig sind: Spielzeug, Süßigkeiten, Unterhaltung.",
+    "finalResult": "Endergebnis",
+    "outOf": "von"
   }
+},
+"VoiceControls": {
+  "narration": "Erzählung",
+  "play": "Abspielen",
+  "repeat": "Wiederholen",
+  "resume": "Fortsetzen",
+  "pause": "Pause",
+  "paused": "Pausiert",
+  "stop": "Stopp",
+  "speaking": "Spricht...",
+  "ready": "Bereit",
+  "notSupported": "Sprachsynthese nicht unterstützt"
+}
   
 
   }

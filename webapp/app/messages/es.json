@@ -190,96 +190,92 @@
       }
     },
     "NeedsVsWantsGame": {
-    "title": "La Caja de Tesoros y Necesidades",
-    "subtitle": "¡Descubre la diferencia entre necesidades y deseos!",
-    "score": "Puntuación",
-    "itemsTitle": "Arrastra los objetos a las cajas correctas",
-    "completed": "¡Completado!",
-    "loading": "Cargando...",
-    "preparingGame": "Preparando juego...",
-    "listeningInstructions": "Escuchando instrucciones...",
-    "dragWillEnable": "Arrastrar y soltar se habilitará pronto",
-    "voice": {
-      "welcome": "¡Hola! ¡Soy tu asistente de voz! Hoy jugamos con dos cajas mágicas: una para necesidades y otra para tesoros. ¡Las necesidades son cosas que necesitamos para vivir, los tesoros son cosas que nos hacen felices!",
-      "instructions": "Arrastra cada objeto a la caja correcta. Si es algo que necesitamos para vivir, ponlo en necesidades. Si es algo que nos hace felices pero no es esencial, ¡ponlo en tesoros!",
-      "correct": "¡Perfecto!",
-      "almost": "¡Casi lo tienes!",
-      "reflection": "¡Excelente trabajo! ¡Has aprendido que las necesidades son fundamentales como el combustible para un coche, mientras que los deseos hacen la vida más colorida como confeti!",
-      "complete": "¡Enhorabuena! ¡Has completado el juego!"
+  "title": "La Caja de Tesoros y Necesidades",
+  "subtitle": "¡Descubre la diferencia entre necesidades y deseos!",
+  "score": "Puntuación",
+  "itemsTitle": "Arrastra los objetos a las cajas correctas",
+  "completed": "¡Completado!",
+  "playAgain": "Jugar de nuevo",
+  "difficulty": {
+    "easy": "Fácil"
+  },
+  "dragStatus": {
+    "ready": "Listo para arrastrar",
+    "listening": "🔊 Escuchando...",
+    "preparing": "🔄 Preparando...",
+    "completing": "🎯 Completando...",
+    "waiting": "⏳ Espera...",
+    "loading": "🔄 Cargando..."
+  },
+  "remainingText": "restantes",
+  "audioWaitMessage": "¡Espera a que termine el mensaje de audio, luego podrás arrastrar los objetos!",
+  "feedback": {
+    "correct": "✅ ¡Correcto!",
+    "incorrect": "❌ ¡Inténtalo de nuevo!"
+  },
+  "boxes": {
+    "need": "Necesidades",
+    "want": "Tesoros",
+    "dropHere": "Arrastra aquí los objetos",
+    "needDescription": "Cosas fundamentales para vivir",
+    "wantDescription": "Cosas que hacen la vida feliz",
+    "droppedItems": "Objetos colocados",
+    "empty": "Todavía vacío...",
+    "releaseToDrop": "Suelta para colocar"
+  },
+  "items": {
+    "water": {
+      "name": "el agua"
     },
-    "difficulty": {
-      "easy": "Fácil",
-      "medium": "Medio", 
-      "hard": "Difícil"
+    "food": {
+      "name": "la comida"
     },
-    "boxes": {
-      "need": "Necesidades",
-      "want": "Tesoros",
-      "dropHere": "Arrastra objetos aquí",
-      "needDescription": "Cosas esenciales para vivir",
-      "wantDescription": "Cosas que hacen la vida feliz",
-      "droppedItems": "Objetos soltados",
-      "empty": "Todavía vacío...",
-      "releaseToDrop": "Suelta para soltar"
+    "house": {
+      "name": "la casa"
     },
-    "items": {
-      "water": {
-        "name": "Agua",
-        "explanation": "¡Sin agua no podríamos vivir, es una necesidad fundamental!"
-      },
-      "food": {
-        "name": "Comida",
-        "explanation": "¡La comida nos da energía para vivir, es esencial!"
-      },
-      "house": {
-        "name": "Casa",
-        "explanation": "¡La casa nos protege y nos mantiene seguros, es una necesidad!"
-      },
-      "clothes": {
-        "name": "Ropa",
-        "explanation": "¡La ropa nos protege del frío, es necesaria!"
-      },
-      "bed": {
-        "name": "Cama",
-        "explanation": "¡La cama nos ayuda a descansar bien, es importante!"
-      },
-      "icecream": {
-        "name": "Helado",
-        "explanation": "¡El helado es delicioso pero podemos vivir sin él, es un deseo!"
-      },
-      "videogame": {
-        "name": "Videojuego",
-        "explanation": "¡Los videojuegos son divertidos pero no esenciales para vivir!"
-      },
-      "toy": {
-        "name": "Juguete",
-        "explanation": "¡Los juguetes son divertidos pero no indispensables!"
-      },
-      "chocolate": {
-        "name": "Chocolate",
-        "explanation": "¡El chocolate es sabroso pero podemos vivir sin él!"
-      },
-      "balloon": {
-        "name": "Globo",
-        "explanation": "¡Los globos son coloridos pero no los necesitamos para vivir!"
-      }
+    "clothes": {
+      "name": "la ropa"
     },
-    "reflection": {
-      "title": "¡Excelente trabajo!",
-      "message": "¡Has aprendido la diferencia entre necesidades y deseos!",
-      "needsTitle": "Necesidades",
-      "needsDescription": "Son cosas fundamentales que necesitamos para vivir: comida, agua, casa, ropa.",
-      "wantsTitle": "Deseos",
-      "wantsDescription": "Son cosas que nos hacen felices pero no esenciales: juguetes, dulces, entretenimiento."
+    "bed": {
+      "name": "la cama"
+    },
+    "icecream": {
+      "name": "el helado"
+    },
+    "videogame": {
+      "name": "el videojuego"
+    },
+    "toy": {
+      "name": "el juguete"
+    },
+    "chocolate": {
+      "name": "el chocolate"
+    },
+    "balloon": {
+      "name": "el globo"
     }
   },
-  "VoiceControls": {
-    "narration": "Narración",
-    "repeat": "Repetir",
-    "pause": "Pausa",
-    "resume": "Reanudar",
-    "stop": "Detener",
-    "speaking": "Hablando...",
-    "notSupported": "La narración de voz no es compatible con su navegador"
+  "reflection": {
+    "title": "¡Excelente trabajo!",
+    "message": "¡Has aprendido la diferencia entre necesidades y deseos!",
+    "needsTitle": "Necesidades",
+    "needsDescription": "Son cosas fundamentales que necesitamos para vivir: comida, agua, casa, ropa.",
+    "wantsTitle": "Deseos",
+    "wantsDescription": "Son cosas que nos hacen felices pero no son esenciales: juguetes, dulces, entretenimiento.",
+    "finalResult": "Resultado Final",
+    "outOf": "de"
   }
+},
+"VoiceControls": {
+  "narration": "Narración",
+  "play": "Reproducir",
+  "repeat": "Repetir",
+  "resume": "Reanudar",
+  "pause": "Pausa",
+  "paused": "En pausa",
+  "stop": "Detener",
+  "speaking": "Hablando...",
+  "ready": "Listo",
+  "notSupported": "Síntesis de voz no compatible"
+}
   }

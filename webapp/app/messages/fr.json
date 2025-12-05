@@ -189,100 +189,94 @@
         "financial_landscape": "Explorez le système financier, les droits des consommateurs et les concepts économiques"
       }
     },
-    
-      "NeedsVsWantsGame": {
-        "title": "La Boîte aux Trésors et aux Nécessités",
-        "subtitle": "Découvre la différence entre besoins et envies !",
-        "score": "Score",
-        "itemsTitle": "Fais glisser les objets dans les bonnes boîtes",
-        "completed": "Terminé !",
-        "loading": "Chargement...",
-        "preparingGame": "Préparation du jeu...",
-        "listeningInstructions": "Écoute des instructions...",
-        "dragWillEnable": "Glisser-déposer sera activé bientôt",
-
-        "voice": {
-          "welcome": "Bonjour ! Je suis ton assistant vocal ! Aujourd'hui nous jouons avec deux boîtes magiques : une pour les besoins et une pour les trésors. Les besoins sont des choses dont nous avons besoin pour vivre, les trésors sont des choses qui nous rendent heureux !",
-          "instructions": "Fais glisser chaque objet dans la bonne boîte. Si c'est quelque chose dont nous avons besoin pour vivre, mets-le dans les besoins. Si c'est quelque chose qui nous rend heureux mais pas essentiel, mets-le dans les trésors !",
-          "correct": "Parfait !",
-          "almost": "Presque !",
-          "reflection": "Excellent travail ! Tu as appris que les besoins sont fondamentaux comme le carburant pour une voiture, tandis que les envies rendent la vie plus colorée comme des confettis !",
-          "complete": "Félicitations ! Tu as terminé le jeu !"
-        },
-        "difficulty": {
-      "easy": "Facile",
-      "medium": "Moyen",
-      "hard": "Difficile"
-      },
-        "boxes": {
-          "need": "Besoins",
-          "want": "Trésors",
-          "dropHere": "Déposer les objets ici",
-          "needDescription": "Choses essentielles pour vivre",
-          "wantDescription": "Choses qui rendent la vie heureuse",
-          "droppedItems": "Objets déposés",
-          "empty": "Toujours vide...",
-          "releaseToDrop": "Relâchez pour déposer"
-        },
-        "items": {
-          "water": {
-            "name": "Eau",
-            "explanation": "Sans eau nous ne pourrions pas vivre, c'est un besoin fondamental !"
-          },
-          "food": {
-            "name": "Nourriture",
-            "explanation": "La nourriture nous donne de l'énergie pour vivre, c'est essentiel !"
-          },
-          "house": {
-            "name": "Maison",
-            "explanation": "La maison nous protège et nous garde en sécurité, c'est un besoin !"
-          },
-          "clothes": {
-            "name": "Vêtements",
-            "explanation": "Les vêtements nous protègent du froid, ils sont nécessaires !"
-          },
-          "bed": {
-            "name": "Lit",
-            "explanation": "Le lit nous aide à bien nous reposer, c'est important !"
-          },
-          "icecream": {
-            "name": "Glace",
-            "explanation": "La glace est délicieuse mais nous pouvons vivre sans, c'est une envie !"
-          },
-          "videogame": {
-            "name": "Jeu vidéo",
-            "explanation": "Les jeux vidéo sont amusants mais pas essentiels pour vivre !"
-          },
-          "toy": {
-            "name": "Jouet",
-            "explanation": "Les jouets sont amusants mais pas indispensables !"
-          },
-          "chocolate": {
-            "name": "Chocolat",
-            "explanation": "Le chocolat est savoureux mais nous pouvons vivre sans !"
-          },
-          "balloon": {
-            "name": "Ballon",
-            "explanation": "Les ballons sont colorés mais nous n'en avons pas besoin pour vivre !"
-          }
-        },
-        "reflection": {
-          "title": "Excellent travail !",
-          "message": "Tu as appris la différence entre besoins et envies !",
-          "needsTitle": "Besoins",
-          "needsDescription": "Ce sont des choses fondamentales dont nous avons besoin pour vivre : nourriture, eau, maison, vêtements.",
-          "wantsTitle": "Envies",
-          "wantsDescription": "Ce sont des choses qui nous rendent heureux mais pas essentielles : jouets, bonbons, divertissements."
-        }
-      },
-      "VoiceControls": {
-    "narration": "Narration",
-    "repeat": "Répéter",
-    "pause": "Pause",
-    "resume": "Reprendre",
-    "stop": "Arrêter", 
-    "speaking": "Je parle...",
-    "notSupported": "La narration vocale n'est pas supportée par votre navigateur"
+    "NeedsVsWantsGame": {
+  "title": "La Boîte aux Trésors et aux Besoins",
+  "subtitle": "Découvre la différence entre besoins et désirs !",
+  "score": "Score",
+  "itemsTitle": "Glisse les objets dans les bonnes boîtes",
+  "completed": "Terminé !",
+  "playAgain": "Rejouer",
+  "difficulty": {
+    "easy": "Facile"
+  },
+  "dragStatus": {
+    "ready": "Prêt à glisser",
+    "listening": "🔊 Écoute...",
+    "preparing": "🔄 Préparation...",
+    "completing": "🎯 Finalisation...",
+    "waiting": "⏳ Attends...",
+    "loading": "🔄 Chargement..."
+  },
+  "remainingText": "restants",
+  "audioWaitMessage": "Attends que le message audio se termine, ensuite tu pourras glisser les objets !",
+  "feedback": {
+    "correct": "✅ Correct !",
+    "incorrect": "❌ Essaie encore !"
+  },
+  "boxes": {
+    "need": "Besoins",
+    "want": "Trésors",
+    "dropHere": "Dépose les objets ici",
+    "needDescription": "Choses essentielles pour vivre",
+    "wantDescription": "Choses qui rendent la vie heureuse",
+    "droppedItems": "Objets déposés",
+    "empty": "Toujours vide...",
+    "releaseToDrop": "Relâche pour déposer"
+  },
+  "items": {
+    "water": {
+      "name": "l'eau"
+    },
+    "food": {
+      "name": "la nourriture"
+    },
+    "house": {
+      "name": "la maison"
+    },
+    "clothes": {
+      "name": "les vêtements"
+    },
+    "bed": {
+      "name": "le lit"
+    },
+    "icecream": {
+      "name": "la glace"
+    },
+    "videogame": {
+      "name": "le jeu vidéo"
+    },
+    "toy": {
+      "name": "le jouet"
+    },
+    "chocolate": {
+      "name": "le chocolat"
+    },
+    "balloon": {
+      "name": "le ballon"
+    }
+  },
+  "reflection": {
+    "title": "Excellent travail !",
+    "message": "Tu as appris la différence entre besoins et désirs !",
+    "needsTitle": "Besoins",
+    "needsDescription": "Ce sont des choses essentielles dont nous avons besoin pour vivre : nourriture, eau, maison, vêtements.",
+    "wantsTitle": "Désirs",
+    "wantsDescription": "Ce sont des choses qui nous rendent heureux mais pas essentielles : jouets, bonbons, divertissements.",
+    "finalResult": "Résultat Final",
+    "outOf": "sur"
   }
+},
+"VoiceControls": {
+  "narration": "Narration",
+  "play": "Jouer",
+  "repeat": "Répéter",
+  "resume": "Reprendre",
+  "pause": "Pause",
+  "paused": "En pause",
+  "stop": "Arrêter",
+  "speaking": "Parle...",
+  "ready": "Prêt",
+  "notSupported": "Synthèse vocale non prise en charge"
+}
     
   }

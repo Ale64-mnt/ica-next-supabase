@@ -270,27 +270,27 @@ export default function NeedsVsWantsGame({ params }: Props) {
   // ✅ 5. FUNZIONI DI UTILITÀ
   const getDragStatusText = useCallback(() => {
     if (isInitializing) {
-      return locale === 'it' ? '🔄 Caricamento...' : '🔄 Loading...';
+      return t('dragStatus.loading');
     }
     if (showCorrectFeedback) {
-      return locale === 'it' ? '✅ Corretto!' : '✅ Correct!';
+      return t('feedback.correct');
     }
     if (showIncorrectFeedback) {
-      return locale === 'it' ? '❌ Riprova!' : '❌ Try again!';
+      return t('feedback.incorrect');
     }
     if (isDragDisabled) {
       if (isAudioPlaying) {
-        return locale === 'it' ? '🔊 Ascoltando...' : '🔊 Listening...';
+        return t('dragStatus.listening');
       }
       if (isTransitioning) {
-        return locale === 'it' ? '🔄 Preparazione...' : '🔄 Preparing...';
+        return t('dragStatus.preparing');
       }
       if (isProcessingLastItem) {
-        return locale === 'it' ? '🎯 Completamento...' : '🎯 Completing...';
+        return t('dragStatus.completing');
       }
-      return locale === 'it' ? '⏳ Attendi...' : '⏳ Please wait...';
+      return t('dragStatus.waiting');
     }
-    return locale === 'it' ? '✅ Pronto a trascinare' : '✅ Ready to drag';
+    return t('dragStatus.ready');
   }, [
     showCorrectFeedback, 
     showIncorrectFeedback, 
@@ -299,7 +299,7 @@ export default function NeedsVsWantsGame({ params }: Props) {
     isTransitioning, 
     isProcessingLastItem,
     isInitializing,
-    locale
+    t
   ]);
 
   const musicButtonText = locale === 'it' 
@@ -400,8 +400,8 @@ export default function NeedsVsWantsGame({ params }: Props) {
                   {t('itemsTitle')}
                 </h2>
                 <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-semibold">
-                  {remainingItems.length} {locale === 'it' ? 'rimanenti' : 'remaining'}
-                </span>
+  {remainingItems.length} {t('remainingText')}
+</span>
               </div>
               
               {remainingItems.length > 0 ? (
@@ -431,15 +431,13 @@ export default function NeedsVsWantsGame({ params }: Props) {
               )}
               
               {/* Messaggio di aiuto per l'utente */}
-              {isDragDisabled && currentStep === 'playing' && (
-                <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center">
-                  <p className="text-yellow-700 text-sm">
-                    {locale === 'it' 
-                      ? 'Aspetta che il messaggio audio finisca, poi potrai trascinare gli oggetti!' 
-                      : 'Wait for the audio message to finish, then you can drag items!'}
-                  </p>
-                </div>
-              )}
+              {isDragDisabled && (currentStep === 'intro' || currentStep === 'playing') && (
+  <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center animate-pulse">
+    <p className="text-yellow-700 text-sm font-medium">
+      {t('audioWaitMessage')}
+    </p>
+  </div>
+)}
             </div>
           </>
         )}

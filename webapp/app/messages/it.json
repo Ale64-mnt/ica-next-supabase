@@ -183,98 +183,93 @@
       "financial_landscape": "Esplora il sistema finanziario, i diritti dei consumatori e i concetti economici"
     }
   },
-  "NeedsVsWantsGame": {
-    "title": "La Scatola dei Tesori e delle Necessità",
-    "subtitle": "Scopri la differenza tra bisogni e desideri!",
-    "score": "Punteggio",
-    "itemsTitle": "Trascina gli oggetti nelle scatole giuste",
-    "completed": "Completato!",
-    "playAgain": "Gioca di nuovo",
-    "loading": "Caricamento...",
-    "preparingGame": "Preparazione del gioco in corso...",
-    "listeningInstructions": "Ascoltando le istruzioni...",
-    "dragWillEnable": "Il trascinamento sarà abilitato a breve",
-    "difficulty": {
-      "easy": "Facile",
-      "medium": "Medio", 
-      "hard": "Difficile"
+ "NeedsVsWantsGame": {
+  "title": "La Scatola dei Tesori e delle Necessità",
+  "subtitle": "Scopri la differenza tra bisogni e desideri!",
+  "score": "Punteggio",
+  "itemsTitle": "Trascina gli oggetti nelle scatole giuste",
+  "completed": "Completato!",
+  "playAgain": "Gioca di nuovo",
+  "difficulty": {
+    "easy": "Facile"
+  },
+  "dragStatus": {
+    "ready": "Pronto a trascinare",
+    "listening": "🔊 Ascoltando...",
+    "preparing": "🔄 Preparazione...",
+    "completing": "🎯 Completamento...",
+    "waiting": "⏳ Attendi...",
+    "loading": "🔄 Caricamento..."
+  },
+  "remainingText": "rimanenti",
+  "audioWaitMessage": "Aspetta che il messaggio audio finisca, poi potrai trascinare gli oggetti!",
+  "feedback": {
+    "correct": "✅ Corretto!",
+    "incorrect": "❌ Riprova!"
+  },
+  "boxes": {
+    "need": "Bisogni",
+    "want": "Tesori",
+    "dropHere": "Trascina qui gli oggetti",
+    "needDescription": "Cose fondamentali per vivere",
+    "wantDescription": "Cose che rendono la vita felice",
+    "droppedItems": "Oggetti inseriti",
+    "empty": "Ancora vuoto...",
+    "releaseToDrop": "Rilascia per inserire"
+  },
+  "items": {
+    "water": {
+      "name": "l'acqua"
     },
-    "voice": {
-      "welcome": "Ciao! Sono il tuo assistente vocale! Oggi giochiamo con due scatole magiche: una per i bisogni e una per i tesori. I bisogni sono cose che ci servono per vivere, i tesori sono cose che ci rendono felici!",
-      "instructions": "Trascina ogni oggetto nella scatola giusta. Se è qualcosa che ci serve per vivere, mettilo nei bisogni. Se è qualcosa che ci rende felici ma non essenziale, mettilo nei tesori!",
-      "correct": "Perfetto!",
-      "almost": "Ci sei quasi!",
-      "reflection": "Ottimo lavoro! Hai imparato che i bisogni sono fondamentali come il carburante per una macchina, mentre i desideri rendono la vita più colorata come i coriandoli!",
-      "complete": "Complimenti! Hai completato il gioco!"
+    "food": {
+      "name": "il cibo"
     },
-    "boxes": {
-      "need": "Bisogni",
-      "want": "Tesori",
-      "dropHere": "Trascina qui gli oggetti",
-      "needDescription": "Cose fondamentali per vivere",
-      "wantDescription": "Cose che rendono la vita felice",
-      "droppedItems": "Oggetti inseriti",
-      "empty": "Ancora vuoto...",
-      "releaseToDrop": "Rilascia per inserire"
+    "house": {
+      "name": "la casa"
     },
-    "items": {
-      "water": {
-        "name": "l'acqua",
-        "explanation": "Senza acqua non potremmo vivere, è un bisogno fondamentale!"
-      },
-      "food": {
-        "name": "il cibo",
-        "explanation": "Il cibo ci dà energia per vivere, è essenziale!"
-      },
-      "house": {
-        "name": "la casa",
-        "explanation": "La casa ci protegge e ci tiene al sicuro, è un bisogno!"
-      },
-      "clothes": {
-        "name": "i vestiti",
-        "explanation": "I vestiti ci proteggono dal freddo, sono necessari!"
-      },
-      "bed": {
-        "name": "il letto",
-        "explanation": "Il letto ci serve per riposare bene, è importante!"
-      },
-      "icecream": {
-        "name": "il gelato",
-        "explanation": "Il gelato è buonissimo ma possiamo vivere senza, è un desiderio!"
-      },
-      "videogame": {
-        "name": "il videogioco",
-        "explanation": "I videogiochi sono divertenti ma non essenziali per vivere!"
-      },
-      "toy": {
-        "name": "il giocattolo",
-        "explanation": "I giocattoli ci fanno divertire ma non sono indispensabili!"
-      },
-      "chocolate": {
-        "name": "la cioccolata",
-        "explanation": "La cioccolata è gustosa ma possiamo vivere senza!"
-      },
-      "balloon": {
-        "name": "il palloncino",
-        "explanation": "I palloncini sono colorati ma non ci servono per vivere!"
-      }
+    "clothes": {
+      "name": "i vestiti"
     },
-    "reflection": {
-      "title": "Ottimo lavoro!",
-      "message": "Hai imparato la differenza tra bisogni e desideri!",
-      "needsTitle": "Bisogni",
-      "needsDescription": "Sono cose fondamentali che ci servono per vivere: cibo, acqua, casa, vestiti.",
-      "wantsTitle": "Desideri",
-      "wantsDescription": "Sono cose che ci rendono felici ma non essenziali: giocattoli, dolci, divertimenti.",
-      "finalResult": "Risultato Finale",
-      "outOf": "su"
+    "bed": {
+      "name": "il letto"
+    },
+    "icecream": {
+      "name": "il gelato"
+    },
+    "videogame": {
+      "name": "il videogioco"
+    },
+    "toy": {
+      "name": "il giocattolo"
+    },
+    "chocolate": {
+      "name": "la cioccolata"
+    },
+    "balloon": {
+      "name": "il palloncino"
     }
   },
-  "VoiceControls": {
-    "narration": "Narrazione",
-    "repeat": "Ripeti",
-    "stop": "Ferma", 
-    "speaking": "In riproduzione...",
-    "notSupported": "Sintesi vocale non supportata"
+  "reflection": {
+    "title": "Ottimo lavoro!",
+    "message": "Hai imparato la differenza tra bisogni e desideri!",
+    "needsTitle": "Bisogni",
+    "needsDescription": "Sono cose fondamentali che ci servono per vivere: cibo, acqua, casa, vestiti.",
+    "wantsTitle": "Desideri",
+    "wantsDescription": "Sono cose che ci rendono felici ma non essenziali: giocattoli, dolci, divertimenti.",
+    "finalResult": "Risultato Finale",
+    "outOf": "su"
   }
+},
+"VoiceControls": {
+  "narration": "Narrazione",
+  "play": "Riproduci",
+  "repeat": "Ripeti",
+  "resume": "Riprendi",
+  "pause": "Pausa",
+  "paused": "In pausa",
+  "stop": "Ferma",
+  "speaking": "In riproduzione...",
+  "ready": "Pronto",
+  "notSupported": "Sintesi vocale non supportata"
+}
 }
