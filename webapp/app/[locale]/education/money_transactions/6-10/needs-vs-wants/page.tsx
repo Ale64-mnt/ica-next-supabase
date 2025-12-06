@@ -1,5 +1,5 @@
 // app/[locale]/education/money_transactions/6-10/needs-vs-wants/page.tsx
-// VERSIONE FINALE SENZA PROP DISABLED
+// VERSIONE FINALE CON LINK PDF
 
 'use client';
 
@@ -51,6 +51,8 @@ export default function NeedsVsWantsGame({ params }: Props) {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isInitializing, setIsInitializing] = useState(true);
 
+  const pdfUrl = `https://twwgfrbcndouazujgcma.supabase.co/storage/v1/object/public/Application/need-vs-wants/PDF/Technical-Sheet/${locale}.pdf`;
+
   // ✅ 1. Cleanup quando si esce dalla pagina
   useEffect(() => {
     console.log('🔇 Setup: componente montato');
@@ -76,17 +78,11 @@ export default function NeedsVsWantsGame({ params }: Props) {
 
     switch(currentStep) {
       case 'intro':
-        // Intro: sempre disabilitato
         shouldBeDisabled = true;
         console.log('🚫 Intro: drag sempre disabilitato');
         break;
         
       case 'playing':
-        // Playing: disabilitato solo se:
-        // 1. Audio sta suonando
-        // 2. Stiamo processando l'ultimo item
-        // 3. Siamo in transizione
-        // 4. Componente si sta ancora inizializzando
         shouldBeDisabled = isAudioPlaying || isProcessingLastItem || isTransitioning || isInitializing;
         console.log(`🎮 Playing: drag ${shouldBeDisabled ? 'disabilitato' : 'ABILITATO'}, ragioni:`, {
           isAudioPlaying,
@@ -97,18 +93,15 @@ export default function NeedsVsWantsGame({ params }: Props) {
         break;
         
       case 'reflection':
-        // Reflection: sempre disabilitato
         shouldBeDisabled = true;
         console.log('🏆 Reflection: drag sempre disabilitato');
         break;
     }
 
-    // Aggiorna solo se necessario
     if (isDragDisabled !== shouldBeDisabled) {
       console.log(`🔄 Cambio stato drag: ${isDragDisabled ? 'disabilitato' : 'abilitato'} → ${shouldBeDisabled ? 'disabilitato' : 'abilitato'}`);
       setIsDragDisabled(shouldBeDisabled);
       
-      // Quando riabiliti il drag, pulisci i feedback visivi
       if (!shouldBeDisabled) {
         setShowCorrectFeedback(false);
         setShowIncorrectFeedback(false);
@@ -131,24 +124,21 @@ export default function NeedsVsWantsGame({ params }: Props) {
       const playIntro = async () => {
         try {
           console.log('🎬 Inizio intro audio');
-          setIsTransitioning(true); // Blocca drag durante la transizione
+          setIsTransitioning(true);
           
           await playAudio('intro');
           console.log('✅ Intro audio completata con successo');
           
         } catch (error) {
           console.log('⚠️ Intro fallita o non disponibile:', error);
-          // Continua comunque il gioco
         } finally {
           console.log('🚀 Passaggio a playing step');
           
-          // Pulisci e prepara per il prossimo step
           await new Promise(resolve => setTimeout(resolve, 300));
           
           setCurrentStep('playing');
           setHasIntroPlayed(true);
           
-          // Attendi un momento extra prima di abilitare il drag
           setTimeout(() => {
             setIsTransitioning(false);
             console.log('✅ Transizione completata, drag ora disponibile');
@@ -209,7 +199,6 @@ export default function NeedsVsWantsGame({ params }: Props) {
     
     console.log(`🎯 Drop su ${boxType}: ${isCorrect ? 'CORRETTO' : 'ERRATO'} ${isLastItem ? '(ULTIMO ITEM)' : ''}`);
     
-    // Aggiorna punteggio
     setScore(prev => prev + (isCorrect ? 1 : 0));
     
     if (isCorrect) {
@@ -222,7 +211,6 @@ export default function NeedsVsWantsGame({ params }: Props) {
       }
     }
 
-    // Feedback visivo
     if (isCorrect) {
       setShowCorrectFeedback(true);
       setLastCorrectBox(boxType);
@@ -306,7 +294,7 @@ export default function NeedsVsWantsGame({ params }: Props) {
     ? (isMusicPlaying ? 'Musica ON' : 'Musica OFF')
     : (isMusicPlaying ? 'Music ON' : 'Music OFF');
 
-  // ✅ 6. RENDER (SENZA PROP DISABLED)
+  // ✅ 6. RENDER
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-green-50 to-purple-50 p-4">
       <header className="text-center mb-8 pt-8">
@@ -322,6 +310,7 @@ export default function NeedsVsWantsGame({ params }: Props) {
         </div>
         
         <div className="mt-4 flex items-center justify-center gap-4 flex-wrap">
+          {/* Pulsante Musica */}
           <button
             onClick={toggleMusic}
             className={`flex items-center gap-2 px-4 py-2 rounded-full font-semibold transition-all ${
@@ -344,6 +333,22 @@ export default function NeedsVsWantsGame({ params }: Props) {
             )}
           </button>
           
+          {/* Link PDF per insegnanti */}
+          {/* Link PDF per insegnanti - RESPONSIVE: solo icona su mobile */}
+<a 
+  href={pdfUrl}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800 transition-all"
+  title={t('teacherInfo')}
+>
+  📋 
+  <span className="font-medium hidden sm:inline">
+    {t('gameSheet')}
+  </span>
+</a>
+          
+          {/* Punteggio */}
           <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm">
             <span className="text-lg">⭐</span>
             <span className="font-semibold text-gray-700">
@@ -380,7 +385,6 @@ export default function NeedsVsWantsGame({ params }: Props) {
                 showIncorrectFeedback={showIncorrectFeedback && lastIncorrectBox === 'need'}
                 isCorrect={showCorrectFeedback && lastCorrectBox === 'need'}
                 isAudioPlaying={isDragDisabled}
-                // RIMOSSO: disabled={isDragDisabled}
               />
               
               <TreasureBox
@@ -390,7 +394,6 @@ export default function NeedsVsWantsGame({ params }: Props) {
                 showIncorrectFeedback={showIncorrectFeedback && lastIncorrectBox === 'want'}
                 isCorrect={showCorrectFeedback && lastCorrectBox === 'want'}
                 isAudioPlaying={isDragDisabled}
-                // RIMOSSO: disabled={isDragDisabled}
               />
             </div>
 
@@ -400,8 +403,8 @@ export default function NeedsVsWantsGame({ params }: Props) {
                   {t('itemsTitle')}
                 </h2>
                 <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-semibold">
-  {remainingItems.length} {t('remainingText')}
-</span>
+                  {remainingItems.length} {t('remainingText')}
+                </span>
               </div>
               
               {remainingItems.length > 0 ? (
@@ -430,14 +433,14 @@ export default function NeedsVsWantsGame({ params }: Props) {
                 </div>
               )}
               
-              {/* Messaggio di aiuto per l'utente */}
+              {/* Messaggio di attesa audio */}
               {isDragDisabled && (currentStep === 'intro' || currentStep === 'playing') && (
-  <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center animate-pulse">
-    <p className="text-yellow-700 text-sm font-medium">
-      {t('audioWaitMessage')}
-    </p>
-  </div>
-)}
+                <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-center animate-pulse">
+                  <p className="text-yellow-700 text-sm font-medium">
+                    {t('audioWaitMessage')}
+                  </p>
+                </div>
+              )}
             </div>
           </>
         )}
