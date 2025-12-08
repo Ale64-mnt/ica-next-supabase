@@ -42,91 +42,24 @@ IMAGE_ALT_TEXTS = {
 }
 
 # Dati per ogni news in diverse lingue
-NEWS_DATA = [
-   # English
+NEWS_DATA = [# Italiano
 {
-    'title': "International takedown of cryptocurrency fraud network laundering over EUR 700 million",
-    'slug': "international-crypto-fraud-network-takedown-eur-700-million",
-    'excerpt': "Europol dismantles a large cryptocurrency fraud and money-laundering network worth over EUR 700 million.",
-    'body_md': r"""
-**Source:** Europol – europol.europa.eu  
-**Publication date:** 04 December 2025  
-**Official link:** https://www.europol.europa.eu/media-press/newsroom/news/international-takedown-of-cryptocurrency-fraud-network-laundering-over-eur-700-million  
+    'title': "Piano triennale per l’informatica nella PA 2024–2026 – aggiornamento 2026",
+    'slug': "piano-triennale-informatica-pa-2024-2026-aggiornamento-2026",
+    'excerpt': "Aggiornato il Piano nazionale di digitalizzazione della PA: nuove misure per competenze digitali, interoperabilità, cloud e IA.",
+    'body_md': """\
+**Fonte:** Agenzia per l’Italia Digitale (agid.gov.it)  
+**Data di pubblicazione:** dicembre 2025  
+**Link ufficiale:** https://www.agid.gov.it/sites/agid/files/2025-10/Piano_Triennale_2024-2026_Aggiornamento_2026.pdf
 
-Europol announced the dismantling, through an international operation, of a network running a large-scale cryptocurrency fraud and money-laundering scheme worth around EUR 700 million. Arrests and seizures involved individuals accused of organising fraudulent crypto investment schemes.  
+Il documento aggiorna il Piano triennale di digitalizzazione della pubblica amministrazione (2024-2026), prevedendo nuove iniziative di formazione tecnica e sensibilizzazione alla cultura digitale. Il Piano mira a rafforzare le competenze digitali nella PA, migliorare l’interoperabilità e promuovere l’adozione di soluzioni cloud e di Intelligenza Artificiale.
 
-In practice, the scam worked by offering cryptocurrency investments with fake returns; real funds were laundered through a network of accounts and shell companies, causing severe losses for investors.
-""",
-    'locale': 'en',
-},
-
-# Español
-{
-    'title': "Desmantelamiento internacional de una red de fraude en criptomonedas que blanqueó más de 700 millones EUR",
-    'slug': "desmantelamiento-red-fraude-criptomonedas-700-millones-eur",
-    'excerpt': "Europol desmantela una red internacional de fraude y blanqueo de criptomonedas valorada en más de 700 millones de euros.",
-    'body_md': r"""
-**Fuente:** Europol – europol.europa.eu  
-**Fecha de publicación:** 04 de diciembre de 2025  
-**Enlace oficial:** https://www.europol.europa.eu/media-press/newsroom/news/international-takedown-of-cryptocurrency-fraud-network-laundering-over-eur-700-million  
-
-Europol anunció el desmantelamiento, en una operación internacional, de una red que gestionaba un importante esquema de fraude y blanqueo relacionado con criptomonedas — alrededor de 700 millones de euros. Entre las detenciones y los decomisos figuran personas acusadas de organizar inversiones fraudulentas en crypto.  
-
-En la práctica, la estafa funcionaba ofreciendo inversiones en criptomonedas con rendimientos falsos; los fondos reales se blanqueaban mediante una red de cuentas y empresas ficticias, provocando graves pérdidas a los inversores.
-""",
-    'locale': 'es',
-},
-
-# Deutsch
-{
-    'title': "Internationale Zerschlagung eines Kryptowährungsbetrugsnetzwerks mit über 700 Millionen EUR Geldwäsche",
-    'slug': "krypto-betrugsnetzwerk-zerschlagen-700-millionen-eur",
-    'excerpt': "Europol zerschlägt ein internationales Kryptowährungsbetrugs- und Geldwäschenetzwerk im Umfang von über 700 Millionen EUR.",
-    'body_md': r"""
-**Quelle:** Europol – europol.europa.eu  
-**Veröffentlichungsdatum:** 04. Dezember 2025  
-**Offizieller Link:** https://www.europol.europa.eu/media-press/newsroom/news/international-takedown-of-cryptocurrency-fraud-network-laundering-over-eur-700-million  
-
-Europol gab die Zerschlagung eines internationalen Netzwerks bekannt, das ein umfangreiches Betrugs- und Geldwäschesystem mit Kryptowährungen im Wert von rund 700 Millionen EUR betrieb. Zu den Festnahmen und Beschlagnahmungen gehören Personen, denen vorgeworfen wird, betrügerische Krypto-Investitionen organisiert zu haben.  
-
-In der Praxis funktionierte der Betrug, indem Krypto-Investitionen mit falschen Renditen angeboten wurden; echte Gelder wurden über ein Netz von Konten und Scheinfirmen gewaschen, was zu erheblichen Verlusten für Anleger führte.
-""",
-    'locale': 'de',
-},
-
-# Français
-{
-    'title': "Démantèlement international d’un réseau de fraude aux cryptomonnaies blanchissant plus de 700 millions EUR",
-    'slug': "demantelement-reseau-fraude-cryptomonnaies-700-millions-eur",
-    'excerpt': "Europol démantèle un vaste réseau international de fraude et de blanchiment liés aux cryptomonnaies.",
-    'body_md': r"""
-**Source :** Europol – europol.europa.eu  
-**Date de publication :** 04 décembre 2025  
-**Lien officiel :** https://www.europol.europa.eu/media-press/newsroom/news/international-takedown-of-cryptocurrency-fraud-network-laundering-over-eur-700-million  
-
-Europol a annoncé le démantèlement, lors d’une opération internationale, d’un réseau impliqué dans un vaste système de fraude et de blanchiment lié aux cryptomonnaies — environ 700 millions d’euros. Les arrestations et saisies concernent des individus accusés d’avoir organisé de faux investissements en crypto.  
-
-Dans la pratique, l’arnaque consistait à proposer des investissements en cryptomonnaies avec de faux rendements ; les fonds réels étaient blanchis via un réseau de comptes et de sociétés écrans, provoquant de lourdes pertes pour les investisseurs.
-""",
-    'locale': 'fr',
-},
-
-# Italiano
-{
-    'title': "International takedown of cryptocurrency fraud network laundering over EUR 700 million",
-    'slug': "smantellamento-rete-frode-crypto-riciclaggio-700-milioni-eur",
-    'excerpt': "Europol smantella una rete internazionale di frode e riciclaggio legata a criptovalute per oltre 700 milioni di euro.",
-    'body_md': r"""
-**Fonte:** Europol – europol.europa.eu  
-**Data di pubblicazione:** 04 dicembre 2025  
-**Link ufficiale:** https://www.europol.europa.eu/media-press/newsroom/news/international-takedown-of-cryptocurrency-fraud-network-laundering-over-eur-700-million  
-
-Europol ha annunciato lo smantellamento, in un’operazione internazionale, di una rete che gestiva un vasto schema di frode e riciclaggio legato a criptovalute — circa 700 milioni di euro. Tra gli arresti e i sequestri figurano soggetti accusati di aver organizzato investimenti fraudolenti in crypto.  
-
-In pratica, la truffa operava proponendo investimenti in criptovalute con rendimenti falsi; i fondi reali venivano riciclati tramite una rete di conti e società fittizie, provocando gravi perdite per gli investitori.
+*Interoperabilità* significa che sistemi diversi possono comunicare tra loro.  
+*Cloud* indica servizi informatici remoti accessibili via internet.
 """,
     'locale': 'it',
 },
+   
 ]
 
 def check_connection():

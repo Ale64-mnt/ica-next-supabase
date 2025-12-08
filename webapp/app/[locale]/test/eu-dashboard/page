@@ -1,0 +1,311 @@
+// app/test/eu-dashboard/page.tsx
+'use client';
+
+import { useEffect, useState } from 'react';
+
+interface EUObjective {
+  id: string;
+  text: string;
+  ageGroup: string;
+  sortOrder: number;
+}
+
+interface EUTheme {
+  id: string;
+  name: string;
+  objectivesCount: number;
+  objectives: EUObjective[];
+}
+
+export default function EUTestPage() {
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<'summary' | 'themes' | 'raw'>('summary');
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch('/api/education/eu-test/sector1');
+        if (!response.ok) throw new Error(`API error: ${response.status}`);
+        const result = await response.json();
+        setData(result);
+      } catch (err: any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-300 rounded w-1/4 mb-6"></div>
+            <div className="space-y-4">
+              <div className="h-4 bg-gray-300 rounded"></div>
+              <div className="h-4 bg-gray-300 rounded w-5/6"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+            <h2 className="text-xl font-bold text-red-800 mb-2">Errore</h2>
+            <p className="text-red-700">{error}</p>
+            <button 
+              onClick={() => window.location.reload()}
+              className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+            >
+              Riprova
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!data || !data.success) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+            <h2 className="text-xl font-bold text-yellow-800 mb-2">Dati non disponibili</h2>
+            <p className="text-yellow-700">Impossibile recuperare i dati dal database.</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const { sector, totalObjectives, expectedTotal, isComplete, themes, ageDistribution } = data.data;
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 p-4 md:p-8">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <header className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Dashboard UE - Settore 1
+          </h1>
+          <p className="text-gray-600">
+            Verifica degli obiettivi di apprendimento UE inseriti nel sistema
+          </p>
+          <div className="mt-4 flex items-center space-x-4">
+            <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+              isComplete 
+                ? 'bg-green-100 text-green-800' 
+                : 'bg-yellow-100 text-yellow-800'
+            }`}>
+              {isComplete ? '✅ COMPLETO' : '⚠️  INCOMPLETO'}
+            </span>
+            <span className="text-sm text-gray-500">
+              {new Date(data.timestamp).toLocaleString('it-IT')}
+            </span>
+          </div>
+        </header>
+
+        {/* Tabs */}
+        <div className="mb-8 border-b border-gray-200">
+          <nav className="flex space-x-8">
+            {['summary', 'themes', 'raw'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab as any)}
+                className={`py-3 px-1 font-medium text-sm border-b-2 transition-colors ${
+                  activeTab === tab
+                    ? 'border-blue-500 text-blue-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                {tab === 'summary' && 'Riepilogo'}
+                {tab === 'themes' && 'Temi e obiettivi'}
+                {tab === 'raw' && 'Dati grezzi'}
+              </button>
+            ))}
+          </nav>
+        </div>
+
+        {/* Content */}
+        {activeTab === 'summary' && (
+          <div className="space-y-8">
+            {/* Progress Card */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">Progresso</h2>
+              <div className="space-y-4">
+                <div>
+                  <div className="flex justify-between mb-1">
+                    <span className="text-sm font-medium text-gray-700">
+                      Obiettivi inseriti
+                    </span>
+                    <span className="text-sm font-medium text-gray-700">
+                      {totalObjectives}/{expectedTotal}
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2.5">
+                    <div 
+                      className={`h-2.5 rounded-full ${
+                        isComplete ? 'bg-green-600' : 'bg-blue-600'
+                      }`}
+                      style={{ width: `${(totalObjectives / expectedTotal) * 100}%` }}
+                    ></div>
+                  </div>
+                  <p className="mt-2 text-sm text-gray-600">
+                    {isComplete 
+                      ? 'Tutti gli obiettivi sono stati inseriti correttamente.'
+                      : `Mancano ${expectedTotal - totalObjectives} obiettivi.`
+                    }
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Stats Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Settore</h3>
+                <p className="text-3xl font-bold text-gray-900">{sector}</p>
+                <p className="text-sm text-gray-600 mt-2">Denaro e transazioni</p>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Temi</h3>
+                <p className="text-3xl font-bold text-gray-900">{themes.length}</p>
+                <p className="text-sm text-gray-600 mt-2">Temi configurati</p>
+              </div>
+
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">Fasce d'età</h3>
+                <p className="text-3xl font-bold text-gray-900">
+                  {Object.keys(ageDistribution || {}).length}
+                </p>
+                <p className="text-sm text-gray-600 mt-2">Fasce con obiettivi</p>
+              </div>
+            </div>
+
+            {/* Age Distribution */}
+            {ageDistribution && (
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <h2 className="text-xl font-semibold text-gray-900 mb-4">Distribuzione per fascia d'età</h2>
+                <div className="space-y-4">
+                  {Object.entries(ageDistribution).map(([age, count]) => (
+                    <div key={age} className="flex items-center justify-between">
+                      <span className="text-gray-700 font-medium">
+                        {age.replace('_', '-')} anni
+                      </span>
+                      <div className="flex items-center space-x-4">
+                        <span className="text-gray-900 font-bold">{count as any}</span>
+                        <div className="w-32 bg-gray-200 rounded-full h-2.5">
+                          <div 
+                            className="h-2.5 rounded-full bg-blue-600"
+                            style={{ 
+                              width: `${((count as number) / totalObjectives) * 100}%` 
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {activeTab === 'themes' && (
+          <div className="space-y-6">
+            {themes.map((theme: EUTheme) => (
+              <div key={theme.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div className="px-6 py-4 bg-gray-50 border-b border-gray-200">
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      {theme.name}
+                    </h3>
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      theme.objectivesCount > 0 
+                        ? 'bg-green-100 text-green-800' 
+                        : 'bg-red-100 text-red-800'
+                    }`}>
+                      {theme.objectivesCount} obiettivi
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="p-6">
+                  {theme.objectives.length > 0 ? (
+                    <div className="space-y-3">
+                      {theme.objectives.map((obj: EUObjective, index: number) => (
+                        <div key={obj.id} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                          <span className="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-800 rounded-full flex items-center justify-center text-sm font-medium">
+                            {index + 1}
+                          </span>
+                          <div className="flex-1">
+                            <p className="text-gray-800">{obj.text}</p>
+                            <div className="mt-1 flex items-center space-x-4 text-sm text-gray-600">
+                              <span>Fascia: {obj.ageGroup.replace('_', '-')}</span>
+                              <span>Ordine: {obj.sortOrder}</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-8">
+                      <p className="text-gray-500">Nessun obiettivo configurato per questo tema.</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {activeTab === 'raw' && (
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Dati JSON</h2>
+            <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-auto text-sm">
+              {JSON.stringify(data, null, 2)}
+            </pre>
+          </div>
+        )}
+
+        {/* Footer */}
+        <footer className="mt-12 pt-8 border-t border-gray-200">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div>
+              <h4 className="font-medium text-gray-900">API disponibili</h4>
+              <div className="mt-2 flex flex-wrap gap-2">
+                <a 
+                  href="/api/education/eu-test/quick" 
+                  target="_blank"
+                  className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                >
+                  /api/education/eu-test/quick
+                </a>
+                <a 
+                  href="/api/education/eu-test/sector1" 
+                  target="_blank"
+                  className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                >
+                  /api/education/eu-test/sector1
+                </a>
+              </div>
+            </div>
+            <div className="text-sm text-gray-500">
+              Sistema ICA - Educazione Finanziaria UE
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  );
+}
