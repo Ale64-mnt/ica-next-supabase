@@ -273,5 +273,26 @@
   "speaking": "In riproduzione...",
   "ready": "Pronto",
   "notSupported": "Sintesi vocale non supportata"
-}
+},
+"education": {
+    "progress": {
+      "yourProgress": "Il tuo progresso",
+      "progressDescription": "Monitora i tuoi miglioramenti nell'educazione finanziaria",
+      "refresh": "Aggiorna",
+      "realProgress": "Progresso Reale",
+      "potentialProgress": "Progresso Potenziale",
+      "modules": "moduli",
+      "competencies": "competenze",
+      "realProgressDescription": "{completed} di {total} moduli completati",
+      "potentialProgressDescription": "{completed} di {total} competenze EU acquisite",
+      "realLegend": "Moduli effettivamente implementati e completati",
+      "potentialLegend": "Tutte le competenze del framework EU disponibili",
+      "lastUpdated": "Ultimo aggiornamento"
+    },
+    "completing": "Completing...",
+    "completeModule": "Completa modulo",
+    "completed": "Completato",
+    "moduleCompletedMessage": "Modulo completato con successo! Il tuo progresso è stato aggiornato.",
+    "completionError": "Errore nel completamento del modulo. Riprova."
+  }
 }

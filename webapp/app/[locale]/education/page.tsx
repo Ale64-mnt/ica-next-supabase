@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import MacroAreasGrid from '@/app/components/education/MacroAreasGrid';
+import ProgressDualView from '@/app/components/education/ProgressDualView';
 
 export default function EducationPage() {
   const t = useTranslations('Education');
@@ -14,6 +15,14 @@ export default function EducationPage() {
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
           {t('subtitle')}
         </p>
+      </div>
+
+      {/* Progresso Utente */}
+      <div className="mb-10">
+        <ProgressDualView 
+          className="mb-8"
+          showDetails={true}
+        />
       </div>
 
       {/* Macro Aree Dinamiche */}

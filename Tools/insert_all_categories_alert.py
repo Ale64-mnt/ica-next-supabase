@@ -42,27 +42,24 @@ IMAGE_ALT_TEXTS = {
 
 # Dati per ogni news in diverse lingue
 NEWS_DATA = [
-    # Italiano
-{
-    'title': "Attenzione alle truffe: Consob oscura 6 siti di servizi finanziari abusivi",
-    'slug': "consob-oscura-siti-finanziari-abusivi-attenti-alle-truffe",
-    'excerpt': "Consob oscura sei siti illegali che usavano pagine clonate, finti personaggi noti e contenuti generati con IA.",
-    'body_md': r"""
-**Fonte:** CONSOB – consob.it  
-**Data di pubblicazione:** 27 novembre 2025  
-**Consob**  
-**Link ufficiale:** https://www.consob.it/documents/d/asset-library-1912910/pr_20251127  
-
-La Consob comunica di aver ordinato il blocco di sei siti web che offrivano servizi finanziari in modo abusivo o promuovevano piattaforme di trading non autorizzate, tra cui un sito che sfruttava in modo improprio l’immagine di un noto giornalista per promuovere un broker illegale. Il comunicato segnala che i truffatori ricorrono sempre più a tecniche sofisticate: siti “clonati”, falsi profili social, video e contenuti generati con sistemi di intelligenza artificiale per rendere credibili offerte di investimento inesistenti.
-
-Viene ricordato che, dal 2019, sono stati complessivamente oscurati quasi 1.500 siti abusivi e che la lista completa è consultabile sul portale Consob nella sezione “Watch for Scams!”.
-
-Tipicamente, lo schema funziona così: l’utente vede una pubblicità o un video con il volto di un personaggio famoso che “consiglia” una piattaforma; dopo aver lasciato i propri dati, viene contattato da falsi consulenti che lo guidano ad aprire un conto, fare un primo versamento e visualizzare “guadagni” su una schermata di trading creata ad arte; quando prova a ritirare il denaro, vengono richiesti pagamenti aggiuntivi (tasse, costi di sblocco) oppure l’accesso viene bloccato e il sito sparisce.
-
-Per proteggersi è essenziale: verificare sempre sul sito Consob se il soggetto è autorizzato; non fidarsi di offerte che promettono rendimenti elevati e garantiti; non inviare documenti o credenziali di home banking a soggetti contattati via social o messaggistica; considerare sospetto qualsiasi sito che usa volti noti o loghi istituzionali senza link verso domini ufficiali (.gov, .eu, .it).
-""",
-    'locale': 'it',
-},
+    # English
+    {
+        "title": "Netherlands: Police inform hundreds of victims of investment fraud",
+        "slug": "netherlands-police-investment-fraud-victims-informed",
+        "excerpt": "Dutch Police have contacted hundreds of victims of investment scams, providing updates and guidance. Cases involve fake trading or crypto platforms and unauthorized “advisors.”",
+        "body_md": "**Source:** Politie – politie.nl\n"
+                   "**Publication date:** 8 December 2025\n"
+                   "**Link:** https://www.politie.nl/nieuws/2025/december/8/politie-informeert-honderden-gedupeerden-beleggingsfraude.html\n\n"
+                   "**Summary:** The Dutch Police have contacted hundreds of individuals involved in investment scams, giving updates and guidance for investigations and victim support. The fraud cases involve fake trading/crypto platforms and unlicensed “consultants.”\n\n"
+                   "**How the scam works (example): investment / crypto scam**\n"
+                   "• Social media ads or chat contacts from a “broker.”\n"
+                   "• Fake dashboards show fabricated “profits.”\n"
+                   "• The scammer asks for additional deposits or “release fees.”\n"
+                   "• Typical pattern: initial deposit of €500–1,000, fake gains, then more payment requests.\n"
+                   "• When the victim attempts a withdrawal, the account is blocked.\n\n"
+                   "Always verify whether the intermediary is officially authorized by your national financial authority before investing.",
+        "locale": "en",
+    },
 ]
 
 def check_connection():
