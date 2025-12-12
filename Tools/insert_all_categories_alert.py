@@ -42,23 +42,69 @@ IMAGE_ALT_TEXTS = {
 
 # Dati per ogni news in diverse lingue
 NEWS_DATA = [
-    # English
+     # English
     {
-        "title": "Netherlands: Police inform hundreds of victims of investment fraud",
-        "slug": "netherlands-police-investment-fraud-victims-informed",
-        "excerpt": "Dutch Police have contacted hundreds of victims of investment scams, providing updates and guidance. Cases involve fake trading or crypto platforms and unauthorized “advisors.”",
-        "body_md": "**Source:** Politie – politie.nl\n"
-                   "**Publication date:** 8 December 2025\n"
-                   "**Link:** https://www.politie.nl/nieuws/2025/december/8/politie-informeert-honderden-gedupeerden-beleggingsfraude.html\n\n"
-                   "**Summary:** The Dutch Police have contacted hundreds of individuals involved in investment scams, giving updates and guidance for investigations and victim support. The fraud cases involve fake trading/crypto platforms and unlicensed “consultants.”\n\n"
-                   "**How the scam works (example): investment / crypto scam**\n"
-                   "• Social media ads or chat contacts from a “broker.”\n"
-                   "• Fake dashboards show fabricated “profits.”\n"
-                   "• The scammer asks for additional deposits or “release fees.”\n"
-                   "• Typical pattern: initial deposit of €500–1,000, fake gains, then more payment requests.\n"
-                   "• When the victim attempts a withdrawal, the account is blocked.\n\n"
-                   "Always verify whether the intermediary is officially authorized by your national financial authority before investing.",
+        "title": "Europol: €700 million cryptocurrency fraud network dismantled",
+        "slug": "europol-700-million-cryptocurrency-fraud-network-dismantled",
+        "excerpt": "European authorities have taken down a criminal network behind fake crypto investment platforms said to have collected around €700 million from victims.",
+        "body_md": "**Source:** Europol – europol.europa.eu\n"
+                   "**Publication date:** 4 December 2025\n"
+                   "**Link:** https://www.europol.europa.eu/media-press/newsroom/news/international-takedown-of-cryptocurrency-fraud-network\n\n"
+                   "**Summary:** European authorities carried out a joint operation that dismantled a criminal network responsible for fake crypto investment platforms that allegedly gathered around €700 million. Numerous fraudulent websites promised high returns and targeted victims across multiple European jurisdictions.\n\n"
+                   "**How the scam works:** Users were lured through misleading ads or social media outreach and convinced—through promises of easy profits—to deposit money on fake investment portals. After initial deposits, victims were asked for additional payments or “release fees” to withdraw funds, but access was then blocked.",
         "locale": "en",
+    },
+
+    # Español
+    {
+        "title": "Europol: desmantelada una red de fraude cripto de 700 millones de euros",
+        "slug": "europol-desmantela-red-fraude-cripto-700-millones",
+        "excerpt": "Las autoridades europeas han desmantelado una red criminal responsable de plataformas falsas de inversión en criptomonedas que habrían recaudado unos 700 millones de euros.",
+        "body_md": "**Fuente:** Europol – europol.europa.eu\n"
+                   "**Fecha de publicación:** 4 de diciembre de 2025\n"
+                   "**Enlace:** https://www.europol.europa.eu/media-press/newsroom/news/international-takedown-of-cryptocurrency-fraud-network\n\n"
+                   "**Resumen:** Las autoridades europeas llevaron a cabo una operación conjunta que permitió desmantelar una red criminal vinculada a plataformas de inversión cripto fraudulentas que habrían recaudado alrededor de 700 millones de euros. Numerosos sitios falsos prometían altos rendimientos y captaban víctimas en varias jurisdicciones europeas.\n\n"
+                   "**Cómo funciona la estafa:** Los usuarios eran atraídos mediante publicidad engañosa o redes sociales y convencidos—con promesas de beneficios fáciles—para depositar dinero en portales de inversión falsos. Tras un primer depósito, se solicitaban pagos adicionales o “tasas de liberación”, pero el acceso a la cuenta era bloqueado.",
+        "locale": "es",
+    },
+
+    # Deutsch
+    {
+        "title": "Europol: Krypto-Betrugsnetzwerk über 700 Millionen Euro zerschlagen",
+        "slug": "europol-krypto-betrugsnetzwerk-700-millionen-zerschlagen",
+        "excerpt": "Europäische Behörden haben ein kriminelles Netzwerk zerschlagen, das hinter gefälschten Krypto-Investitionsplattformen stand und rund 700 Millionen Euro erbeutet haben soll.",
+        "body_md": "**Quelle:** Europol – europol.europa.eu\n"
+                   "**Veröffentlichungsdatum:** 4. Dezember 2025\n"
+                   "**Link:** https://www.europol.europa.eu/media-press/newsroom/news/international-takedown-of-cryptocurrency-fraud-network\n\n"
+                   "**Zusammenfassung:** Europäische Behörden führten eine gemeinsame Operation durch, bei der ein kriminelles Netzwerk zerschlagen wurde, das für gefälschte Krypto-Investitionsplattformen verantwortlich war und angeblich rund 700 Millionen Euro eingenommen hat. Zahlreiche betrügerische Websites versprachen hohe Renditen und lockten Opfer in verschiedenen europäischen Ländern.\n\n"
+                   "**So funktioniert die Masche:** Nutzer wurden über irreführende Werbung oder soziale Medien geködert und mit Versprechen schneller Gewinne dazu gebracht, Geld auf gefälschten Investitionsportalen einzuzahlen. Nach der ersten Einzahlung wurden weitere Zahlungen oder “Freigabegebühren” verlangt, während der Kontozugang blockiert wurde.",
+        "locale": "de",
+    },
+
+    # Français
+    {
+        "title": "Europol : démantèlement d’un réseau d’escroquerie crypto de 700 millions d’euros",
+        "slug": "europol-demantele-reseau-escroquerie-crypto-700-millions",
+        "excerpt": "Les autorités européennes ont démantelé un réseau criminel à l’origine de fausses plateformes d’investissement crypto ayant collecté environ 700 millions d’euros.",
+        "body_md": "**Source :** Europol – europol.europa.eu\n"
+                   "**Date de publication :** 4 décembre 2025\n"
+                   "**Lien :** https://www.europol.europa.eu/media-press/newsroom/news/international-takedown-of-cryptocurrency-fraud-network\n\n"
+                   "**Résumé :** Les autorités européennes ont conduit une opération conjointe ayant permis de démanteler un réseau criminel responsable de fausses plateformes d’investissement en cryptomonnaies, lesquelles auraient collecté près de 700 millions d’euros. De nombreux sites frauduleux promettaient des rendements élevés et piégeaient des victimes dans plusieurs juridictions européennes.\n\n"
+                   "**Mécanisme de l’arnaque :** Les utilisateurs étaient attirés par des publicités trompeuses ou les réseaux sociaux, puis convaincus—grâce à des promesses de gains faciles—de déposer de l’argent sur des portails d’investissement frauduleux. Après un premier dépôt, des versements supplémentaires ou des “frais de déblocage” étaient exigés, tandis que l’accès au compte était bloqué.",
+        "locale": "fr",
+    },
+
+    # Italiano
+    {
+        "title": "Europol: smantellata rete di frode cripto da 700 milioni €",
+        "slug": "europol-smantellata-rete-frode-cripto-700-milioni",
+        "excerpt": "Operazione congiunta delle autorità europee che ha portato allo smantellamento di una rete criminale responsabile di piattaforme d’investimento cripto fasulle per circa 700 milioni di euro.",
+        "body_md": "**Fonte:** Europol – europol.europa.eu\n"
+                   "**Data di pubblicazione:** 4 dicembre 2025\n"
+                   "**Link:** https://www.europol.europa.eu/media-press/newsroom/news/international-takedown-of-cryptocurrency-fraud-network\n\n"
+                   "**Riassunto:** Le autorità europee hanno condotto un’operazione congiunta che ha portato allo smantellamento di una rete criminale responsabile di piattaforme d’investimento cripto fasulle che avrebbero raccolto circa 700 milioni di euro. Numerosi siti fraudolenti promettevano rendimenti elevati e attiravano vittime in diverse giurisdizioni europee.\n\n"
+                   "**Meccanismo della truffa:** Gli utenti venivano agganciati tramite pubblicità ingannevoli o social media e convinti—con promesse di profitti facili—a versare denaro su portali d’investimento fasulli. Dopo i primi depositi, venivano richiesti ulteriori pagamenti o “tasse di sblocco” per poter prelevare, ma l’accesso veniva bloccato.",
+        "locale": "it",
     },
 ]
 

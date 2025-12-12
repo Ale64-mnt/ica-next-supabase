@@ -278,5 +278,41 @@
   "speaking": "Speaking...",
   "ready": "Ready",
   "notSupported": "Speech synthesis not supported"
-}
+},
+"education": {
+  "dashboard": {
+      "yourLearningJourney": "Your Learning Journey",
+      "modulesCompleted": "Modules Completed",
+      "competenciesAcquired": "Competencies Acquired",
+      "badgesUnlocked": "Badges Unlocked",
+      "learningStreak": "Learning Streak",
+      "timeSpent": "{time} of study",
+      "progressByArea": "Progress by Area",
+      "badgeCollection": "Badge Collection",
+      "locked": "Locked",
+      "viewAllBadges": "View all badges",
+      "modules": "modules",
+      "competencies": "competencies",
+      "exploreArea": "Explore area"
+    },
+    "progress": {
+      "yourProgress": "Your Progress",
+      "progressDescription": "Track your improvements in financial education",
+      "refresh": "Refresh",
+      "realProgress": "Real Progress",
+      "potentialProgress": "Potential Progress",
+      "modules": "modules",
+      "competencies": "competencies",
+      "realProgressDescription": "{completed} of {total} modules completed",
+      "potentialProgressDescription": "{completed} of {total} EU competencies acquired",
+      "realLegend": "Actually implemented and completed modules",
+      "potentialLegend": "All EU framework competencies available",
+      "lastUpdated": "Last updated"
+    },
+    "completing": "Completing...",
+    "completeModule": "Complete module",
+    "completed": "Completed",
+    "moduleCompletedMessage": "Module completed successfully! Your progress has been updated.",
+    "completionError": "Error completing the module. Please try again."
+  }
     }

@@ -279,7 +279,43 @@
   "speaking": "Spricht...",
   "ready": "Bereit",
   "notSupported": "Sprachsynthese nicht unterstützt"
-}
+},
+"education": {
+  "dashboard": {
+      "yourLearningJourney": "Ihre Lernreise",
+      "modulesCompleted": "Module Abgeschlossen",
+      "competenciesAcquired": "Kompetenzen Erworben",
+      "badgesUnlocked": "Freigeschaltete Abzeichen",
+      "learningStreak": "Lernserie",
+      "timeSpent": "{time} Studium",
+      "progressByArea": "Fortschritt nach Bereich",
+      "badgeCollection": "Abzeichen-Sammlung",
+      "locked": "Gesperrt",
+      "viewAllBadges": "Alle Abzeichen anzeigen",
+      "modules": "Module",
+      "competencies": "Kompetenzen",
+      "exploreArea": "Bereich erkunden"
+    },
+    "progress": {
+      "yourProgress": "Ihr Fortschritt",
+      "progressDescription": "Verfolgen Sie Ihre Fortschritte in der Finanzbildung",
+      "refresh": "Aktualisieren",
+      "realProgress": "Tatsächlicher Fortschritt",
+      "potentialProgress": "Möglicher Fortschritt",
+      "modules": "Module",
+      "competencies": "Kompetenzen",
+      "realProgressDescription": "{completed} von {total} Modulen abgeschlossen",
+      "potentialProgressDescription": "{completed} von {total} EU-Kompetenzen erworben",
+      "realLegend": "Tatsächlich implementierte und abgeschlossene Module",
+      "potentialLegend": "Alle verfügbaren EU-Rahmenkompetenzen",
+      "lastUpdated": "Zuletzt aktualisiert"
+    },
+    "completing": "Wird abgeschlossen...",
+    "completeModule": "Modul abschließen",
+    "completed": "Abgeschlossen",
+    "moduleCompletedMessage": "Modul erfolgreich abgeschlossen! Ihr Fortschritt wurde aktualisiert.",
+    "completionError": "Fehler beim Abschließen des Moduls. Bitte versuchen Sie es erneut."
+  }
   
 
   }

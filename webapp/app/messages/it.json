@@ -275,6 +275,21 @@
   "notSupported": "Sintesi vocale non supportata"
 },
 "education": {
+  "dashboard": {
+      "yourLearningJourney": "Il Tuo Percorso di Apprendimento",
+      "modulesCompleted": "Moduli Completati",
+      "competenciesAcquired": "Competenze Acquisite",
+      "badgesUnlocked": "Badge Sbloccati",
+      "learningStreak": "Serie di Apprendimento",
+      "timeSpent": "{time} di studio",
+      "progressByArea": "Progresso per Area",
+      "badgeCollection": "Raccolta Badge",
+      "locked": "Bloccato",
+      "viewAllBadges": "Vedi tutti i badge",
+      "modules": "moduli",
+      "competencies": "competenze",
+      "exploreArea": "Esplora area"
+    },
     "progress": {
       "yourProgress": "Il tuo progresso",
       "progressDescription": "Monitora i tuoi miglioramenti nell'educazione finanziaria",

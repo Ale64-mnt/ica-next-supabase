@@ -279,5 +279,41 @@
   "speaking": "Hablando...",
   "ready": "Listo",
   "notSupported": "Síntesis de voz no compatible"
-}
+},
+"education": {
+  "dashboard": {
+      "yourLearningJourney": "Tu Viaje de Aprendizaje",
+      "modulesCompleted": "Módulos Completados",
+      "competenciesAcquired": "Competencias Adquiridas",
+      "badgesUnlocked": "Insignias Desbloqueadas",
+      "learningStreak": "Racha de Aprendizaje",
+      "timeSpent": "{time} de estudio",
+      "progressByArea": "Progreso por Área",
+      "badgeCollection": "Colección de Insignias",
+      "locked": "Bloqueado",
+      "viewAllBadges": "Ver todas las insignias",
+      "modules": "módulos",
+      "competencies": "competencias",
+      "exploreArea": "Explorar área"
+    },
+    "progress": {
+      "yourProgress": "Tu Progreso",
+      "progressDescription": "Controla tus mejoras en educación financiera",
+      "refresh": "Actualizar",
+      "realProgress": "Progreso Real",
+      "potentialProgress": "Progreso Potencial",
+      "modules": "módulos",
+      "competencies": "competencias",
+      "realProgressDescription": "{completed} de {total} módulos completados",
+      "potentialProgressDescription": "{completed} de {total} competencias UE adquiridas",
+      "realLegend": "Módulos implementados y completados realmente",
+      "potentialLegend": "Todas las competencias del marco UE disponibles",
+      "lastUpdated": "Última actualización"
+    },
+    "completing": "Completando...",
+    "completeModule": "Completar módulo",
+    "completed": "Completado",
+    "moduleCompletedMessage": "¡Módulo completado con éxito! Tu progreso ha sido actualizado.",
+    "completionError": "Error al completar el módulo. Por favor, inténtalo de nuevo."
+  }
   }

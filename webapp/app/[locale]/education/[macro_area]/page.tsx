@@ -1,6 +1,7 @@
-﻿import { useTranslations } from 'next-intl';
-import { notFound } from 'next/navigation';
-import AgeLevelsGrid from '@/app/components/education/AgeLevelsGrid';
+﻿// app/[locale]/education/[macro_area]/page.tsx - MODIFICATO
+import { useTranslations } from 'next-intl';
+import { notFound, redirect } from 'next/navigation';
+import { getCurrentUserAgeRange } from '@/app/lib/auth/user-context';
 
 interface PageProps {
   params: {
@@ -9,37 +10,21 @@ interface PageProps {
   };
 }
 
-export default function MacroAreaPage({ params }: PageProps) {
-  const { macro_area, locale } = params; // ✅ Assicurati di estrarre locale
-  const t = useTranslations('Education');
-
-  console.log('🚀 Macro Area Page Loaded:', { macro_area, locale });
-
+export default async function MacroAreaPage({ params }: PageProps) {
+  const { macro_area, locale } = params;
+  
+  // 1. Verifica macro area valida
   const validMacroAreas = ['money_transactions', 'planning_budgeting', 'managing_risks_insurance', 'financial_landscape'];
   if (!validMacroAreas.includes(macro_area)) {
     notFound();
   }
-
-  const macroAreaTitles = {
-    money_transactions: t('macro_areas.money_transactions'),
-    planning_budgeting: t('macro_areas.planning_budgeting'),
-    managing_risks_insurance: t('macro_areas.managing_risks_insurance'),
-    financial_landscape: t('macro_areas.financial_landscape')
-  };
-
-  return (
-    <div className="max-w-6xl mx-auto">
-      <div className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          {macroAreaTitles[macro_area as keyof typeof macroAreaTitles]}
-        </h1>
-        <p className="text-lg text-gray-600">
-          {t('select_age_group_instruction')}
-        </p>
-      </div>
-
-      {/* ✅ Passa il locale al componente */}
-      <AgeLevelsGrid macroArea={macro_area} locale={locale} />
-    </div>
-  );
+  
+  // 2. Ottieni fascia d'età dell'utente (11-15 per ora hardcoded)
+  const userAgeRange = '11-15'; // TODO: da DB o auth context
+  
+  // 3. REDIRECT automatico alla sua fascia
+  redirect(`/${locale}/education/${macro_area}/${userAgeRange}`);
+  
+  // Il codice sotto non viene mai eseguito a causa del redirect
+  return null;
 }

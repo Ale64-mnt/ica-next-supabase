@@ -279,6 +279,42 @@
   "speaking": "Parle...",
   "ready": "Prêt",
   "notSupported": "Synthèse vocale non prise en charge"
-}
+},
+"education": {
+  "dashboard": {
+    "yourLearningJourney": "Votre Parcours d'Apprentissage",
+    "modulesCompleted": "Modules Terminés",
+    "competenciesAcquired": "Compétences Acquises",
+    "badgesUnlocked": "Badges Débloqués",
+    "learningStreak": "Série d'Apprentissage",
+    "timeSpent": "{time} d'étude",
+    "progressByArea": "Progression par Domaine",
+    "badgeCollection": "Collection de Badges",
+    "locked": "Verrouillé",
+    "viewAllBadges": "Voir tous les badges",
+    "modules": "modules",
+    "competencies": "compétences",
+    "exploreArea": "Explorer le domaine"
+  },
+    "progress": {
+      "yourProgress": "Votre Progrès",
+      "progressDescription": "Suivez vos améliorations en éducation financière",
+      "refresh": "Actualiser",
+      "realProgress": "Progrès Réel",
+      "potentialProgress": "Progrès Potentiel",
+      "modules": "modules",
+      "competencies": "compétences",
+      "realProgressDescription": "{completed} sur {total} modules terminés",
+      "potentialProgressDescription": "{completed} sur {total} compétences UE acquises",
+      "realLegend": "Modules effectivement mis en œuvre et terminés",
+      "potentialLegend": "Toutes les compétences du cadre UE disponibles",
+      "lastUpdated": "Dernière mise à jour"
+    },
+    "completing": "En cours de complétion...",
+    "completeModule": "Terminer le module",
+    "completed": "Terminé",
+    "moduleCompletedMessage": "Module terminé avec succès ! Votre progrès a été mis à jour.",
+    "completionError": "Erreur lors de la complétion du module. Veuillez réessayer."
+  }
     
   }
