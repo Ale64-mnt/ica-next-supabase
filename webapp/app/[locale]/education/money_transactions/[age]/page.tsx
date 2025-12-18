@@ -24,15 +24,16 @@ interface EUObjective {
   eu_themes: EUTheme[];
 }
 
-// MODIFICA: Aggiorna l'interfaccia per corrispondere ai dati dell'API
 interface EducationalModule {
   id: string;
-  title: string;  // Cambiato da title_i18n a title (già formattato dall'API)
-  description: string; // Cambiato da description_i18n a description
-  ageLevel: string; // Cambiato da age_level_id a ageLevel
-  difficulty: string; // Aggiunto
-  duration: string; // Cambiato da estimated_time a duration
-  competencies: Array<{ id: string; text: string }>; // Aggiunto
+  title: string;
+  description: string;
+  ageLevel: string;
+  difficulty: string;
+  duration: string;
+  competencies?: Array<any>;
+  game_scenarios?: Array<{ id: string }>;
+  estimated_duration?: number;
 }
 
 // Helper per estrarre testo nella lingua corretta
@@ -55,6 +56,7 @@ function getText(
 export default async function MoneyTransactionsAgePage({ params }: AgePageProps) {
   const { age, locale } = params;
   const t = await getTranslations('Education');
+  const tMoneyPage = await getTranslations('Education.money_transactions_age_page');
   const supabase = supabaseClient;
 
   // 1. Ottieni gli obiettivi UE per questa fascia d'età
@@ -92,18 +94,18 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
     objectivesByTheme[themeName].push(obj);
   });
 
-  // 3. MODIFICA ESSENZIALE: Ottieni i moduli dall'API invece che da Supabase diretto
+  // 3. Ottieni i moduli dall'API
   let educationalModules: EducationalModule[] = [];
+  let totalActivities = 0;
   
   try {
     const isDevelopment = process.env.NODE_ENV === 'development';
-const baseUrl = isDevelopment ? 'http://localhost:3000' : (process.env.NEXT_PUBLIC_BASE_URL || 'https://tuodominio.com');
-const apiUrl = `${baseUrl}/api/education/modules?macro_area=money_transactions&age_level=${age.replace('-', '_')}&locale=${locale}`;
+    const baseUrl = isDevelopment ? 'http://localhost:3000' : (process.env.NEXT_PUBLIC_BASE_URL || 'https://tuodominio.com');
+    const apiUrl = `${baseUrl}/api/education/modules?macro_area=money_transactions&age_level=${age.replace('-', '_')}&locale=${locale}`;
     
     console.log('📡 Fetching modules from:', apiUrl);
     
     const response = await fetch(apiUrl, {
-      // IMPORTANTE: Per fetch in server components
       cache: 'no-store',
       headers: {
         'Content-Type': 'application/json',
@@ -112,39 +114,73 @@ const apiUrl = `${baseUrl}/api/education/modules?macro_area=money_transactions&a
     
     if (response.ok) {
       const data = await response.json();
-      educationalModules = data.modules || [];
-      console.log('✅ Modules fetched:', educationalModules.length);
+      console.log('📦 API response data type:', typeof data);
+      console.log('📦 API response keys:', Object.keys(data));
+      
+      // CORREZIONE: L'API restituisce { modules: [...] }
+      if (data && data.modules && Array.isArray(data.modules)) {
+        educationalModules = data.modules;
+        console.log('✅ Modules fetched:', educationalModules.length);
+      } else if (Array.isArray(data)) {
+        // Fallback per compatibilità
+        educationalModules = data;
+        console.log('⚠️ Modules fetched (direct array):', educationalModules.length);
+      } else {
+        console.warn('⚠️ Unexpected API response format:', data);
+        educationalModules = [];
+      }
+      
+      // Calcola il totale delle attività (scenari di gioco)
+      // Nota: L'API non sembra includere game_scenarios, usiamo fallback
+      totalActivities = educationalModules.length * 3; // Stima: 3 attività per modulo
+      
     } else {
       console.error('❌ API error:', response.status);
-      // Fallback: usa query Supabase come backup
+      // Fallback: query diretta a Supabase
       const { data: fallbackModules } = await supabase
         .from('educational_modules')
         .select('*')
-        .eq('age_level_id', age.replace('-', '_'))
-        .or(`macro_area_id.eq.money_transactions,sector_id.eq.sector_1_money_and_transactions`)
-        .order('sort_order', { ascending: true });
+        .eq('age_level', age.replace('-', '_'))
+        .eq('macro_area', 'money_transactions')
+        .order('order_index', { ascending: true });
       
       educationalModules = (fallbackModules || []).map((mod: any) => ({
         id: mod.id,
-        title: getText(mod.title_i18n, locale),
-        description: getText(mod.description_i18n, locale),
-        ageLevel: mod.age_level_id,
-        difficulty: mod.difficulty_level || 'Principiante',
-        duration: mod.estimated_duration ? `${mod.estimated_duration} min` : 'Variabile',
+        title: getText(mod.title_i18n, locale) || mod.title || 'Modulo senza titolo',
+        description: getText(mod.description_i18n, locale) || mod.description || '',
+        ageLevel: mod.age_level,
+        difficulty: mod.difficulty_level || 'beginner',
+        duration: mod.estimated_duration ? `${mod.estimated_duration} min` : '60 min',
         competencies: []
       }));
+      
+      totalActivities = educationalModules.length * 3;
     }
   } catch (error) {
     console.error('❌ Error fetching modules:', error);
     educationalModules = [];
   }
 
-  // Usa le traduzioni dal server
-  const pageTitle = t('money_transactions_age_page.title', { age });
-  const pageDescription = t('money_transactions_age_page.description');
-  const objectivesTitle = t('money_transactions_age_page.objectives_title');
-  const modulesTitle = t('money_transactions_age_page.modules_title');
-  const progressTitle = t('money_transactions_age_page.progress_title');
+  // Usa le traduzioni corrette
+  const pageTitle = tMoneyPage('title');
+  const pageDescription = tMoneyPage('description');
+  const objectivesTitle = tMoneyPage('objectives_title');
+  const modulesTitle = tMoneyPage('modules_title');
+  const progressTitle = tMoneyPage('progress_title');
+  
+  // Calcola conteggi per parametri di traduzione
+  const totalObjectives = euObjectives?.length || 0;
+  const totalModules = educationalModules.length;
+
+  // Funzione per convertire difficoltà in testo leggibile
+  const getDifficultyText = (difficulty: string): string => {
+    const difficultyMap: Record<string, string> = {
+      'beginner': 'Principiante',
+      'intermediate': 'Intermedio',
+      'advanced': 'Avanzato'
+    };
+    return difficultyMap[difficulty] || difficulty;
+  };
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -165,7 +201,7 @@ const apiUrl = `${baseUrl}/api/education/modules?macro_area=money_transactions&a
             {objectivesTitle}
           </h2>
           <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-            {euObjectives?.length || 0} {t('money_transactions_age_page.objectives_count')}
+            {tMoneyPage('objectives_count', { count: totalObjectives })}
           </span>
         </div>
 
@@ -189,10 +225,10 @@ const apiUrl = `${baseUrl}/api/education/modules?macro_area=money_transactions&a
                       </p>
                       <div className="mt-2 flex flex-wrap gap-2">
                         <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">
-                          {t('money_transactions_age_page.eu_objective')}
+                          Obiettivo UE
                         </span>
                         <span className="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">
-                          {t('money_transactions_age_page.age_group', { age })}
+                          Età {age}
                         </span>
                       </div>
                     </div>
@@ -211,119 +247,207 @@ const apiUrl = `${baseUrl}/api/education/modules?macro_area=money_transactions&a
             {modulesTitle}
           </h2>
           <span className="text-sm text-gray-500">
-            {/* MODIFICA: +1 per "Bisogni vs Desideri" che è hardcoded */}
-            {(educationalModules?.length || 0) + 1} {t('money_transactions_age_page.activities_count')}
+            {tMoneyPage('activities_count', { count: totalActivities })}
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Modulo "Bisogni vs Desideri" (esistente) */}
-          <Link 
-            href={`/education/money_transactions/${age}/needs-vs-wants`}
-            className="block bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow"
-          >
-            <div className="mb-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
-                <span className="text-2xl">🎯</span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {t('needs_vs_wants_game.title')}
-              </h3>
-              <p className="text-gray-600 text-sm">
-                {t('needs_vs_wants_game.subtitle')}
-              </p>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-medium">
-                {t('needs_vs_wants_game.type')}
-              </span>
-              <span className="text-sm text-gray-500">{t('needs_vs_wants_game.duration')}</span>
-            </div>
-            <div className="mt-4 pt-4 border-t border-gray-100">
-              <p className="text-xs text-gray-500">
-                <strong>{t('money_transactions_age_page.covered_objectives')}:</strong> {objectivesByTheme[t('needs_vs_wants_game.title')]?.length || 0}/2
-              </p>
-            </div>
-          </Link>
+          {/* Mostra i moduli reali dall'API */}
+          {educationalModules.map((module) => {
+            // Estrai numero di minuti dalla stringa duration
+            const durationMatch = module.duration?.match(/(\d+)/);
+            const minutes = durationMatch ? parseInt(durationMatch[1]) : 60;
+            const hours = minutes >= 60 ? `${Math.floor(minutes / 60)}h ` : '';
+            const remainingMinutes = minutes % 60;
+            const displayDuration = hours + (remainingMinutes > 0 ? `${remainingMinutes}m` : '');
 
-          {/* MODIFICA: Mostra i moduli reali dall'API */}
-          {educationalModules.map((module: EducationalModule) => (
-            <Link
-              key={module.id}
-              href={`/education/modules/${module.id}`} // MODIFICA: Link alla pagina del modulo
-              className="block bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <div className="mb-4">
-                <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-3">
-                  <span className="text-2xl">📚</span>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">
-                  {module.title}
-                </h3>
-                <p className="text-gray-600 text-sm">
-                  {module.description}
-                </p>
-                {/* MODIFICA: Mostra competenze se disponibili */}
-                {module.competencies && module.competencies.length > 0 && (
-                  <div className="mt-3">
-                    <div className="text-xs text-gray-500 font-medium">
-                      Competenze: {module.competencies.length}
-                    </div>
+            return (
+              <Link
+                key={module.id}
+                href={`/${locale}/education/modules/${module.id}`}
+                className="block bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow hover:border-blue-300 group"
+              >
+                <div className="mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                    <span className="text-2xl">📚</span>
                   </div>
-                )}
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 bg-green-50 text-green-700 rounded-full text-xs font-medium">
-                  {module.difficulty}
-                </span>
-                <span className="text-sm text-gray-500">
-                  {module.duration}
-                </span>
-              </div>
-            </Link>
-          ))}
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-700 transition-colors">
+                    {module.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm mb-3 line-clamp-3">
+                    {module.description}
+                  </p>
+                  {/* Competenze coperte */}
+                  {module.competencies && module.competencies.length > 0 && (
+                    <div className="mt-3">
+                      <div className="text-xs text-gray-500 font-medium mb-1">
+                        Competenze coperte:
+                      </div>
+                      <div className="flex flex-wrap gap-1">
+                        {module.competencies.slice(0, 2).map((comp: any, idx: number) => (
+                          <span 
+                            key={idx} 
+                            className="px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs truncate max-w-[120px]"
+                            title={comp.title || comp.code}
+                          >
+                            {comp.code || comp.title?.substring(0, 15)}
+                          </span>
+                        ))}
+                        {module.competencies.length > 2 && (
+                          <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">
+                            +{module.competencies.length - 2}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                      module.difficulty === 'beginner' 
+                        ? 'bg-green-50 text-green-700' 
+                        : module.difficulty === 'intermediate'
+                        ? 'bg-yellow-50 text-yellow-700'
+                        : 'bg-red-50 text-red-700'
+                    }`}>
+                      {getDifficultyText(module.difficulty)}
+                    </span>
+                    <span className="text-xs text-gray-500">
+                      {module.ageLevel?.replace('_', '-') || age}
+                    </span>
+                  </div>
+                  <span className="text-sm text-gray-500 font-medium">
+                    {displayDuration}
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
 
-          {/* MODIFICA: Card "Nuovo modulo" solo se ci sono pochi moduli */}
-          {educationalModules.length <= 2 && (
-            <div className="bg-gray-50 border border-gray-200 border-dashed rounded-xl p-6 text-center">
-              <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-3">
-                <span className="text-2xl text-gray-400">+</span>
+          {/* Card "Esplora più moduli" */}
+          {educationalModules.length > 0 && educationalModules.length < 6 && (
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 border-dashed rounded-xl p-8 text-center flex flex-col items-center justify-center hover:border-blue-300 transition-colors">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-3xl text-blue-600">✨</span>
               </div>
-              <h3 className="text-lg font-medium text-gray-500 mb-2">
-                {t('money_transactions_age_page.new_module')}
+              <h3 className="text-xl font-medium text-gray-800 mb-2">
+                Più moduli in arrivo
               </h3>
-              <p className="text-gray-400 text-sm mb-4">
-                {t('money_transactions_age_page.module_in_development')}
+              <p className="text-gray-600 text-sm mb-6 max-w-md">
+                Stiamo sviluppando nuovi contenuti per ampliare la tua educazione finanziaria.
               </p>
-              <button className="text-sm text-blue-600 hover:text-blue-800">
-                {t('money_transactions_age_page.suggest_activity')}
-              </button>
+              <div className="flex flex-col gap-2 w-full max-w-xs">
+                <span className="text-xs text-gray-500 font-medium">
+                  Prossimamente:
+                </span>
+                <div className="flex flex-wrap justify-center gap-2">
+                  <span className="px-3 py-1 bg-white text-blue-700 rounded-full text-xs shadow-sm">
+                    Pianificazione budget
+                  </span>
+                  <span className="px-3 py-1 bg-white text-blue-700 rounded-full text-xs shadow-sm">
+                    Investimenti base
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Card "Nessun modulo" */}
+          {educationalModules.length === 0 && (
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-300 border-dashed rounded-xl p-8 text-center col-span-1 md:col-span-2 lg:col-span-3">
+              <div className="w-16 h-16 bg-gray-200 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-3xl text-gray-400">⏳</span>
+              </div>
+              <h3 className="text-xl font-medium text-gray-700 mb-2">
+                Moduli in arrivo
+              </h3>
+              <p className="text-gray-500 mb-6 max-w-md mx-auto">
+                Stiamo preparando moduli educativi interattivi per questa fascia d&apos;età. Torna presto per scoprirli!
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                  Scenari gamificati
+                </span>
+                <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
+                  Test interattivi
+                </span>
+                <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">
+                  Competenze UE
+                </span>
+              </div>
             </div>
           )}
         </div>
       </div>
 
       {/* Progress Bar */}
-      <div className="mt-12 bg-white border border-gray-200 rounded-xl p-6">
-        <h3 className="text-lg font-bold text-gray-900 mb-4">
+      <div className="mt-12 bg-gradient-to-r from-white to-gray-50 border border-gray-200 rounded-xl p-8">
+        <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+          <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center text-blue-700">
+            📊
+          </span>
           {progressTitle}
         </h3>
-        <div className="space-y-4">
+        <div className="space-y-6">
           <div>
-            <div className="flex justify-between mb-1">
+            <div className="flex justify-between mb-2">
               <span className="text-sm font-medium text-gray-700">
-                {t('money_transactions_age_page.completed_objectives')}
+                Progresso generale
               </span>
               <span className="text-sm font-medium text-gray-700">
-                0/{euObjectives?.length || 0}
+                0/{totalObjectives} obiettivi
               </span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div className="bg-green-600 h-2 rounded-full" style={{ width: '0%' }}></div>
+            <div className="w-full bg-gray-200 rounded-full h-3">
+              <div 
+                className="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full transition-all duration-500" 
+                style={{ width: '0%' }}
+              ></div>
+            </div>
+            <p className="text-xs text-gray-500 mt-1">
+              Completa i moduli per sbloccare obiettivi
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+              <div className="text-2xl font-bold text-gray-900 mb-1">
+                {totalModules}
+              </div>
+              <div className="text-sm text-gray-600">
+                Moduli disponibili
+              </div>
+            </div>
+            <div className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+              <div className="text-2xl font-bold text-gray-900 mb-1">
+                {totalActivities}
+              </div>
+              <div className="text-sm text-gray-600">
+                Attività interattive
+              </div>
+            </div>
+            <div className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+              <div className="text-2xl font-bold text-gray-900 mb-1">
+                {totalObjectives}
+              </div>
+              <div className="text-sm text-gray-600">
+                Obiettivi UE
+              </div>
             </div>
           </div>
-          <p className="text-sm text-gray-600">
-            {t('money_transactions_age_page.complete_modules_message')}
+          
+          <div className="text-center">
+            <Link
+              href={`/${locale}/education`}
+              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
+            >
+              <span>← Torna alla dashboard educativa</span>
+            </Link>
+          </div>
+          
+          <p className="text-sm text-gray-600 text-center border-t border-gray-100 pt-6">
+            {tMoneyPage('complete_modules_message')}
           </p>
         </div>
       </div>
