@@ -146,15 +146,14 @@
     "button": "Encuentra Autoridades de Cibercrimen en tu Región",
     "subtext": "✅ Contactos oficiales de los 27 países de la UE"
   },
-  
-    "Education": {
+     "Education": {
       "title": "Educación Financiera",
-      "subtitle": "Aprende habilidades financieras esenciales para cada etapa de la vida, basado en los marcos oficiales UE/OCDE",
+      "subtitle": "Aprende habilidades financieras esenciales para cada etapa de la vida, basado en marcos oficiales UE/OCDE",
       "select_age_group": "Selecciona tu grupo de edad",
       "select_age_group_instruction": "Selecciona tu grupo de edad para ver contenido educativo personalizado",
       "learning_areas": "Áreas de Aprendizaje",
       "loading_areas": "Cargando áreas de aprendizaje...",
-      "areas_loaded": "Cargadas {count} áreas de aprendizaje",
+      "areas_loaded": "{count} áreas de aprendizaje cargadas",
       "load_error_title": "No se pueden cargar las áreas de aprendizaje",
       "load_error": "Error: {error}",
       "try_again": "Intentar de nuevo",
@@ -162,16 +161,40 @@
       "areas_list": "Lista de áreas de aprendizaje",
       "areas_available": "{count} áreas de aprendizaje disponibles",
       "loading_age_groups": "Cargando grupos de edad...",
-      "load_error_age_groups": "Error cargando grupos de edad",
-      "available_age_groups": "Grupos de edad disponibles", 
+      "load_error_age_groups": "Error al cargar los grupos de edad",
+      "available_age_groups": "Grupos de edad disponibles",
       "age_groups_list": "Lista de grupos de edad",
       "age_group_description": "Contenido educativo personalizado para este grupo de edad",
-      
-      
       "explore_modules": "Explorar Módulos",
       "modules_available_description": "Explora módulos educativos diseñados para este grupo de edad",
-      "modules_coming_soon": "¡Los módulos educativos estarán disponibles pronto!",
-      
+      "modules_coming_soon": "¡Los módulos educativos llegarán pronto!",
+  
+      "money_transactions_age_page": {
+        "title": "Dinero y Transacciones (11-15 años)",
+        "description": "Aprende a gestionar el dinero, reconocer las diferentes formas de pago y protegerte contra fraudes",
+        "objectives_title": "Objetivos de Aprendizaje",
+        "modules_title": "Módulos Disponibles",
+        "progress_title": "Tu Progreso",
+        "objectives_count": "{count} objetivos",
+        "activities_count": "{count} actividades",
+        "covered_objectives": "Objetivos cubiertos",
+        "completed_objectives": "Objetivos completados",
+        "complete_modules_message": "Completa los módulos para desbloquear todos los objetivos",
+        "start_learning": "Comenzar a Aprender",
+        "continue_learning": "Continuar Aprendiendo",
+        "module_completed": "Módulo Completado",
+        "view_module": "Ver Módulo",
+        "estimated_time": "{minutes} min",
+        "difficulty": "Dificultad: {level}",
+        "prerequisites": "Prerrequisitos",
+        "competencies_covered": "Competencias cubiertas",
+        "eu_objective": "Objetivo UE",
+        "age_group": "Edad {age}",
+        "new_module": "Nuevo módulo",
+        "module_in_development": "Módulo en desarrollo",
+        "suggest_activity": "Sugerir una actividad"
+      },
+  
       "age_groups": {
         "6_10": "6-10 Años",
         "11_13": "11-13 Años",
@@ -183,12 +206,81 @@
       },
   
       "macro_areas": {
-        "money_transactions": "Aprende sobre gestión del dinero, pagos digitales y transacciones financieras",
-        "planning_budgeting": "Desarrolla habilidades para la planificación financiera, presupuestos y objetivos de ahorro",
+        "money_transactions": "Aprende gestión del dinero, pagos digitales y transacciones financieras",
+        "planning_budgeting": "Desarrolla habilidades en planificación financiera, presupuestación y objetivos de ahorro",
         "managing_risks_insurance": "Comprende la gestión de riesgos, seguros y protección financiera",
         "financial_landscape": "Explora el sistema financiero, derechos del consumidor y conceptos económicos"
-      }
+      },
+  
+      "unknown_theme": "Tema desconocido",
+      "untitled_module": "Módulo sin título",
+      
+      "difficulty": {
+        "beginner": "Principiante",
+        "intermediate": "Intermedio", 
+        "advanced": "Avanzado"
+      },
+      
+      "eu_objective": "Objetivo UE",
+      "age_group_label": "Edad {age}",
+      "competencies_covered": "Competencias cubiertas",
+      "new_modules_coming": "Más módulos próximamente",
+      "modules_in_development": "Estamos desarrollando nuevos contenidos para ampliar tu educación financiera",
+      "coming_soon": "Próximamente",
+      "budget_planning": "Planificación presupuestaria",
+      "basic_investments": "Inversiones básicas",
+      
+      "modules_in_preparation": "Estamos preparando módulos educativos interactivos para este grupo de edad. ¡Vuelve pronto para descubrirlos!",
+      "gamified_scenarios": "Escenarios gamificados",
+      "interactive_tests": "Tests interactivos",
+      "eu_competencies": "Competencias UE",
+      "general_progress": "Progreso general",
+      "objectives": "objetivos",
+      "complete_modules_to_unlock": "Completa los módulos para desbloquear objetivos",
+      "available_modules": "Módulos disponibles",
+      "interactive_activities": "Actividades interactivas",
+      "eu_objectives": "Objetivos UE",
+      "back_to_education_dashboard": "Volver al panel educativo",
+  
+      "dashboard": {
+        "yourLearningJourney": "Tu Viaje de Aprendizaje",
+        "modulesCompleted": "Módulos Completados",
+        "competenciesAcquired": "Competencias Adquiridas",
+        "badgesUnlocked": "Insignias Desbloqueadas",
+        "learningStreak": "Racha de Aprendizaje",
+        "timeSpent": "{time} de estudio",
+        "progressByArea": "Progreso por Área",
+        "badgeCollection": "Colección de Insignias",
+        "locked": "Bloqueado",
+        "viewAllBadges": "Ver todas las insignias",
+        "modules": "módulos",
+        "competencies": "competencias",
+        "exploreArea": "Explorar área"
+      },
+      
+      "progress": {
+        "yourProgress": "Tu progreso",
+        "progressDescription": "Sigue tus mejoras en la educación financiera",
+        "refresh": "Actualizar",
+        "realProgress": "Progreso Real",
+        "potentialProgress": "Progreso Potencial",
+        "modules": "módulos",
+        "competencies": "competencias",
+        "realProgressDescription": "{completed} de {total} módulos completados",
+        "potentialProgressDescription": "{completed} de {total} competencias UE adquiridas",
+        "realLegend": "Módulos realmente implementados y completados",
+        "potentialLegend": "Todas las competencias del marco UE disponibles",
+        "lastUpdated": "Última actualización"
+      },
+      
+      "completing": "Completando...",
+      "completeModule": "Completar módulo",
+      "completed": "Completado",
+      "moduleCompletedMessage": "¡Módulo completado con éxito! Tu progreso ha sido actualizado.",
+      "completionError": "Error al completar el módulo. Por favor, inténtalo de nuevo."
     },
+  
+    
     "NeedsVsWantsGame": {
   "title": "La Caja de Tesoros y Necesidades",
   "subtitle": "¡Descubre la diferencia entre necesidades y deseos!",

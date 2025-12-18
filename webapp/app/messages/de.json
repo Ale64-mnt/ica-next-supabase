@@ -147,13 +147,14 @@
     "subtext": "✅ Offizielle Kontakte aller 27 EU-Länder"
   },
   
+  
     "Education": {
       "title": "Finanzielle Bildung",
-      "subtitle": "Lernen Sie wesentliche Finanzkompetenzen für jede Lebensphase, basierend auf den offiziellen EU/OECD-Rahmen",
+      "subtitle": "Lernen Sie wesentliche Finanzkompetenzen für jede Lebensphase, basierend auf offiziellen EU/OECD-Rahmen",
       "select_age_group": "Wählen Sie Ihre Altersgruppe",
       "select_age_group_instruction": "Wählen Sie Ihre Altersgruppe, um personalisierte Bildungsinhalte zu sehen",
       "learning_areas": "Lernbereiche",
-      "loading_areas": "Lernbereiche werden geladen...",
+      "loading_areas": "Lade Lernbereiche...",
       "areas_loaded": "{count} Lernbereiche geladen",
       "load_error_title": "Lernbereiche konnten nicht geladen werden",
       "load_error": "Fehler: {error}",
@@ -161,17 +162,41 @@
       "available_areas": "Verfügbare Lernbereiche",
       "areas_list": "Liste der Lernbereiche",
       "areas_available": "{count} Lernbereiche verfügbar",
-      "loading_age_groups": "Altersgruppen werden geladen...",
+      "loading_age_groups": "Lade Altersgruppen...",
       "load_error_age_groups": "Fehler beim Laden der Altersgruppen",
       "available_age_groups": "Verfügbare Altersgruppen",
       "age_groups_list": "Liste der Altersgruppen",
-      "age_group_description": "Personalisierte Lerninhalte für diese Altersgruppe",
-      
-     
-      "explore_modules": "Module Erkunden",
+      "age_group_description": "Personalisierte Bildungsinhalte für diese Altersgruppe",
+      "explore_modules": "Module erkunden",
       "modules_available_description": "Entdecken Sie Bildungsmodule, die für diese Altersgruppe entwickelt wurden",
       "modules_coming_soon": "Bildungsmodule kommen bald!",
-      
+  
+      "money_transactions_age_page": {
+        "title": "Geld und Transaktionen (11-15 Jahre)",
+        "description": "Lernen Sie, Geld zu verwalten, verschiedene Zahlungsformen zu erkennen und sich vor Betrug zu schützen",
+        "objectives_title": "Lernziele",
+        "modules_title": "Verfügbare Module",
+        "progress_title": "Ihr Fortschritt",
+        "objectives_count": "{count} Ziele",
+        "activities_count": "{count} Aktivitäten",
+        "covered_objectives": "Abgedeckte Ziele",
+        "completed_objectives": "Abgeschlossene Ziele",
+        "complete_modules_message": "Schließen Sie die Module ab, um alle Ziele freizuschalten",
+        "start_learning": "Lernen beginnen",
+        "continue_learning": "Weiterlernen",
+        "module_completed": "Modul abgeschlossen",
+        "view_module": "Modul ansehen",
+        "estimated_time": "{minutes} min",
+        "difficulty": "Schwierigkeit: {level}",
+        "prerequisites": "Voraussetzungen",
+        "competencies_covered": "Abgedeckte Kompetenzen",
+        "eu_objective": "EU-Ziel",
+        "age_group": "Alter {age}",
+        "new_module": "Neues Modul",
+        "module_in_development": "Modul in Entwicklung",
+        "suggest_activity": "Aktivität vorschlagen"
+      },
+  
       "age_groups": {
         "6_10": "6-10 Jahre",
         "11_13": "11-13 Jahre",
@@ -183,12 +208,80 @@
       },
   
       "macro_areas": {
-        "money_transactions": "Lernen Sie Geldmanagement, digitale Zahlungen und Finanztransaktionen",
+        "money_transactions": "Lernen Sie Geldverwaltung, digitale Zahlungen und Finanztransaktionen",
         "planning_budgeting": "Entwickeln Sie Fähigkeiten in Finanzplanung, Budgetierung und Sparzielen",
-        "managing_risks_insurance": "Verstehen Sie Risikomanagement, Versicherungen und finanziellen Schutz",
+        "managing_risks_insurance": "Verstehen Sie Risikomanagement, Versicherung und finanziellen Schutz",
         "financial_landscape": "Erkunden Sie das Finanzsystem, Verbraucherrechte und Wirtschaftskonzepte"
-      }
+      },
+  
+      "unknown_theme": "Unbekanntes Thema",
+      "untitled_module": "Modul ohne Titel",
+      
+      "difficulty": {
+        "beginner": "Anfänger",
+        "intermediate": "Mittelstufe", 
+        "advanced": "Fortgeschritten"
+      },
+      
+      "eu_objective": "EU-Ziel",
+      "age_group_label": "Alter {age}",
+      "competencies_covered": "Abgedeckte Kompetenzen",
+      "new_modules_coming": "Weitere Module kommen bald",
+      "modules_in_development": "Wir entwickeln neue Inhalte, um Ihre finanzielle Bildung zu erweitern",
+      "coming_soon": "Demnächst verfügbar",
+      "budget_planning": "Budgetplanung",
+      "basic_investments": "Grundlegende Investitionen",
+   
+      "modules_in_preparation": "Wir bereiten interaktive Bildungsmodule für diese Altersgruppe vor. Kommen Sie bald wieder, um sie zu entdecken!",
+      "gamified_scenarios": "Gamifizierte Szenarien",
+      "interactive_tests": "Interaktive Tests",
+      "eu_competencies": "EU-Kompetenzen",
+      "general_progress": "Allgemeiner Fortschritt",
+      "objectives": "Ziele",
+      "complete_modules_to_unlock": "Schließen Sie die Module ab, um Ziele freizuschalten",
+      "available_modules": "Verfügbare Module",
+      "interactive_activities": "Interaktive Aktivitäten",
+      "eu_objectives": "EU-Ziele",
+      "back_to_education_dashboard": "Zurück zum Bildungs-Dashboard",
+  
+      "dashboard": {
+        "yourLearningJourney": "Ihr Lernweg",
+        "modulesCompleted": "Abgeschlossene Module",
+        "competenciesAcquired": "Erworbene Kompetenzen",
+        "badgesUnlocked": "Freigeschaltete Badges",
+        "learningStreak": "Lernserie",
+        "timeSpent": "{time} Lernzeit",
+        "progressByArea": "Fortschritt nach Bereich",
+        "badgeCollection": "Badge-Sammlung",
+        "locked": "Gesperrt",
+        "viewAllBadges": "Alle Badges anzeigen",
+        "modules": "Module",
+        "competencies": "Kompetenzen",
+        "exploreArea": "Bereich erkunden"
+      },
+      
+      "progress": {
+        "yourProgress": "Ihr Fortschritt",
+        "progressDescription": "Verfolgen Sie Ihre Verbesserungen in der finanziellen Bildung",
+        "refresh": "Aktualisieren",
+        "realProgress": "Tatsächlicher Fortschritt",
+        "potentialProgress": "Möglicher Fortschritt",
+        "modules": "Module",
+        "competencies": "Kompetenzen",
+        "realProgressDescription": "{completed} von {total} Modulen abgeschlossen",
+        "potentialProgressDescription": "{completed} von {total} EU-Kompetenzen erworben",
+        "realLegend": "Tatsächlich implementierte und abgeschlossene Module",
+        "potentialLegend": "Alle Kompetenzen aus dem EU-Rahmen verfügbar",
+        "lastUpdated": "Zuletzt aktualisiert"
+      },
+      
+      "completing": "Wird abgeschlossen...",
+      "completeModule": "Modul abschließen",
+      "completed": "Abgeschlossen",
+      "moduleCompletedMessage": "Modul erfolgreich abgeschlossen! Ihr Fortschritt wurde aktualisiert.",
+      "completionError": "Fehler beim Abschließen des Moduls. Bitte versuchen Sie es erneut."
     },
+  
     "NeedsVsWantsGame": {
   "title": "Die Schatzkiste der Bedürfnisse",
   "subtitle": "Entdecke den Unterschied zwischen Bedürfnissen und Wünschen!",

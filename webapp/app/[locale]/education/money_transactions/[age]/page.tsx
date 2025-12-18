@@ -57,6 +57,7 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
   const { age, locale } = params;
   const t = await getTranslations('Education');
   const tMoneyPage = await getTranslations('Education.money_transactions_age_page');
+  const tCommon = await getTranslations('Common');
   const supabase = supabaseClient;
 
   // 1. Ottieni gli obiettivi UE per questa fascia d'età
@@ -85,7 +86,7 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
     const themeName = getText(
       obj.eu_themes[0]?.title_i18n, 
       locale, 
-      'Tema sconosciuto'
+      t('unknown_theme', { defaultValue: 'Tema sconosciuto' })
     );
     
     if (!objectivesByTheme[themeName]) {
@@ -131,7 +132,6 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
       }
       
       // Calcola il totale delle attività (scenari di gioco)
-      // Nota: L'API non sembra includere game_scenarios, usiamo fallback
       totalActivities = educationalModules.length * 3; // Stima: 3 attività per modulo
       
     } else {
@@ -146,7 +146,7 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
       
       educationalModules = (fallbackModules || []).map((mod: any) => ({
         id: mod.id,
-        title: getText(mod.title_i18n, locale) || mod.title || 'Modulo senza titolo',
+        title: getText(mod.title_i18n, locale) || mod.title || t('untitled_module', { defaultValue: 'Modulo senza titolo' }),
         description: getText(mod.description_i18n, locale) || mod.description || '',
         ageLevel: mod.age_level,
         difficulty: mod.difficulty_level || 'beginner',
@@ -175,9 +175,9 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
   // Funzione per convertire difficoltà in testo leggibile
   const getDifficultyText = (difficulty: string): string => {
     const difficultyMap: Record<string, string> = {
-      'beginner': 'Principiante',
-      'intermediate': 'Intermedio',
-      'advanced': 'Avanzato'
+      'beginner': t('difficulty.beginner', { defaultValue: 'Principiante' }),
+      'intermediate': t('difficulty.intermediate', { defaultValue: 'Intermedio' }),
+      'advanced': t('difficulty.advanced', { defaultValue: 'Avanzato' })
     };
     return difficultyMap[difficulty] || difficulty;
   };
@@ -225,10 +225,10 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
                       </p>
                       <div className="mt-2 flex flex-wrap gap-2">
                         <span className="px-2 py-1 bg-gray-100 text-gray-700 rounded text-xs">
-                          Obiettivo UE
+                          {t('eu_objective', { defaultValue: 'Obiettivo UE' })}
                         </span>
                         <span className="px-2 py-1 bg-green-100 text-green-800 rounded text-xs">
-                          Età {age}
+                          {t('age_group_label', { age, defaultValue: `Età ${age}` })}
                         </span>
                       </div>
                     </div>
@@ -281,7 +281,7 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
                   {module.competencies && module.competencies.length > 0 && (
                     <div className="mt-3">
                       <div className="text-xs text-gray-500 font-medium mb-1">
-                        Competenze coperte:
+                        {t('competencies_covered', { defaultValue: 'Competenze coperte' })}:
                       </div>
                       <div className="flex flex-wrap gap-1">
                         {module.competencies.slice(0, 2).map((comp: any, idx: number) => (
@@ -325,28 +325,28 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
             );
           })}
 
-          {/* Card "Esplora più moduli" */}
+          {/* ✅ CORRETTO: Card "Esplora più moduli" con traduzioni */}
           {educationalModules.length > 0 && educationalModules.length < 6 && (
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 border-dashed rounded-xl p-8 text-center flex flex-col items-center justify-center hover:border-blue-300 transition-colors">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-3xl text-blue-600">✨</span>
               </div>
               <h3 className="text-xl font-medium text-gray-800 mb-2">
-                Più moduli in arrivo
+                {t('new_modules_coming', { defaultValue: 'Più moduli in arrivo' })}
               </h3>
               <p className="text-gray-600 text-sm mb-6 max-w-md">
-                Stiamo sviluppando nuovi contenuti per ampliare la tua educazione finanziaria.
+                {t('modules_in_development', { defaultValue: 'Stiamo sviluppando nuovi contenuti per ampliare la tua educazione finanziaria' })}
               </p>
               <div className="flex flex-col gap-2 w-full max-w-xs">
                 <span className="text-xs text-gray-500 font-medium">
-                  Prossimamente:
+                  {t('coming_soon', { defaultValue: 'Prossimamente' })}:
                 </span>
                 <div className="flex flex-wrap justify-center gap-2">
                   <span className="px-3 py-1 bg-white text-blue-700 rounded-full text-xs shadow-sm">
-                    Pianificazione budget
+                    {t('budget_planning', { defaultValue: 'Pianificazione budget' })}
                   </span>
                   <span className="px-3 py-1 bg-white text-blue-700 rounded-full text-xs shadow-sm">
-                    Investimenti base
+                    {t('basic_investments', { defaultValue: 'Investimenti base' })}
                   </span>
                 </div>
               </div>
@@ -360,20 +360,20 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
                 <span className="text-3xl text-gray-400">⏳</span>
               </div>
               <h3 className="text-xl font-medium text-gray-700 mb-2">
-                Moduli in arrivo
+                {t('modules_coming_soon', { defaultValue: 'Moduli in arrivo' })}
               </h3>
               <p className="text-gray-500 mb-6 max-w-md mx-auto">
-                Stiamo preparando moduli educativi interattivi per questa fascia d&apos;età. Torna presto per scoprirli!
+                {t('modules_in_preparation', { defaultValue: 'Stiamo preparando moduli educativi interattivi per questa fascia d\'età. Torna presto per scoprirli!' })}
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                  Scenari gamificati
+                  {t('gamified_scenarios', { defaultValue: 'Scenari gamificati' })}
                 </span>
                 <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">
-                  Test interattivi
+                  {t('interactive_tests', { defaultValue: 'Test interattivi' })}
                 </span>
                 <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">
-                  Competenze UE
+                  {t('eu_competencies', { defaultValue: 'Competenze UE' })}
                 </span>
               </div>
             </div>
@@ -393,10 +393,10 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
           <div>
             <div className="flex justify-between mb-2">
               <span className="text-sm font-medium text-gray-700">
-                Progresso generale
+                {t('general_progress', { defaultValue: 'Progresso generale' })}
               </span>
               <span className="text-sm font-medium text-gray-700">
-                0/{totalObjectives} obiettivi
+                0/{totalObjectives} {t('objectives', { defaultValue: 'obiettivi' })}
               </span>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-3">
@@ -406,7 +406,7 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
               ></div>
             </div>
             <p className="text-xs text-gray-500 mt-1">
-              Completa i moduli per sbloccare obiettivi
+              {t('complete_modules_to_unlock', { defaultValue: 'Completa i moduli per sbloccare obiettivi' })}
             </p>
           </div>
           
@@ -416,7 +416,7 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
                 {totalModules}
               </div>
               <div className="text-sm text-gray-600">
-                Moduli disponibili
+                {t('available_modules', { defaultValue: 'Moduli disponibili' })}
               </div>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
@@ -424,7 +424,7 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
                 {totalActivities}
               </div>
               <div className="text-sm text-gray-600">
-                Attività interattive
+                {t('interactive_activities', { defaultValue: 'Attività interattive' })}
               </div>
             </div>
             <div className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
@@ -432,7 +432,7 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
                 {totalObjectives}
               </div>
               <div className="text-sm text-gray-600">
-                Obiettivi UE
+                {t('eu_objectives', { defaultValue: 'Obiettivi UE' })}
               </div>
             </div>
           </div>
@@ -442,7 +442,7 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
               href={`/${locale}/education`}
               className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-medium"
             >
-              <span>← Torna alla dashboard educativa</span>
+              <span>← {t('back_to_education_dashboard', { defaultValue: 'Torna alla dashboard educativa' })}</span>
             </Link>
           </div>
           

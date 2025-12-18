@@ -147,14 +147,15 @@
     "select_country": "Select a country for local contacts"
   },
   
+  
     "Education": {
       "title": "Financial Education",
-      "subtitle": "Learn essential financial skills for every life stage, based on official EU/OECD frameworks",
+      "subtitle": "Learn essential financial skills for every stage of life, based on official EU/OECD frameworks",
       "select_age_group": "Select your age group",
       "select_age_group_instruction": "Select your age group to see personalized educational content",
       "learning_areas": "Learning Areas",
       "loading_areas": "Loading learning areas...",
-      "areas_loaded": "Loaded {count} learning areas",
+      "areas_loaded": "{count} learning areas loaded",
       "load_error_title": "Unable to load learning areas",
       "load_error": "Error: {error}",
       "try_again": "Try again",
@@ -168,8 +169,34 @@
       "age_group_description": "Personalized educational content for this age group",
       "explore_modules": "Explore Modules",
       "modules_available_description": "Explore educational modules designed for this age group",
-      "modules_coming_soon": "Educational modules are coming soon!",
-      
+      "modules_coming_soon": "Educational modules coming soon!",
+  
+      "money_transactions_age_page": {
+        "title": "Money and Transactions (11-15 years)",
+        "description": "Learn to manage money, recognize different forms of payment, and protect yourself from fraud",
+        "objectives_title": "Learning Objectives",
+        "modules_title": "Available Modules",
+        "progress_title": "Your Progress",
+        "objectives_count": "{count} objectives",
+        "activities_count": "{count} activities",
+        "covered_objectives": "Covered objectives",
+        "completed_objectives": "Completed objectives",
+        "complete_modules_message": "Complete the modules to unlock all objectives",
+        "start_learning": "Start Learning",
+        "continue_learning": "Continue Learning",
+        "module_completed": "Module Completed",
+        "view_module": "View Module",
+        "estimated_time": "{minutes} min",
+        "difficulty": "Difficulty: {level}",
+        "prerequisites": "Prerequisites",
+        "competencies_covered": "Competencies covered",
+        "eu_objective": "EU Objective",
+        "age_group": "Age {age}",
+        "new_module": "New module",
+        "module_in_development": "Module in development",
+        "suggest_activity": "Suggest an activity"
+      },
+  
       "age_groups": {
         "6_10": "6-10 Years",
         "11_13": "11-13 Years",
@@ -181,12 +208,79 @@
       },
   
       "macro_areas": {
-        "money_transactions": "Learn about money management, digital payments, and financial transactions",
-        "planning_budgeting": "Develop skills for financial planning, budgeting, and savings goals",
-        "managing_risks_insurance": "Understand risk management, insurance, and financial protection",
-        "financial_landscape": "Explore the financial system, consumer rights, and economic concepts"
-      }
+        "money_transactions": "Learn money management, digital payments and financial transactions",
+        "planning_budgeting": "Develop skills in financial planning, budgeting and saving goals",
+        "managing_risks_insurance": "Understand risk management, insurance and financial protection",
+        "financial_landscape": "Explore the financial system, consumer rights and economic concepts"
+      },
+  
+      "unknown_theme": "Unknown theme",
+      "untitled_module": "Untitled module",
+      
+      "difficulty": {
+        "beginner": "Beginner",
+        "intermediate": "Intermediate", 
+        "advanced": "Advanced"
+      },
+      
+      "eu_objective": "EU Objective",
+      "age_group_label": "Age {age}",
+      "competencies_covered": "Competencies covered",
+      "new_modules_coming": "More modules coming soon",
+      "modules_in_development": "We are developing new content to expand your financial education",
+      "coming_soon": "Coming soon",
+      "budget_planning": "Budget planning",
+      "basic_investments": "Basic investments",
+      "modules_in_preparation": "We are preparing interactive educational modules for this age group. Come back soon to discover them!",
+      "gamified_scenarios": "Gamified scenarios",
+      "interactive_tests": "Interactive tests",
+      "eu_competencies": "EU Competencies",
+      "general_progress": "General progress",
+      "objectives": "objectives",
+      "complete_modules_to_unlock": "Complete the modules to unlock objectives",
+      "available_modules": "Available modules",
+      "interactive_activities": "Interactive activities",
+      "eu_objectives": "EU Objectives",
+      "back_to_education_dashboard": "Back to education dashboard",
+  
+      "dashboard": {
+        "yourLearningJourney": "Your Learning Journey",
+        "modulesCompleted": "Modules Completed",
+        "competenciesAcquired": "Competencies Acquired",
+        "badgesUnlocked": "Badges Unlocked",
+        "learningStreak": "Learning Streak",
+        "timeSpent": "{time} of study",
+        "progressByArea": "Progress by Area",
+        "badgeCollection": "Badge Collection",
+        "locked": "Locked",
+        "viewAllBadges": "View all badges",
+        "modules": "modules",
+        "competencies": "competencies",
+        "exploreArea": "Explore area"
+      },
+      
+      "progress": {
+        "yourProgress": "Your progress",
+        "progressDescription": "Track your improvements in financial education",
+        "refresh": "Refresh",
+        "realProgress": "Real Progress",
+        "potentialProgress": "Potential Progress",
+        "modules": "modules",
+        "competencies": "competencies",
+        "realProgressDescription": "{completed} of {total} modules completed",
+        "potentialProgressDescription": "{completed} of {total} EU competencies acquired",
+        "realLegend": "Actually implemented and completed modules",
+        "potentialLegend": "All competencies from EU framework available",
+        "lastUpdated": "Last updated"
+      },
+      
+      "completing": "Completing...",
+      "completeModule": "Complete module",
+      "completed": "Completed",
+      "moduleCompletedMessage": "Module completed successfully! Your progress has been updated.",
+      "completionError": "Error completing module. Please try again."
     },
+  
     
       "NeedsVsWantsGame": {
   "title": "The Treasure and Needs Box",

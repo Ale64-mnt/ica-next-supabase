@@ -147,6 +147,7 @@
     "subtext": "✅ Contacts officiels des 27 pays de l'UE"
   },
   
+  
     "Education": {
       "title": "Éducation Financière",
       "subtitle": "Apprenez les compétences financières essentielles pour chaque étape de la vie, basé sur les cadres officiels UE/OCDE",
@@ -162,17 +163,41 @@
       "areas_list": "Liste des domaines d'apprentissage",
       "areas_available": "{count} domaines d'apprentissage disponibles",
       "loading_age_groups": "Chargement des groupes d'âge...",
-      "load_error_age_groups": "Erreur de chargement des groupes d'âge",
+      "load_error_age_groups": "Erreur lors du chargement des groupes d'âge",
       "available_age_groups": "Groupes d'âge disponibles",
-      "age_groups_list": "Liste des groupes d'âge", 
+      "age_groups_list": "Liste des groupes d'âge",
       "age_group_description": "Contenu éducatif personnalisé pour ce groupe d'âge",
-      
-      
       "explore_modules": "Explorer les Modules",
       "modules_available_description": "Explorez les modules éducatifs conçus pour ce groupe d'âge",
       "modules_coming_soon": "Les modules éducatifs arrivent bientôt !",
-      
-      "age_groups": {
+  
+      "money_transactions_age_page": {
+        "title": "Argent et Transactions (11-15 ans)",
+        "description": "Apprenez à gérer l'argent, reconnaître les différentes formes de paiement et vous protéger contre les fraudes",
+        "objectives_title": "Objectifs d'Apprentissage",
+        "modules_title": "Modules Disponibles",
+        "progress_title": "Votre Progrès",
+        "objectives_count": "{count} objectifs",
+        "activities_count": "{count} activités",
+        "covered_objectives": "Objectifs couverts",
+        "completed_objectives": "Objectifs terminés",
+        "complete_modules_message": "Complétez les modules pour débloquer tous les objectifs",
+        "start_learning": "Commencer à Apprendre",
+        "continue_learning": "Continuer à Apprendre",
+        "module_completed": "Module Terminé",
+        "view_module": "Voir le Module",
+        "estimated_time": "{minutes} min",
+        "difficulty": "Difficulté : {level}",
+        "prerequisites": "Prérequis",
+        "competencies_covered": "Compétences couvertes",
+        "eu_objective": "Objectif UE",
+        "age_group": "Âge {age}",
+        "new_module": "Nouveau module",
+        "module_in_development": "Module en développement",
+        "suggest_activity": "Suggérer une activité"
+      },
+  
+      "age_groups": { 
         "6_10": "6-10 Ans",
         "11_13": "11-13 Ans",
         "14_17": "14-17 Ans",
@@ -187,9 +212,79 @@
         "planning_budgeting": "Développez des compétences en planification financière, budgétisation et objectifs d'épargne",
         "managing_risks_insurance": "Comprenez la gestion des risques, l'assurance et la protection financière",
         "financial_landscape": "Explorez le système financier, les droits des consommateurs et les concepts économiques"
-      }
-    },
-    "NeedsVsWantsGame": {
+      },
+  
+      "unknown_theme": "Thème inconnu",
+      "untitled_module": "Module sans titre",
+      
+      "difficulty": {
+        "beginner": "Débutant",
+        "intermediate": "Intermédiaire", 
+        "advanced": "Avanzé"
+      },
+      
+      "eu_objective": "Objectif UE",
+      "age_group_label": "Âge {age}",
+      "competencies_covered": "Compétences couvertes",
+      "new_modules_coming": "Plus de modules à venir",
+      "modules_in_development": "Nous développons de nouveaux contenus pour élargir votre éducation financière",
+      "coming_soon": "Bientôt disponible",
+      "budget_planning": "Planification budgétaire",
+      "basic_investments": "Investissements de base",
+      
+      "modules_in_preparation": "Nous préparons des modules éducatifs interactifs pour ce groupe d'âge. Revenez bientôt pour les découvrir !",
+      "gamified_scenarios": "Scénarios gamifiés",
+      "interactive_tests": "Tests interactifs",
+      "eu_competencies": "Compétences UE",
+      "general_progress": "Progrès général",
+      "objectives": "objectifs",
+      "complete_modules_to_unlock": "Complétez les modules pour débloquer les objectifs",
+      "available_modules": "Modules disponibles",
+      "interactive_activities": "Activités interactives",
+      "eu_objectives": "Objectifs UE",
+      "back_to_education_dashboard": "Retour au tableau de bord éducatif",
+  
+      "dashboard": {
+        "yourLearningJourney": "Votre Parcours d'Apprentissage",
+        "modulesCompleted": "Modules Terminés",
+        "competenciesAcquired": "Compétences Acquises",
+        "badgesUnlocked": "Badges Débloqués",
+        "learningStreak": "Série d'Apprentissage",
+        "timeSpent": "{time} d'étude",
+        "progressByArea": "Progrès par Domaine",
+        "badgeCollection": "Collection de Badges",
+        "locked": "Verrouillé",
+        "viewAllBadges": "Voir tous les badges",
+        "modules": "modules",
+        "competencies": "compétences",
+        "exploreArea": "Explorer le domaine"
+      },
+      
+      "progress": {
+        "yourProgress": "Votre progrès",
+        "progressDescription": "Suivez vos améliorations dans l'éducation financière",
+        "refresh": "Actualiser",
+        "realProgress": "Progrès Réel",
+        "potentialProgress": "Progrès Potentiel",
+        "modules": "modules",
+        "competencies": "compétences",
+        "realProgressDescription": "{completed} sur {total} modules terminés",
+        "potentialProgressDescription": "{completed} sur {total} compétences UE acquises",
+        "realLegend": "Modules effectivement implémentés et terminés",
+        "potentialLegend": "Toutes les compétences du cadre UE disponibles",
+        "lastUpdated": "Dernière mise à jour"
+      },
+      
+      "completing": "En cours de complétion...",
+      "completeModule": "Compléter le module",
+      "completed": "Terminé",
+      "moduleCompletedMessage": "Module terminé avec succès ! Votre progrès a été mis à jour.",
+      "completionError": "Erreur lors de la complétion du module. Veuillez réessayer."
+    
+  },
+  
+    
+  "NeedsVsWantsGame": {
   "title": "La Boîte aux Trésors et aux Besoins",
   "subtitle": "Découvre la différence entre besoins et désirs !",
   "score": "Score",

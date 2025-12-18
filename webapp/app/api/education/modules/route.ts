@@ -1,6 +1,41 @@
-// app/api/education/modules/route.ts - VERSIONE CORRETTA
+// app/api/education/modules/route.ts - VERSIONE CORRETTA CON PARSING JSON
 import { NextRequest, NextResponse } from 'next/server';
 import { createPublicClient } from '@/app/lib/supabase/public-client';
+
+// Helper per parsare JSON sicuro
+function parseI18nJson(jsonData: any): Record<string, string> | null {
+  if (!jsonData) return null;
+  
+  if (typeof jsonData === 'object' && jsonData !== null) {
+    return jsonData; // Già un oggetto
+  }
+  
+  if (typeof jsonData === 'string') {
+    try {
+      return JSON.parse(jsonData);
+    } catch (e) {
+      console.warn('⚠️ Failed to parse JSON:', jsonData?.substring(0, 100));
+      return null;
+    }
+  }
+  
+  return null;
+}
+
+// Helper per estrarre testo tradotto
+function getTranslatedText(
+  i18nData: any, 
+  locale: string, 
+  fallback: string = ''
+): string {
+  const parsed = parseI18nJson(i18nData);
+  if (!parsed) return fallback;
+  
+  return parsed[locale] || 
+         parsed['it'] || 
+         parsed['en'] || 
+         fallback;
+}
 
 export async function GET(request: NextRequest) {
   try {
@@ -19,7 +54,7 @@ export async function GET(request: NextRequest) {
       );
     }
     
-    // 🔥 QUERY CRITICA: SOLO moduli con competenze
+    // QUERY SEMPLIFICATA - Rimuovi filtro competenze se causa problemi
     const { data: modules, error } = await supabase
       .from('educational_modules')
       .select(`
@@ -30,16 +65,10 @@ export async function GET(request: NextRequest) {
         difficulty_level,
         estimated_duration,
         macro_area_id,
-        module_competencies (
-          competency_id,
-          eu_competencies (
-            competency_text_i18n
-          )
-        )
+        sort_order
       `)
       .eq('macro_area_id', macroAreaId)
       .eq('age_level_id', ageLevelSlug)
-      .not('module_competencies', 'is', null)  // 🔥 SOLO con competenze
       .order('sort_order', { ascending: true });
       
     if (error) {
@@ -47,28 +76,47 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ modules: [] }, { status: 200 });
     }
     
-    console.log(`✅ Trovati ${modules?.length || 0} moduli REALI`);
+    console.log(`✅ Trovati ${modules?.length || 0} moduli dal DB`);
     
     if (!modules || modules.length === 0) {
       return NextResponse.json({ modules: [] });
     }
     
-    // Formatta risposta
-    const formattedModules = modules.map(module => ({
-      id: module.id,
-      title: module.title_i18n?.[locale] || module.title_i18n?.it || 'Senza titolo',
-      description: module.description_i18n?.[locale] || module.description_i18n?.it || '',
-      ageLevel: module.age_level_id,
-      difficulty: module.difficulty_level || 'Principiante',
-      duration: module.estimated_duration ? `${module.estimated_duration} min` : 'Variabile',
-      competencies: module.module_competencies.map((mc: any) => ({
-        id: mc.competency_id,
-        text: mc.eu_competencies?.competency_text_i18n?.[locale] || 
-              mc.eu_competencies?.competency_text_i18n?.it || ''
-      }))
-    }));
+    // DEBUG: Mostra il primo modulo RAW
+    console.log('🔍 DEBUG Primo modulo RAW:');
+    console.log('  ID:', modules[0]?.id);
+    console.log('  title_i18n type:', typeof modules[0]?.title_i18n);
+    console.log('  title_i18n value:', modules[0]?.title_i18n?.substring?.(0, 100) || modules[0]?.title_i18n);
+    console.log('  locale richiesta:', locale);
     
-    return NextResponse.json({ modules: formattedModules });
+    // Formatta risposta CON PARSING JSON
+    const formattedModules = modules.map(module => {
+      const title = getTranslatedText(module.title_i18n, locale, 'Untitled Module');
+      const description = getTranslatedText(module.description_i18n, locale, '');
+      
+      return {
+        id: module.id,
+        title,
+        description,
+        ageLevel: module.age_level_id,
+        difficulty: module.difficulty_level || 'beginner',
+        duration: module.estimated_duration ? `${module.estimated_duration} min` : 'Variable',
+        competencies: [] // Temporaneamente vuoto per test
+      };
+    });
+    
+    console.log('📦 Primo modulo tradotto:');
+    console.log('  Title:', formattedModules[0]?.title);
+    console.log('  Description:', formattedModules[0]?.description?.substring(0, 50) + '...');
+    
+    return NextResponse.json({ 
+      modules: formattedModules,
+      debug: {
+        total: formattedModules.length,
+        requested_locale: locale,
+        first_module_title: formattedModules[0]?.title
+      }
+    });
     
   } catch (error) {
     console.error('❌ API error:', error);
