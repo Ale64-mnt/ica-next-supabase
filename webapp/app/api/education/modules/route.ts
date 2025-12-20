@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createPublicClient } from '@/app/lib/supabase/public-client';
 
+
 // Helper per parsare JSON sicuro
 function parseI18nJson(jsonData: any): Record<string, string> | null {
   if (!jsonData) return null;

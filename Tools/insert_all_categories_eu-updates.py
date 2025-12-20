@@ -45,66 +45,66 @@ IMAGE_ALT_TEXTS = {
 NEWS_DATA = [
    # English
     {
-        "title": "ENISA – “NIS Investments 2025” report: changing cybersecurity investments in the EU",
-        "slug": "enisa-nis-investments-2025-changing-cybersecurity-investments-eu",
-        "excerpt": "ENISA’s new report shows a shift in EU cybersecurity spending from people to technology, driven by a skills shortage and regulations like NIS2, with effects on the prevention of online scams and financial fraud.",
-        "body_md": "**Source:** ENISA – enisa.europa.eu\n"
-                   "**Publication date:** 8 December 2025\n"
-                   "**Link:** https://www.enisa.europa.eu/news/what-s-driving-cybersecurity-investments-and-where-lie-the-challenges-press-release-8-december-2025\n\n"
-                   "**Summary:** The new report highlights how cybersecurity spending in the European Union is shifting its focus from people to technology, due to a shortage of specialised talent and the regulatory pressure of measures such as NIS2. This evolution also affects the ability to prevent digital scams, phishing and financial fraud through automated techniques.\n\n"
-                   "**Practical context:** Lower investment in security awareness and training can leave users less prepared to recognise phishing, malware or fake brokers, increasing the risk of falling victim to scams.",
+        "title": "ESAs publish key anti-fraud tips to help consumers recognise and prevent online scams",
+        "slug": "esas-key-anti-fraud-tips-recognise-prevent-online-scams",
+        "excerpt": "The European Supervisory Authorities have released new consumer factsheets with practical guidance to detect, prevent and respond to online frauds and scams, including crypto scams and AI-driven phishing.",
+        "body_md": "**Source:** European Banking Authority (EBA), EIOPA, ESMA – eba.europa.eu\n"
+                   "**Publication date:** 15 December 2025\n"
+                   "**Official link:** https://www.eba.europa.eu/publications-and-media/press-releases/esas-publish-key-tips-help-consumers-detect-prevent-and-act-online-frauds-and-scams\n\n"
+                   "**Summary:** The European Supervisory Authorities (EBA, EIOPA and ESMA) have published two factsheets aimed at consumers to help them identify, prevent and react to online fraud, including crypto scams and AI-based phishing. The materials provide practical examples and warning signs to distinguish fraudulent messages from genuine communications, such as unsolicited requests for personal data or offers that appear too good to be true.\n\n"
+                   "The factsheets also explain key terms such as phishing—attempts to obtain sensitive data by posing as legitimate entities—and scams, defined as schemes designed to deceive consumers and steal money.",
         "locale": "en",
     },
 
     # Español
     {
-        "title": "ENISA – informe «NIS Investments 2025»: cambio en las inversiones en ciberseguridad en la UE",
-        "slug": "enisa-nis-investments-2025-cambio-inversiones-ciberseguridad-ue",
-        "excerpt": "El nuevo informe de ENISA muestra que el gasto en ciberseguridad en la UE se desplaza de las personas hacia la tecnología, por la falta de talento especializado y la presión regulatoria de normas como NIS2.",
-        "body_md": "**Fuente:** ENISA – enisa.europa.eu\n"
-                   "**Fecha de publicación:** 8 de diciembre de 2025\n"
-                   "**Enlace:** https://www.enisa.europa.eu/news/what-s-driving-cybersecurity-investments-and-where-lie-the-challenges-press-release-8-december-2025\n\n"
-                   "**Resumen:** El nuevo informe pone de relieve que en el gasto de ciberseguridad en la Unión Europea la atención se está desplazando de las personas a la tecnología, debido a la escasez de talento especializado y a la presión regulatoria de medidas como NIS2. Esta evolución también influye en la capacidad de prevenir estafas digitales, phishing y fraudes financieros mediante técnicas automatizadas.\n\n"
-                   "**Contexto práctico:** Una menor inversión en concienciación y formación en ciberseguridad puede hacer que los usuarios estén menos preparados para reconocer phishing, malware o falsos brókeres, aumentando el riesgo de caer en estafas.",
+        "title": "Las ESAs publican consejos clave contra el fraude para reconocer y prevenir estafas online",
+        "slug": "esas-consejos-clave-anti-fraude-reconocer-prevenir-estafas-online",
+        "excerpt": "Las Autoridades Europeas de Supervisión han publicado nuevos factsheets para ayudar a los consumidores a detectar, prevenir y actuar frente a fraudes online, incluidas estafas cripto y phishing con IA.",
+        "body_md": "**Fuente:** Autoridad Bancaria Europea (EBA), EIOPA, ESMA – eba.europa.eu\n"
+                   "**Fecha de publicación:** 15 de diciembre de 2025\n"
+                   "**Enlace oficial:** https://www.eba.europa.eu/publications-and-media/press-releases/esas-publish-key-tips-help-consumers-detect-prevent-and-act-online-frauds-and-scams\n\n"
+                   "**Resumen:** Las Autoridades Europeas de Supervisión (EBA, EIOPA y ESMA) han publicado dos factsheets dirigidos a los consumidores para ayudarles a identificar, prevenir y reaccionar ante fraudes online, incluidas estafas con criptomonedas y phishing basado en tecnologías de IA. Se ofrecen ejemplos prácticos y señales de alerta para distinguir mensajes fraudulentos de comunicaciones legítimas, como solicitudes inesperadas de datos personales u ofertas excesivamente atractivas.\n\n"
+                   "Los factsheets también explican conceptos clave como phishing—intentos de obtener datos sensibles haciéndose pasar por entidades legítimas—y scam, entendido como fraudes diseñados para engañar y sustraer dinero.",
         "locale": "es",
     },
 
     # Deutsch
     {
-        "title": "ENISA – Bericht „NIS Investments 2025“: Wandel der Cybersecurity-Investitionen in der EU",
-        "slug": "enisa-nis-investments-2025-wandel-cybersecurity-investitionen-eu",
-        "excerpt": "Laut ENISAs neuem Bericht verlagern sich die Cybersicherheitsausgaben in der EU von Menschen hin zu Technologie – getrieben durch Fachkräftemangel und Vorgaben wie NIS2.",
-        "body_md": "**Quelle:** ENISA – enisa.europa.eu\n"
-                   "**Veröffentlichungsdatum:** 8. Dezember 2025\n"
-                   "**Link:** https://www.enisa.europa.eu/news/what-s-driving-cybersecurity-investments-and-where-lie-the-challenges-press-release-8-december-2025\n\n"
-                   "**Zusammenfassung:** Der neue Bericht zeigt, dass sich die Ausgaben für Cybersicherheit in der Europäischen Union von den Menschen hin zur Technologie verlagern. Gründe sind der Mangel an spezialisiertem Personal sowie der Regulierungsdruck durch Maßnahmen wie NIS2. Diese Entwicklung beeinflusst auch die Fähigkeit, digitale Betrugsmaschen, Phishing und Finanzbetrug mit automatisierten Techniken zu verhindern.\n\n"
-                   "**Praktischer Kontext:** Geringere Investitionen in Sensibilisierung und Schulung können dazu führen, dass Nutzer weniger gut in der Lage sind, Phishing, Malware oder Fake-Broker zu erkennen – und so leichter auf Betrügereien hereinfallen.",
+        "title": "ESAs veröffentlichen zentrale Anti-Betrugs-Tipps zum Erkennen und Verhindern von Online-Scams",
+        "slug": "esas-anti-betrugs-tipps-online-scams-erkennen-verhindern",
+        "excerpt": "Die Europäischen Aufsichtsbehörden haben neue Factsheets veröffentlicht, die Verbraucher beim Erkennen, Vorbeugen und Reagieren auf Online-Betrug unterstützen sollen.",
+        "body_md": "**Quelle:** Europäische Bankenaufsichtsbehörde (EBA), EIOPA, ESMA – eba.europa.eu\n"
+                   "**Veröffentlichungsdatum:** 15. Dezember 2025\n"
+                   "**Offizieller Link:** https://www.eba.europa.eu/publications-and-media/press-releases/esas-publish-key-tips-help-consumers-detect-prevent-and-act-online-frauds-and-scams\n\n"
+                   "**Zusammenfassung:** Die Europäischen Aufsichtsbehörden (EBA, EIOPA und ESMA) haben zwei Factsheets für Verbraucher veröffentlicht, um sie beim Erkennen, Verhindern und richtigen Reagieren auf Online-Betrug zu unterstützen, darunter Krypto-Scams und KI-basiertes Phishing. Die Factsheets enthalten praktische Beispiele und Warnsignale, mit denen sich betrügerische Nachrichten von echten Mitteilungen unterscheiden lassen, etwa unerwartete Anfragen nach persönlichen Daten oder unrealistisch attraktive Angebote.\n\n"
+                   "Zudem werden zentrale Begriffe wie Phishing—der Versuch, sensible Daten durch Vortäuschung einer legitimen Identität zu erlangen—und Scam als gezielte Betrugsmasche zur Geldentwendung erklärt.",
         "locale": "de",
     },
 
     # Français
     {
-        "title": "ENISA – rapport « NIS Investments 2025 » : évolution des investissements en cybersécurité dans l’UE",
-        "slug": "enisa-nis-investments-2025-evolution-investissements-cybersecurite-ue",
-        "excerpt": "Le nouveau rapport d’ENISA montre un déplacement des dépenses de cybersécurité dans l’UE, des personnes vers la technologie, sous l’effet de la pénurie de talents et de la pression réglementaire de NIS2.",
-        "body_md": "**Source :** ENISA – enisa.europa.eu\n"
-                   "**Date de publication :** 8 décembre 2025\n"
-                   "**Lien :** https://www.enisa.europa.eu/news/what-s-driving-cybersecurity-investments-and-where-lie-the-challenges-press-release-8-december-2025\n\n"
-                   "**Résumé :** Le nouveau rapport met en évidence qu’en matière de dépenses de cybersécurité dans l’Union européenne, l’accent se déplace des personnes vers la technologie, en raison du manque de talents spécialisés et de la pression réglementaire de mesures telles que NIS2. Cette évolution a également un impact sur la capacité à prévenir les arnaques en ligne, le phishing et la fraude financière au moyen de techniques automatisées.\n\n"
-                   "**Contexte pratique :** Une baisse des investissements dans la sensibilisation et la formation peut laisser les utilisateurs moins préparés à reconnaître le phishing, les malwares ou les faux courtiers, ce qui augmente le risque de tomber dans des escroqueries.",
+        "title": "Les ESAs publient des conseils clés anti-fraude pour reconnaître et prévenir les arnaques en ligne",
+        "slug": "esas-conseils-cles-anti-fraude-prevenir-arnaques-en-ligne",
+        "excerpt": "Les Autorités européennes de surveillance ont publié de nouveaux factsheets destinés aux consommateurs pour détecter et prévenir les fraudes en ligne, y compris les escroqueries crypto et le phishing par IA.",
+        "body_md": "**Source :** Autorité bancaire européenne (EBA), EIOPA, ESMA – eba.europa.eu\n"
+                   "**Date de publication :** 15 décembre 2025\n"
+                   "**Lien officiel :** https://www.eba.europa.eu/publications-and-media/press-releases/esas-publish-key-tips-help-consumers-detect-prevent-and-act-online-frauds-and-scams\n\n"
+                   "**Résumé :** Les Autorités européennes de surveillance (EBA, EIOPA et ESMA) ont publié deux factsheets à destination des consommateurs afin de les aider à identifier, prévenir et réagir face aux fraudes en ligne, y compris les escroqueries liées aux cryptomonnaies et le phishing utilisant l’IA. Des exemples pratiques et des signaux d’alerte sont fournis pour distinguer les messages frauduleux des communications authentiques, tels que les demandes inattendues de données personnelles ou les offres trop avantageuses.\n\n"
+                   "Les documents expliquent également des notions clés comme le phishing—tentatives d’obtention de données sensibles en se faisant passer pour une entité légitime—et les scams, conçus pour tromper les consommateurs et leur soutirer de l’argent.",
         "locale": "fr",
     },
 
     # Italiano
     {
-        "title": "ENISA – report «NIS Investments 2025»: cambiamento degli investimenti in cybersecurity nell’UE",
-        "slug": "enisa-nis-investments-2025-cambiamento-investimenti-cybersecurity-ue",
-        "excerpt": "Il nuovo report ENISA mostra che nella spesa per cybersecurity nell’UE l’enfasi si sposta dalle persone alla tecnologia, anche per effetto della carenza di talenti e delle regole NIS2.",
-        "body_md": "**Fonte:** ENISA – enisa.europa.eu\n"
-                   "**Data di pubblicazione:** 8 dicembre 2025\n"
-                   "**Link:** https://www.enisa.europa.eu/news/what-s-driving-cybersecurity-investments-and-where-lie-the-challenges-press-release-8-december-2025\n\n"
-                   "**Riassunto:** Il nuovo report evidenzia come nelle spese per cybersecurity nell’Unione Europea si stia spostando l’enfasi dalle persone alla tecnologia, a causa della carenza di talenti specializzati e della pressione normativa di misure come NIS2. Tale evoluzione influenza anche la capacità di prevenire truffe digitali, phishing e frodi finanziarie tramite tecniche automatizzate.\n\n"
-                   "**Contesto pratico:** Un minore investimento in “awareness” e formazione può rendere gli utenti meno preparati a riconoscere phishing, malware o fake-broker, aumentando il rischio di cadere in truffe.",
+        "title": "Consigli chiave anti-frode delle ESAs per riconoscere e prevenire le truffe online",
+        "slug": "esas-consigli-chiave-anti-frode-riconoscere-prevenire-truffe-online",
+        "excerpt": "Le Autorità europee di vigilanza hanno pubblicato nuovi factsheet per aiutare i consumatori a riconoscere, prevenire e affrontare frodi online, incluse crypto scam e phishing basato su AI.",
+        "body_md": "**Fonte:** European Banking Authority (EBA), EIOPA, ESMA – eba.europa.eu\n"
+                   "**Data di pubblicazione:** 15 dicembre 2025\n"
+                   "**Link ufficiale:** https://www.eba.europa.eu/publications-and-media/press-releases/esas-publish-key-tips-help-consumers-detect-prevent-and-act-online-frauds-and-scams\n\n"
+                   "**Riassunto:** Le Autorità europee di vigilanza (EBA, EIOPA e ESMA) hanno pubblicato due factsheet rivolti ai consumatori per aiutarli a identificare, prevenire e reagire a frodi online, incluse crypto scam e phishing basati su tecnologie di intelligenza artificiale. Vengono forniti esempi pratici e segnali d’allarme per distinguere messaggi fraudolenti da comunicazioni autentiche, come richieste inattese di dati personali o offerte troppo vantaggiose.\n\n"
+                   "I factsheet spiegano inoltre termini chiave come phishing, ossia tentativi di ottenere dati sensibili fingendosi entità legittime, e scam, intese come truffe progettate per ingannare e sottrarre denaro.",
         "locale": "it",
     },
 
