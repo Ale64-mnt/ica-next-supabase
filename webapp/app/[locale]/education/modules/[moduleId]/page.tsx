@@ -1,736 +1,301 @@
-import { getTranslations } from 'next-intl/server';
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
+// app/[locale]/education/modules/[moduleId]/page.tsx
+import { getModuleById, getModuleQuestions } from '@/app/lib/api/education';
 import DiagnosticTest from '@/app/components/education/DiagnosticTest/DiagnosticTest';
-import AccessibleCard from '@/app/components/accessibility/AccessibleCard';
+import GameLevels from '@/app/components/education/GameLevels/GameLevels';
+import ModuleProgress from '@/app/components/education/ModuleProgress/ModuleProgress';
+import FinalTest from '@/app/components/education/FinalTest/FinalTest';
+import { createClient } from '@/app/lib/supabase/server';
+import { Suspense } from 'react';
 
-interface ModulePageProps {
-  params: {
+async function getCurrentUser() {
+  const supabase = createClient();
+  const { data: { session } } = await supabase.auth.getSession();
+  return session?.user || null;
+}
+
+function LoadingFallback() {
+  return (
+    <div className="container mx-auto px-4 py-8">
+      <div className="animate-pulse">
+        <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
+        <div className="h-4 bg-gray-200 rounded w-2/3 mb-8"></div>
+        <div className="h-64 bg-gray-200 rounded mb-8"></div>
+        <div className="h-48 bg-gray-200 rounded"></div>
+      </div>
+    </div>
+  );
+}
+
+export default async function ModulePage({ 
+  params 
+}: { 
+  params: { 
     locale: string;
     moduleId: string;
-  };
-}
+  } 
+}) {
+  const moduleData = await getModuleById(params.moduleId, params.locale);
+  const user = await getCurrentUser();
+  const userId = user?.id;
 
-interface Competency {
-  id: string;
-  code: string;
-  title: string;
-  description: string;
-}
-
-interface ModuleData {
-  id: string;
-  title: string;
-  description: string;
-  difficulty: string;
-  duration: string;
-  competencies: Competency[];
-  game_scenarios: any[];
-  questions: any[];
-  badges: any[];
-}
-
-// Mock data - sostituire con fetch reale
-const mockModuleData: ModuleData = {
-  id: 'test-id',
-  title: 'Denaro oggi: forme e accesso',
-  description: 'Scopri le diverse forme del denaro e come accedervi in sicurezza.',
-  difficulty: 'beginner',
-  duration: '60 min',
-  competencies: [
-    { id: '1', code: 'MT-1', title: 'Riconoscere le forme di denaro', description: 'Identificare contanti, carte, monete digitali' },
-    { id: '2', code: 'MT-2', title: 'Accesso sicuro', description: 'Utilizzare metodi di pagamento in sicurezza' }
-  ],
-  game_scenarios: [],
-  questions: [],
-  badges: []
-};
-
-// Mock progress
-const mockUserProgress = {
-  status: 'not_started' as const,
-  score: null
-};
-
-export default async function ModulePage({ params }: ModulePageProps) {
-  const { locale, moduleId } = params;
-  const t = await getTranslations('ModulePage');
-  const tCommon = await getTranslations('Common');
+  // Ottieni le domande per i test
+  const diagnosticQuestions = await getModuleQuestions(
+    params.moduleId, 
+    'diagnostic',
+    params.locale
+  );
   
-  // TODO: Sostituire con fetch reale
-  const moduleData = mockModuleData;
-  const userProgress = mockUserProgress;
-  
+  const finalQuestions = await getModuleQuestions(
+    params.moduleId, 
+    'final',
+    params.locale
+  );
+
   if (!moduleData) {
-    notFound();
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <h1 className="text-2xl font-bold text-red-600 mb-4">Modulo non trovato</h1>
+        <p className="text-gray-600">
+          Il modulo con ID <code className="bg-gray-100 px-2 py-1 rounded">{params.moduleId}</code> non esiste nel database.
+        </p>
+        <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded">
+          <p className="font-semibold text-yellow-800">Per testare il Modulo A:</p>
+          <p className="text-yellow-700 mt-2">
+            Visita: <code className="bg-yellow-100 px-2 py-1 rounded">/education/modules/4e0045e9-7e21-492d-a479-c400425a069d</code>
+          </p>
+        </div>
+      </div>
+    );
   }
 
-  const currentStep = userProgress.status;
+  // Funzioni handler (solo quelle necessarie)
+  const handleLevelsComplete = () => {
+    console.log('Gamification completata!');
+  };
+
+  const handleFinalComplete = (score: number, certificateData?: any) => {
+    console.log('Test finale completato con punteggio:', score);
+    
+    if (score >= 60) {
+      console.log('✅ Certificato ottenuto! Soglia superata (≥60%)');
+    } else {
+      console.log('⚠️ Punteggio insufficiente (<60%), micro-ripasso consigliato');
+    }
+  };
+
+  console.log(`📊 Modulo ${params.moduleId}:`);
+  console.log(`  - Domande diagnostiche: ${diagnosticQuestions.length}/20`);
+  console.log(`  - Domande finali: ${finalQuestions.length}/20`);
 
   return (
-    <>
-      {/* Skip to main content link per screen readers */}
-      <a 
-        href="#main-content" 
-        className="
-          sr-only 
-          focus:not-sr-only 
-          focus:absolute 
-          focus:top-4 
-          focus:left-4 
-          focus:z-50 
-          focus:px-4 
-          focus:py-2 
-          focus:bg-white 
-          focus:text-blue-600 
-          focus:rounded-lg 
-          focus:shadow-lg
-        "
-      >
-        {tCommon('skip_to_content')}
-      </a>
+    <div className="container mx-auto px-4 py-8">
+      {/* Header del modulo */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold mb-4">
+          {moduleData.title_i18n?.[params.locale] || moduleData.title_i18n?.en || 'Modulo Educativo'}
+        </h1>
+        <p className="text-gray-600 mb-6">
+          {moduleData.description_i18n?.[params.locale] || moduleData.description_i18n?.en || ''}
+        </p>
+        
+        <div className="inline-flex items-center bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium">
+          <span className="mr-2">📚</span>
+          Modulo {moduleData.sort_order || 1} • {moduleData.estimated_duration_minutes || 90} min
+          {diagnosticQuestions.length > 0 && finalQuestions.length > 0 && (
+            <span className="ml-3 px-2 py-1 bg-green-100 text-green-700 rounded-full text-xs">
+              ✅ {diagnosticQuestions.length + finalQuestions.length} domande caricate
+            </span>
+          )}
+        </div>
+      </div>
 
-      <div className="min-h-screen bg-gray-50">
-        {/* HEADER RESPONSIVO E ACCESSIBILE */}
-        <header 
-          className="
-            bg-gradient-to-r 
-            from-blue-700 
-            to-indigo-800 
-            text-white
-          "
-          role="banner"
-          aria-label={t('module_header', { title: moduleData.title })}
-        >
-          <div className="
-            container 
-            mx-auto 
-            px-4 
-            py-6
-            md:py-8
-            lg:py-12
-          ">
-            <div className="max-w-6xl mx-auto">
-              {/* Breadcrumb navigation */}
-              <nav 
-                className="mb-6 md:mb-8" 
-                aria-label={t('breadcrumb_navigation')}
-              >
-                <ol className="flex flex-wrap items-center gap-2 text-sm md:text-base">
-                  <li>
-                    <Link 
-                      href={`/${locale}/education`}
-                      className="
-                        text-blue-100 
-                        hover:text-white 
-                        underline 
-                        underline-offset-2
-                        focus:outline-none 
-                        focus:ring-2 
-                        focus:ring-white 
-                        focus:ring-offset-2 
-                        focus:ring-offset-blue-700
-                        rounded
-                      "
-                    >
-                      {t('education_home')}
-                    </Link>
-                  </li>
-                  <li aria-hidden="true" className="text-blue-300">/</li>
-                  <li>
-                    <Link 
-                      href={`/${locale}/education/money_transactions/11-15`}
-                      className="
-                        text-blue-100 
-                        hover:text-white 
-                        underline 
-                        underline-offset-2
-                        focus:outline-none 
-                        focus:ring-2 
-                        focus:ring-white 
-                        focus:ring-offset-2 
-                        focus:ring-offset-blue-700
-                        rounded
-                      "
-                    >
-                      {t('money_transactions')}
-                    </Link>
-                  </li>
-                  <li aria-hidden="true" className="text-blue-300">/</li>
-                  <li className="font-medium text-white" aria-current="page">
-                    {moduleData.title}
-                  </li>
-                </ol>
-              </nav>
+      {/* Tracciamento progresso */}
+      {userId ? (
+        <div className="mb-8">
+          <Suspense fallback={<div className="h-24 bg-gray-100 rounded animate-pulse"></div>}>
+            <ModuleProgress userId={userId} moduleId={params.moduleId} />
+          </Suspense>
+        </div>
+      ) : (
+        <div className="mb-8 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <p className="text-blue-800">
+            <span className="font-semibold">👤 Accedi</span> per salvare il tuo progresso, ottenere badge e certificati.
+          </p>
+        </div>
+      )}
 
-              <div className="
-                flex 
-                flex-col 
-                lg:flex-row 
-                lg:items-start 
-                lg:justify-between 
-                gap-6 
-                lg:gap-8
-              ">
-                <div className="lg:flex-1">
-                  {/* Badge difficoltà con contrasto garantito */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    <span 
-                      className="
-                        inline-flex 
-                        items-center 
-                        px-3 
-                        py-1 
-                        rounded-full 
-                        text-sm 
-                        font-medium
-                        bg-white/20
-                        text-white
-                        backdrop-blur-sm
-                      "
-                      aria-label={`Difficoltà: ${moduleData.difficulty}`}
-                    >
-                      <span 
-                        className="
-                          w-2 
-                          h-2 
-                          rounded-full 
-                          bg-green-400 
-                          mr-2
-                        " 
-                        aria-hidden="true"
-                      />
-                      {moduleData.difficulty}
-                    </span>
-                    <span 
-                      className="
-                        inline-flex 
-                        items-center 
-                        px-3 
-                        py-1 
-                        rounded-full 
-                        text-sm 
-                        font-medium
-                        bg-white/20
-                        text-white
-                        backdrop-blur-sm
-                      "
-                    >
-                      ⏱️ {moduleData.duration}
-                    </span>
+      <div className="space-y-12">
+        {/* Sezione 1: Test Diagnostico */}
+        <section className="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+          <div className="mb-6">
+            <div className="flex items-center mb-3">
+              <div className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mr-3">
+                <span className="font-bold">1</span>
+              </div>
+              <h2 className="text-2xl font-bold">Test Diagnostico</h2>
+              {diagnosticQuestions.length > 0 && (
+                <span className="ml-3 px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
+                  {diagnosticQuestions.length} domande
+                </span>
+              )}
+            </div>
+            <p className="text-gray-700 ml-11">
+              Completa il test diagnostico per identificare le tue lacune di conoscenza.
+              Il sistema analizzerà le tue risposte e creerà un percorso di apprendimento personalizzato.
+            </p>
+          </div>
+          
+          <Suspense fallback={<div className="h-64 bg-gray-100 rounded animate-pulse"></div>}>
+            {diagnosticQuestions.length > 0 ? (
+              <DiagnosticTest 
+                questions={diagnosticQuestions}
+                moduleId={params.moduleId}
+                locale={params.locale}
+              />
+            ) : (
+              <div className="p-8 text-center border-2 border-dashed border-gray-300 rounded-lg">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                <p className="mt-4 text-gray-500">Caricamento domande diagnostiche...</p>
+              </div>
+            )}
+          </Suspense>
+        </section>
+
+        {/* Sezione 2: Gamification */}
+        <section className="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+          <div className="mb-6">
+            <div className="flex items-center mb-3">
+              <div className="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center mr-3">
+                <span className="font-bold">2</span>
+              </div>
+              <h2 className="text-2xl font-bold">Gamification</h2>
+            </div>
+            <p className="text-gray-700 ml-11">
+              Basato sui risultati del test diagnostico, avrai accesso a 5 livelli gamificati
+              specifici per le tue lacune di conoscenza.
+            </p>
+          </div>
+          
+          <Suspense fallback={<div className="h-48 bg-gray-100 rounded animate-pulse"></div>}>
+            {userId ? (
+              <GameLevels 
+                moduleId={params.moduleId}
+                userId={userId}
+                locale={params.locale}
+                onComplete={handleLevelsComplete}
+              />
+            ) : (
+              <div className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg">
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                    <span className="text-green-600 text-xl">🎮</span>
                   </div>
-
-                  <h1 
-                    className="
-                      text-2xl 
-                      font-bold 
-                      mb-4
-                      md:text-3xl
-                      lg:text-4xl
-                      xl:text-5xl
-                    "
-                  >
-                    {moduleData.title}
-                  </h1>
-                  
-                  <p 
-                    className="
-                      text-lg 
-                      text-blue-100
-                      mb-6
-                      md:text-xl
-                      md:mb-8
-                    "
-                  >
-                    {moduleData.description}
-                  </p>
-                </div>
-
-                {/* Progress Bar - Sempre visibile ma posizione responsive */}
-                <div 
-                  className="
-                    lg:w-80 
-                    xl:w-96
-                    bg-white/10 
-                    backdrop-blur-sm 
-                    rounded-xl 
-                    p-4 
-                    md:p-6
-                    border 
-                    border-white/20
-                  "
-                  role="status"
-                  aria-label={t('progress_status')}
-                >
-                  <h2 className="
-                    text-lg 
-                    font-semibold 
-                    mb-4 
-                    text-white
-                    md:text-xl
-                  ">
-                    {t('your_progress')}
-                  </h2>
-                  <div className="space-y-4">
-                    <div>
-                      <div className="flex justify-between text-sm text-blue-100 mb-1">
-                        <span>{t('completion')}</span>
-                        <span>0%</span>
-                      </div>
-                      <div 
-                        className="
-                          h-2 
-                          bg-white/20 
-                          rounded-full 
-                          overflow-hidden
-                        "
-                        role="progressbar"
-                        aria-valuenow={0}
-                        aria-valuemin={0}
-                        aria-valuemax={100}
-                      >
-                        <div 
-                          className="
-                            h-full 
-                            bg-green-400 
-                            rounded-full 
-                            w-0
-                          " 
-                          style={{ width: '0%' }}
-                        />
-                      </div>
-                    </div>
+                  <div>
+                    <h4 className="font-semibold text-green-800">Gamification disponibile</h4>
+                    <p className="text-green-700 mt-1">
+                      Completa il test diagnostico per sbloccare i 5 livelli di gamification.
+                    </p>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </header>
+            )}
+          </Suspense>
+        </section>
 
-        {/* MAIN CONTENT - Responsive grid */}
-        <main 
-          id="main-content" 
-          className="
-            container 
-            mx-auto 
-            px-4 
-            py-8
-            md:py-12
-          "
-          tabIndex={-1}
-        >
-          <div className="
-            max-w-6xl 
-            mx-auto
-            grid 
-            grid-cols-1 
-            lg:grid-cols-3 
-            gap-8
-            xl:gap-12
-          ">
-            {/* SIDEBAR - Si sposta in alto su mobile */}
-            <aside 
-              className="
-                lg:col-span-1 
-                space-y-6 
-                md:space-y-8
-              "
-              aria-label={t('module_information')}
-            >
-              {/* Competenze Card */}
-              <AccessibleCard
-                title={t('competencies_covered')}
-                description={t('competencies_description')}
-              >
-                <div className="space-y-4">
-                  {moduleData.competencies.map((comp) => (
-                    <div 
-                      key={comp.id}
-                      className="
-                        border-l-4 
-                        border-blue-500 
-                        pl-4 
-                        py-2
-                      "
-                    >
-                      <div 
-                        className="
-                          font-semibold 
-                          text-gray-900 
-                          text-sm
-                          md:text-base
-                        "
-                      >
-                        <span 
-                          className="
-                            text-blue-600 
-                            font-mono 
-                            mr-2
-                          "
-                          aria-label={`Codice competenza: ${comp.code}`}
-                        >
-                          {comp.code}
-                        </span>
-                        {comp.title}
-                      </div>
-                      <p 
-                        className="
-                          text-gray-600 
-                          text-sm 
-                          mt-1
-                          md:text-base
-                        "
-                      >
-                        {comp.description}
+        {/* Sezione 3: Test Finale */}
+        <section className="bg-white rounded-xl shadow-md p-6 border border-gray-200">
+          <div className="mb-6">
+            <div className="flex items-center mb-3">
+              <div className="w-8 h-8 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mr-3">
+                <span className="font-bold">3</span>
+              </div>
+              <h2 className="text-2xl font-bold">Test Finale & Certificazione</h2>
+              {finalQuestions.length > 0 && (
+                <span className="ml-3 px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm">
+                  {finalQuestions.length} domande
+                </span>
+              )}
+            </div>
+            <p className="text-gray-700 ml-11">
+              Verifica il tuo apprendimento con il test finale. Supera la soglia del 60% per ottenere
+              il certificato di completamento.
+            </p>
+          </div>
+          
+          <Suspense fallback={<div className="h-32 bg-gray-100 rounded animate-pulse"></div>}>
+            {userId ? (
+              finalQuestions.length > 0 ? (
+                <FinalTest 
+                questions={finalQuestions}
+                moduleId={params.moduleId}
+                moduleName={moduleData.title_i18n?.[params.locale] || 'Modulo Educativo'}
+                userId={userId}
+                passingScore={60}
+                  
+                />
+              ) : (
+                <div className="p-6 bg-gradient-to-r from-purple-50 to-violet-50 border border-purple-200 rounded-lg">
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-purple-600 text-xl">📝</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-purple-800">Test finale pronto</h4>
+                      <p className="text-purple-700 mt-1">
+                        Completa i livelli di gamification per sbloccare il test finale.
                       </p>
                     </div>
-                  ))}
-                </div>
-              </AccessibleCard>
-
-              {/* Badges Card */}
-              <AccessibleCard
-                title={t('badges_available')}
-                description={t('badges_description')}
-              >
-                <div className="space-y-4">
-                  <div className="
-                    flex 
-                    items-center 
-                    gap-3 
-                    p-3 
-                    bg-gradient-to-r 
-                    from-yellow-50 
-                    to-amber-50 
-                    rounded-lg
-                    border 
-                    border-yellow-200
-                  ">
-                    <div 
-                      className="
-                        w-12 
-                        h-12 
-                        bg-gradient-to-br 
-                        from-yellow-400 
-                        to-amber-500 
-                        rounded-lg 
-                        flex 
-                        items-center 
-                        justify-center
-                        text-white
-                        text-lg
-                        md:text-xl
-                      "
-                      aria-hidden="true"
-                    >
-                      🏆
-                    </div>
-                    <div>
-                      <div 
-                        className="
-                          font-semibold 
-                          text-gray-900 
-                          text-sm
-                          md:text-base
-                        "
-                      >
-                        {t('completion_badge')}
-                      </div>
-                      <div 
-                        className="
-                          text-gray-600 
-                          text-xs 
-                          md:text-sm
-                        "
-                      >
-                        {t('complete_module_to_unlock')}
-                      </div>
-                    </div>
                   </div>
                 </div>
-              </AccessibleCard>
-
-              {/* Accessibility Controls */}
-              <div 
-                className="
-                  bg-gradient-to-r 
-                  from-purple-50 
-                  to-violet-50 
-                  border 
-                  border-purple-200 
-                  rounded-xl 
-                  p-4 
-                  md:p-6
-                "
-                role="complementary"
-                aria-label={t('accessibility_controls')}
-              >
-                <h3 
-                  className="
-                    font-semibold 
-                    text-gray-900 
-                    mb-3 
-                    text-sm
-                    md:text-base
-                  "
-                >
-                  {t('accessibility_options')}
-                </h3>
-                <div className="space-y-3">
-                  <button
-                    onClick={() => document.documentElement.classList.toggle('high-contrast')}
-                    className="
-                      w-full 
-                      text-left 
-                      px-3 
-                      py-2 
-                      bg-white 
-                      border 
-                      border-gray-300 
-                      rounded-lg 
-                      hover:bg-gray-50
-                      focus:outline-none 
-                      focus:ring-2 
-                      focus:ring-purple-500 
-                      focus:border-transparent
-                      text-sm
-                      md:text-base
-                    "
-                  >
-                    {t('toggle_high_contrast')}
-                  </button>
-                </div>
-              </div>
-            </aside>
-
-            {/* MAIN CONTENT AREA */}
-            <div className="lg:col-span-2">
-              {/* Diagnostic Test Section */}
-              <section 
-                aria-labelledby="diagnostic-test-title"
-                className="mb-8 md:mb-12"
-              >
-                <div className="
-                  flex 
-                  items-center 
-                  justify-between 
-                  mb-6
-                  flex-col 
-                  sm:flex-row 
-                  sm:items-center 
-                  gap-4 
-                  sm:gap-0
-                ">
-                  <h2 
-                    id="diagnostic-test-title"
-                    className="
-                      text-xl 
-                      font-bold 
-                      text-gray-900
-                      md:text-2xl
-                    "
-                  >
-                    {t('diagnostic_test')}
-                  </h2>
-                  <div 
-                    className="
-                      text-sm 
-                      text-gray-600
-                      md:text-base
-                    "
-                    aria-live="polite"
-                  >
-                    {t('test_description')}
+              )
+            ) : (
+              <div className="p-6 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-lg">
+                <div className="flex items-center">
+                  <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
+                    <span className="text-amber-600 text-xl">🔒</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-amber-800">Test finale bloccato</h4>
+                    <p className="text-amber-700 mt-1">
+                      Accedi al tuo account per sbloccare il test finale.
+                    </p>
                   </div>
                 </div>
-
-                <DiagnosticTest
-                  questions={moduleData.questions}
-                  moduleId={moduleId}
-                  locale={locale}
-                />
-              </section>
-
-              {/* Module Preview - Responsive grid */}
-              <section 
-                aria-labelledby="module-preview-title"
-                className="mt-12"
-              >
-                <h2 
-                  id="module-preview-title"
-                  className="
-                    text-xl 
-                    font-bold 
-                    text-gray-900 
-                    mb-6
-                    md:text-2xl
-                  "
-                >
-                  {t('module_preview')}
-                </h2>
-                
-                <div className="
-                  grid 
-                  grid-cols-1 
-                  sm:grid-cols-2 
-                  gap-4 
-                  md:gap-6
-                ">
-                  {[1, 2, 3, 4].map((num) => (
-                    <div 
-                      key={num}
-                      className="
-                        bg-white 
-                        border 
-                        border-gray-200 
-                        rounded-xl 
-                        p-4 
-                        md:p-6
-                        hover:border-blue-300 
-                        hover:shadow-sm
-                        transition-all
-                        focus-within:ring-2 
-                        focus-within:ring-blue-500
-                      "
-                      tabIndex={0}
-                      role="article"
-                      aria-label={`Anteprima livello ${num}`}
-                    >
-                      <div className="flex items-start gap-3 md:gap-4">
-                        <div 
-                          className="
-                            w-10 
-                            h-10 
-                            bg-blue-100 
-                            text-blue-600 
-                            rounded-lg 
-                            flex 
-                            items-center 
-                            justify-center 
-                            font-bold
-                            text-sm
-                            md:text-base
-                            flex-shrink-0
-                          "
-                          aria-hidden="true"
-                        >
-                          {num}
-                        </div>
-                        <div>
-                          <h3 
-                            className="
-                              font-semibold 
-                              text-gray-900 
-                              mb-2
-                              text-sm
-                              md:text-base
-                            "
-                          >
-                            {t('level')} {num}
-                          </h3>
-                          <p 
-                            className="
-                              text-gray-600 
-                              text-xs 
-                              md:text-sm
-                            "
-                          >
-                            {t('level_description_prefix')} {num}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            </div>
-          </div>
-        </main>
-
-        {/* FOOTER ACCESSIBILE */}
-        <footer 
-          className="
-            border-t 
-            border-gray-200 
-            bg-white 
-            mt-12
-          "
-          role="contentinfo"
-          aria-label={t('module_footer')}
-        >
-          <div className="
-            container 
-            mx-auto 
-            px-4 
-            py-6
-            md:py-8
-          ">
-            <div className="
-              flex 
-              flex-col 
-              md:flex-row 
-              md:items-center 
-              md:justify-between 
-              gap-4
-            ">
-              <div className="text-sm text-gray-600 md:text-base">
-                <p>{t('footer_copyright')}</p>
               </div>
-              
-              <nav aria-label={t('footer_navigation')}>
-                <ul className="
-                  flex 
-                  flex-wrap 
-                  gap-4 
-                  md:gap-6
-                ">
-                  <li>
-                    <Link
-                      href={`/${locale}/accessibility`}
-                      className="
-                        text-blue-600 
-                        hover:text-blue-800 
-                        underline 
-                        underline-offset-2
-                        text-sm
-                        md:text-base
-                        focus:outline-none 
-                        focus:ring-2 
-                        focus:ring-blue-500 
-                        focus:ring-offset-2
-                        rounded
-                      "
-                    >
-                      {t('accessibility_statement')}
-                    </Link>
-                  </li>
-                  <li>
-                    <button
-                      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                      className="
-                        text-blue-600 
-                        hover:text-blue-800 
-                        underline 
-                        underline-offset-2
-                        text-sm
-                        md:text-base
-                        focus:outline-none 
-                        focus:ring-2 
-                        focus:ring-blue-500 
-                        focus:ring-offset-2
-                        rounded
-                      "
-                      aria-label={t('back_to_top')}
-                    >
-                      {t('back_to_top')}
-                    </button>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </footer>
+            )}
+          </Suspense>
+        </section>
       </div>
-    </>
+
+      {/* Footer informativo */}
+      <div className="mt-12 pt-8 border-t border-gray-200">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <h3 className="text-lg font-semibold mb-4 flex items-center">
+              <span className="mr-2">💡</span> Competenze Europee
+            </h3>
+            <p className="text-gray-600 text-sm">
+              Sviluppa competenze riconosciute nel framework europeo DigComp 2.2.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4 flex items-center">
+              <span className="mr-2">🎯</span> Sistema di Badge
+            </h3>
+            <p className="text-gray-600 text-sm">
+              5 badge tematici per certificare le competenze acquisite.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4 flex items-center">
+              <span className="mr-2">📊</span> Tracciamento Progresso
+            </h3>
+            <p className="text-gray-600 text-sm">
+              Tracciamento completo delle lacune, livelli e competenze sviluppate.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
