@@ -12,9 +12,7 @@ type QuestionType = {
   points: number;
 };
 
-// 2. Recupera domande del modulo - CORRETTA CON MAPPATURA
-
-
+// 2. Recupera domande del modulo - CON DEBUG DETTAGLIAT
 export async function getModuleQuestions(
   moduleId: string, 
   testType: 'diagnostic' | 'final',
@@ -27,13 +25,9 @@ export async function getModuleQuestions(
   explanation: string;
   difficulty: "easy" | "medium" | "hard";
   points: number;
-}>> {  // 🔥 RIMOSSO QuestionType, messo tipo inline
+}>> {
   try {
     const dbTestType = testType === 'diagnostic' ? 'pre' : 'post';
-    
-    // 🔥 VERIFICA CHE supabaseClient SIA IMPORTATO
-    // All'inizio del file dovresti avere:
-    // import { supabaseClient } from '@/app/lib/supabase/client';
     
     const { data: questions, error } = await supabaseClient
       .from('module_test_questions')
@@ -56,49 +50,44 @@ export async function getModuleQuestions(
     }
     
     return questions.map((q: any) => {
-      const questionText = q.question_text_i18n?.[locale] || 
-                          q.question_text_i18n?.['en'] || 
-                          'Domanda';
+      // 🔥 CORREZIONE: question_text_i18n.it è oggetto con campo "text"
+      const qTextObj = q.question_text_i18n?.[locale] || q.question_text_i18n?.['en'];
+      const questionText = (typeof qTextObj === 'object' && qTextObj !== null && 'text' in qTextObj)
+        ? String(qTextObj.text)
+        : 'Domanda';
       
-      const explanation = q.explanation_i18n?.[locale] || 
-                         q.explanation_i18n?.['en'] || 
-                         '';
+      // 🔥 CORREZIONE: explanation_i18n.it è oggetto con campo "text"
+      const expObj = q.explanation_i18n?.[locale] || q.explanation_i18n?.['en'];
+      const explanation = (typeof expObj === 'object' && expObj !== null && 'text' in expObj)
+        ? String(expObj.text)
+        : '';
       
-      // 🔥 CORREZIONE PER L'ERRORE REACT
+      // 🔥 CORREZIONE CRITICA: options_i18n.it è ARRAY di oggetti
       let options: string[] | Record<string, string> = [];
       const optionsRaw = q.options_i18n;
       
       if (optionsRaw) {
-        if (Array.isArray(optionsRaw)) {
-          options = optionsRaw.map(opt => String(opt));
-        }
-        else if (typeof optionsRaw === 'object') {
-          const localeOptions = optionsRaw[locale] || optionsRaw['en'] || optionsRaw;
+        // Prendi le opzioni nella lingua corretta
+        const localeOptions = optionsRaw[locale] || optionsRaw['en'];
+        
+        if (Array.isArray(localeOptions)) {
+          // 🔥 Conversione: array di oggetti → Record<string, string>
+          const optionRecord: Record<string, string> = {};
           
-          if (Array.isArray(localeOptions)) {
-            options = localeOptions.map(opt => String(opt));
-          } 
-          else if (localeOptions && typeof localeOptions === 'object') {
-            const simpleOptions: Record<string, string> = {};
-            
-            for (const [key, value] of Object.entries(localeOptions)) {
-              if (value && typeof value === 'object' && value !== null) {
-                const obj = value as any;
-                simpleOptions[key] = String(
-                  obj.text || 
-                  obj.label || 
-                  obj.value || 
-                  obj.content || 
-                  JSON.stringify(value).substring(0, 100)
-                );
-              } else {
-                simpleOptions[key] = String(value);
-              }
+          for (const optionObj of localeOptions) {
+            if (optionObj && typeof optionObj === 'object' && 'id' in optionObj && 'text' in optionObj) {
+              // Usa 'id' (A, B, C, D) come chiave e 'text' come valore
+              optionRecord[optionObj.id] = String(optionObj.text);
             }
-            
-            options = simpleOptions;
           }
+          
+          options = optionRecord;
         }
+      }
+      
+      // Fallback se options è vuoto
+      if (Object.keys(options).length === 0) {
+        options = { A: 'Opzione A', B: 'Opzione B', C: 'Opzione C', D: 'Opzione D' };
       }
       
       // Difficoltà

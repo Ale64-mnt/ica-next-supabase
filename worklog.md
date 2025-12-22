@@ -2256,3 +2256,28 @@ Fixes:
 - Soglia certificazione: 60%
 
 ⏱ 3h
+
+###  📌 2025-12-22 | RF-59| feat(education): FIX MODULO A - Correzione struttura dati domande
+
+✅ Problema risolto: Le opzioni venivano renderizzate come [object Object]
+✅ Causa: question_text_i18n.it e options_i18n.it erano oggetti complessi
+✅ Soluzione: Estrazione corretta dei campi 'text' dagli oggetti
+
+Struttura reale identificata:
+1. question_text_i18n.it: { text: '...', context: '...', cultural_note: '...' }
+2. options_i18n.it: Array<{ id: 'A', text: '...', explanation: '...' }>
+
+Correzioni applicate:
+- question_text_i18n: Estrai campo 'text' dall'oggetto
+- explanation_i18n: Estrai campo 'text' dall'oggetto  
+- options_i18n: Converti array di oggetti in Record<string, string> usando:
+  - optionObj.id (A/B/C/D) come chiave
+  - optionObj.text come valore
+
+Risultato: Le 40 domande del Modulo A ora mostrano testo leggibile invece di [object Object]
+
+Modulo ID: 4e0045e9-7e21-492d-a479-c400425a069d
+Domande: 20 diagnostiche (pre) + 20 finali (post)
+Stato: ✅ FUNZIONANTE"
+
+⏱ 1h
