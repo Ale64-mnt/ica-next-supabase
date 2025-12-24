@@ -2281,3 +2281,13 @@ Domande: 20 diagnostiche (pre) + 20 finali (post)
 Stato: ✅ FUNZIONANTE"
 
 ⏱ 1h
+
+###  📌 2025-12-24 | RF-59| feat(education): FIX : migrazione completa API a App Router, risolto errore colonna is_active mancante Ripristino Next.js 14
+
+- Eliminati file obsoleti in pages/api/education/
+- Ripristinata struttura API corretta in app/api/
+- Corretta query modules rimuovendo filtro is_active (colonna inesistente)
+- Risolti conflitti di routing e errori di build"
+- Api ancora non passano a Vercel 
+
+⏱ 6h
