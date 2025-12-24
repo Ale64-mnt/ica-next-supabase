@@ -1,4 +1,4 @@
-// app/components/navigation/LocaleSwitcher.client.tsx
+// app/components/navigation/LocaleSwitcher.client.tsx - VERSIONE DEFINITIVA
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
@@ -25,10 +25,17 @@ export function LocaleSwitcher() {
     { code: 'fr', name: 'Français', abbr: 'FR' }
   ];
 
+  // ✅ CORREZIONE: params può essere null
   useEffect(() => {
     setIsMounted(true);
-    setSelectedLocale(params.locale as string);
-  }, [params.locale]);
+    
+    const currentLocale = params?.locale;
+    
+    if (currentLocale && typeof currentLocale === 'string') {
+      setSelectedLocale(currentLocale);
+    }
+    // Nota: già inizializzato a 'it' di default
+  }, [params?.locale]);
 
   // Chiudi il dropdown quando si clicca fuori
   useEffect(() => {
@@ -46,15 +53,26 @@ export function LocaleSwitcher() {
 
   const currentLanguage = languages.find(lang => lang.code === selectedLocale);
 
-  // ✅ FUNZIONE CORRETTA per costruire l'URL
+  // ✅ FUNZIONE CORRETTA con tutti i null checks
   const buildLocalizedHref = (targetLocale: string) => {
+    // Verifica che pathname esista
+    if (!pathname) {
+      return `/${targetLocale}`;
+    }
+    
+    const currentLocale = params?.locale;
+    
+    if (!currentLocale || typeof currentLocale !== 'string') {
+      return `/${targetLocale}`;
+    }
+    
     // Se siamo sulla home page
-    if (pathname === `/${params.locale}` || pathname === `/${params.locale}/`) {
+    if (pathname === `/${currentLocale}` || pathname === `/${currentLocale}/`) {
       return `/${targetLocale}`;
     }
     
     // Per altre pagine, sostituisci la lingua nel path
-    const pathWithoutLocale = pathname.replace(`/${params.locale}`, '');
+    const pathWithoutLocale = pathname.replace(`/${currentLocale}`, '');
     return `/${targetLocale}${pathWithoutLocale}`;
   };
 
@@ -64,7 +82,12 @@ export function LocaleSwitcher() {
     setSelectedLocale(languageCode);
     setIsOpen(false);
 
-    // ✅ OPCIONE 3 IMPLEMENTATA:
+    // ✅ Verifica che pathname esista prima di usarlo
+    if (!pathname) {
+      router.push(`/${languageCode}`);
+      return;
+    }
+
     // Identifica il tipo di pagina
     const isNewsDetail = pathname.includes('/news/');
     const isBlogDetail = pathname.includes('/blog/');
@@ -78,19 +101,12 @@ export function LocaleSwitcher() {
     console.log('📄 Article detail:', isArticleDetail);
 
     if (isNewsDetail) {
-      // Per dettaglio news → vai alla lista news
-      console.log('🔄 Reindirizzamento a:', `/${languageCode}/news`);
       router.push(`/${languageCode}/news`);
     } else if (isBlogDetail) {
-      // Per dettaglio blog → vai alla lista blog
-      console.log('🔄 Reindirizzamento a:', `/${languageCode}/blog`);
       router.push(`/${languageCode}/blog`);
     } else if (isArticleDetail) {
-      // Per dettaglio articoli → vai alla lista articoli
-      console.log('🔄 Reindirizzamento a:', `/${languageCode}/articles`);
       router.push(`/${languageCode}/articles`);
     } else {
-      // Per pagine statiche (about, contact, home, etc.)
       const newPath = buildLocalizedHref(languageCode);
       console.log('🔄 Reindirizzamento a:', newPath);
       router.push(newPath);
