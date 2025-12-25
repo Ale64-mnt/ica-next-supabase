@@ -1,7 +1,8 @@
 // app/api/education/user/progress/route.ts
+export const dynamic = 'force-dynamic';
 import { createClient } from '@/app/lib/supabase/server'
 import { NextRequest, NextResponse } from 'next/server'
-export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   console.log('[API Progress] Richiesta progresso utente')
   

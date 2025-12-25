@@ -1,9 +1,10 @@
 // File: app/api/education/dashboard/global/route.ts
+// RENDI DINAMICA
+export const dynamic = 'force-dynamic';
 import { NextResponse } from 'next/server';
 import { createClient } from '@/app/lib/supabase/server';
 
-// RENDI DINAMICA
-export const dynamic = 'force-dynamic';
+
 
 export async function GET() {
   try {

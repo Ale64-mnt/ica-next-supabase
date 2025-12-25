@@ -1,9 +1,10 @@
 // app/api/education/modules/[moduleId]/complete/route.ts
+export const dynamic = 'force-dynamic'
+
 import { createClient } from '@/app/lib/supabase/server'
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
 
-export const dynamic = 'force-dynamic'
 
 // ✅ SCHEMA CORRETTO: userId senza .uuid() per testing
 const CompleteModuleSchema = z.object({

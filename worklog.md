@@ -2291,3 +2291,13 @@ Stato: ✅ FUNZIONANTE"
 - Api ancora non passano a Vercel 
 
 ⏱ 6h
+
+###  📌 2025-12-25 | RF-60| fix: stabilizza build Next.js 14.2.35 (NUOVA VERSIONE) e corregge API routes
+- Aggiorna Next.js a 14.2.35 (fix sicurezza e bug)
+- Corregge tutte le API routes con export const dynamic
+- Rimuove export const dynamic dalle pagine App (causa bug)
+- Pulisce cartelle API corrotte (questions/, scoring/)
+- Configura correttamente immagini in next.config.mjs
+- Sistema funzionante: API dinamiche, pagine statiche/dinamiche miste" Prova di api in Vercel se funzionano
+
+⏱ 4h

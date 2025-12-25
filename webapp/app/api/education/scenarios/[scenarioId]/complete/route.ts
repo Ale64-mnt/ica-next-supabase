@@ -1,8 +1,9 @@
 // app/api/education/scenarios/[scenarioId]/complete/route.ts - VERSIONE CORRETTA
+export const dynamic = 'force-dynamic'
 import { createClient } from '@/app/lib/supabase/server'
 import { NextRequest, NextResponse } from 'next/server'
 import { z } from 'zod'
-export const dynamic = 'force-dynamic';
+
 
 // Schema di validazione CORRETTO
 const CompleteScenarioSchema = z.object({

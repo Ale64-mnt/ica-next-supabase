@@ -1,4 +1,5 @@
 // File: app/[locale]/education/page.tsx (SERVER COMPONENT)
+
 import { getGlobalDashboardData } from '@/app/lib/api/education/dashboard';
 import EducationPageClient from './EducationPageClient';
 import { notFound } from 'next/navigation';

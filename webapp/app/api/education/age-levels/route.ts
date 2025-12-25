@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { createPublicClient } from '@/app/lib/supabase/public-client';
 
@@ -56,4 +58,3 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export const dynamic = 'force-dynamic';
