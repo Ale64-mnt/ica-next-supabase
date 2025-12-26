@@ -2301,3 +2301,13 @@ Stato: ✅ FUNZIONANTE"
 - Sistema funzionante: API dinamiche, pagine statiche/dinamiche miste" Prova di api in Vercel se funzionano
 
 ⏱ 4h
+
+###  📌 2025-12-26 | RF-61| fix: "fix: corretta query Supabase educational_modules
+
+- Sostituito fetch interno con query diretta al DB
+- Correzione nomi colonne: age_level_id, macro_area_id, sort_order
+- Eliminato filtro locale (non presente in tabella)
+- Aggiunta struttura data-services per logica centralizzata
+- Risolto errore PGRST100 rimuovendo commenti inline"
+
+⏱ 4h

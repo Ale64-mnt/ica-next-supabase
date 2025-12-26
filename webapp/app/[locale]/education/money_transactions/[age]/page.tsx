@@ -95,71 +95,56 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
     objectivesByTheme[themeName].push(obj);
   });
 
-  // 3. Ottieni i moduli dall'API
-  let educationalModules: EducationalModule[] = [];
-  let totalActivities = 0;
-  
-  try {
-    const isDevelopment = process.env.NODE_ENV === 'development';
-    const baseUrl = isDevelopment ? 'http://localhost:3000' : (process.env.NEXT_PUBLIC_BASE_URL || 'https://tuodominio.com');
-    const apiUrl = `${baseUrl}/api/education/modules?macro_area=money_transactions&age_level=${age.replace('-', '_')}&locale=${locale}`;
-    
-    console.log('📡 Fetching modules from:', apiUrl);
-    
-    const response = await fetch(apiUrl, {
-      cache: 'no-store',
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    });
-    
-    if (response.ok) {
-      const data = await response.json();
-      console.log('📦 API response data type:', typeof data);
-      console.log('📦 API response keys:', Object.keys(data));
-      
-      // CORREZIONE: L'API restituisce { modules: [...] }
-      if (data && data.modules && Array.isArray(data.modules)) {
-        educationalModules = data.modules;
-        console.log('✅ Modules fetched:', educationalModules.length);
-      } else if (Array.isArray(data)) {
-        // Fallback per compatibilità
-        educationalModules = data;
-        console.log('⚠️ Modules fetched (direct array):', educationalModules.length);
-      } else {
-        console.warn('⚠️ Unexpected API response format:', data);
-        educationalModules = [];
-      }
-      
-      // Calcola il totale delle attività (scenari di gioco)
-      totalActivities = educationalModules.length * 3; // Stima: 3 attività per modulo
-      
-    } else {
-      console.error('❌ API error:', response.status);
-      // Fallback: query diretta a Supabase
-      const { data: fallbackModules } = await supabase
-        .from('educational_modules')
-        .select('*')
-        .eq('age_level', age.replace('-', '_'))
-        .eq('macro_area', 'money_transactions')
-        .order('order_index', { ascending: true });
-      
-      educationalModules = (fallbackModules || []).map((mod: any) => ({
-        id: mod.id,
-        title: getText(mod.title_i18n, locale) || mod.title || t('untitled_module', { defaultValue: 'Modulo senza titolo' }),
-        description: getText(mod.description_i18n, locale) || mod.description || '',
-        ageLevel: mod.age_level,
-        difficulty: mod.difficulty_level || 'beginner',
-        duration: mod.estimated_duration ? `${mod.estimated_duration} min` : '60 min',
-        competencies: []
-      }));
-      
-      totalActivities = educationalModules.length * 3;
-    }
-  } catch (error) {
-    console.error('❌ Error fetching modules:', error);
+  // 3. MODIFICA CHIAVE: Ottieni i moduli DIRETTAMENTE da Supabase
+let educationalModules: EducationalModule[] = [];
+let totalActivities = 0;
+
+try {
+  // ✅ CORREZIONE: Query DIRETTA a Supabase SENZA commenti inline
+  const { data: modulesData, error: modulesError } = await supabase
+    .from('educational_modules')
+    .select(`
+      id,
+      title_i18n,
+      description_i18n,
+      age_level_id,
+      difficulty_level,
+      estimated_duration,
+      topics_i18n,
+      sort_order
+    `)  // ⚠️ RIMOSSI tutti i commenti inline dal select()
+    .eq('macro_area_id', 'money_transactions')
+    .eq('age_level_id', age.replace('-', '_'))
+    .order('sort_order', { ascending: true });
+
+  if (modulesError) {
+    console.error('❌ Supabase error fetching modules:', modulesError);
     educationalModules = [];
+  } else if (modulesData) {
+    // ✅ Trasforma i dati dal formato Supabase al formato atteso dal componente
+    educationalModules = modulesData.map((mod: any) => ({
+      id: mod.id,
+      title: getText(mod.title_i18n, locale) || t('untitled_module', { defaultValue: 'Modulo senza titolo' }),
+      description: getText(mod.description_i18n, locale) || '',
+      ageLevel: mod.age_level_id,
+      difficulty: mod.difficulty_level || 'beginner',
+      duration: mod.estimated_duration ? `${mod.estimated_duration} min` : '60 min',
+      competencies: mod.topics_i18n || [],
+      game_scenarios: []
+    }));
+    
+    console.log('✅ Modules fetched directly from Supabase:', educationalModules.length);
   }
+  
+  // Calcola il totale delle attività (scenari di gioco)
+  totalActivities = educationalModules.reduce((total, module) => {
+    return total + (module.game_scenarios?.length || 3);
+  }, 0);
+  
+} catch (error) {
+  console.error('❌ Error in direct Supabase query:', error);
+  educationalModules = [];
+}
 
   // Usa le traduzioni corrette
   const pageTitle = tMoneyPage('title');
@@ -182,6 +167,7 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
     return difficultyMap[difficulty] || difficulty;
   };
 
+  // ✅ RESTANTE CODICE INVARIATO (solo UI, nessuna modifica)
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Header */}
@@ -252,7 +238,7 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Mostra i moduli reali dall'API */}
+          {/* Mostra i moduli reali da Supabase */}
           {educationalModules.map((module) => {
             // Estrai numero di minuti dalla stringa duration
             const durationMatch = module.duration?.match(/(\d+)/);
@@ -288,9 +274,9 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
                           <span 
                             key={idx} 
                             className="px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs truncate max-w-[120px]"
-                            title={comp.title || comp.code}
+                            title={typeof comp === 'string' ? comp : comp.title || comp.code}
                           >
-                            {comp.code || comp.title?.substring(0, 15)}
+                            {typeof comp === 'string' ? comp.substring(0, 15) : (comp.code || comp.title?.substring(0, 15))}
                           </span>
                         ))}
                         {module.competencies.length > 2 && (
@@ -325,7 +311,7 @@ export default async function MoneyTransactionsAgePage({ params }: AgePageProps)
             );
           })}
 
-          {/* ✅ CORRETTO: Card "Esplora più moduli" con traduzioni */}
+          {/* Card "Esplora più moduli" */}
           {educationalModules.length > 0 && educationalModules.length < 6 && (
             <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 border-dashed rounded-xl p-8 text-center flex flex-col items-center justify-center hover:border-blue-300 transition-colors">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">

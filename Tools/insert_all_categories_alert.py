@@ -43,24 +43,26 @@ IMAGE_ALT_TEXTS = {
 # Dati per ogni news in diverse lingue
 NEWS_DATA = [
         
-    # Italiano
+    # Deutsch
     {
-        "title": "Consob – Avviso ai risparmiatori su falsi messaggi e blocco di siti web illegali",
-        "slug": "consob-avviso-risparmiatori-falsi-messaggi-blocco-siti-web-illegali-ingegneria-sociale",
-        "excerpt": "CONSOB ha pubblicato un avviso su email fraudolente che si spacciano per l’Autorità e chiedono pagamenti per servizi inesistenti o per “sbloccare” fondi fantasma, ordinando anche il blocco di siti finanziari non autorizzati e richiamando le tecniche di ingegneria sociale usate dai truffatori.",
-        "body_md": "**Fonte:** CONSOB – consob.it\n"
-                   "**Data di pubblicazione:** 18 dicembre 2025\n"
-                   "**Link ufficiale:** https://www.consob.it/web/consob-and-its-activities/contents\n"
-                   "*(Press release del 18 dicembre 2025)*\n\n"
-                   "**Riassunto:** La Commissione Nazionale per le Società e la Borsa ha pubblicato un avviso rivolto agli investitori per segnalare tentativi di truffe attraverso email fraudolente che fingono di provenire dall’autorità stessa e richiedono pagamenti per servizi inesistenti o “sblocco” di fondi fantasma. La CONSOB ha inoltre ordinato il blocco di numerosi siti web che offrivano servizi finanziari o di intermediazione non autorizzati, inclusi alcuni collegati a piattaforme di trading e servizi su crypto-asset.\n\n"
-                   "**Meccanismo tipico:** Il meccanismo tipico prevede l’invio di email con indirizzi falsificati simili a quelli reali di CONSOB o di enti finanziari, con messaggi che inducono alla fretta (ad es. “pagamento urgente”, “sblocco fondi”), e link che portano a siti truffa che raccolgono dati sensibili o denaro. Un esempio concreto è una email che invita l’utente a trasferire denaro per “sbloccare profitti” su una piattaforma di trading non autorizzata che poi risulta falsa.\n\n"
-                   "**Ingegneria sociale:** pratica che usa tecniche manipolatorie per ottenere informazioni o influenzare il comportamento delle persone. Sfrutta soprattutto il fattore umano (debolezze psicologiche) più che vulnerabilità tecniche, e può rendere più efficaci attacchi come il phishing.\n\n"
-                   "**Tecniche di ingegneria sociale utilizzate qui:**\n"
-                   "- **Autorevolezza:** i truffatori si spacciano per enti/autorità (es. Consob, Commissione UE) per aumentare credibilità e obbedienza.\n"
-                   "- **Panico / Urgenza:** messaggi come “pagamento urgente” o “sblocco fondi” spingono ad agire in fretta senza verifiche.\n"
-                   "- **Asimmetria informativa:** la complessità di procedure finanziarie e strumenti (trading/crypto, “recupero fondi”) viene sfruttata per confondere e convincere.\n"
-                   "- **Motivazione economica:** la promessa di “sbloccare profitti”, recuperare somme o ottenere denaro induce la vittima a pagare o a fornire dati.",
-        "locale": "it",
+        "title": "Festnahmen im Zusammenhang mit Betrug durch falsche „Worldline / Luxtrust“-Kontakte",
+        "slug": "festnahmen-betrug-falsche-worldline-luxtrust-kontakte",
+        "excerpt": "Die luxemburgische Polizei meldet Festnahmen im Rahmen eines Betrugs, bei dem Täter sich als Worldline- oder Luxtrust-Mitarbeiter ausgaben und Opfer zur Bestätigung betrügerischer Überweisungen verleiteten.",
+        "body_md": "**Quelle:** Police Grand-Ducale – police.public.lu\n"
+                   "**Veröffentlichungsdatum:** 24. Dezember 2025\n"
+                   "**Offizieller Link:** https://police.public.lu/en/actualites.html\n\n"
+                   "**Zusammenfassung:** Laut der offiziellen Mitteilung der Polizei des Großherzogtums Luxemburg wurde am 18. Dezember 2025 ein Betrugsfall gemeldet, bei dem eine Person von einem angeblichen Mitarbeiter von Worldline kontaktiert und dazu gebracht wurde, mehrere Überweisungen über die Luxtrust-App zu bestätigen. Die Ermittlungen führten zu zwei Festnahmen im Zusammenhang mit dieser Betrugsmasche.\n\n"
+                   "**Praktische Vorgehensweise:** Die Täter geben sich als Vertreter von Zahlungsdienstleistern oder digitalen Vertrauensdiensten (z. B. Worldline, Luxtrust) aus und bringen die Opfer dazu, Überweisungen oder Freigaben über eigentlich legitime Apps zu bestätigen – jedoch auf Grundlage betrügerischer Anweisungen. In einem typischen Szenario erhält das Opfer einen scheinbar offiziellen Anruf mit dem Hinweis, das Konto sei kompromittiert und es müssten dringend „Sicherheits­transaktionen“ autorisiert werden. Tatsächlich werden so Geldtransfers auf von den Tätern kontrollierte Konten freigegeben.\n\n"
+                   "**Was wir aus diesem Fall lernen: Money Mules und Social Engineering**\n\n"
+                   "In diesem Fall nutzen die Täter nicht nur technische Mittel, sondern vor allem den menschlichen Faktor, indem sie Social-Engineering-Techniken einsetzen und sogenannte Money Mules einbinden.\n\n"
+                   "Ein *Money Mule* ist eine Person, die ihr Bankkonto zur Verfügung stellt, um Geld aus illegalen Quellen entgegenzunehmen und weiterzuleiten oder abzuheben, oft gegen eine Provision. Auch ohne selbst den technischen Angriff durchgeführt zu haben, beteiligt sich ein Money Mule an der Geldwäsche und kann strafrechtlich verfolgt werden.\n\n"
+                   "**Genutzte psychologische Hebel:**\n"
+                   "- **Autorität:** Die Täter geben sich als Mitarbeiter vertrauenswürdiger Unternehmen (Worldline / Luxtrust) aus, um sofortiges Vertrauen zu erzeugen.\n"
+                   "- **Asymmetrie der Informationen:** Es wird ausgenutzt, dass viele Nutzer die korrekten Abläufe von Banken und digitalen Identitätsdiensten nicht kennen.\n"
+                   "- **Panik / Dringlichkeit:** Opfer werden unter Zeitdruck gesetzt („Ihr Konto ist in Gefahr, Sie müssen sofort handeln“), sodass keine gründliche Prüfung erfolgt.\n"
+                   "- **Ökonomische Motivation:** Money Mules werden mit dem Versprechen „leichter Gewinne“ für die Nutzung ihres Kontos angeworben, insbesondere junge Menschen oder Personen in finanziellen Schwierigkeiten.\n\n"
+                   "Dieser Fall zeigt, dass sich hinter Online-Betrug gezielte emotionale Manipulationen verbergen, die Vertrauen, Informationslücken und wirtschaftliche Bedürfnisse ausnutzen. Das Erkennen dieser Mechanismen ist ein zentraler Schritt, um weder Opfer noch – unwissentlich – Beteiligter zu werden.",
+        "locale": "de",
     },
 
 
