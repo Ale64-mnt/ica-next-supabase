@@ -410,6 +410,22 @@
     "completed": "Terminé",
     "moduleCompletedMessage": "Module terminé avec succès ! Votre progrès a été mis à jour.",
     "completionError": "Erreur lors de la complétion du module. Veuillez réessayer."
+  },
+  "EducationPage": {
+    "title": "Éducation Financière",
+    "subtitle": "Apprenez à gérer votre argent consciemment",
+    "coming_soon_title": "🚀 Contenu à venir",
+    "coming_soon_message": "Nous travaillons à vous fournir du contenu aligné sur les cadres européens d'éducation financière. Nous reviendrons bientôt avec des modules interactifs !",
+    "back_to_home": "Retour à l'accueil",
+    "waitlist_title": "Souhaitez-vous être averti lorsque les modules seront prêts ?",
+    "email_placeholder": "Votre email",
+    "notify_me": "Avertissez-moi",
+    "eu_aligned": "Aligné sur l'UE",
+    "eu_aligned_desc": "Contenu basé sur les cadres européens d'éducation financière",
+    "all_ages": "Pour tous les âges",
+    "all_ages_desc": "Modules différenciés par groupes d'âge : 6-10, 11-15, 16-18, 18+",
+    "interactive": "Interactif",
+    "interactive_desc": "Scénarios gamifiés, exercices pratiques et études de cas réelles"
   }
     
   }

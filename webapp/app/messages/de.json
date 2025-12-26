@@ -408,6 +408,22 @@
     "completed": "Abgeschlossen",
     "moduleCompletedMessage": "Modul erfolgreich abgeschlossen! Ihr Fortschritt wurde aktualisiert.",
     "completionError": "Fehler beim Abschließen des Moduls. Bitte versuchen Sie es erneut."
+  },
+  "EducationPage": {
+    "title": "Finanzielle Bildung",
+    "subtitle": "Lernen Sie, bewusst mit Ihrem Geld umzugehen",
+    "coming_soon_title": "🚀 Inhalte in Kürze verfügbar",
+    "coming_soon_message": "Wir arbeiten daran, Ihnen Inhalte anzubieten, die mit den europäischen Rahmenwerken für finanzielle Bildung abgestimmt sind. Wir sind bald mit interaktiven Modulen zurück!",
+    "back_to_home": "Zurück zur Startseite",
+    "waitlist_title": "Möchten Sie benachrichtigt werden, wenn die Module verfügbar sind?",
+    "email_placeholder": "Ihre E-Mail",
+    "notify_me": "Benachrichtigen Sie mich",
+    "eu_aligned": "EU-konform",
+    "eu_aligned_desc": "Inhalte basierend auf europäischen Rahmenwerken für finanzielle Bildung",
+    "all_ages": "Für alle Altersgruppen",
+    "all_ages_desc": "Module differenziert nach Altersgruppen: 6-10, 11-15, 16-18, 18+",
+    "interactive": "Interaktiv",
+    "interactive_desc": "Gamifizierte Szenarien, praktische Übungen und reale Fallstudien"
   }
   
 

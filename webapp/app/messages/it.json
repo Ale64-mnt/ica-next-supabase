@@ -627,6 +627,22 @@
     "acquired": "Acquisita",
     "eu_framework_title": "Quadro Europeo delle Competenze",
     "eu_framework_description": "Queste competenze sono allineate con i framework DigComp 2.1 (Competenze Digitali) e LifeComp (Competenze per la Vita) dell'Unione Europea."
+  },
+  "EducationPage": {
+    "title": "Educazione Finanziaria",
+    "subtitle": "Impara a gestire il tuo denaro in modo consapevole",
+    "coming_soon_title": "🚀 Contenuti in Arrivo",
+    "coming_soon_message": "Stiamo lavorando per offrirti contenuti allineati ai framework europei di educazione finanziaria. Torneremo presto con moduli interattivi!",
+    "back_to_home": "Torna alla Home",
+    "waitlist_title": "Vuoi essere avvisato quando i moduli saranno pronti?",
+    "email_placeholder": "La tua email",
+    "notify_me": "Avvisami",
+    "eu_aligned": "Allineato all'UE",
+    "eu_aligned_desc": "Contenuti basati sui framework di educazione finanziaria europei",
+    "all_ages": "Per tutte le età",
+    "all_ages_desc": "Moduli differenziati per fasce d'età: 6-10, 11-15, 16-18, 18+",
+    "interactive": "Interattivo",
+    "interactive_desc": "Scenari gamificati, esercizi pratici e casi di studio reali"
   }
 
 }

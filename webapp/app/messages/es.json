@@ -407,5 +407,21 @@
     "completed": "Completado",
     "moduleCompletedMessage": "¡Módulo completado con éxito! Tu progreso ha sido actualizado.",
     "completionError": "Error al completar el módulo. Por favor, inténtalo de nuevo."
+  },
+  "EducationPage": {
+    "title": "Educación Financiera",
+    "subtitle": "Aprende a gestionar tu dinero conscientemente",
+    "coming_soon_title": "🚀 Contenido próximamente",
+    "coming_soon_message": "Estamos trabajando para ofrecerte contenido alineado con los marcos europeos de educación financiera. ¡Volveremos pronto con módulos interactivos!",
+    "back_to_home": "Volver al inicio",
+    "waitlist_title": "¿Quieres que te avisemos cuando los módulos estén listos?",
+    "email_placeholder": "Tu correo electrónico",
+    "notify_me": "Avísame",
+    "eu_aligned": "Alineado con la UE",
+    "eu_aligned_desc": "Contenido basado en los marcos europeos de educación financiera",
+    "all_ages": "Para todas las edades",
+    "all_ages_desc": "Módulos diferenciados por grupos de edad: 6-10, 11-15, 16-18, 18+",
+    "interactive": "Interactivo",
+    "interactive_desc": "Escenarios gamificados, ejercicios prácticos y casos de estudio reales"
   }
   }

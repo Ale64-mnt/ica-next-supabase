@@ -408,5 +408,21 @@
     "completed": "Completed",
     "moduleCompletedMessage": "Module completed successfully! Your progress has been updated.",
     "completionError": "Error completing the module. Please try again."
+  },
+  "EducationPage": {
+    "title": "Financial Education",
+    "subtitle": "Learn to manage your money consciously",
+    "coming_soon_title": "🚀 Content Coming Soon",
+    "coming_soon_message": "We are working to provide you with content aligned with European financial education frameworks. We'll be back soon with interactive modules!",
+    "back_to_home": "Back to Home",
+    "waitlist_title": "Want to be notified when the modules are ready?",
+    "email_placeholder": "Your email",
+    "notify_me": "Notify me",
+    "eu_aligned": "EU-Aligned",
+    "eu_aligned_desc": "Content based on European financial education frameworks",
+    "all_ages": "For All Ages",
+    "all_ages_desc": "Modules differentiated by age groups: 6-10, 11-15, 16-18, 18+",
+    "interactive": "Interactive",
+    "interactive_desc": "Gamified scenarios, practical exercises and real case studies"
   }
     }

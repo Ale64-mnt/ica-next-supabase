@@ -2302,7 +2302,7 @@ Stato: ✅ FUNZIONANTE"
 
 ⏱ 4h
 
-###  📌 2025-12-26 | RF-61| fix: "fix: corretta query Supabase educational_modules
+###  📌 2025-12-26 | RF-61| fix: corretta query Supabase educational_modules
 
 - Sostituito fetch interno con query diretta al DB
 - Correzione nomi colonne: age_level_id, macro_area_id, sort_order
@@ -2311,3 +2311,11 @@ Stato: ✅ FUNZIONANTE"
 - Risolto errore PGRST100 rimuovendo commenti inline"
 
 ⏱ 4h
+
+### 📌 2025-12-26 | RF-62|  Change branch for pre-launch "i18n: add EducationPage translations for EN, DE, FR, ES"
+
+- Complete translations for education landing page in 4 languages
+- Consistent terminology across all language versions
+- Updated age ranges format in all translations"
+
+⏱ 1h
