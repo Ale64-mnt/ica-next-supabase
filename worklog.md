@@ -2319,3 +2319,12 @@ Stato: ✅ FUNZIONANTE"
 - Updated age ranges format in all translations"
 
 ⏱ 1h
+
+### 📌 2025-12-26 | RF-63|"feat: implement Cookiebot banner for GDPR compliance
+
+- Added CookieBotScript component with auto-blocking mode
+- Integrated script into root layout for proper loading
+- Disabled ESLint sync-script rule for third-party CDN requirement
+- Banner ready for multilingual detection (IT, EN, FR, DE, ES)"
+
+⏱ 1h
