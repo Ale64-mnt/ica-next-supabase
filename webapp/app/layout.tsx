@@ -1,27 +1,40 @@
 // app/layout.tsx
-import type { ReactNode } from 'react';
-import type { Metadata, Viewport } from 'next';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import CookieBotScript from '@/components/CookieBotScript';
 import './globals.css';
 
-// Viewport (Next.js 14)
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1
-};
+const inter = Inter({ subsets: ['latin'] });
 
-// Metadata (senza viewport dentro)
 export const metadata: Metadata = {
-  title: 'EduEthica -We promote financial and ethical education',
-  description: 'Progetto Next.js con Supabase e i18n'
+  title: 'ICA Next.js App',
+  description: 'International Compliance Application',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
-// Root layout: unico punto con <html>/<body>
-// Nota: il lang qui è statico per evitare mismatch.
-// Se in futuro vuoi dinamico, spostalo nel layout locale oppure leggi la locale dal pathname.
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="it" suppressHydrationWarning>
-      <body>{children}</body>
+      <head>
+        {/* IMPORTANTE: nessun whitespace tra i tag */}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* CookieBot Script */}
+        <CookieBotScript />
+        {/* Favicon e altri meta tag */}
+        <link rel="icon" href="/favicon.ico" />
+        <meta name="theme-color" content="#ffffff" />
+      </head>
+      <body className={inter.className}>
+        {children}
+      </body>
     </html>
   );
 }

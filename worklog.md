@@ -2328,3 +2328,7 @@ Stato: ✅ FUNZIONANTE"
 - Banner ready for multilingual detection (IT, EN, FR, DE, ES)"
 
 ⏱ 1h
+
+### 📌 2025-12-29 | RF-63|fix: integrazione cookiebot e aggiornamento script - impostato blockingmode manual e corretto layout"
+
+⏱ 2h

@@ -43,26 +43,17 @@ IMAGE_ALT_TEXTS = {
 # Dati per ogni news in diverse lingue
 NEWS_DATA = [
         
-    # Deutsch
+    # Italiano
     {
-        "title": "Festnahmen im Zusammenhang mit Betrug durch falsche „Worldline / Luxtrust“-Kontakte",
-        "slug": "festnahmen-betrug-falsche-worldline-luxtrust-kontakte",
-        "excerpt": "Die luxemburgische Polizei meldet Festnahmen im Rahmen eines Betrugs, bei dem Täter sich als Worldline- oder Luxtrust-Mitarbeiter ausgaben und Opfer zur Bestätigung betrügerischer Überweisungen verleiteten.",
-        "body_md": "**Quelle:** Police Grand-Ducale – police.public.lu\n"
-                   "**Veröffentlichungsdatum:** 24. Dezember 2025\n"
-                   "**Offizieller Link:** https://police.public.lu/en/actualites.html\n\n"
-                   "**Zusammenfassung:** Laut der offiziellen Mitteilung der Polizei des Großherzogtums Luxemburg wurde am 18. Dezember 2025 ein Betrugsfall gemeldet, bei dem eine Person von einem angeblichen Mitarbeiter von Worldline kontaktiert und dazu gebracht wurde, mehrere Überweisungen über die Luxtrust-App zu bestätigen. Die Ermittlungen führten zu zwei Festnahmen im Zusammenhang mit dieser Betrugsmasche.\n\n"
-                   "**Praktische Vorgehensweise:** Die Täter geben sich als Vertreter von Zahlungsdienstleistern oder digitalen Vertrauensdiensten (z. B. Worldline, Luxtrust) aus und bringen die Opfer dazu, Überweisungen oder Freigaben über eigentlich legitime Apps zu bestätigen – jedoch auf Grundlage betrügerischer Anweisungen. In einem typischen Szenario erhält das Opfer einen scheinbar offiziellen Anruf mit dem Hinweis, das Konto sei kompromittiert und es müssten dringend „Sicherheits­transaktionen“ autorisiert werden. Tatsächlich werden so Geldtransfers auf von den Tätern kontrollierte Konten freigegeben.\n\n"
-                   "**Was wir aus diesem Fall lernen: Money Mules und Social Engineering**\n\n"
-                   "In diesem Fall nutzen die Täter nicht nur technische Mittel, sondern vor allem den menschlichen Faktor, indem sie Social-Engineering-Techniken einsetzen und sogenannte Money Mules einbinden.\n\n"
-                   "Ein *Money Mule* ist eine Person, die ihr Bankkonto zur Verfügung stellt, um Geld aus illegalen Quellen entgegenzunehmen und weiterzuleiten oder abzuheben, oft gegen eine Provision. Auch ohne selbst den technischen Angriff durchgeführt zu haben, beteiligt sich ein Money Mule an der Geldwäsche und kann strafrechtlich verfolgt werden.\n\n"
-                   "**Genutzte psychologische Hebel:**\n"
-                   "- **Autorität:** Die Täter geben sich als Mitarbeiter vertrauenswürdiger Unternehmen (Worldline / Luxtrust) aus, um sofortiges Vertrauen zu erzeugen.\n"
-                   "- **Asymmetrie der Informationen:** Es wird ausgenutzt, dass viele Nutzer die korrekten Abläufe von Banken und digitalen Identitätsdiensten nicht kennen.\n"
-                   "- **Panik / Dringlichkeit:** Opfer werden unter Zeitdruck gesetzt („Ihr Konto ist in Gefahr, Sie müssen sofort handeln“), sodass keine gründliche Prüfung erfolgt.\n"
-                   "- **Ökonomische Motivation:** Money Mules werden mit dem Versprechen „leichter Gewinne“ für die Nutzung ihres Kontos angeworben, insbesondere junge Menschen oder Personen in finanziellen Schwierigkeiten.\n\n"
-                   "Dieser Fall zeigt, dass sich hinter Online-Betrug gezielte emotionale Manipulationen verbergen, die Vertrauen, Informationslücken und wirtschaftliche Bedürfnisse ausnutzen. Das Erkennen dieser Mechanismen ist ein zentraler Schritt, um weder Opfer noch – unwissentlich – Beteiligter zu werden.",
-        "locale": "de",
+        "title": "Spear phishing con riferimenti al settore sanitario",
+        "slug": "spear-phishing-riferimenti-settore-sanitario",
+        "excerpt": "Il CSIRT Italia segnala campagne di spear phishing mirate che sfruttano riferimenti credibili al settore sanitario per indurre destinatari specifici a fornire credenziali o dati sensibili.",
+        "body_md": "**Fonte:** Agenzia per la Cybersicurezza Nazionale (ACN) – acn.gov.it\n"
+                   "**Data di pubblicazione:** 27 dicembre 2025, ore 17:50\n"
+                   "**Link ufficiale:** https://www.acn.gov.it/portale/web/guest/-/spear-phishing-recanti-riferimenti-al-settore-sanitario\n\n"
+                   "**Riassunto:** Il CSIRT Italia ha pubblicato un alert relativo a campagne di spear phishing mirate con riferimenti al settore sanitario. Gli attacchi sono progettati per colpire destinatari specifici attraverso messaggi personalizzati, con l’obiettivo di ottenere l’accesso a dati sensibili o credenziali.\n\n"
+                   "**Modalità operative:** I truffatori inviano email o messaggi che sembrano provenire da enti sanitari o da fonti legittime del settore, includendo riferimenti plausibili come nomi di cliniche, codici di prenotazione o comunicazioni interne. Lo scopo è indurre la vittima a cliccare su link malevoli che possono installare malware oppure a fornire dati personali e di accesso, ad esempio fingendo un aggiornamento di sistema o una richiesta urgente di verifica dell’identità.",
+        "locale": "it",
     },
 
 
