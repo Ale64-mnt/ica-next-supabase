@@ -2329,10 +2329,14 @@ Stato: ✅ FUNZIONANTE"
 
 ⏱ 1h
 
-### 📌 2025-12-29 | RF-63|fix: integrazione cookiebot e aggiornamento script - impostato blockingmode manual e corretto layout"
+### 📌 2025-12-29 | RF-64|fix: integrazione cookiebot e aggiornamento script - impostato blockingmode manual e corretto layout"
 
 ⏱ 2h
 
-### 📌 2025-12-30 | RF-63|"fix: rimozione banner cookie personalizzato e aggiornamento script Cookiebot con gestione multilingue dinamica"
+### 📌 2025-12-29 | RF-65|"fix: rimozione banner cookie personalizzato e aggiornamento script Cookiebot con gestione multilingue dinamica"
 
 ⏱ 3h
+
+### 📌 2025-12-30 | RF-66|""fix: implementazione definitiva Cookiebot multilingue - risolto cambio lingua dinamico e errori TypeScript"
+
+⏱ 1h
