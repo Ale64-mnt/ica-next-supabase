@@ -23,15 +23,16 @@ export default function RootLayout({
   return (
     <html lang="it" suppressHydrationWarning>
       <head>
-        {/* IMPORTANTE: nessun whitespace tra i tag */}
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* CookieBot Script */}
-        <CookieBotScript />
-        {/* Favicon e altri meta tag */}
-        <link rel="icon" href="/favicon.ico" />
-        <meta name="theme-color" content="#ffffff" />
-      </head>
+  {/* 🔥 COOKIEBOT DEVE ESSERE IL PRIMO ELEMENTO ASSOLUTO */}
+  <CookieBotScript />
+  
+  {/* IMPORTANTE: nessun whitespace tra i tag */}
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {/* Favicon e altri meta tag */}
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="theme-color" content="#ffffff" />
+</head>
       <body className={inter.className}>
         {children}
       </body>

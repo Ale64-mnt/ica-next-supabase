@@ -2340,3 +2340,7 @@ Stato: ✅ FUNZIONANTE"
 ### 📌 2025-12-30 | RF-66|""fix: implementazione definitiva Cookiebot multilingue - risolto cambio lingua dinamico e errori TypeScript"
 
 ⏱ 1h
+
+### 📌 2025-12-31 | RF-67|"fix: correzione conformità Cookiebot GDPR - script primo nel head e modalità autoblocking attiva"
+
+⏱ 1h
