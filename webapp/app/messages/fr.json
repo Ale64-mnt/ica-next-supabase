@@ -426,6 +426,34 @@
     "all_ages_desc": "Modules différenciés par groupes d'âge : 6-10, 11-15, 16-18, 18+",
     "interactive": "Interactif",
     "interactive_desc": "Scénarios gamifiés, exercices pratiques et études de cas réelles"
+  },
+  "Policies": {
+    "privacy": {
+      "title": "Politique de Confidentialité",
+      "meta": {
+        "title": "Politique de Confidentialité | Urban Space Memory",
+        "description": "Lisez notre Politique de Confidentialité pour comprendre comment nous collectons, utilisons et protégeons vos données personnelles."
+      }
+    },
+    "cookie": {
+      "title": "Politique relative aux Cookies",
+      "meta": {
+        "title": "Politique relative aux Cookies | Urban Space Memory",
+        "description": "Apprenez comment nous utilisons les cookies et technologies similaires sur notre site web."
+      }
+    },
+    "lastUpdated": "Dernière mise à jour",
+    "loading": "Chargement de la politique...",
+    "fallbackNote": "Remarque : cette page n'est pas encore disponible dans votre langue. La version anglaise est affichée.",
+    "error": {
+      "loading": "Impossible de charger le contenu de la politique. Veuillez réessayer plus tard."
+    },
+    "contact": {
+      "title": "Contactez-nous",
+      "description": "Si vous avez des questions concernant nos politiques, vous pouvez nous contacter :",
+      "email": "E-mail",
+      "address": "Adresse"
+    }
   }
     
   }

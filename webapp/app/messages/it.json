@@ -643,6 +643,34 @@
     "all_ages_desc": "Moduli differenziati per fasce d'età: 6-10, 11-15, 16-18, 18+",
     "interactive": "Interattivo",
     "interactive_desc": "Scenari gamificati, esercizi pratici e casi di studio reali"
+  },
+  "Policies": {
+    "privacy": {
+      "title": "Informativa sulla Privacy",
+      "meta": {
+        "title": "Informativa sulla Privacy | Urban Space Memory",
+        "description": "Leggi la nostra Informativa sulla Privacy per comprendere come raccogliamo, utilizziamo e proteggiamo i tuoi dati personali."
+      }
+    },
+    "cookie": {
+      "title": "Cookie Policy",
+      "meta": {
+        "title": "Cookie Policy | Urban Space Memory",
+        "description": "Scopri come utilizziamo i cookie e tecnologie simili sul nostro sito web."
+      }
+    },
+    "lastUpdated": "Ultimo aggiornamento",
+    "loading": "Caricamento policy...",
+    "fallbackNote": "Nota: questa pagina non è ancora disponibile nella tua lingua. Viene mostrata la versione inglese.",
+    "error": {
+      "loading": "Impossibile caricare il contenuto della policy. Riprova più tardi."
+    },
+    "contact": {
+      "title": "Contatti",
+      "description": "Se hai domande sulle nostre policy, puoi contattarci:",
+      "email": "Email",
+      "address": "Indirizzo"
+    }
   }
 
 }

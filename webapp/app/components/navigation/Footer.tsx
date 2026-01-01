@@ -1,19 +1,19 @@
-﻿import Link from 'next/link';
+﻿// app/components/navigation/Footer.tsx - VERSIONE CORRETTA
+import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
 export default async function Footer({ locale }: { locale: string }) {
   const t = await getTranslations('Footer');
 
-  // Link Legali e Utili
+  // ⚠️ CORREZIONE: Percorsi aggiornati alle nuove route
   const legalLinks = [
-    { label: t('privacy_policy'), href: '/privacy' },
+    { label: t('privacy_policy'), href: '/privacy-policy' }, // Cambiato da '/privacy'
     { label: t('terms_of_service'), href: '/terms' },
     { label: t('accessibility_statement'), href: '/accessibility' },
-    { label: t('cookie_policy'), href: '/cookies' },
+    { label: t('cookie_policy'), href: '/cookie-policy' }, // Cambiato da '/cookies'
     { label: t('sitemap'), href: '/sitemap' },
   ];
 
-  // Link Social con icone (segnaposto)
   const socialLinks = [
     { name: 'LinkedIn', href: '#', icon: '' },
     { name: 'X (Twitter)', href: '#', icon: '' },
@@ -34,8 +34,9 @@ export default async function Footer({ locale }: { locale: string }) {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {legalLinks.map((link, index) => (
                 <li key={index} style={{ marginBottom: '0.5rem' }}>
+                  {/* ✅ CORREZIONE: RIMOSSO IL PREFISSO /${locale} */}
                   <Link 
-                    href={`/${locale}${link.href}`}
+                    href={link.href} // ⬅️ Next.js gestirà automaticamente la lingua
                     style={{ color: '#4B5563', textDecoration: 'none' }}
                     className="hover:text-blue-600 transition-colors"
                   >
@@ -46,9 +47,9 @@ export default async function Footer({ locale }: { locale: string }) {
             </ul>
           </div>
 
-          {/* Social Links */}
+          {/* Social Links - Rimane invariato */}
           <div>
-            <h3 style={{ fontWeight: 'bold', marginBottom: '1rem', color: '#1F2937' }}>{t('follow_us')}</h3> {/* CORRETTO: </h3> */}
+            <h3 style={{ fontWeight: 'bold', marginBottom: '1rem', color: '#1F2937' }}>{t('follow_us')}</h3>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               {socialLinks.map((social, index) => (
                 <a
@@ -75,11 +76,11 @@ export default async function Footer({ locale }: { locale: string }) {
             </div>
           </div>
 
-          {/* Newsletter Signup */}
+          {/* Newsletter Signup - Rimane invariato */}
           <div>
             <h3 style={{ fontWeight: 'bold', marginBottom: '1rem', color: '#1F2937' }}>
               {t('newsletter_signup')}
-            </h3> {/* CORRETTO: </h3> */}
+            </h3>
             <p style={{ marginBottom: '1rem', lineHeight: '1.5', color: '#4B5563' }}>
               {t('newsletter_description')}
             </p>
@@ -114,7 +115,7 @@ export default async function Footer({ locale }: { locale: string }) {
           </div>
         </div>
 
-        {/* Copyright e Informazioni */}
+        {/* Copyright e Informazioni - Rimane invariato */}
         <div style={{ borderTop: '1px solid #d1d5db', paddingTop: '1.5rem', textAlign: 'center' }}>
           <p style={{ margin: '0.5rem 0', fontSize: '0.8rem', color: '#4B5563' }}>
             {t('copyright', { year: new Date().getFullYear() })}

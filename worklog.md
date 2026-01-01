@@ -2344,3 +2344,18 @@ Stato: ✅ FUNZIONANTE"
 ### 📌 2025-12-31 | RF-67|"fix: correzione conformità Cookiebot GDPR - script primo nel head e modalità autoblocking attiva"
 
 ⏱ 1h
+
+### 📌 2026-01-01 | RF-68|"feat: implement privacy and cookie policy pages with internationalization
+
+- Add privacy-policy and cookie-policy pages with [locale] routing
+- Implement PolicyViewer component for markdown content rendering
+- Add API route (/api/policy/[locale]/[policyType]) for serving markdown content
+- Create content/policies/ directory with EN language templates
+- Update Footer.tsx with correct policy links
+- Add 'Policies' translation namespace to all language files (EN, IT, ES, DE, FR)
+- Ensure GDPR compliance with single contact section
+- Support 5 languages with automatic fallback to English
+
+Closes: #policy-implementation"
+
+⏱ 4h
