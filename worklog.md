@@ -2359,3 +2359,21 @@ Stato: ✅ FUNZIONANTE"
 Closes: #policy-implementation"
 
 ⏱ 4h
+
+### 📌 2026-01-01 | RF-69|"refactor: simplify footer - remove newsletter and non-essential links
+
+- Remove entire newsletter signup section (title, description, input, button)
+- Remove accessibility, terms of service, and sitemap links
+- Keep only essential GDPR/ePrivacy links: Privacy Policy and Cookie Policy
+- Maintain social links section for engagement
+- Cleaner, more focused footer design with better user experience
+- All translations remain for future use
+
+Footer now contains:
+  • Essential legal links (Privacy Policy, Cookie Policy)
+  • Social media links
+  • Copyright information
+
+
+
+⏱ 1h
