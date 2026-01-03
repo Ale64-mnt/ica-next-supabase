@@ -1,11 +1,36 @@
-﻿// app/components/navigation/Footer.tsx - VERSIONE FINALE
+﻿// app/components/navigation/Footer.tsx - VERSIONE MULTILINGUA DEFINITIVA
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 
 export default async function Footer({ locale }: { locale: string }) {
   const t = await getTranslations('Footer');
 
-  // ✅ Solo Privacy Policy e Cookie Policy (Nessun altro link)
+  // 🔥 MAPPA LOCALE PER JAVASCRIPT
+  // I tuoi codici ('it', 'en', etc.) → Codici JavaScript validi ('it-IT', 'en-US', etc.)
+  const getValidLocale = (code: string): string => {
+    const localeMap: Record<string, string> = {
+      'it': 'it-IT',    // Italiano (Italia)
+      'en': 'en-US',    // Inglese (Stati Uniti)
+      'es': 'es-ES',    // Spagnolo (Spagna)
+      'de': 'de-DE',    // Tedesco (Germania)
+      'fr': 'fr-FR',    // Francese (Francia)
+      'it-IT': 'it-IT', // Se arriva già formattato
+      'en-US': 'en-US',
+      'es-ES': 'es-ES',
+      'de-DE': 'de-DE',
+      'fr-FR': 'fr-FR'
+    };
+    
+    // 1. Prendi solo la parte lingua se c'è un trattino
+    const baseCode = code.includes('-') ? code.split('-')[0] : code;
+    
+    // 2. Ritorna la mappatura o default a inglese
+    return localeMap[baseCode] || 'en-US';
+  };
+
+  const validLocale = getValidLocale(locale);
+
+  // ✅ Solo Privacy Policy e Cookie Policy
   const legalLinks = [
     { label: t('privacy_policy'), href: '/privacy-policy' },
     { label: t('cookie_policy'), href: '/cookie-policy' }
@@ -30,7 +55,7 @@ export default async function Footer({ locale }: { locale: string }) {
     }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         
-        {/* ✅ Layout semplificato: solo 2 colonne */}
+        {/* ✅ Layout semplificato */}
         <div style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
@@ -38,7 +63,7 @@ export default async function Footer({ locale }: { locale: string }) {
           marginBottom: '2rem' 
         }}>
           
-          {/* ✅ Link Utili - Solo Privacy e Cookie Policy */}
+          {/* ✅ Link Utili */}
           <div>
             <h3 style={{ 
               fontWeight: 'bold', 
@@ -105,11 +130,9 @@ export default async function Footer({ locale }: { locale: string }) {
             </div>
           </div>
           
-          {/* ❌ Newsletter Signup - RIMOSSA COMPLETAMENTE */}
-          
         </div>
 
-        {/* ✅ Copyright e Informazioni */}
+        {/* ✅ Copyright - CON MAPPA LOCALE CORRETTA */}
         <div style={{ 
           borderTop: '1px solid #d1d5db', 
           paddingTop: '1.5rem', 
@@ -127,7 +150,8 @@ export default async function Footer({ locale }: { locale: string }) {
             fontSize: '0.8rem', 
             color: '#4B5563' 
           }}>
-            {t('last_updated')}: {new Date().toLocaleDateString(locale, { 
+            {/* 🔥 USA validLocale invece di locale */}
+            {t('last_updated')}: {new Date().toLocaleDateString(validLocale, { 
               year: 'numeric', 
               month: 'long', 
               day: 'numeric' 
