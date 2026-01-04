@@ -2387,4 +2387,14 @@ Footer now contains:
 
 ⏱ 1h
 
-### 📌 2026-01-03 | RF-71|"fix: resolve locale mapping in Footer and update dependencies
+### 📌 2026-01-04 | RF-71|"feat: aggiunto modulo Brevo multilingua con responsività
+
+- Creato componente BrevoFormEnhanced per gestione iframe responsivo
+- Supporto per 5 lingue (IT, EN, FR, DE, ES) con URL separati
+- Dimensioni ottimali: 810×594px desktop, responsive per mobile/tablet
+- Skeleton loading migliorato
+- Corretta gestione altezza contenitore senza spazio sprecato
+- Integrato nella pagina /[locale]/education
+- Fix bug dimensioni eccessive contenitore esterno"
+
+⏱ 2h
