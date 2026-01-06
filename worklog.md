@@ -2398,3 +2398,13 @@ Footer now contains:
 - Fix bug dimensioni eccessive contenitore esterno"
 
 ⏱ 2h
+
+### 📌 2026-01-06 | RF-72|"fix: corretta implementazione Cookiebot con script statico in head
+
+- Rimosso componente client CookieBotScript.tsx che causava hydration errors
+- Inserito script Cookiebot direttamente in <head> di app/layout.tsx
+- Configurato data-blockingmode='auto' per compliance GDPR
+- Backup del vecchio componente salvato come CookieBotScriptbackUp.tsx
+- Rimossa copia di backup non necessaria del layout"
+
+⏱ 2h
