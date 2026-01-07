@@ -454,6 +454,11 @@
       "email": "E-mail",
       "address": "Adresse"
     }
-  }
+  },
+ "NewsletterConfirmed": {
+  "title": "Confirmation d'Inscription",
+  "description": "Page de confirmation d'abonnement à la newsletter",
+  "confirmationMessage": "Merci pour votre inscription ! Votre abonnement a été confirmé avec succès."
+}
     
   }

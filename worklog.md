@@ -2408,3 +2408,21 @@ Footer now contains:
 - Rimossa copia di backup non necessaria del layout"
 
 ⏱ 2h
+
+### 📌 2026-01-06 | RF-72|"fix: "feat: aggiunte pagine newsletter-confirmed multilingua e correzioni Cookiebot
+
+- Creato modulo newsletter-confirmed con route dinamiche [locale]/newsletter-confirmed/
+- Aggiunte traduzioni per tutte e 5 le lingue (it, en, es, fr, de)
+- Rimosso vecchio componente CookieBotScriptbackUp.tsx
+- Corretto layout.tsx per gestione Cookiebot multilingua
+- Aggiornato componente BrevoFormEnhanced per integrazione con nuove pagine
+- Rimosso middleware.ts obsoleto
+
+BREVO: ora disponibili URL per conferma iscrizioni:
+- https://www.eduethica.eu/it/newsletter-confirmed
+- https://www.eduethica.eu/en/newsletter-confirmed  
+- https://www.eduethica.eu/es/newsletter-confirmed
+- https://www.eduethica.eu/fr/newsletter-confirmed
+- https://www.eduethica.eu/de/newsletter-confirmed"
+
+⏱ 2h

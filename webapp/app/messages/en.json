@@ -452,5 +452,10 @@
       "email": "Email",
       "address": "Address"
     }
-  }
+  },
+  "NewsletterConfirmed": {
+  "title": "Subscription Confirmed",
+  "description": "Newsletter subscription confirmation page",
+  "confirmationMessage": "Thank you for subscribing! Your subscription has been successfully confirmed."
+}
     }

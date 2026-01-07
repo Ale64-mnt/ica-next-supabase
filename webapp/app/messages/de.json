@@ -452,7 +452,12 @@
       "email": "E-Mail",
       "address": "Adresse"
     }
-  }
+  },
+  "NewsletterConfirmed": {
+  "title": "Anmeldung Bestätigt",
+  "description": "Newsletter-Anmeldebestätigungsseite",
+  "confirmationMessage": "Vielen Dank für deine Anmeldung! Deine Anmeldung wurde erfolgreich bestätigt."
+}
   
 
   }

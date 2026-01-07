@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="it">
+    <html lang="en">
       <head>
         {/* 🔥 SOLUZIONE: Inserisci direttamente lo script Cookiebot */}
         {/* NESSUN COMPONENTE REACT, NESSUN "use client" */}
@@ -41,7 +41,7 @@ export default function RootLayout({
           src="https://consent.cookiebot.com/uc.js"
           data-cbid="a6a8c0e0-b4e4-498d-8fd9-f8f2b24bd779"
           data-blockingmode="auto"
-          data-culture="IT"
+          //* data-culture="EN"
           async
         />
       </head>

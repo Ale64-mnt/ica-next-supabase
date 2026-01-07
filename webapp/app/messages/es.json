@@ -451,5 +451,10 @@
       "email": "Correo electrónico",
       "address": "Dirección"
     }
-  }
+  },
+  "NewsletterConfirmed": {
+  "title": "Confirmación de Suscripción",
+  "description": "Página de confirmación de suscripción al boletín",
+  "confirmationMessage": "¡Gracias por suscribirte! Tu suscripción se ha confirmado correctamente."
+}
   }

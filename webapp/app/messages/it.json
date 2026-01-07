@@ -671,6 +671,10 @@
       "email": "Email",
       "address": "Indirizzo"
     }
-  }
-
+  },
+  "NewsletterConfirmed": {
+  "title": "Conferma Iscrizione",
+  "description": "Pagina di conferma iscrizione newsletter",
+  "confirmationMessage": "Grazie per esserti iscritto! La tua iscrizione è stata confermata correttamente."
+}
 }
