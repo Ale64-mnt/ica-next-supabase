@@ -43,19 +43,19 @@ IMAGE_ALT_TEXTS = {
 # Dati per ogni news in diverse lingue
 NEWS_DATA = [
         
+   
     # Italiano
     {
-        "title": "Spear phishing con riferimenti al settore sanitario",
-        "slug": "spear-phishing-riferimenti-settore-sanitario",
-        "excerpt": "Il CSIRT Italia segnala campagne di spear phishing mirate che sfruttano riferimenti credibili al settore sanitario per indurre destinatari specifici a fornire credenziali o dati sensibili.",
-        "body_md": "**Fonte:** Agenzia per la Cybersicurezza Nazionale (ACN) – acn.gov.it\n"
-                   "**Data di pubblicazione:** 27 dicembre 2025, ore 17:50\n"
-                   "**Link ufficiale:** https://www.acn.gov.it/portale/web/guest/-/spear-phishing-recanti-riferimenti-al-settore-sanitario\n\n"
-                   "**Riassunto:** Il CSIRT Italia ha pubblicato un alert relativo a campagne di spear phishing mirate con riferimenti al settore sanitario. Gli attacchi sono progettati per colpire destinatari specifici attraverso messaggi personalizzati, con l’obiettivo di ottenere l’accesso a dati sensibili o credenziali.\n\n"
-                   "**Modalità operative:** I truffatori inviano email o messaggi che sembrano provenire da enti sanitari o da fonti legittime del settore, includendo riferimenti plausibili come nomi di cliniche, codici di prenotazione o comunicazioni interne. Lo scopo è indurre la vittima a cliccare su link malevoli che possono installare malware oppure a fornire dati personali e di accesso, ad esempio fingendo un aggiornamento di sistema o una richiesta urgente di verifica dell’identità.",
+        "title": "Nuovi tentativi di truffa tramite false comunicazioni su dichiarazioni criptovalute",
+        "slug": "nuovi-tentativi-truffa-dichiarazioni-criptovalute-phishing",
+        "excerpt": "L’Agenzia delle Entrate avverte su nuove e-mail di phishing che imitano comunicazioni ufficiali su dichiarazioni criptovalute per sottrarre dati personali o bancari.",
+        "body_md": "**Fonte:** Agenzia delle Entrate – agenziaentrate.gov.it\n"
+                   "**Data di pubblicazione:** 7 gennaio 2026\n"
+                   "**Link ufficiale:** https://www.agenziaentrate.gov.it/portale/focus-sul-phishing/segnalazioni-e-approfondimenti\n\n"
+                   "**Riassunto:** L’Agenzia segnala nuovi tentativi di phishing che usano e mail con pretesti di presunte dichiarazioni sulle criptovalute per indurre i destinatari a fornire dati personali o bancari. I messaggi sono contraffatti e non provengono dall’Agenzia, ma cercano di imitare comunicazioni ufficiali.\n\n"
+                   "**Meccanismo pratico della truffa:** i truffatori inviano e mail con oggetti come “Aggiorna la tua dichiarazione criptovalute” che includono un link verso un sito fraudolento. Cliccando sul link, la vittima viene reindirizzata a un modulo che richiede credenziali o dettagli finanziari che poi vengono usati per furto di identità o accesso non autorizzato ai conti. Nell’articolo viene riportato un esempio concreto.",
         "locale": "it",
     },
-
 
 
 ]

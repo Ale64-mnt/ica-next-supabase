@@ -2409,7 +2409,7 @@ Footer now contains:
 
 ⏱ 2h
 
-### 📌 2026-01-06 | RF-72|"fix: "feat: aggiunte pagine newsletter-confirmed multilingua e correzioni Cookiebot
+### 📌 2026-01-06 | RF-73|"fix: "feat: aggiunte pagine newsletter-confirmed multilingua e correzioni Cookiebot
 
 - Creato modulo newsletter-confirmed con route dinamiche [locale]/newsletter-confirmed/
 - Aggiunte traduzioni per tutte e 5 le lingue (it, en, es, fr, de)
@@ -2426,3 +2426,26 @@ BREVO: ora disponibili URL per conferma iscrizioni:
 - https://www.eduethica.eu/de/newsletter-confirmed"
 
 ⏱ 2h
+
+### 📌 2026-01-09 | RF-74|feat: integrazione modulo Brevo nella pagina contatti
+
+- Creato componente BrevoContactForm.tsx per gestione moduli multilingua
+- Rimosso vecchi componenti ContactForm.tsx e ContactInfo.tsx (non più necessari)
+- Aggiornata pagina contatti (/contact) con integrazione responsive Brevo
+- Ottimizzata pagina newsletter-confirmed con layout migliorato
+- Script Tools/insert_all_categories_alert.py aggiornato
+
+BREVO: implementato iframe responsive per moduli multilingua:
+- IT: https://www.eduethica.eu/it/contact
+- EN: https://www.eduethica.eu/en/contact
+- FR: https://www.eduethica.eu/fr/contact  
+- DE: https://www.eduethica.eu/de/contact
+- ES: https://www.eduethica.eu/es/contact
+
+Caratteristiche modulo:
+- Design responsive (mobile/desktop)
+- Altezza fissa 650px per visibilità completa
+- Nessun scroll interno
+- Integrazione nativa con sistema Brevo"
+
+⏱ 3h
