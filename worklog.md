@@ -2449,3 +2449,25 @@ Caratteristiche modulo:
 - Integrazione nativa con sistema Brevo"
 
 ⏱ 3h
+
+### 📌 2026-01-10 | RF-75|"feat: aggiunte traduzioni complete privacy policy per tutte le lingue
+
+- Creato sistema completo di gestione policy con markdown multilingua
+- Aggiunte traduzioni privacy policy per tutte e 5 le lingue:
+  • Italiano (it/privacy.md)
+  • Inglese (en/privacy.md) 
+  • Francese (fr/privacy.md)
+  • Tedesco (de/privacy.md)
+  • Spagnolo (es/privacy.md)
+- API route configurata per servire contenuti markdown dinamici
+- Componente PolicyViewer integrato con fallback automatico
+- Script Tools aggiornato per coerenza
+
+Sistema ora completo per:
+- /it/privacy-policy
+- /en/privacy-policy
+- /fr/privacy-policy
+- /de/privacy-policy
+- /es/privacy-policy"
+
+⏱ 3h

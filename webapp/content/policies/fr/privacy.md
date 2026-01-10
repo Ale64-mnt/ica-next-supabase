@@ -1,187 +1,183 @@
-# Politique de Confidentialité
+# Politique de confidentialité
 
-**Dernière mise à jour :** 1 janvier 2026
+**Dernière mise à jour :** 10 janvier 2026
 
-La présente Politique de Confidentialité décrit les politiques et procédures relatives à la collecte, à l’utilisation et à la divulgation des informations lorsque vous utilisez le Site Web, ainsi que vos droits en matière de protection des données personnelles et la manière dont la loi vous protège.
+La présente Politique de confidentialité décrit la manière dont **Institute for Conscious Action – International Academy** (le « Responsable », « Nous ») collecte, utilise et protège les Données à caractère personnel des utilisateurs qui visitent et utilisent le Site.
 
-Le Site Web a une finalité exclusivement informative et **ne collecte pas activement de Données Personnelles** auprès des utilisateurs.
+Le Site a une finalité principalement **informative et éducative**.  
+Les Données à caractère personnel sont collectées **uniquement sur une base volontaire**, lorsque l’utilisateur choisit de les fournir via des formulaires spécifiques.
 
-En utilisant le Site Web, vous reconnaissez avoir pris connaissance de la présente Politique de Confidentialité.
+En utilisant le Site, vous reconnaissez avoir pris connaissance de la présente Politique de confidentialité.
 
-Pour plus d’informations sur l’utilisation des cookies et la gestion du consentement, veuillez consulter notre **Politique relative aux Cookies**.
+Pour plus d’informations sur l’utilisation des Cookies et la gestion du consentement, veuillez consulter notre **Politique relative aux Cookies**.
 
 ---
 
-## Interprétation et Définitions
+## Interprétation et définitions
 
 ### Interprétation
 
-Les termes commençant par une lettre majuscule ont la signification définie dans les dispositions suivantes. Les définitions ont la même signification qu’elles soient utilisées au singulier ou au pluriel.
+Les termes commençant par une majuscule ont la signification définie ci-dessous et s’appliquent indifféremment au singulier et au pluriel.
 
 ### Définitions
 
-Aux fins de la présente Politique de Confidentialité :
+Aux fins de la présente Politique de confidentialité :
 
-**Responsable du traitement** (également désigné comme « l’Entreprise », « Nous », « Notre » ou « Nos »)  
-désigne **Institute for Conscious Action**, Via Olanda 91, 30016 Jesolo (VE), Italie.  
-Aux fins du RGPD, l’Entreprise est le Responsable du traitement.
+- **Responsable du traitement**  
+  désigne **Institute for Conscious Action**, Via Olanda 91, 30016 Jesolo (VE), Italie.  
+  Au sens du RGPD, l’organisation est le Responsable du traitement.
 
-**Pays** : Italie.
+- **Pays** : Italie.
 
-**RGPD** : Règlement (UE) 2016/679 (Règlement Général sur la Protection des Données).
+- **RGPD** : Règlement (UE) 2016/679 (Règlement général sur la protection des données).
 
-**Données Personnelles** : toute information se rapportant à une personne physique identifiée ou identifiable, telle que définie par le RGPD.
+- **Données à caractère personnel** : toute information se rapportant à une personne physique identifiée ou identifiable.
 
-**Cookies** : petits fichiers texte stockés sur l’appareil de l’utilisateur par un site web.
+- **Cookies** : petits fichiers texte stockés sur le dispositif de l’utilisateur par un site web.
 
-**Appareil** : tout appareil permettant d’accéder au Site Web, tel qu’un ordinateur, un smartphone ou une tablette.
+- **Appareil** : tout dispositif permettant d’accéder au Site, tel qu’un ordinateur, un smartphone ou une tablette.
 
-**Site Web** : Institute for Conscious Action – International Academy, accessible à l’adresse  
-https://www.eduethica.eu
+- **Site** : Institute for Conscious Action – International Academy, accessible à l’adresse  
+  https://www.eduethica.eu
 
-**Utilisateur** : la personne physique qui accède au Site Web ou l’utilise.  
-Conformément au RGPD, l’Utilisateur est la **Personne Concernée**.
+- **Utilisateur** : la personne physique qui accède au Site ou l’utilise.  
+  Au sens du RGPD, l’Utilisateur est la **Personne concernée**.
 
 ---
 
-## Collecte et utilisation des Données Personnelles
+## Collecte et utilisation des Données à caractère personnel
 
 ### Types de Données collectées
 
-#### Données Personnelles
+#### Données à caractère personnel
 
-Le Site Web **ne collecte pas directement de Données Personnelles** auprès des utilisateurs.
+Le Site collecte des Données à caractère personnel **uniquement lorsque l’Utilisateur les fournit volontairement**, par exemple via :
 
-Le Site Web ne comporte pas :
-- de formulaires de contact,
-- de systèmes d’inscription,
-- de newsletters,
-- de comptes utilisateurs,
-- de sections de commentaires ou de fonctionnalités interactives nécessitant la fourniture de Données Personnelles.
+- des formulaires de contact ;
+- des formulaires d’inscription pour recevoir des mises à jour ou des notifications (newsletter).
 
-En conséquence, **aucune donnée n’est demandée ni collectée**, telle que :
-- adresse e-mail,
-- nom et prénom.
+Les Données à caractère personnel collectées peuvent inclure :
+
+- l’adresse e-mail ;
+- le prénom ;
+- le contenu du message envoyé par l’utilisateur.
+
+Aucun compte utilisateur, section de commentaires publics ou zone interactive ouverte au public n’est disponible sur le Site.
+
+---
 
 #### Données d’utilisation
 
-Le Site Web **ne collecte pas activement de Données d’utilisation** à des fins d’analyse, de profilage ou de suivi.
+Le Site **ne collecte pas activement de Données d’utilisation** à des fins d’analyse, de statistiques ou de profilage.
 
-Certaines données techniques (par exemple adresse IP, informations sur le navigateur, horodatages ou journaux serveur) peuvent être traitées **automatiquement par le fournisseur d’hébergement**, exclusivement à des fins de sécurité, de fonctionnement et de maintenance du Site Web.
+Les données techniques (par exemple l’adresse IP, les journaux système, les informations relatives au navigateur) peuvent être traitées **automatiquement par le fournisseur d’hébergement** uniquement à des fins de sécurité, de fonctionnement et de maintenance.
 
-Ces données **ne sont pas utilisées par le Responsable du traitement** pour identifier les utilisateurs, surveiller leur navigation ou effectuer des activités de profilage.
+Le Responsable n’utilise pas ces données pour identifier les utilisateurs ni pour surveiller leur comportement de navigation.
+
+---
 
 #### Technologies de suivi et Cookies
 
-Le Site Web utilise une plateforme de gestion du consentement (**Cookiebot by Usercentrics**) pour gérer les cookies et technologies similaires.
+Le Site utilise une plateforme de gestion du consentement (**Cookiebot by Usercentrics**) pour la gestion des Cookies et des préférences des utilisateurs.
 
-Les cookies utilisés sur le Site Web sont limités à :
-- **cookies strictement nécessaires**, indispensables au bon fonctionnement et à la sécurité du Site Web ;
-- **cookies de préférence** (par exemple paramètres de langue), qui ne peuvent être activés qu’après le consentement explicite de l’utilisateur via le bandeau Cookiebot, le cas échéant.
+Le Site utilise :
 
-Aucun cookie d’analyse, de marketing ou de profilage n’est utilisé, sauf activation explicite par l’utilisateur via le bandeau de consentement.
+- des **Cookies strictement nécessaires**, indispensables au bon fonctionnement et à la sécurité du Site ;
+- des **Cookies de préférence** (par exemple les paramètres linguistiques), activés uniquement avec le consentement de l’Utilisateur.
 
-L’utilisateur peut gérer ou retirer son consentement à tout moment via les contrôles Cookiebot disponibles sur le Site Web (par exemple « Gérer les cookies »).
+Aucun Cookie d’analyse, de marketing, de publicité ou de profilage n’est utilisé, sauf activation explicite par l’Utilisateur via le bandeau de consentement Cookiebot.
 
----
-
-## Utilisation des Données Personnelles
-
-Le Site Web **n’utilise pas de Données Personnelles** pour :
-- l’inscription ou la gestion de comptes,
-- des finalités contractuelles,
-- le marketing ou la promotion,
-- des analyses statistiques,
-- le profilage,
-- le contact direct avec les utilisateurs.
-
-Aucune prise de décision automatisée ni activité de profilage n’est effectuée.
+L’Utilisateur peut gérer ou retirer son consentement à tout moment via l’option « Gérer les cookies » disponible sur le Site.
 
 ---
 
-## Partage des Données Personnelles
+## Finalités et base juridique du traitement
 
-Le Responsable du traitement **ne partage pas de Données Personnelles** avec des tiers, prestataires de services, partenaires commerciaux ou autres utilisateurs, étant donné que le Site Web ne collecte pas de Données Personnelles.
+Les Données à caractère personnel sont traitées exclusivement aux fins suivantes :
 
-Les Données Personnelles peuvent être divulguées uniquement si la loi l’exige ou sur demande valable d’une autorité publique compétente.
+- répondre aux demandes envoyées via le formulaire de contact ;
+- envoyer des communications informatives ou des mises à jour **uniquement à la demande de l’Utilisateur** ;
+- gérer les inscriptions à la newsletter.
 
----
+La base juridique du traitement est :
 
-## Conservation des Données Personnelles
+- **le consentement de l’Utilisateur**, donné librement, spécifiquement, de manière éclairée et non équivoque.
 
-Le Site Web **ne conserve pas de Données Personnelles** des utilisateurs.
-
-Les éventuels journaux techniques générés par le fonctionnement normal du Site Web sont traités exclusivement par le fournisseur d’hébergement et conservés uniquement pendant la durée strictement nécessaire, conformément à la législation applicable.
-
-Le Responsable du traitement n’accède pas à ces données et ne les utilise pas à des fins d’analyse ou de profilage.
+Le consentement peut être retiré à tout moment.
 
 ---
 
-## Transfert des Données Personnelles
+## Prestataires de services (Sous-traitants)
 
-Le Site Web n’effectue aucun transfert de Données Personnelles vers d’autres pays ou juridictions.
+Les Données à caractère personnel peuvent être traitées par des prestataires externes agissant en tant que **Sous-traitants**, notamment :
 
-Les données techniques pouvant être traitées par le fournisseur d’hébergement peuvent être stockées sur des serveurs situés au sein ou en dehors de l’Union européenne, conformément aux garanties prévues par la réglementation applicable en matière de protection des données.
+- **Brevo (Sendinblue)** – gestion des formulaires et des communications par e-mail ;
+- **Google reCAPTCHA** – protection des formulaires contre le spam et les abus ;
+- **Cookiebot by Usercentrics** – gestion du consentement aux Cookies.
 
----
-
-## Suppression des Données Personnelles
-
-Étant donné que le Site Web ne collecte ni ne conserve de Données Personnelles, il n’existe aucun compte ou profil utilisateur à supprimer.
-
-Si vous estimez que des Données Personnelles ont été transmises par erreur au Responsable du traitement, vous pouvez nous contacter à l’adresse **privacy@eduethica.eu** afin que des vérifications appropriées soient effectuées.
+Ces prestataires traitent les données conformément à la réglementation applicable et à des accords contractuels conformes au RGPD.
 
 ---
 
-## Sécurité des Données Personnelles
+## Conservation des Données à caractère personnel
 
-La sécurité des Données Personnelles est importante pour nous ; toutefois, aucune méthode de transmission ou de stockage électronique n’est totalement sûre. Nous mettons en œuvre des mesures techniques et organisationnelles appropriées, sans pouvoir garantir une sécurité absolue.
+Les Données à caractère personnel sont conservées **uniquement pendant la durée nécessaire** à la réalisation des finalités pour lesquelles elles ont été collectées ou jusqu’au retrait du consentement par l’Utilisateur.
 
 ---
 
-## Droits de la Personne Concernée (RGPD)
+## Transfert des Données à caractère personnel
 
-En tant que Personne Concernée, vous avez le droit :
-- d’accéder à vos Données Personnelles,
-- de demander leur rectification ou leur suppression,
-- de vous opposer au traitement,
-- de retirer votre consentement, le cas échéant,
-- d’introduire une réclamation auprès de l’autorité de contrôle compétente.
+Le Responsable ne transfère pas directement les Données à caractère personnel en dehors de l’Union européenne.
 
-Vous pouvez exercer vos droits en nous contactant à l’adresse **privacy@eduethica.eu**.
+Certains prestataires peuvent traiter les données sur des serveurs situés dans ou hors de l’UE, dans le respect des garanties prévues par le RGPD (par exemple, les Clauses contractuelles types).
+
+---
+
+## Droits de la Personne concernée
+
+En tant que Personne concernée, vous disposez des droits suivants :
+
+- accéder à vos Données à caractère personnel ;
+- demander leur rectification ou leur suppression ;
+- limiter ou vous opposer au traitement ;
+- retirer votre consentement à tout moment ;
+- introduire une réclamation auprès d’une autorité de contrôle compétente.
+
+Vous pouvez exercer vos droits en contactant le Responsable.
 
 ---
 
 ## Protection des mineurs
 
-Le Site Web ne collecte pas activement de Données Personnelles, y compris celles des mineurs.
+Le Site ne s’adresse pas spécifiquement aux mineurs et ne collecte pas sciemment de Données à caractère personnel concernant des mineurs.
 
-Les contenus sont de nature informative et éducative et ne comprennent pas de fonctionnalités nécessitant la fourniture de Données Personnelles.
-
-Aucune activité de marketing ou de profilage à destination des mineurs n’est effectuée.
+Les contenus sont de nature informative et éducative, et aucune activité de profilage ou de marketing ciblant les mineurs n’est réalisée.
 
 ---
 
-## Liens vers d’autres sites web
+## Sécurité des données
 
-Le Site Web peut contenir des liens vers des sites web tiers. Nous ne sommes pas responsables de leur contenu ni de leurs politiques de confidentialité et vous recommandons de consulter leurs politiques respectives.
+Le Responsable met en œuvre des mesures techniques et organisationnelles appropriées afin de protéger les Données à caractère personnel.  
+Toutefois, aucun mode de transmission ou de stockage électronique ne peut garantir une sécurité absolue.
 
 ---
 
-## Modifications de la présente Politique de Confidentialité
+## Liens vers des sites tiers
 
-La présente Politique de Confidentialité peut être mise à jour périodiquement.  
-La date de la dernière mise à jour sera toujours indiquée au début du document.
+Le Site peut contenir des liens vers des sites web de tiers.  
+Le Responsable n’est pas responsable des contenus ni des pratiques de confidentialité de ces sites et recommande de consulter leurs politiques de confidentialité respectives.
+
+---
+
+## Modifications de la présente Politique de confidentialité
+
+La présente Politique de confidentialité peut être mise à jour périodiquement.  
+La date de la dernière mise à jour est toujours indiquée en haut du document.
 
 ---
 
 ## Contact
 
-Pour toute question concernant la présente Politique de Confidentialité, vous pouvez nous contacter :
+Pour toute question relative à la présente Politique de confidentialité, vous pouvez nous contacter :
 
 - **E-mail :** privacy@eduethica.eu
-
----
-
-*Cette traduction française est fournie à titre informatif uniquement.  
-En cas de divergence, la version anglaise prévaut.*

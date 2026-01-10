@@ -1,187 +1,183 @@
 # Datenschutzerklärung
 
-**Letzte Aktualisierung:** 1. Januar 2026
+**Letzte Aktualisierung:** 10. Januar 2026
 
-Diese Datenschutzerklärung beschreibt die Richtlinien und Verfahren zur Erhebung, Nutzung und Offenlegung von Informationen bei der Nutzung der Website sowie Ihre Datenschutzrechte und wie das Gesetz Sie schützt.
+Diese Datenschutzerklärung beschreibt, wie **Institute for Conscious Action – International Academy** (der „Verantwortliche“, „wir“) personenbezogene Daten von Nutzern erhebt, verwendet und schützt, die die Website besuchen und nutzen.
 
-Die Website dient ausschließlich Informationszwecken und **erhebt keine personenbezogenen Daten aktiv** von Nutzern.
+Die Website ist überwiegend **informativ und bildend**.  
+Personenbezogene Daten werden **ausschließlich auf freiwilliger Basis** erhoben, wenn Nutzer diese über bestimmte Formulare bereitstellen.
 
 Durch die Nutzung der Website nehmen Sie diese Datenschutzerklärung zur Kenntnis.
 
-Informationen zur Verwendung von Cookies und zur Verwaltung der Einwilligung finden Sie in unserer **Cookie-Richtlinie**.
+Informationen zur Verwendung von Cookies und zur Verwaltung Ihrer Einwilligung finden Sie in unserer **Cookie-Richtlinie**.
 
 ---
 
-## Auslegung und Definitionen
+## Auslegung und Begriffsbestimmungen
 
 ### Auslegung
 
-Begriffe, die mit einem Großbuchstaben beginnen, haben die in den folgenden Bestimmungen definierte Bedeutung. Die Definitionen gelten gleichermaßen im Singular und im Plural.
+Begriffe mit großem Anfangsbuchstaben haben die nachstehend festgelegte Bedeutung und gelten gleichermaßen in Singular und Plural.
 
-### Definitionen
+### Begriffsbestimmungen
 
 Im Sinne dieser Datenschutzerklärung:
 
-**Verantwortlicher** (auch „das Unternehmen“, „wir“, „uns“ oder „unser“)  
-bezeichnet **Institute for Conscious Action**, Via Olanda 91, 30016 Jesolo (VE), Italien.  
-Im Sinne der DSGVO ist das Unternehmen der Verantwortliche.
+- **Verantwortlicher**  
+  ist **Institute for Conscious Action**, Via Olanda 91, 30016 Jesolo (VE), Italien.  
+  Im Sinne der DSGVO ist die Organisation der Verantwortliche für die Verarbeitung.
 
-**Land**: Italien.
+- **Land**: Italien.
 
-**DSGVO**: Verordnung (EU) 2016/679 (Datenschutz-Grundverordnung).
+- **DSGVO**: Verordnung (EU) 2016/679 (Datenschutz-Grundverordnung).
 
-**Personenbezogene Daten**: alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen, wie in der DSGVO definiert.
+- **Personenbezogene Daten**: alle Informationen, die sich auf eine identifizierte oder identifizierbare natürliche Person beziehen.
 
-**Cookies**: kleine Textdateien, die von einer Website auf dem Gerät des Nutzers gespeichert werden.
+- **Cookies**: kleine Textdateien, die von einer Website auf dem Endgerät des Nutzers gespeichert werden.
 
-**Gerät**: jedes Gerät, das den Zugriff auf die Website ermöglicht, z. B. ein Computer, Smartphone oder Tablet.
+- **Gerät**: jedes Gerät, das den Zugriff auf die Website ermöglicht, z. B. Computer, Smartphone oder Tablet.
 
-**Website**: Institute for Conscious Action – International Academy, erreichbar unter  
-https://www.eduethica.eu
+- **Website**: Institute for Conscious Action – International Academy, erreichbar unter  
+  https://www.eduethica.eu
 
-**Nutzer**: die natürliche Person, die auf die Website zugreift oder sie nutzt.  
-Gemäß DSGVO ist der Nutzer die **betroffene Person**.
+- **Nutzer**: die natürliche Person, die auf die Website zugreift oder sie nutzt.  
+  Im Sinne der DSGVO ist der Nutzer die **betroffene Person**.
 
 ---
 
-## Erhebung und Nutzung personenbezogener Daten
+## Erhebung und Verwendung personenbezogener Daten
 
 ### Arten der erhobenen Daten
 
 #### Personenbezogene Daten
 
-Die Website **erhebt keine personenbezogenen Daten direkt** von Nutzern.
+Die Website erhebt personenbezogene Daten **nur dann, wenn Sie diese freiwillig angeben**, z. B. über:
 
-Auf der Website gibt es keine:
-- Kontaktformulare,
-- Registrierungssysteme,
-- Newsletter,
-- Nutzerkonten,
-- Kommentarbereiche oder interaktiven Funktionen, die die Eingabe personenbezogener Daten erfordern.
+- Kontaktformulare;
+- Anmeldeformulare für Updates oder Benachrichtigungen (Newsletter).
 
-Daher werden **keine Daten angefordert oder erhoben**, wie z. B.:
-- E-Mail-Adresse,
-- Vor- und Nachname.
+Die erhobenen personenbezogenen Daten können umfassen:
+
+- E-Mail-Adresse;
+- Vorname;
+- Inhalt der vom Nutzer übermittelten Nachricht.
+
+Es gibt keine Benutzerkonten, öffentlichen Kommentarfunktionen oder frei zugänglichen interaktiven Bereiche.
+
+---
 
 #### Nutzungsdaten
 
-Die Website **erhebt keine Nutzungsdaten aktiv** zu Analyse-, Profiling- oder Trackingzwecken.
+Die Website erhebt **keine Nutzungsdaten aktiv** zu Analyse-, Statistik- oder Profilingzwecken.
 
-Bestimmte technische Daten (z. B. IP-Adresse, Browserinformationen, Zeitstempel oder Server-Logs) können **automatisch durch den Hosting-Anbieter** ausschließlich zu Sicherheits-, Betriebs- und Wartungszwecken verarbeitet werden.
+Technische Daten (z. B. IP-Adresse, Systemprotokolle, Browserinformationen) können **automatisch vom Hosting-Anbieter** ausschließlich zu Sicherheits-, Betriebs- und Wartungszwecken verarbeitet werden.
 
-Diese Daten werden **nicht vom Verantwortlichen** verwendet, um Nutzer zu identifizieren, das Surfverhalten zu überwachen oder Profiling durchzuführen.
+Der Verantwortliche verwendet diese Daten nicht zur Identifizierung von Nutzern oder zur Überwachung ihres Nutzungsverhaltens.
+
+---
 
 #### Tracking-Technologien und Cookies
 
-Die Website verwendet eine Plattform zur Einwilligungsverwaltung (**Cookiebot by Usercentrics**) zur Verwaltung von Cookies und ähnlichen Technologien.
+Die Website verwendet eine Plattform zur Verwaltung von Einwilligungen (**Cookiebot by Usercentrics**) zur Verwaltung von Cookies und Nutzereinstellungen.
 
-Die auf der Website verwendeten Cookies beschränken sich auf:
-- **unbedingt erforderliche Cookies**, die für den ordnungsgemäßen Betrieb und die Sicherheit der Website notwendig sind;
-- **Präferenz-Cookies** (z. B. Spracheinstellungen), die – sofern zutreffend – nur nach ausdrücklicher Einwilligung des Nutzers über das Cookiebot-Banner aktiviert werden.
+Verwendet werden:
 
-Analyse-, Marketing- oder Profiling-Cookies werden nicht verwendet, es sei denn, der Nutzer aktiviert sie ausdrücklich über das Einwilligungsbanner.
+- **Unbedingt erforderliche Cookies**, die für den ordnungsgemäßen Betrieb und die Sicherheit der Website notwendig sind;
+- **Präferenz-Cookies** (z. B. Spracheinstellungen), die nur mit Einwilligung des Nutzers aktiviert werden.
 
-Der Nutzer kann seine Einwilligung jederzeit über die auf der Website verfügbaren Cookiebot-Steuerelemente (z. B. „Cookies verwalten“) verwalten oder widerrufen.
+Analyse-, Marketing-, Werbe- oder Profiling-Cookies werden nicht verwendet, sofern sie nicht ausdrücklich vom Nutzer über das Cookiebot-Banner aktiviert werden.
 
----
-
-## Nutzung personenbezogener Daten
-
-Die Website **verwendet keine personenbezogenen Daten** für:
-- Registrierung oder Kontoverwaltung,
-- vertragliche Zwecke,
-- Marketing oder Werbung,
-- statistische Analysen,
-- Profiling,
-- direkten Kontakt mit Nutzern.
-
-Es finden keine automatisierten Entscheidungsfindungen oder Profiling-Aktivitäten statt.
+Die Einwilligung kann jederzeit über die Option „Cookies verwalten“ auf der Website geändert oder widerrufen werden.
 
 ---
 
-## Weitergabe personenbezogener Daten
+## Zwecke und Rechtsgrundlage der Verarbeitung
 
-Der Verantwortliche **gibt keine personenbezogenen Daten** an Dritte, Dienstleister, Geschäftspartner oder andere Nutzer weiter, da über die Website keine personenbezogenen Daten erhoben werden.
+Personenbezogene Daten werden ausschließlich zu folgenden Zwecken verarbeitet:
 
-Eine Offenlegung personenbezogener Daten erfolgt nur, wenn dies gesetzlich vorgeschrieben ist oder auf eine rechtmäßige Anfrage einer zuständigen Behörde hin.
+- Beantwortung von Anfragen über das Kontaktformular;
+- Versand von Informationen oder Updates **nur auf ausdrücklichen Wunsch des Nutzers**;
+- Verwaltung von Newsletter-Anmeldungen.
+
+Die Rechtsgrundlage der Verarbeitung ist:
+
+- **die Einwilligung des Nutzers**, die freiwillig, spezifisch, informiert und eindeutig erteilt wird.
+
+Die Einwilligung kann jederzeit widerrufen werden.
 
 ---
 
-## Speicherung personenbezogener Daten
+## Dienstleister (Auftragsverarbeiter)
 
-Die Website **speichert keine personenbezogenen Daten** von Nutzern.
+Personenbezogene Daten können von externen Dienstleistern verarbeitet werden, die als **Auftragsverarbeiter** tätig sind, darunter:
 
-Etwaige technische Protokolle, die durch den normalen Betrieb der Website entstehen, werden ausschließlich vom Hosting-Anbieter verarbeitet und nur so lange gespeichert, wie es nach geltendem Recht erforderlich ist.
+- **Brevo (Sendinblue)** – Verwaltung von Formularen und E-Mail-Kommunikation;
+- **Google reCAPTCHA** – Schutz der Formulare vor Spam und Missbrauch;
+- **Cookiebot by Usercentrics** – Verwaltung der Cookie-Einwilligungen.
 
-Der Verantwortliche greift nicht auf diese Daten zu und nutzt sie nicht zu Analyse- oder Profilingzwecken.
+Diese Dienstleister verarbeiten Daten gemäß den geltenden Datenschutzvorschriften und entsprechenden DSGVO-konformen Vereinbarungen.
+
+---
+
+## Aufbewahrung personenbezogener Daten
+
+Personenbezogene Daten werden **nur so lange gespeichert, wie es für die Zwecke erforderlich ist**, für die sie erhoben wurden, oder bis die Einwilligung widerrufen wird.
 
 ---
 
 ## Übermittlung personenbezogener Daten
 
-Die Website übermittelt keine personenbezogenen Daten in andere Länder oder Rechtsordnungen.
+Der Verantwortliche übermittelt personenbezogene Daten nicht direkt außerhalb der Europäischen Union.
 
-Technische Daten, die vom Hosting-Anbieter verarbeitet werden, können auf Servern innerhalb oder außerhalb der Europäischen Union gespeichert werden, unter Einhaltung der nach geltendem Datenschutzrecht vorgesehenen Garantien.
-
----
-
-## Löschung personenbezogener Daten
-
-Da die Website keine personenbezogenen Daten erhebt oder speichert, gibt es keine Nutzerkonten oder Profile, die gelöscht werden können.
-
-Sollten Sie der Ansicht sein, dass personenbezogene Daten irrtümlich an den Verantwortlichen übermittelt wurden, können Sie uns unter **privacy@eduethica.eu** kontaktieren, damit entsprechende Prüfungen vorgenommen werden.
+Einige Dienstleister können Daten auf Servern innerhalb oder außerhalb der EU verarbeiten, unter Einhaltung der in der DSGVO vorgesehenen Garantien (z. B. Standardvertragsklauseln).
 
 ---
 
-## Sicherheit personenbezogener Daten
-
-Die Sicherheit personenbezogener Daten ist uns wichtig; jedoch ist keine Methode der Übertragung oder elektronischen Speicherung vollständig sicher. Wir ergreifen geeignete technische und organisatorische Maßnahmen, können jedoch keine absolute Sicherheit garantieren.
-
----
-
-## Rechte der betroffenen Person (DSGVO)
+## Rechte der betroffenen Person
 
 Als betroffene Person haben Sie das Recht:
-- auf Auskunft über Ihre personenbezogenen Daten,
-- auf Berichtigung oder Löschung,
-- auf Widerspruch gegen die Verarbeitung,
-- auf Widerruf Ihrer Einwilligung, sofern anwendbar,
-- auf Beschwerde bei einer zuständigen Datenschutzaufsichtsbehörde.
 
-Zur Ausübung Ihrer Rechte können Sie uns unter **privacy@eduethica.eu** kontaktieren.
+- Auskunft über Ihre personenbezogenen Daten zu erhalten;
+- Berichtigung oder Löschung zu verlangen;
+- die Verarbeitung einzuschränken oder ihr zu widersprechen;
+- Ihre Einwilligung jederzeit zu widerrufen;
+- Beschwerde bei einer Datenschutzaufsichtsbehörde einzulegen.
 
----
-
-## Datenschutz von Minderjährigen
-
-Die Website erhebt keine personenbezogenen Daten, auch nicht von Minderjährigen.
-
-Die Inhalte sind informativer und bildender Natur und enthalten keine Funktionen, die die Eingabe personenbezogener Daten erfordern.
-
-Es finden keine Marketing- oder Profiling-Aktivitäten gegenüber Minderjährigen statt.
+Zur Ausübung Ihrer Rechte können Sie den Verantwortlichen kontaktieren.
 
 ---
 
-## Links zu anderen Websites
+## Datenschutz von Kindern
 
-Die Website kann Links zu Websites Dritter enthalten. Wir sind nicht verantwortlich für deren Inhalte oder Datenschutzpraktiken und empfehlen, deren jeweilige Datenschutzerklärungen zu lesen.
+Die Website richtet sich nicht speziell an Kinder und erhebt nicht wissentlich personenbezogene Daten von Minderjährigen.
+
+Die Inhalte sind informativer und bildender Natur. Es finden keine Profiling- oder Marketingaktivitäten gegenüber Minderjährigen statt.
+
+---
+
+## Datensicherheit
+
+Der Verantwortliche trifft geeignete technische und organisatorische Maßnahmen zum Schutz personenbezogener Daten.  
+Dennoch kann keine Methode der Übertragung oder elektronischen Speicherung absolute Sicherheit garantieren.
+
+---
+
+## Links zu externen Websites
+
+Die Website kann Links zu Websites Dritter enthalten.  
+Der Verantwortliche übernimmt keine Verantwortung für Inhalte oder Datenschutzpraktiken dieser Websites und empfiehlt, deren Datenschutzerklärungen zu prüfen.
 
 ---
 
 ## Änderungen dieser Datenschutzerklärung
 
 Diese Datenschutzerklärung kann von Zeit zu Zeit aktualisiert werden.  
-Das Datum der letzten Aktualisierung wird stets am Anfang dieses Dokuments angegeben.
+Das Datum der letzten Aktualisierung wird stets am Anfang des Dokuments angegeben.
 
 ---
 
 ## Kontakt
 
-Wenn Sie Fragen zu dieser Datenschutzerklärung haben, können Sie uns kontaktieren:
+Bei Fragen zu dieser Datenschutzerklärung können Sie uns kontaktieren:
 
 - **E-Mail:** privacy@eduethica.eu
-
----
-
-*Diese deutsche Übersetzung dient ausschließlich Informationszwecken.  
-Im Falle von Abweichungen ist die englische Version maßgeblich.*

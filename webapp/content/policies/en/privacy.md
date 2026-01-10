@@ -1,207 +1,183 @@
 # Privacy Policy
 
-Last updated: January 1, 2026
+**Last updated:** January 10, 2026
 
-This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Website and tells You about Your privacy rights and how the law protects You.
+This Privacy Policy describes how **Institute for Conscious Action – International Academy** (the “Controller”, “We”, “Us”) collects, uses, and protects Personal Data of users who visit and use the Website.
 
-The Website is purely informational and does **not** actively collect Personal Data from users.
+The Website is primarily **informational and educational** in nature.  
+Personal Data is collected **only on a voluntary basis**, when users choose to provide it through specific forms.
 
 By using the Website, you acknowledge this Privacy Policy.
 
-For information about the use of Cookies and consent management, please refer to our Cookies Policy.
+For information about the use of Cookies and consent management, please refer to our **Cookies Policy**.
+
+---
 
 ## Interpretation and Definitions
 
 ### Interpretation
 
-The words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.
+Words with capitalized initial letters have meanings defined below and apply equally whether used in singular or plural form.
 
 ### Definitions
 
 For the purposes of this Privacy Policy:
 
-Company (referred to as either “the Company”, “We”, “Us” or “Our”) refers to Institute for Conscious Action, Via Olanda 91, 30016 Jesolo (VE), Italy.  
-For the purposes of the GDPR, the Company is the Data Controller.
+- **Data Controller**  
+  refers to **Institute for Conscious Action**, Via Olanda 91, 30016 Jesolo (VE), Italy.  
+  For the purposes of the GDPR, the Company is the Data Controller.
 
-Country refers to: Italy.
+- **Country** refers to: Italy.
 
-Data Controller, for the purposes of the GDPR (General Data Protection Regulation), refers to the Company, which determines the purposes and means of the processing of Personal Data.
+- **GDPR** refers to Regulation (EU) 2016/679 (General Data Protection Regulation).
 
-GDPR refers to the EU General Data Protection Regulation (Regulation (EU) 2016/679).
+- **Personal Data** means any information relating to an identified or identifiable natural person.
 
-Personal Data means any information relating to an identified or identifiable natural person, as defined by the GDPR.
+- **Cookies** are small text files stored on a user’s device by a website.
 
-Cookies are small text files stored on a user’s device by a website.
+- **Device** means any device that can access the Website, such as a computer, smartphone, or tablet.
 
-Device means any device that can access the Service, such as a computer, smartphone, or tablet.
+- **Website** refers to *Institute for Conscious Action – International Academy*, accessible at  
+  https://www.eduethica.eu
 
-Service refers to the Website.
+- **You** refers to the individual accessing or using the Website.  
+  Under the GDPR, You are the **Data Subject**.
 
-Website refers to Institute for Conscious Action – International Academy, accessible from  
-https://www.eduethica.eu
+---
 
-You refers to the individual accessing or using the Website.  
-Under the GDPR, You are referred to as the Data Subject.
-
-## Collecting and Using Your Personal Data
+## Collection and Use of Personal Data
 
 ### Types of Data Collected
 
 #### Personal Data
 
-The Website does **not** collect Personal Data directly from users.
+The Website collects Personal Data **only when You voluntarily provide it**, for example through:
 
-No registration, contact forms, newsletters, user accounts, comment sections, or interactive features requiring the submission of Personal Data are available on the Website.
+- contact forms;
+- subscription forms for updates or notifications (newsletter).
 
-Accordingly, we do **not** request or collect information such as:
+The Personal Data collected may include:
 
-- Email address
-- First name and last name
+- email address;
+- first name;
+- message content submitted by the user.
+
+No user accounts, public comment sections, or interactive public areas are available on the Website.
+
+---
 
 #### Usage Data
 
-The Website does **not** actively collect Usage Data for analytics, profiling, or tracking purposes.
+The Website **does not actively collect Usage Data** for analytics, statistical, or profiling purposes.
 
-Any technical data (e.g., IP address, browser information, timestamps, and similar server logs) may be processed **automatically by the hosting provider** solely for security, operational, and maintenance purposes.
+Any technical data (e.g. IP address, system logs, browser information) may be processed **automatically by the hosting provider** solely for security, operational, and maintenance purposes.
 
-Such data is **not** used by the Company to identify users, monitor browsing activity, or perform profiling.
+The Data Controller does not use such data to identify users or monitor browsing behavior.
+
+---
 
 #### Tracking Technologies and Cookies
 
-The Website uses a consent management platform (Cookiebot by Usercentrics) to manage Cookies and similar technologies.
+The Website uses a consent management platform (**Cookiebot by Usercentrics**) to manage Cookies and user preferences.
 
-Cookies used on the Website are limited to:
+The Website uses:
 
-- **Strictly necessary cookies** required for correct functioning and security
-- **Preference cookies** (e.g., language settings), which are blocked by default until the user provides consent through the cookie banner (where applicable)
+- **Strictly necessary cookies**, required for the proper functioning and security of the Website;
+- **Preference cookies** (e.g. language settings), enabled only with user consent.
 
-No analytics cookies, marketing cookies, or profiling technologies are used unless explicitly enabled by the user through the cookie consent banner.
+No analytics, marketing, advertising, or profiling cookies are used unless explicitly enabled by the user via the Cookiebot consent banner.
 
-Users can manage or withdraw consent at any time via the Cookiebot controls available on the Website (e.g., “Manage cookies”).
+Users may manage or withdraw their consent at any time using the “Manage cookies” option available on the Website.
 
-### Use of Your Personal Data
+---
 
-The Website does **not** actively collect Personal Data from users.
+## Purposes and Legal Basis of Processing
 
-As a result, Personal Data is **not** used for registration, account management, contractual purposes, marketing, promotional activities, analytics, profiling, or user contact.
+Personal Data is processed exclusively for the following purposes:
 
-No automated decision-making or profiling activities are carried out.
+- responding to requests submitted through the contact form;
+- sending informational communications or updates **only when requested by the user**;
+- managing newsletter subscriptions.
 
-### Sharing of Personal Data
+The legal basis for processing is:
 
-The Company does **not** share Personal Data with third parties, affiliates, service providers, business partners, or other users, as no Personal Data is collected through the Website.
+- **user consent**, freely given, specific, informed, and unambiguous.
 
-Personal Data is disclosed only where required by applicable law or by a valid request from competent public authorities.
+Consent may be withdrawn at any time.
 
-### Retention of Your Personal Data
+---
 
-The Website does **not** collect or store Personal Data from users.
+## Service Providers (Data Processors)
 
-Accordingly, no Personal Data retention periods apply.
+Personal Data may be processed by third-party service providers acting as **Data Processors**, including:
 
-Any technical server logs that may be generated in the normal operation of the Website are processed **exclusively by the hosting provider** for security, operational, and maintenance purposes and are retained only for the period strictly necessary in accordance with applicable laws.
+- **Brevo (Sendinblue)** – management of forms and email communications;
+- **Google reCAPTCHA** – protection of forms against spam and abuse;
+- **Cookiebot by Usercentrics** – cookie consent management.
 
-The Company does not access, store, or use such technical data for profiling or analytical purposes.
+These providers process data in compliance with applicable data protection laws and contractual agreements aligned with the GDPR.
 
-### Transfer of Your Personal Data
+---
 
-The Website does **not** collect or process Personal Data from users.
+## Retention of Personal Data
 
-Accordingly, no transfers of Personal Data to other countries or jurisdictions are carried out by the Company.
+Personal Data is retained **only for as long as necessary** to fulfill the purposes for which it was collected or until consent is withdrawn by the user.
 
-Any technical data that may be incidentally processed by the hosting provider in the normal operation of the Website (such as server logs) may be stored on servers located within or outside the European Union, in accordance with applicable data protection laws and appropriate safeguards.
+---
 
-The Company does not control, access, or manage such technical data and does not perform any cross-border transfer of Personal Data.
+## Transfer of Personal Data
 
-### Delete Your Personal Data
+The Data Controller does not directly transfer Personal Data outside the European Union.
 
-As the Website does **not** collect or store Personal Data from users, there is no user account or stored profile data to delete.
+Some service providers may process data on servers located inside or outside the EU, in compliance with GDPR safeguards (such as Standard Contractual Clauses).
 
-If you believe that Personal Data has been transmitted to the Company by mistake, please contact us at **privacy@eduethica.eu** so that we can take appropriate action.
+---
 
-### Disclosure of Your Personal Data
+## Your GDPR Rights
 
-#### Law enforcement
+As a Data Subject, you have the right to:
 
-Under certain circumstances, the Company may be required to disclose Your Personal Data if required to do so by law or in response to valid requests by public authorities (e.g. a court or a government agency).
+- access your Personal Data;
+- request rectification or erasure;
+- restrict or object to processing;
+- withdraw consent at any time;
+- lodge a complaint with a Data Protection Authority.
 
-#### Other legal requirements
+You may exercise your rights by contacting the Data Controller.
 
-The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:
+---
 
-- Comply with a legal obligation
-- Protect and defend the rights or property of the Company
-- Prevent or investigate possible wrongdoing in connection with the Website
-- Protect the personal safety of Users of the Website or the public
-- Protect against legal liability
+## Children’s Privacy
 
-### Security of Your Personal Data
+The Website is not specifically directed at children and does not knowingly collect Personal Data from minors.
 
-The security of Your Personal Data is important to Us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While We strive to use commercially reasonable means to protect Your Personal Data, We cannot guarantee its absolute security.
+The content is informational and educational in nature, and no profiling or marketing activities targeting minors are carried out.
 
-## GDPR Privacy
+---
 
-### Legal Basis for Processing Personal Data under GDPR
+## Data Security
 
-We may process Personal Data under the following conditions:
+The Data Controller implements appropriate technical and organizational measures to protect Personal Data.  
+However, no method of transmission or electronic storage can guarantee absolute security.
 
-- __Consent:__ You have given Your consent for processing Personal Data for one or more specific purposes.
-- __Performance of a contract:__ Provision of Personal Data is necessary for the performance of an agreement with You and/or for any pre-contractual obligations thereof.
-- __Legal obligations:__ Processing Personal Data is necessary for compliance with a legal obligation to which the Company is subject.
-- __Vital interests:__ Processing Personal Data is necessary in order to protect Your vital interests or of another natural person.
-- __Public interests:__ Processing Personal Data is related to a task that is carried out in the public interest or in the exercise of official authority vested in the Company.
-- __Legitimate interests:__ Processing Personal Data is necessary for the purposes of the legitimate interests pursued by the Company.
-
-In any case, the Company will gladly help to clarify the specific legal basis that applies to the processing, and in particular whether the provision of Personal Data is a statutory or contractual requirement, or a requirement necessary to enter into a contract.
-
-### Your Rights under the GDPR
-
-The Company undertakes to respect the confidentiality of Your Personal Data and to guarantee You can exercise Your rights.
-
-You have the right under this Privacy Policy, and by law if You are within the EU, to:
-
-- __Request access to Your Personal Data.__ The right to access, update or delete the information We have on You. Whenever made possible, you can access, update or request deletion of Your Personal Data directly within your account settings section. If you are unable to perform these actions yourself, please contact Us to assist You. This also enables You to receive a copy of the Personal Data We hold about You.
-- __Request correction of the Personal Data that We hold about You.__ You have the right to have any incomplete or inaccurate information We hold about You corrected.
-- __Object to processing of Your Personal Data.__ This right exists where We are relying on a legitimate interest as the legal basis for Our processing and there is something about Your particular situation, which makes You want to object to our processing of Your Personal Data on this ground. You also have the right to object where We are processing Your Personal Data for direct marketing purposes.
-- __Request erasure of Your Personal Data.__ You have the right to ask Us to delete or remove Personal Data when there is no good reason for Us to continue processing it.
-- __Request the transfer of Your Personal Data.__ We will provide to You, or to a third-party You have chosen, Your Personal Data in a structured, commonly used, machine-readable format. Please note that this right only applies to automated information which You initially provided consent for Us to use or where We used the information to perform a contract with You.
-- __Withdraw Your consent.__ You have the right to withdraw Your consent on using your Personal Data. If You withdraw Your consent, We may not be able to provide You with access to certain specific functionalities of the Website.
-
-### Exercising of Your GDPR Data Protection Rights
-
-You may exercise Your rights of access, rectification, cancellation and opposition by contacting Us. Please note that we may ask You to verify Your identity before responding to such requests. If You make a request, We will try our best to respond to You as soon as possible.
-
-You have the right to complain to a Data Protection Authority about Our collection and use of Your Personal Data. For more information, if You are in the European Economic Area (EEA), please contact Your local data protection authority in the EEA.
-
-## Children's Privacy
-
-The Website does **not** actively collect Personal Data from users, including minors.
-
-The published content is informational and educational in nature and does not include interactive features requiring the submission of Personal Data.
-
-The Company does not knowingly collect Personal Data from children.  
-If a parent or legal guardian believes that a child has provided Personal Data through the Website, they may contact the Company so that appropriate actions can be taken.
-
-No age-based profiling, marketing activities, or data processing involving minors are carried out.
-
-As the Website does not collect Personal Data, no parental consent mechanisms are implemented or required.
+---
 
 ## Links to Other Websites
 
-Our Website may contain links to other websites that are not operated by Us. If You click on a third party link, You will be directed to that third party's site. We strongly advise You to review the Privacy Policy of every site You visit.
+The Website may contain links to third-party websites.  
+The Data Controller is not responsible for the content or privacy practices of such websites and encourages users to review their respective privacy policies.
 
-We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.
+---
 
-## Changes to this Privacy Policy
+## Changes to This Privacy Policy
 
-We may update Our Privacy Policy from time to time. We will notify You of any changes by posting the new Privacy Policy on this page.
+This Privacy Policy may be updated from time to time.  
+The date of the latest update will always be indicated at the top of this document.
 
-We will update the "Last updated" date at the top of this Privacy Policy.
-
-You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+---
 
 ## Contact Us
 
-If you have any questions about this Privacy Policy, You can contact us:
+If you have any questions about this Privacy Policy, you can contact us:
 
-- **By email:** privacy@eduethica.eu
+- **Email:** privacy@eduethica.eu

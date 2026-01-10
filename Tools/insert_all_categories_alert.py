@@ -46,14 +46,17 @@ NEWS_DATA = [
    
     # Italiano
     {
-        "title": "Nuovi tentativi di truffa tramite false comunicazioni su dichiarazioni criptovalute",
-        "slug": "nuovi-tentativi-truffa-dichiarazioni-criptovalute-phishing",
-        "excerpt": "L’Agenzia delle Entrate avverte su nuove e-mail di phishing che imitano comunicazioni ufficiali su dichiarazioni criptovalute per sottrarre dati personali o bancari.",
-        "body_md": "**Fonte:** Agenzia delle Entrate – agenziaentrate.gov.it\n"
-                   "**Data di pubblicazione:** 7 gennaio 2026\n"
-                   "**Link ufficiale:** https://www.agenziaentrate.gov.it/portale/focus-sul-phishing/segnalazioni-e-approfondimenti\n\n"
-                   "**Riassunto:** L’Agenzia segnala nuovi tentativi di phishing che usano e mail con pretesti di presunte dichiarazioni sulle criptovalute per indurre i destinatari a fornire dati personali o bancari. I messaggi sono contraffatti e non provengono dall’Agenzia, ma cercano di imitare comunicazioni ufficiali.\n\n"
-                   "**Meccanismo pratico della truffa:** i truffatori inviano e mail con oggetti come “Aggiorna la tua dichiarazione criptovalute” che includono un link verso un sito fraudolento. Cliccando sul link, la vittima viene reindirizzata a un modulo che richiede credenziali o dettagli finanziari che poi vengono usati per furto di identità o accesso non autorizzato ai conti. Nell’articolo viene riportato un esempio concreto.",
+        "title": "Sintesi delle campagne malevole e phishing attive in Italia (SETTIMANA 3-9 gennaio 2026)",
+        "slug": "sintesi-campagne-malevole-phishing-italia-settimana-3-9-gennaio-2026",
+        "excerpt": "CERT-AGID segnala 73 campagne malevole nella settimana 3–9 gennaio 2026: phishing su finte multe/PagoPA, servizi bancari e rinnovi online, abuso di nomi istituzionali e malware diffuso tramite allegati o link.",
+        "body_md": "**Fonte:** CERT-AGID – cert-agid.gov.it\n"
+                   "**Data di pubblicazione:** 9 gennaio 2026\n"
+                   "**Link ufficiale:** https://cert-agid.gov.it/news/sintesi-riepilogativa-delle-campagne-malevole-nella-settimana-del-3-9-gennaio/\n\n"
+                   "**Riassunto:** Il team italiano di risposta agli incidenti ha rilevato 73 campagne malevole, con 55 mirate all’Italia e 18 generiche che hanno interessato il Paese. Tra le minacce più diffuse ci sono campagne di phishing che sfruttano tematiche come multe fittizie (finti avvisi PagoPA), servizi bancari e rinnovi di servizi online, oltre a casi che abusano del nome di istituzioni come Ministero della Salute, Ministero dell’Interno e servizi come il Sistema Tessera Sanitaria. Sono inoltre emerse diverse campagne malware trasmesse tramite allegati o link malevoli.\n\n"
+                   "**Meccanismo pratico delle truffe:**\n\n"
+                   "- **Phishing a tema multe/PagoPA:** invio di e-mail che simulano comunicazioni ufficiali su sanzioni da pagare. Chi clicca sui link viene reindirizzato a siti falsi dove può essere indotto a inserire dati personali e bancari, con rischio di furto di credenziali e accesso non autorizzato ai conti.\n\n"
+                   "- **Finti servizi sanitari o ministeriali:** messaggi che imitano servizi o istituzioni e spingono a fornire dati sensibili con pretesti di verifica o rinnovo documenti, facilitando furto di identità o uso improprio delle informazioni.\n\n"
+                   "- **Malware via allegati o link:** alcuni messaggi includono allegati o collegamenti che, se aperti, scaricano malware sul dispositivo, consentendo accesso remoto o il furto di ulteriori dati.",
         "locale": "it",
     },
 

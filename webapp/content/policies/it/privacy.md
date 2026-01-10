@@ -1,10 +1,11 @@
 # Informativa sulla Privacy
 
-**Ultimo aggiornamento:** 1 gennaio 2026
+**Ultimo aggiornamento:** 10 gennaio 2026
 
-La presente Informativa sulla Privacy descrive le politiche e le procedure adottate in merito alla raccolta, all’utilizzo e alla divulgazione delle informazioni quando utilizzi il Sito e illustra i tuoi diritti in materia di protezione dei dati personali e come la legge ti tutela.
+La presente Informativa sulla Privacy descrive le modalità con cui **Institute for Conscious Action – International Academy** (di seguito “Titolare”, “Noi”) raccoglie, utilizza e protegge i Dati Personali degli utenti che visitano e utilizzano il Sito.
 
-Il Sito è di natura esclusivamente informativa e **non raccoglie attivamente Dati Personali** degli utenti.
+Il Sito ha finalità prevalentemente **informative ed educative**.  
+I Dati Personali sono raccolti **esclusivamente su base volontaria**, quando l’utente decide di fornirli tramite specifici moduli.
 
 Utilizzando il Sito, prendi atto della presente Informativa sulla Privacy.
 
@@ -16,31 +17,31 @@ Per informazioni sull’uso dei Cookie e sulla gestione del consenso, consulta l
 
 ### Interpretazione
 
-I termini con l’iniziale maiuscola hanno il significato definito nelle seguenti condizioni. Le definizioni mantengono lo stesso significato sia al singolare sia al plurale.
+I termini con l’iniziale maiuscola hanno il significato definito di seguito e mantengono lo stesso significato sia al singolare sia al plurale.
 
 ### Definizioni
 
 Ai fini della presente Informativa sulla Privacy:
 
-**Titolare del Trattamento** (di seguito anche “la Società”, “Noi”, “Ci” o “Nostro”)  
-si riferisce a **Institute for Conscious Action**, Via Olanda 91, 30016 Jesolo (VE), Italia.  
-Ai fini del GDPR, la Società è il Titolare del Trattamento.
+- **Titolare del Trattamento**  
+  è **Institute for Conscious Action**, Via Olanda 91, 30016 Jesolo (VE), Italia.  
+  Ai sensi del GDPR, il Titolare determina le finalità e i mezzi del trattamento dei Dati Personali.
 
-**Paese**: Italia.
+- **Paese**: Italia.
 
-**GDPR**: Regolamento (UE) 2016/679 (Regolamento Generale sulla Protezione dei Dati).
+- **GDPR**: Regolamento (UE) 2016/679 (Regolamento Generale sulla Protezione dei Dati).
 
-**Dati Personali**: qualsiasi informazione riguardante una persona fisica identificata o identificabile, come definito dal GDPR.
+- **Dati Personali**: qualsiasi informazione riguardante una persona fisica identificata o identificabile.
 
-**Cookie**: piccoli file di testo memorizzati sul dispositivo dell’utente da un sito web.
+- **Cookie**: piccoli file di testo memorizzati sul dispositivo dell’utente da un sito web.
 
-**Dispositivo**: qualsiasi dispositivo che consenta l’accesso al Sito, come computer, smartphone o tablet.
+- **Dispositivo**: qualsiasi dispositivo che consenta l’accesso al Sito (computer, smartphone, tablet).
 
-**Sito**: Institute for Conscious Action – International Academy, accessibile all’indirizzo  
-https://www.eduethica.eu
+- **Sito**: Institute for Conscious Action – International Academy, accessibile all’indirizzo  
+  https://www.eduethica.eu
 
-**Utente**: la persona fisica che accede o utilizza il Sito.  
-Ai sensi del GDPR, l’Utente è il **Soggetto Interessato**.
+- **Utente**: la persona fisica che accede o utilizza il Sito.  
+  Ai sensi del GDPR, l’Utente è il **Soggetto Interessato**.
 
 ---
 
@@ -50,138 +51,133 @@ Ai sensi del GDPR, l’Utente è il **Soggetto Interessato**.
 
 #### Dati Personali
 
-Il Sito **non raccoglie direttamente Dati Personali** degli utenti.
+Il Sito raccoglie Dati Personali **solo quando l’Utente li fornisce volontariamente**, ad esempio tramite:
 
-Non sono presenti sul Sito:
-- moduli di contatto,
-- sistemi di registrazione,
-- newsletter,
-- account utente,
-- sezioni di commento o funzionalità interattive che richiedano l’inserimento di Dati Personali.
+- modulo di contatto;
+- modulo di iscrizione per ricevere aggiornamenti o notifiche (newsletter).
 
-Di conseguenza, **non vengono richiesti né raccolti** dati quali:
-- indirizzo email,
-- nome e cognome.
+I Dati Personali raccolti possono includere:
+
+- indirizzo email;
+- nome;
+- contenuto del messaggio inviato dall’Utente.
+
+Non sono presenti account utente, commenti pubblici o aree interattive aperte al pubblico.
+
+---
 
 #### Dati di utilizzo
 
-Il Sito **non raccoglie attivamente Dati di Utilizzo** per finalità di analisi, profilazione o tracciamento.
+Il Sito **non raccoglie attivamente Dati di Utilizzo** per finalità di analisi, statistica o profilazione.
 
-Eventuali dati tecnici (ad es. indirizzo IP, informazioni sul browser, timestamp, log di sistema) possono essere trattati **automaticamente dal fornitore di hosting** esclusivamente per finalità di sicurezza, funzionamento e manutenzione del Sito.
+Eventuali dati tecnici (ad es. indirizzo IP, log di sistema, informazioni sul browser) possono essere trattati **automaticamente dal fornitore di hosting** esclusivamente per finalità di sicurezza, funzionamento e manutenzione.
 
-Tali dati **non sono utilizzati dal Titolare** per identificare gli utenti, monitorare la navigazione o svolgere attività di profilazione.
+Il Titolare non utilizza tali dati per identificare gli utenti o monitorarne il comportamento.
+
+---
 
 #### Tecnologie di tracciamento e Cookie
 
-Il Sito utilizza una piattaforma di gestione del consenso (**Cookiebot by Usercentrics**) per gestire Cookie e tecnologie simili.
+Il Sito utilizza una piattaforma di gestione del consenso (**Cookiebot by Usercentrics**) per la gestione dei Cookie e delle preferenze dell’utente.
 
-I Cookie utilizzati sul Sito sono limitati a:
-- **Cookie strettamente necessari**, indispensabili per il corretto funzionamento e la sicurezza del Sito;
-- **Cookie di preferenza** (ad es. impostazioni di lingua), che possono essere attivati solo previo consenso dell’utente tramite il banner Cookiebot, ove applicabile.
+Sono utilizzati:
 
-Non vengono utilizzati Cookie di analisi, marketing o profilazione, salvo esplicita attivazione da parte dell’utente tramite il banner di consenso.
+- **Cookie strettamente necessari**, indispensabili per il funzionamento e la sicurezza del Sito;
+- **Cookie di preferenza** (es. lingua), attivabili solo previo consenso dell’Utente.
 
-L’utente può gestire o revocare il consenso in qualsiasi momento tramite i controlli Cookiebot disponibili sul Sito (ad es. “Gestisci cookie”).
+Non vengono utilizzati Cookie di analisi, marketing o profilazione, salvo esplicita attivazione da parte dell’Utente tramite il banner Cookiebot.
 
----
-
-## Utilizzo dei Dati Personali
-
-Il Sito **non utilizza Dati Personali** per:
-- registrazione o gestione di account,
-- finalità contrattuali,
-- marketing o promozione,
-- analisi statistiche,
-- profilazione,
-- contatto diretto con gli utenti.
-
-Non vengono effettuati processi decisionali automatizzati né attività di profilazione.
+L’Utente può gestire o revocare il consenso in qualsiasi momento tramite l’opzione “Gestisci cookie” presente sul Sito.
 
 ---
 
-## Condivisione dei Dati Personali
+## Finalità e base giuridica del trattamento
 
-Il Titolare **non condivide Dati Personali** con terzi, fornitori, partner o altri utenti, in quanto il Sito non raccoglie Dati Personali.
+I Dati Personali sono trattati esclusivamente per le seguenti finalità:
 
-La comunicazione di Dati Personali può avvenire solo se richiesta dalla legge o da un’autorità pubblica competente.
+- rispondere alle richieste inviate tramite il modulo di contatto;
+- inviare comunicazioni informative o aggiornamenti **solo se richiesti dall’Utente**;
+- gestire le iscrizioni alla newsletter.
+
+La base giuridica del trattamento è:
+
+- **il consenso dell’Utente**, espresso in modo libero, specifico e informato.
+
+Il consenso può essere revocato in qualsiasi momento.
+
+---
+
+## Fornitori di servizi (Responsabili del trattamento)
+
+I Dati Personali possono essere trattati da fornitori esterni che agiscono come **Responsabili del trattamento**, tra cui:
+
+- **Brevo (Sendinblue)** – gestione dei moduli e delle comunicazioni email;
+- **Google reCAPTCHA** – protezione dei moduli da spam e abusi;
+- **Cookiebot by Usercentrics** – gestione del consenso ai Cookie.
+
+Tali soggetti trattano i dati nel rispetto della normativa vigente e sulla base di accordi conformi al GDPR.
 
 ---
 
 ## Conservazione dei Dati Personali
 
-Il Sito **non conserva Dati Personali** degli utenti.
-
-Eventuali log tecnici generati dal normale funzionamento del Sito sono trattati esclusivamente dal fornitore di hosting e conservati per il tempo strettamente necessario, in conformità alla normativa applicabile.
-
-Il Titolare non accede né utilizza tali dati per finalità di analisi o profilazione.
+I Dati Personali sono conservati **solo per il tempo necessario** a soddisfare le finalità per cui sono stati raccolti o fino alla revoca del consenso da parte dell’Utente.
 
 ---
 
 ## Trasferimento dei Dati Personali
 
-Il Sito non effettua trasferimenti di Dati Personali verso altri Paesi o giurisdizioni.
+Il Titolare non trasferisce direttamente Dati Personali al di fuori dell’Unione Europea.
 
-Eventuali dati tecnici trattati dal fornitore di hosting possono essere conservati su server situati all’interno o all’esterno dell’Unione Europea, nel rispetto delle garanzie previste dalla normativa sulla protezione dei dati.
-
----
-
-## Cancellazione dei Dati Personali
-
-Poiché il Sito non raccoglie né conserva Dati Personali, non esistono account o profili utente da cancellare.
-
-Se ritieni che Dati Personali siano stati trasmessi al Titolare per errore, puoi contattarci all’indirizzo **privacy@eduethica.eu** per le opportune verifiche.
+Alcuni fornitori di servizi possono trattare i dati su server situati anche fuori dall’UE, nel rispetto delle garanzie previste dal GDPR (ad es. Clausole Contrattuali Standard).
 
 ---
 
-## Sicurezza dei Dati Personali
-
-La sicurezza dei Dati Personali è importante per Noi; tuttavia, nessun metodo di trasmissione o conservazione elettronica è completamente sicuro. Adottiamo misure tecniche e organizzative adeguate, ma non possiamo garantire la sicurezza assoluta delle informazioni.
-
----
-
-## Diritti dell’Interessato (GDPR)
+## Diritti dell’Interessato
 
 In qualità di Interessato, hai il diritto di:
-- accedere ai tuoi Dati Personali,
-- chiederne la rettifica o la cancellazione,
-- opporti al trattamento,
-- revocare il consenso, ove applicabile,
+
+- accedere ai tuoi Dati Personali;
+- richiederne la rettifica o la cancellazione;
+- limitare o opporti al trattamento;
+- revocare il consenso in qualsiasi momento;
 - proporre reclamo all’Autorità Garante per la Protezione dei Dati Personali.
 
-Puoi esercitare i tuoi diritti contattandoci all’indirizzo **privacy@eduethica.eu**.
+Puoi esercitare i tuoi diritti contattandoci all’indirizzo indicato di seguito.
 
 ---
 
 ## Minori
 
-Il Sito non raccoglie attivamente Dati Personali, inclusi quelli dei minori.
+Il Sito non è rivolto specificamente ai minori e non raccoglie intenzionalmente Dati Personali di minori.
 
-I contenuti sono di natura informativa ed educativa e non prevedono funzionalità che richiedano l’inserimento di Dati Personali.
+I contenuti sono di natura informativa ed educativa e non sono previste attività di profilazione o marketing rivolte ai minori.
 
-Non vengono svolte attività di profilazione o marketing rivolte ai minori.
+---
+
+## Sicurezza dei Dati
+
+Il Titolare adotta misure tecniche e organizzative adeguate per proteggere i Dati Personali.  
+Tuttavia, nessun sistema di trasmissione o conservazione elettronica può garantire una sicurezza assoluta.
 
 ---
 
 ## Collegamenti a siti esterni
 
-Il Sito può contenere collegamenti a siti web di terze parti. Non siamo responsabili per i contenuti o le politiche di tali siti e ti invitiamo a consultare le rispettive informative sulla privacy.
+Il Sito può contenere collegamenti a siti web di terze parti.  
+Il Titolare non è responsabile dei contenuti o delle politiche di tali siti e invita l’Utente a consultare le rispettive informative sulla privacy.
 
 ---
 
 ## Modifiche alla presente Informativa
 
-La presente Informativa sulla Privacy può essere aggiornata periodicamente.  
-La data di ultimo aggiornamento sarà sempre indicata all’inizio del documento.
+La presente Informativa sulla Privacy può essere aggiornata in qualsiasi momento.  
+La data dell’ultimo aggiornamento è sempre indicata all’inizio del documento.
 
 ---
 
 ## Contatti
 
-Per qualsiasi domanda sulla presente Informativa sulla Privacy, puoi contattarci:
+Per qualsiasi domanda relativa alla presente Informativa sulla Privacy, puoi contattarci:
 
 - **Email:** privacy@eduethica.eu
-
----
-
-*La presente traduzione in lingua italiana è fornita a titolo informativo.  
-In caso di discrepanze, prevale la versione in lingua inglese.*
