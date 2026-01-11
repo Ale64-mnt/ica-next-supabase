@@ -14,7 +14,6 @@ export async function Header({ locale }: HeaderProps) {
     close_menu: t('close_menu'),
     home_link: t('home_link'),
     about: t('about'),
-    // 🔥 NUOVA VOCE AGGIUNTA
     financial_education: t('financial_education'),
     articles: t('articles'),
     news: t('news'),
@@ -25,13 +24,13 @@ export async function Header({ locale }: HeaderProps) {
 
   return (
     <>
-      {/* Header per desktop - nascosto su mobile */}
-      <div className="hidden md:block">
+      {/* Header desktop: SOLO da lg in su */}
+      <div className="hidden lg:block">
         <DesktopHeader locale={locale} translations={translations} />
       </div>
-      
-      {/* Header per mobile - nascosto su desktop */}
-      <div className="md:hidden">
+
+      {/* Header mobile/tablet: fino a lg */}
+      <div className="block lg:hidden">
         <MobileHeader locale={locale} translations={translations} />
       </div>
     </>
