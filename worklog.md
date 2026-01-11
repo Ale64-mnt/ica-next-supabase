@@ -2471,6 +2471,11 @@ Sistema ora completo per:
 - /es/privacy-policy"
 
 ⏱ 3h
-### 📌 2026-01-10 | RF-76|"Fix: Homepage layout for 768px resolution and header navigation"
+
+### 📌 2026-01-11 | RF-76|"Fix: Homepage layout for 768px resolution and header navigation"
 
 ⏱ 1h
+
+### 📌 2026-01-11 | RF-78|""Fix: scroll on zoom, footer links, and policy viewer updates, conctat page"
+
+⏱ 2h

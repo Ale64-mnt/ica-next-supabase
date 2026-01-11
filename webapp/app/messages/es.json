@@ -456,5 +456,18 @@
   "title": "Confirmación de Suscripción",
   "description": "Página de confirmación de suscripción al boletín",
   "confirmationMessage": "¡Gracias por suscribirte! Tu suscripción se ha confirmado correctamente."
-}
+},
+
+  "Contact": {
+    "info_image_alt": "Información de contacto",
+    "left_title": "Para qué puedes escribirnos",
+    "left_bullet_1": "Denuncias de fraudes o mensajes sospechosos",
+    "left_bullet_2": "Información sobre el proyecto EduEthica",
+    "left_bullet_3": "Colaboraciones o iniciativas educativas",
+    "left_bullet_4": "Preguntas sobre contenidos y fuentes",
+    "right_title": "Contacta con EduEthica",
+    "right_subtitle": "Habla con nuestro equipo."
+  }
+
+
   }

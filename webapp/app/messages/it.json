@@ -676,5 +676,15 @@
   "title": "Conferma Iscrizione",
   "description": "Pagina di conferma iscrizione newsletter",
   "confirmationMessage": "Grazie per esserti iscritto! La tua iscrizione è stata confermata correttamente."
-}
+},
+"Contact": {
+    "info_image_alt": "Informazioni di contatto",
+    "left_title": "Per cosa puoi scriverci",
+    "left_bullet_1": "Segnalazioni di truffe o messaggi sospetti",
+    "left_bullet_2": "Informazioni sul progetto EduEthica",
+    "left_bullet_3": "Collaborazioni o iniziative educative",
+    "left_bullet_4": "Domande su contenuti e fonti",
+    "right_title": "Contatta EduEthica",
+    "right_subtitle": "Parla con il nostro team."
+  }
 }

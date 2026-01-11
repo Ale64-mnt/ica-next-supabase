@@ -459,6 +459,16 @@
   "title": "Confirmation d'Inscription",
   "description": "Page de confirmation d'abonnement à la newsletter",
   "confirmationMessage": "Merci pour votre inscription ! Votre abonnement a été confirmé avec succès."
-}
+},
+"Contact": {
+    "info_image_alt": "Informations de contact",
+    "left_title": "Pour quoi pouvez-vous nous contacter",
+    "left_bullet_1": "Signalements d’escroqueries ou de messages suspects",
+    "left_bullet_2": "Informations sur le projet EduEthica",
+    "left_bullet_3": "Collaborations ou initiatives éducatives",
+    "left_bullet_4": "Questions sur les contenus et les sources",
+    "right_title": "Contacter EduEthica",
+    "right_subtitle": "Parlez avec notre équipe."
+  }
     
   }

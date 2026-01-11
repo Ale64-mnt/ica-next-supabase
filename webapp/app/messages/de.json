@@ -457,7 +457,18 @@
   "title": "Anmeldung Bestätigt",
   "description": "Newsletter-Anmeldebestätigungsseite",
   "confirmationMessage": "Vielen Dank für deine Anmeldung! Deine Anmeldung wurde erfolgreich bestätigt."
-}
+},
+"Contact": {
+    "info_image_alt": "Kontaktinformationen",
+    "left_title": "Worüber Sie uns kontaktieren können",
+    "left_bullet_1": "Meldungen von Betrug oder verdächtigen Nachrichten",
+    "left_bullet_2": "Informationen zum Projekt EduEthica",
+    "left_bullet_3": "Kooperationen oder Bildungsinitiativen",
+    "left_bullet_4": "Fragen zu Inhalten und Quellen",
+    "right_title": "EduEthica kontaktieren",
+    "right_subtitle": "Sprechen Sie mit unserem Team."
+  }
+
   
 
   }

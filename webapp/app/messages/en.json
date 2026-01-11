@@ -457,5 +457,14 @@
   "title": "Subscription Confirmed",
   "description": "Newsletter subscription confirmation page",
   "confirmationMessage": "Thank you for subscribing! Your subscription has been successfully confirmed."
-}
+},"Contact": {
+    "info_image_alt": "Contact information",
+    "left_title": "What you can contact us about",
+    "left_bullet_1": "Reports of scams or suspicious messages",
+    "left_bullet_2": "Information about the EduEthica project",
+    "left_bullet_3": "Collaborations or educational initiatives",
+    "left_bullet_4": "Questions about content and sources",
+    "right_title": "Contact EduEthica",
+    "right_subtitle": "Talk to our team."
+  }
     }

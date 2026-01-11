@@ -1,7 +1,7 @@
 // app/components/policy/PolicyViewer.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { useLocale, useTranslations } from 'next-intl';
@@ -13,50 +13,59 @@ interface PolicyViewerProps {
 export function PolicyViewer({ policyType }: PolicyViewerProps) {
   const locale = useLocale();
   const t = useTranslations('Policies');
+
   const [content, setContent] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [note, setNote] = useState<string | null>(null);
+  const [fatalError, setFatalError] = useState<string | null>(null);
 
   useEffect(() => {
-    const loadContent = async () => {
+    let cancelled = false;
+
+    const fetchPolicy = async (loc: string) => {
+      const response = await fetch(`/api/policy/${loc}/${policyType}`);
+      if (!response.ok) {
+        throw new Error(`Failed to load policy: ${loc}/${policyType}`);
+      }
+      return response.text();
+    };
+
+    const load = async () => {
       setIsLoading(true);
-      setError(null);
+      setFatalError(null);
+      setNote(null);
 
       try {
-        // Carica il contenuto markdown dalla API
-        const response = await fetch(`/api/policy/${locale}/${policyType}`);
-        
-        if (!response.ok) {
-          throw new Error('Failed to load content');
-        }
-
-        const text = await response.text();
-        setContent(text);
-
+        const text = await fetchPolicy(locale);
+        if (!cancelled) setContent(text);
       } catch (err) {
-        console.error(`Error loading ${policyType} policy:`, err);
-        
-        // Fallback all'inglese se la traduzione non esiste
+        console.error(`Error loading ${policyType} policy for locale ${locale}:`, err);
+
+        // fallback a EN se locale diverso
         if (locale !== 'en') {
           try {
-            const fallbackResponse = await fetch(`/api/policy/en/${policyType}`);
-            if (fallbackResponse.ok) {
-              const fallbackText = await fallbackResponse.text();
+            const fallbackText = await fetchPolicy('en');
+            if (!cancelled) {
               setContent(fallbackText);
-              setError(t('fallbackNote'));
+              setNote(t('fallbackNote'));
             }
           } catch (fallbackErr) {
-            setError(t('error.loading'));
+            console.error(`Error loading fallback EN policy for ${policyType}:`, fallbackErr);
+            if (!cancelled) setFatalError(t('error.loading'));
           }
         } else {
-          setError(t('error.loading'));
+          if (!cancelled) setFatalError(t('error.loading'));
         }
       } finally {
-        setIsLoading(false);
+        if (!cancelled) setIsLoading(false);
       }
     };
 
-    loadContent();
+    load();
+
+    return () => {
+      cancelled = true;
+    };
   }, [locale, policyType, t]);
 
   if (isLoading) {
@@ -67,41 +76,39 @@ export function PolicyViewer({ policyType }: PolicyViewerProps) {
     );
   }
 
-  if (error && !content) {
+  if (fatalError && !content) {
     return (
       <div className="text-center py-12">
-        <p className="text-red-600">{error}</p>
+        <p className="text-red-600">{fatalError}</p>
       </div>
     );
   }
 
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
-      {/* Intestazione */}
       <header className="mb-8 pb-6 border-b">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
           {t(`${policyType}.title`)}
         </h1>
-        <p className="text-gray-600">
-          {t('lastUpdated')}: <time>{new Date().toLocaleDateString(locale)}</time>
-        </p>
-        {error && (
+
+        {/* NOTA IMPORTANTE:
+            Non mostrare una data "Ultimo aggiornamento" generata automaticamente.
+            La data deve stare SOLO nel markdown, e cambiare solo quando cambia il testo. */}
+
+        {note && (
           <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-md">
-            <p className="text-yellow-800 text-sm">{error}</p>
+            <p className="text-yellow-800 text-sm">{note}</p>
           </div>
         )}
       </header>
 
-      {/* Contenuto Markdown - Qui è dove viene visualizzato il contenuto della policy */}
       <div className="prose prose-lg max-w-none">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
           {content}
         </ReactMarkdown>
       </div>
-      
-      {/* NOTA: Non aggiungere una sezione "Contatti" fissa qui.
-          I contatti devono essere già inclusi nel contenuto markdown delle policy.
-          Questo evita duplicazioni e garantisce che i contatti siano quelli ufficiali. */}
+
+      {/* I contatti devono essere inclusi nel markdown, per evitare duplicazioni */}
     </article>
   );
 }
