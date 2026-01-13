@@ -46,17 +46,14 @@ NEWS_DATA = [
    
     # Italiano
     {
-        "title": "Sintesi delle campagne malevole e phishing attive in Italia (SETTIMANA 3-9 gennaio 2026)",
-        "slug": "sintesi-campagne-malevole-phishing-italia-settimana-3-9-gennaio-2026",
-        "excerpt": "CERT-AGID segnala 73 campagne malevole nella settimana 3–9 gennaio 2026: phishing su finte multe/PagoPA, servizi bancari e rinnovi online, abuso di nomi istituzionali e malware diffuso tramite allegati o link.",
+        "title": "Analisi di una campagna Lumma Stealer con falso CAPTCHA tramite dominio italiano compromesso",
+        "slug": "analisi-campagna-lumma-stealer-falso-captcha-dominio-italiano-compromesso",
+        "excerpt": "CERT-AGID analizza una campagna malware che utilizza un falso CAPTCHA su un dominio italiano compromesso per indurre gli utenti a eseguire uno script PowerShell e installare il malware Lumma Stealer.",
         "body_md": "**Fonte:** CERT-AGID – cert-agid.gov.it\n"
-                   "**Data di pubblicazione:** 9 gennaio 2026\n"
-                   "**Link ufficiale:** https://cert-agid.gov.it/news/sintesi-riepilogativa-delle-campagne-malevole-nella-settimana-del-3-9-gennaio/\n\n"
-                   "**Riassunto:** Il team italiano di risposta agli incidenti ha rilevato 73 campagne malevole, con 55 mirate all’Italia e 18 generiche che hanno interessato il Paese. Tra le minacce più diffuse ci sono campagne di phishing che sfruttano tematiche come multe fittizie (finti avvisi PagoPA), servizi bancari e rinnovi di servizi online, oltre a casi che abusano del nome di istituzioni come Ministero della Salute, Ministero dell’Interno e servizi come il Sistema Tessera Sanitaria. Sono inoltre emerse diverse campagne malware trasmesse tramite allegati o link malevoli.\n\n"
-                   "**Meccanismo pratico delle truffe:**\n\n"
-                   "- **Phishing a tema multe/PagoPA:** invio di e-mail che simulano comunicazioni ufficiali su sanzioni da pagare. Chi clicca sui link viene reindirizzato a siti falsi dove può essere indotto a inserire dati personali e bancari, con rischio di furto di credenziali e accesso non autorizzato ai conti.\n\n"
-                   "- **Finti servizi sanitari o ministeriali:** messaggi che imitano servizi o istituzioni e spingono a fornire dati sensibili con pretesti di verifica o rinnovo documenti, facilitando furto di identità o uso improprio delle informazioni.\n\n"
-                   "- **Malware via allegati o link:** alcuni messaggi includono allegati o collegamenti che, se aperti, scaricano malware sul dispositivo, consentendo accesso remoto o il furto di ulteriori dati.",
+                   "**Data di pubblicazione:** 13 gennaio 2025\n"
+                   "**Link ufficiale:**https://cert-agid.gov.it/news/analisi-di-una-campagna-lumma-stealer-con-falso-captcha-condotta-attraverso-domino-italiano-compromesso//\n\n"
+                   "**Riassunto:** Il CERT-AGID ha descritto una campagna malware che sfrutta un falso CAPTCHA ospitato su un dominio italiano compromesso per indurre gli utenti a eseguire uno script PowerShell dannoso. L’esecuzione dello script porta all’installazione del malware Lumma Stealer, progettato per esfiltrare credenziali di accesso e dati personali.\n\n"
+                   "**Meccanismo della truffa (con esempio concreto):** Gli utenti visitano una pagina apparentemente legittima e vengono invitati a risolvere un CAPTCHA. In realtà, invece di verificare che l’utente sia umano, il falso controllo genera un comando PowerShell che scarica e installa il malware. Un esempio concreto è una falsa pagina di sicurezza che simula un controllo su servizi noti come GitHub: cliccando sul CAPTCHA, la vittima avvia inconsapevolmente l’esecuzione dello script malevolo, che consente il furto di credenziali di login, wallet di criptovalute e altri dati sensibili.",
         "locale": "it",
     },
 

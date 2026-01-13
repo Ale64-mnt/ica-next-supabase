@@ -30,9 +30,7 @@ export default async function LocaleLayout({ children, params: { locale } }: Pro
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <a href="#main-content" className="skip-link">
-        {t('skip_to_content')}
-      </a>
+      
       <Header locale={locale} />
       <main id="main-content" className="min-h-screen">
         {children}

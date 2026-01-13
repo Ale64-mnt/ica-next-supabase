@@ -12,25 +12,24 @@ type DesktopHeaderProps = {
     main_navigation_label: string;
     home_link: string;
     about: string;
-    financial_education: string; // 🔥 NUOVA VOCE
-    articles: string;
+    financial_education: string;
+    // ❌ "articles" e "support" sono stati rimossi dall'Header.tsx
     news: string;
     blog_link: string;
-    support: string;
     contact: string;
   };
 };
 
 export function DesktopHeader({ locale, translations }: DesktopHeaderProps) {
+  // 🔥 MODIFICA CHIAVE: Array dei link con SOLO le voci visibili
   const navLinks = [
     { href: '/', label: translations.home_link },
     { href: '/about', label: translations.about },
-    { href: '/education', label: translations.financial_education }, // 🔥 NUOVA VOCE
-    { href: '/articles', label: translations.articles },
+    { href: '/education', label: translations.financial_education },
     { href: '/news', label: translations.news },
     { href: '/blog', label: translations.blog_link },
-    { href: '/support', label: translations.support },
     { href: '/contact', label: translations.contact },
+    // ❌ "Articles" e "Support" sono stati rimossi
   ];
 
   const buildHref = (path: string) => (path === '/' ? `/${locale}` : `/${locale}${path}`);
@@ -64,7 +63,7 @@ export function DesktopHeader({ locale, translations }: DesktopHeaderProps) {
 
           {/* NAVIGAZIONE - CENTRO */}
           <nav
-            className="hidden md:flex items-center gap-[40px] mx-[60px]"
+            className="hidden md:flex items-center gap-[30px] mx-[80px]" // 🔥 MODIFICATO: gap ridotto, margine aumentato
             aria-label={translations.main_navigation_label}
           >
             {navLinks.map((link) => (
@@ -79,7 +78,7 @@ export function DesktopHeader({ locale, translations }: DesktopHeaderProps) {
           </nav>
 
           {/* MENU LINGUE - DESTRA */}
-          <div className="hidden md:flex items-center flex-shrink-0 mr-[60px]">
+          <div className="hidden md:flex items-center flex-shrink-0 mr-[80px]"> {/* 🔥 MODIFICATO: margine aumentato */}
             <LocaleSwitcher />
           </div>
 

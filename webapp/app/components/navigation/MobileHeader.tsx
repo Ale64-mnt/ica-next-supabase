@@ -14,14 +14,14 @@ type MobileHeaderProps = {
     main_navigation_label: string;
     open_menu: string;
     close_menu: string;
+    // ✅ Tutte le traduzioni richieste da Header.tsx
     home_link: string;
     about: string;
-    financial_education: string; // 🔥 NUOVA VOCE
-    articles: string;
+    financial_education: string;
     news: string;
     blog_link: string;
-    support: string;
     contact: string;
+    // ❌ 'articles' e 'support' sono stati rimossi
   };
 };
 
@@ -43,15 +43,15 @@ export function MobileHeader({ locale, translations }: MobileHeaderProps) {
     };
   }, []);
 
+  // 🔥 MODIFICA CHIAVE: Array dei link con SOLO le voci visibili
   const navLinks = [
     { href: '/', label: translations.home_link },
     { href: '/about', label: translations.about },
-    { href: '/education', label: translations.financial_education }, // 🔥 NUOVA VOCE
-    { href: '/articles', label: translations.articles },
+    { href: '/education', label: translations.financial_education },
     { href: '/news', label: translations.news },
     { href: '/blog', label: translations.blog_link },
-    { href: '/support', label: translations.support },
     { href: '/contact', label: translations.contact },
+    // ❌ "Articles" e "Support" sono stati rimossi
   ];
 
   const buildHref = (path: string) => (path === '/' ? `/${locale}` : `/${locale}${path}`);

@@ -2476,6 +2476,10 @@ Sistema ora completo per:
 
 ⏱ 1h
 
-### 📌 2026-01-11 | RF-78|""Fix: scroll on zoom, footer links, and policy viewer updates, conctat page"
+### 📌 2026-01-11 | RF-77|"Fix: scroll on zoom, footer links, and policy viewer updates, conctat page"
 
 ⏱ 2h
+
+### 📌 2026-01-13 | RF-78|"chore(ui): remove Articles and Support from navigation menu"
+
+⏱ 1h
