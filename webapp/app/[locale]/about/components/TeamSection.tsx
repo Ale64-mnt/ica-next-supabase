@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link'; // Aggiungi questo import
 
 export function TeamSection({ locale }: { locale: string }) {
   const t = useTranslations('About.team');
@@ -39,9 +40,30 @@ export function TeamSection({ locale }: { locale: string }) {
             {/* Founders List - Responsive */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-8">
               <div className="text-center bg-gray-50 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">{t('founders.Alessandro.name')}</h3>
+                {/* MODIFICA QUI: Rendi il nome cliccabile */}
+                <Link 
+                  href={`/${locale}/about/bio/alessandro-mantovani`}
+                  className="block hover:text-blue-600 transition-colors"
+                >
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900 hover:text-blue-600">
+                    {t('founders.Alessandro.name')}
+                  </h3>
+                </Link>
                 <p className="text-blue-600 font-medium mb-3">{t('founders.Alessandro.role')}</p>
-                <p className="text-gray-600 text-sm leading-relaxed">{t('founders.Alessandro.bio')}</p>
+                <p className="text-gray-600 text-sm leading-relaxed mb-4">{t('founders.Alessandro.bio')}</p>
+                
+                {/* Aggiungi un link esplicito sotto la bio */}
+                <div className="mt-4">
+                  <Link 
+                    href={`/${locale}/about/bio/alessandro-mantovani`}
+                    className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm"
+                  >
+                    <span>Leggi la biografia completa</span>
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </Link>
+                </div>
               </div>
               
               <div className="text-center bg-gray-50 rounded-lg p-6">

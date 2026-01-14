@@ -2483,3 +2483,13 @@ Sistema ora completo per:
 ### 📌 2026-01-13 | RF-78|"chore(ui): remove Articles and Support from navigation menu"
 
 ⏱ 1h
+
+### 📌 2026-01-14 | RF-79|"feat: implement bio page system
+
+- BioLayout component with vertical 'PROFILO' sidebar
+- BioViewer for markdown content with frontmatter
+- Dynamic route [locale]/about/bio/[slug]/page.tsx
+- Multi-language bio content (it, en, de, es, fr)
+- Static site generation for bio pages"
+
+⏱ 3h

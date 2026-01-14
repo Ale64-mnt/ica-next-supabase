@@ -686,5 +686,9 @@
     "left_bullet_4": "Domande su contenuti e fonti",
     "right_title": "Contatta EduEthica",
     "right_subtitle": "Parla con il nostro team."
+  },
+  "Bio": {
+    "profile": "PROFILO",
+    "backToTeam": "Torna alla pagina del Team"
   }
 }
