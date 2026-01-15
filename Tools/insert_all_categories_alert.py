@@ -46,14 +46,15 @@ NEWS_DATA = [
    
     # Italiano
     {
-        "title": "Analisi di una campagna Lumma Stealer con falso CAPTCHA tramite dominio italiano compromesso",
-        "slug": "analisi-campagna-lumma-stealer-falso-captcha-dominio-italiano-compromesso",
-        "excerpt": "CERT-AGID analizza una campagna malware che utilizza un falso CAPTCHA su un dominio italiano compromesso per indurre gli utenti a eseguire uno script PowerShell e installare il malware Lumma Stealer.",
+        "title": "Campagna di phishing «Scadenza Tessera Sanitaria»",
+        "slug": "campagna-phishing-scadenza-tessera-sanitaria",
+        "excerpt": "CERT-AGID segnala una campagna di phishing che sfrutta il nome del Sistema Tessera Sanitaria e del Ministero della Salute per sottrarre credenziali e dati personali tramite messaggi fraudolenti.",
         "body_md": "**Fonte:** CERT-AGID – cert-agid.gov.it\n"
-                   "**Data di pubblicazione:** 13 gennaio 2025\n"
-                   "**Link ufficiale:**https://cert-agid.gov.it/news/analisi-di-una-campagna-lumma-stealer-con-falso-captcha-condotta-attraverso-domino-italiano-compromesso//\n\n"
-                   "**Riassunto:** Il CERT-AGID ha descritto una campagna malware che sfrutta un falso CAPTCHA ospitato su un dominio italiano compromesso per indurre gli utenti a eseguire uno script PowerShell dannoso. L’esecuzione dello script porta all’installazione del malware Lumma Stealer, progettato per esfiltrare credenziali di accesso e dati personali.\n\n"
-                   "**Meccanismo della truffa (con esempio concreto):** Gli utenti visitano una pagina apparentemente legittima e vengono invitati a risolvere un CAPTCHA. In realtà, invece di verificare che l’utente sia umano, il falso controllo genera un comando PowerShell che scarica e installa il malware. Un esempio concreto è una falsa pagina di sicurezza che simula un controllo su servizi noti come GitHub: cliccando sul CAPTCHA, la vittima avvia inconsapevolmente l’esecuzione dello script malevolo, che consente il furto di credenziali di login, wallet di criptovalute e altri dati sensibili.",
+                   "**Data di pubblicazione:** 8 gennaio 2026\n"
+                   "**Link ufficiale:** https://cert-agid.gov.it\n"
+                   "*(pagina principale con evidenza)*\n\n"
+                   "**Riassunto:** Il CERT-AGID segnala una campagna di phishing attiva che utilizza indebitamente il marchio del Sistema Tessera Sanitaria e del Ministero della Salute per inviare comunicazioni fraudolente. I messaggi contengono link o allegati che conducono a siti falsi o tentano di indurre l’utente ad aprire contenuti dannosi, con l’obiettivo di rubare credenziali personali o dati sensibili.\n\n"
+                   "**Meccanismo pratico della truffa:** Gli utenti ricevono e-mail che sembrano provenire dal Sistema Tessera Sanitaria, con oggetti legati alla presunta “scadenza” della tessera. Il messaggio invita a cliccare su un link per “aggiornare i dati”. In realtà, il collegamento reindirizza a un sito falso che richiede l’inserimento di dati personali o credenziali di accesso, successivamente utilizzati dai truffatori per attività fraudolente, come il furto d’identità o l’accesso non autorizzato a conti e servizi online.",
         "locale": "it",
     },
 

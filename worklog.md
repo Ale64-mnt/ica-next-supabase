@@ -2493,3 +2493,13 @@ Sistema ora completo per:
 - Static site generation for bio pages"
 
 ⏱ 3h
+
+### 📌 2026-01-15 | RF-80|"feat: complete bio feature implementation
+
+- Updated TeamSection with bio links for both founders
+- Added 'readFullBio' translation to all 5 languages
+- Created bio folder structure for Egle Mantovani
+- Updated categories alert utility script
+- Bio pages now accessible at /{locale}/about/bio/{slug}"
+
+⏱ 3h
