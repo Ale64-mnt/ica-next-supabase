@@ -1,9 +1,7 @@
 // app/[locale]/about/bio/[slug]/page.tsx
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
-import fs from 'fs';
-import path from 'path';
-import { BioViewer } from '@/app/components/bio/BioViewer';
+import { getBioViewerData } from '@/app/components/bio/BioViewer';
 import BioLayout from '@/app/components/bio/BioLayout';
 
 type PageParams = {
@@ -13,6 +11,10 @@ type PageParams = {
 
 export async function generateStaticParams() {
   try {
+    // Usa la stessa logica per generare i percorsi statici
+    const fs = await import('fs');
+    const path = await import('path');
+    
     const biosDir = path.join(process.cwd(), 'content', 'bios');
     
     if (!fs.existsSync(biosDir)) {
@@ -47,10 +49,33 @@ export async function generateMetadata({
   const { locale, slug } = await params;
   
   try {
-    const bioData = await BioViewer({ locale, slug });
+    const bioData = await getBioViewerData({ 
+      locale, 
+      slug, 
+      type: 'bio' 
+    });
+    
+    if (!bioData) {
+      return {
+        title: 'Biografia',
+        description: 'Pagina biografica',
+      };
+    }
+    
     return {
-      title: `${bioData.frontmatter.name} - ${locale === 'it' ? 'Biografia' : 'Bio'}`,
-      description: bioData.frontmatter.role,
+      title: bioData.metaTitle || `${bioData.name} - Biografia`,
+      description: bioData.metaDescription || bioData.title,
+      openGraph: {
+        title: bioData.metaTitle || `${bioData.name} - Biografia`,
+        description: bioData.metaDescription || bioData.title,
+        images: bioData.photoUrl ? [{ url: bioData.photoUrl }] : [],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: bioData.metaTitle || `${bioData.name} - Biografia`,
+        description: bioData.metaDescription || bioData.title,
+        images: bioData.photoUrl ? [bioData.photoUrl] : [],
+      },
     };
   } catch {
     return {
@@ -68,14 +93,22 @@ export default async function BioPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  try {
-    const bioData = await BioViewer({ locale, slug });
-    
-    // 🔥 AGGIUNGI locale COME PROP
-    return <BioLayout bioData={bioData} locale={locale} />;
-    
-  } catch (error) {
-    console.error(`Errore caricamento bio ${slug} per ${locale}:`, error);
+  const bioData = await getBioViewerData({ 
+    locale, 
+    slug, 
+    type: 'bio'  // Specifica che è una biografia team
+  });
+  
+  if (!bioData) {
     notFound();
   }
+
+  return (
+    <BioLayout 
+      bioData={bioData}
+      locale={locale}
+      type="bio"  // Specifica che è una biografia team
+      // backLink è opzionale, di default sarà /{locale}/about
+    />
+  );
 }

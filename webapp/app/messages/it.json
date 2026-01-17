@@ -691,5 +691,10 @@
   "Bio": {
     "profile": "PROFILO",
     "backToTeam": "Torna alla pagina del Team"
+  },
+  "Author": {
+    "author": "AUTORE",
+    "backToBlog": "Torna al Blog",
+    "articlesCount": "{count} articoli pubblicati"
   }
 }

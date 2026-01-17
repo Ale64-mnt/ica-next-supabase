@@ -43,68 +43,17 @@ IMAGE_ALT_TEXTS = {
 
 # Dati per ogni news in diverse lingue
 NEWS_DATA = [
-   # English
+   
+   # Italiano
     {
-        "title": "ESAs publish key anti-fraud tips to help consumers recognise and prevent online scams",
-        "slug": "esas-key-anti-fraud-tips-recognise-prevent-online-scams",
-        "excerpt": "The European Supervisory Authorities have released new consumer factsheets with practical guidance to detect, prevent and respond to online frauds and scams, including crypto scams and AI-driven phishing.",
-        "body_md": "**Source:** European Banking Authority (EBA), EIOPA, ESMA – eba.europa.eu\n"
-                   "**Publication date:** 15 December 2025\n"
-                   "**Official link:** https://www.eba.europa.eu/publications-and-media/press-releases/esas-publish-key-tips-help-consumers-detect-prevent-and-act-online-frauds-and-scams\n\n"
-                   "**Summary:** The European Supervisory Authorities (EBA, EIOPA and ESMA) have published two factsheets aimed at consumers to help them identify, prevent and react to online fraud, including crypto scams and AI-based phishing. The materials provide practical examples and warning signs to distinguish fraudulent messages from genuine communications, such as unsolicited requests for personal data or offers that appear too good to be true.\n\n"
-                   "The factsheets also explain key terms such as phishing—attempts to obtain sensitive data by posing as legitimate entities—and scams, defined as schemes designed to deceive consumers and steal money.",
-        "locale": "en",
-    },
-
-    # Español
-    {
-        "title": "Las ESAs publican consejos clave contra el fraude para reconocer y prevenir estafas online",
-        "slug": "esas-consejos-clave-anti-fraude-reconocer-prevenir-estafas-online",
-        "excerpt": "Las Autoridades Europeas de Supervisión han publicado nuevos factsheets para ayudar a los consumidores a detectar, prevenir y actuar frente a fraudes online, incluidas estafas cripto y phishing con IA.",
-        "body_md": "**Fuente:** Autoridad Bancaria Europea (EBA), EIOPA, ESMA – eba.europa.eu\n"
-                   "**Fecha de publicación:** 15 de diciembre de 2025\n"
-                   "**Enlace oficial:** https://www.eba.europa.eu/publications-and-media/press-releases/esas-publish-key-tips-help-consumers-detect-prevent-and-act-online-frauds-and-scams\n\n"
-                   "**Resumen:** Las Autoridades Europeas de Supervisión (EBA, EIOPA y ESMA) han publicado dos factsheets dirigidos a los consumidores para ayudarles a identificar, prevenir y reaccionar ante fraudes online, incluidas estafas con criptomonedas y phishing basado en tecnologías de IA. Se ofrecen ejemplos prácticos y señales de alerta para distinguir mensajes fraudulentos de comunicaciones legítimas, como solicitudes inesperadas de datos personales u ofertas excesivamente atractivas.\n\n"
-                   "Los factsheets también explican conceptos clave como phishing—intentos de obtener datos sensibles haciéndose pasar por entidades legítimas—y scam, entendido como fraudes diseñados para engañar y sustraer dinero.",
-        "locale": "es",
-    },
-
-    # Deutsch
-    {
-        "title": "ESAs veröffentlichen zentrale Anti-Betrugs-Tipps zum Erkennen und Verhindern von Online-Scams",
-        "slug": "esas-anti-betrugs-tipps-online-scams-erkennen-verhindern",
-        "excerpt": "Die Europäischen Aufsichtsbehörden haben neue Factsheets veröffentlicht, die Verbraucher beim Erkennen, Vorbeugen und Reagieren auf Online-Betrug unterstützen sollen.",
-        "body_md": "**Quelle:** Europäische Bankenaufsichtsbehörde (EBA), EIOPA, ESMA – eba.europa.eu\n"
-                   "**Veröffentlichungsdatum:** 15. Dezember 2025\n"
-                   "**Offizieller Link:** https://www.eba.europa.eu/publications-and-media/press-releases/esas-publish-key-tips-help-consumers-detect-prevent-and-act-online-frauds-and-scams\n\n"
-                   "**Zusammenfassung:** Die Europäischen Aufsichtsbehörden (EBA, EIOPA und ESMA) haben zwei Factsheets für Verbraucher veröffentlicht, um sie beim Erkennen, Verhindern und richtigen Reagieren auf Online-Betrug zu unterstützen, darunter Krypto-Scams und KI-basiertes Phishing. Die Factsheets enthalten praktische Beispiele und Warnsignale, mit denen sich betrügerische Nachrichten von echten Mitteilungen unterscheiden lassen, etwa unerwartete Anfragen nach persönlichen Daten oder unrealistisch attraktive Angebote.\n\n"
-                   "Zudem werden zentrale Begriffe wie Phishing—der Versuch, sensible Daten durch Vortäuschung einer legitimen Identität zu erlangen—und Scam als gezielte Betrugsmasche zur Geldentwendung erklärt.",
-        "locale": "de",
-    },
-
-    # Français
-    {
-        "title": "Les ESAs publient des conseils clés anti-fraude pour reconnaître et prévenir les arnaques en ligne",
-        "slug": "esas-conseils-cles-anti-fraude-prevenir-arnaques-en-ligne",
-        "excerpt": "Les Autorités européennes de surveillance ont publié de nouveaux factsheets destinés aux consommateurs pour détecter et prévenir les fraudes en ligne, y compris les escroqueries crypto et le phishing par IA.",
-        "body_md": "**Source :** Autorité bancaire européenne (EBA), EIOPA, ESMA – eba.europa.eu\n"
-                   "**Date de publication :** 15 décembre 2025\n"
-                   "**Lien officiel :** https://www.eba.europa.eu/publications-and-media/press-releases/esas-publish-key-tips-help-consumers-detect-prevent-and-act-online-frauds-and-scams\n\n"
-                   "**Résumé :** Les Autorités européennes de surveillance (EBA, EIOPA et ESMA) ont publié deux factsheets à destination des consommateurs afin de les aider à identifier, prévenir et réagir face aux fraudes en ligne, y compris les escroqueries liées aux cryptomonnaies et le phishing utilisant l’IA. Des exemples pratiques et des signaux d’alerte sont fournis pour distinguer les messages frauduleux des communications authentiques, tels que les demandes inattendues de données personnelles ou les offres trop avantageuses.\n\n"
-                   "Les documents expliquent également des notions clés comme le phishing—tentatives d’obtention de données sensibles en se faisant passer pour une entité légitime—et les scams, conçus pour tromper les consommateurs et leur soutirer de l’argent.",
-        "locale": "fr",
-    },
-
-    # Italiano
-    {
-        "title": "Consigli chiave anti-frode delle ESAs per riconoscere e prevenire le truffe online",
-        "slug": "esas-consigli-chiave-anti-frode-riconoscere-prevenire-truffe-online",
-        "excerpt": "Le Autorità europee di vigilanza hanno pubblicato nuovi factsheet per aiutare i consumatori a riconoscere, prevenire e affrontare frodi online, incluse crypto scam e phishing basato su AI.",
-        "body_md": "**Fonte:** European Banking Authority (EBA), EIOPA, ESMA – eba.europa.eu\n"
-                   "**Data di pubblicazione:** 15 dicembre 2025\n"
-                   "**Link ufficiale:** https://www.eba.europa.eu/publications-and-media/press-releases/esas-publish-key-tips-help-consumers-detect-prevent-and-act-online-frauds-and-scams\n\n"
-                   "**Riassunto:** Le Autorità europee di vigilanza (EBA, EIOPA e ESMA) hanno pubblicato due factsheet rivolti ai consumatori per aiutarli a identificare, prevenire e reagire a frodi online, incluse crypto scam e phishing basati su tecnologie di intelligenza artificiale. Vengono forniti esempi pratici e segnali d’allarme per distinguere messaggi fraudolenti da comunicazioni autentiche, come richieste inattese di dati personali o offerte troppo vantaggiose.\n\n"
-                   "I factsheet spiegano inoltre termini chiave come phishing, ossia tentativi di ottenere dati sensibili fingendosi entità legittime, e scam, intese come truffe progettate per ingannare e sottrarre denaro.",
+        "title": "Occhio alle truffe: Consob oscura 5 siti che offrono abusivamente servizi finanziari online",
+        "slug": "consob-oscura-5-siti-servizi-finanziari-online-abusivi",
+        "excerpt": "Consob ha ordinato l’oscuramento di cinque siti che offrivano servizi di investimento online senza autorizzazione, richiamando i risparmiatori a verificare sempre l’abilitazione degli operatori.",
+        "body_md": "**Fonte:** Consob – consob.it\n"
+                   "**Data di pubblicazione:** 15 gennaio 2026\n"
+                   "**Link ufficiale:** https://www.consob.it/web/area-pubblica/dettaglio-news/-/asset_publisher/qjVSo44Lk1fI/content/comunicato-stampa-del-15-gennaio-2026-abusivismo/10194\n\n"
+                   "**Riassunto:** Consob ha ordinato l’oscuramento di cinque nuovi siti web (\"CCBIGLOBAL\", \"Torotrades24\", \"Partners-Swiss\", \"Privanet Securities\" e \"AurosAi\") tramite cui venivano prestati abusivamente servizi di investimento online. Si tratta dei primi interventi del 2026 nell’attività di contrasto all’abusivismo finanziario, che porta a 1.527 il numero complessivo di siti oscurati dall’Autorità dal 2019. Consob richiama i risparmiatori a verificare sempre che l’operatore sia autorizzato e che sia disponibile un prospetto informativo o un white paper per offerte di prodotti finanziari e cripto-attività.\n\n"
+                   "**Meccanismo della truffa:** I siti oscurati si presentano come piattaforme di trading online o di investimento apparentemente professionali, spesso con denominazioni che richiamano operatori svizzeri o internazionali, promettendo rendimenti elevati su strumenti finanziari e cripto-attività senza possedere alcuna autorizzazione. L’utente viene convinto a registrarsi e a versare denaro; dopo i primi presunti guadagni, al momento del prelievo emergono richieste di ulteriori versamenti o il blocco dell’account. Un esempio tipico è l’utente che, dopo aver cliccato su una pubblicità sui social, viene contattato da un finto “consulente” che lo guida nel bonifico verso la piattaforma abusiva, rendendo di fatto irrecuperabili le somme versate.",
         "locale": "it",
     },
 

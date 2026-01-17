@@ -2503,3 +2503,20 @@ Sistema ora completo per:
 - Bio pages now accessible at /{locale}/about/bio/{slug}"
 
 ⏱ 3h
+
+### 📌 2026-01-17 | RF-81|"feat(blog): Complete author-blog integration
+
+- ✅ Created /blog/author/[slug] dynamic routes
+- ✅ Updated BioLayout to handle 'author' type with blog post count
+- ✅ Fixed single blog post page with author link
+- ✅ Added Alessandro Mantovani author bio in content/bios/author/
+- ✅ Connected Supabase authors table with blog_posts via author_id
+- ✅ Added responsive author cards with links to bio pages
+- 🐛 Fixed 404 issue on single blog post pages
+
+Database Changes:
+- Inserted test blog post 'educazione-finanziaria-europa-importanza'
+- Linked to author 'Alessandro Mantovani' (id: 4acf4f9d...)
+- Added proper image URLs with Supabase transformations"
+
+⏱ 4h
