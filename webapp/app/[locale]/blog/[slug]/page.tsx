@@ -1,6 +1,6 @@
 // app/[locale]/blog/[slug]/page.tsx
 import { notFound } from 'next/navigation';
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server'; // ✅ Aggiungi getTranslations
 import { createClient } from '@/app/lib/supabase/server';
 import AlertMarkdown from '@/app/components/AlertMarkdown';
 import Link from 'next/link';
@@ -40,6 +40,9 @@ export default async function BlogPostPage({ params }: { params: Promise<PagePar
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
+  // ✅ OTTIENI LE TRADUZIONI PRIMA DI TUTTO
+  const t = await getTranslations('Blog');
+
   const supabase = await createClient();
   
   const { data: post, error } = await supabase
@@ -64,6 +67,31 @@ export default async function BlogPostPage({ params }: { params: Promise<PagePar
     notFound();
   }
 
+  // Funzione helper per tradurre le categorie
+  const translateCategory = (categoryKey: string) => {
+    const categoriesTranslations = {
+      'financial-education-eu': t('categories.financial-education-eu'),
+      'cybersecurity-frauds': t('categories.cybersecurity-frauds'),
+      'digital-ethics': t('categories.digital-ethics'),
+      'eu-updates': t('categories.eu-updates'),
+      'company-news': t('categories.company-news'),
+      'practical-guides_cybersecurity-frauds': t('categories.practical-guides_cybersecurity-frauds'),
+      'multilingual-education': t('categories.multilingual-education'),
+    };
+    
+    return categoriesTranslations[categoryKey as keyof typeof categoriesTranslations] || categoryKey;
+  };
+
+  // Formatta la data nella lingua corretta
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString(locale, {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+  };
+
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
       {/* Header */}
@@ -71,12 +99,12 @@ export default async function BlogPostPage({ params }: { params: Promise<PagePar
         {/* Categoria e tempo lettura */}
         <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
           <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">
-            {post.category}
+            {translateCategory(post.category)}
           </span>
           <span>•</span>
-          <span>{post.reading_time_min || 5} min read</span>
+          <span>{post.reading_time_min || 5} {t('minRead')}</span>
           <span>•</span>
-          <span>{new Date(post.published_at!).toLocaleDateString('it-IT')}</span>
+          <span>{formatDate(post.published_at!)}</span>
         </div>
 
         {/* Titolo */}
@@ -157,13 +185,13 @@ export default async function BlogPostPage({ params }: { params: Promise<PagePar
           </div>
         )}
 
-        {/* Torna al blog */}
+        {/* Torna al blog - ORA FUNZIONA! */}
         <div className="mt-8">
           <Link 
             href={`/${locale}/blog`}
             className="inline-flex items-center text-blue-600 hover:text-blue-800"
           >
-            ← Torna al blog
+            ← {t('back_to_blog')}
           </Link>
         </div>
       </footer>

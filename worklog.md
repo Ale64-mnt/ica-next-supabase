@@ -2545,3 +2545,11 @@ Key changes:
 - 7 categorie definite: financial-education-eu, cybersecurity-frauds, digital-ethics, eu-updates, company-news, practical-guides_cybersecurity-frauds, multilingual-education"
 
 ⏱ 1h
+
+### 📌 2026-01-18 | RF-84|"fix: traduzioni server-side pagina blog post
+
+- Corretto errore 't is not defined' 
+- Implementate traduzioni per back_to_blog e categorie
+- Allineamento con sistema i18n next-intl"
+
+⏱ 0.5h
