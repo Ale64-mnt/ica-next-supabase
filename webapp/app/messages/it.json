@@ -126,7 +126,7 @@
     "eu_countries": "Paesi dell'Unione Europea",
     "select_country": "Seleziona un paese per i contatti locali"
   },
-  "Blog": {
+ "Blog": {
     "title": "Il Nostro Blog",
     "subtitle": "Articoli e approfondimenti su educazione finanziaria e digitale",
     "back_to_blog": "Torna al blog",
@@ -134,6 +134,9 @@
     "no_posts": "Nessun articolo disponibile",
     "all_posts": "Tutti gli articoli",
     "featured": "In evidenza",
+    "by": "Di", 
+    "readMore": "Leggi più →",
+    "minRead": "min read",
     "categories": {
       "financial-education-eu": "Educazione Finanziaria UE",
       "cybersecurity-frauds": "Cybersecurity & Frodi",
@@ -142,11 +145,8 @@
       "company-news": "News Aziendali",
       "practical-guides": "Guide Pratiche",
       "multilingual-education": "Educazione Multilingue"
-    },
-    "readMore": "Leggi più →",
-    "minRead": "min read"
+    }
   },
-  
   
     "Education": {
       "title": "Educazione Finanziaria",

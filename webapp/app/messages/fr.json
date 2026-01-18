@@ -77,6 +77,7 @@
     "no_posts": "Aucun article disponible",
     "all_posts": "Tous les articles",
     "featured": "À la une",
+    "by": "Par",
     "categories": {
       "financial-education-eu": "Éducation Financière UE",
       "cybersecurity-frauds": "Cybersécurité & Fraudes",
@@ -474,6 +475,11 @@
   "Bio": {
     "profile": "PROFIL",
     "backToTeam": "Retour à la page Équipe"
+  },
+  "Author": {
+    "author": "AUTEUR",
+    "backToBlog": "Retour au blog",
+    "articlesCount": "{count} articles publiés"
   }
     
   }

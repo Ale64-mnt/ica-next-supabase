@@ -10,16 +10,20 @@ interface BlogPost {
   category: string;
   published_at: string;
   reading_time_min: number;
+  authors?: { // ⚠️ AGGIUNGI QUESTA PROPRIETÀ
+    name: string;
+  };
 }
 
 interface BlogGridProps {
   posts: BlogPost[];
   locale: string;
   noPostsText: string;
-  translations: { // <-- AGGIUNGI QUESTA PROP
+  translations: {
     categories: Record<string, string>;
     readMore: string;
     minRead: string;
+    by: string; // ⚠️ AGGIUNGI QUESTA RIGA
   };
 }
 
@@ -39,7 +43,7 @@ export default function BlogGrid({ posts, locale, noPostsText, translations }: B
           key={post.id} 
           post={post} 
           locale={locale}
-          translations={translations} // <-- PASSALA QUI
+          translations={translations} // ⚠️ Ora include 'by'
         />
       ))}
     </div>

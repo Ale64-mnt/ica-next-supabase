@@ -77,6 +77,7 @@
     "no_posts": "No posts available",
     "all_posts": "All posts",
     "featured": "Featured",
+    "by": "By",
     "categories": {
       "financial-education-eu": "EU Financial Education",
       "cybersecurity-frauds": "Cybersecurity & Frauds",
@@ -471,5 +472,10 @@
   "Bio": {
     "profile": "PROFILE",
     "backToTeam": "Back to Team page"
+  },
+  "Author": {
+    "author": "AUTHOR",
+    "backToBlog": "Back to Blog",
+    "articlesCount": "{count} published articles"
   }
     }

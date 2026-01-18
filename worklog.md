@@ -2520,3 +2520,20 @@ Database Changes:
 - Added proper image URLs with Supabase transformations"
 
 ⏱ 4h
+
+### 📌 2026-01-18 | RF-82|"feat(blog): Complete blog author display and i18n updates
+
+- Updated BlogCard to show author name without link (UX improvement)
+- Enhanced BlogGrid to support 'by' translation for author display
+- Fixed blog page query to include authors data for proper display
+- Added/updated i18n translations for all languages (it, en, es, fr, de)
+  - Added 'by' translation for author display
+  - Updated category translations for consistency
+- Removed redundant bio file (content now in Supabase authors table)
+
+Key changes:
+- Author names now visible in blog cards (non-clickable for better UX)
+- Complete multilingual support for blog section
+- Database-driven author profiles instead of local markdown files"
+
+⏱ 4h

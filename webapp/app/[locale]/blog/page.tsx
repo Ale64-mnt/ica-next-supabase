@@ -3,21 +3,36 @@ import { getTranslations } from 'next-intl/server';
 import { createClient } from '@/app/lib/supabase/server';
 import BlogGrid from '@/app/[locale]/blog/components/BlogGrid';
 
-export default async function BlogPage({ params }: { params: { locale: string } }) {
+export default async function BlogPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params; // ⚠️ Next.js 14+ usa Promise params
   const t = await getTranslations('Blog');
-  const supabase = createClient();
+  const supabase = await createClient(); // ⚠️ Aggiungi await se è async
 
-  // Fetch published blog posts
+  // Fetch published blog posts WITH AUTHORS
   const { data: posts, error } = await supabase
     .from('blog_posts')
-    .select('*')
-    .eq('locale', params.locale)
+    .select(`
+      *,
+      authors (
+        id,
+        name,
+        slug,
+        avatar_url
+      )
+    `)
+    .eq('locale', locale)
     .eq('published', true)
     .lte('published_at', new Date().toISOString())
     .order('published_at', { ascending: false });
 
   if (error) {
     console.error('Error fetching blog posts:', error);
+  }
+
+  // Debug: controlla cosa restituisce
+  console.log(`Found ${posts?.length || 0} posts`);
+  if (posts && posts.length > 0) {
+    console.log('First post authors:', posts[0].authors);
   }
 
   return (
@@ -36,12 +51,13 @@ export default async function BlogPage({ params }: { params: { locale: string } 
         {/* Blog Grid con traduzione passata come prop */}
         <BlogGrid 
           posts={posts || []} 
-          locale={params.locale}
+          locale={locale}
           noPostsText={t('no_posts')}
           translations={{
-            categories: t.raw('categories'), // <-- CORRETTO: usa t.raw() per oggetto
+            categories: t.raw('categories'),
             readMore: t('readMore'),
-            minRead: t('minRead')
+            minRead: t('minRead'),
+            by: t('by') // ⚠️ AGGIUNGI questa traduzione!
           }}
         />
       </div>
