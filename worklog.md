@@ -2537,3 +2537,11 @@ Key changes:
 - Database-driven author profiles instead of local markdown files"
 
 ⏱ 4h
+
+### 📌 2026-01-18 | RF-83|"fix: allineamento traduzioni categorie blog_posts
+
+- Aggiornate chiavi categorie in tutti i file JSON (de, en, es, fr, it)
+- Corrispondenza con vincolo CHECK del database
+- 7 categorie definite: financial-education-eu, cybersecurity-frauds, digital-ethics, eu-updates, company-news, practical-guides_cybersecurity-frauds, multilingual-education"
+
+⏱ 1h
