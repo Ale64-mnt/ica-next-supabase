@@ -44,19 +44,19 @@ IMAGE_ALT_TEXTS = {
 NEWS_DATA = [
         
    
-    # Italiano
+   # Italiano
     {
-        "title": "Campagna di phishing «Scadenza Tessera Sanitaria»",
-        "slug": "campagna-phishing-scadenza-tessera-sanitaria",
-        "excerpt": "CERT-AGID segnala una campagna di phishing che sfrutta il nome del Sistema Tessera Sanitaria e del Ministero della Salute per sottrarre credenziali e dati personali tramite messaggi fraudolenti.",
+        "title": "Allerta truffe: sintesi delle campagne malevole nella settimana 10–16 gennaio 2026",
+        "slug": "allerta-truffe-sintesi-campagne-malevole-10-16-gennaio-2026",
+        "excerpt": "CERT-AGID segnala 63 campagne malevole attive in Italia nella settimana 10–16 gennaio 2026, con phishing a tema PagoPA, attacchi bancari e malware diffusi tramite email e link ingannevoli.",
         "body_md": "**Fonte:** CERT-AGID – cert-agid.gov.it\n"
-                   "**Data di pubblicazione:** 8 gennaio 2026\n"
-                   "**Link ufficiale:** https://cert-agid.gov.it\n"
-                   "*(pagina principale con evidenza)*\n\n"
-                   "**Riassunto:** Il CERT-AGID segnala una campagna di phishing attiva che utilizza indebitamente il marchio del Sistema Tessera Sanitaria e del Ministero della Salute per inviare comunicazioni fraudolente. I messaggi contengono link o allegati che conducono a siti falsi o tentano di indurre l’utente ad aprire contenuti dannosi, con l’obiettivo di rubare credenziali personali o dati sensibili.\n\n"
-                   "**Meccanismo pratico della truffa:** Gli utenti ricevono e-mail che sembrano provenire dal Sistema Tessera Sanitaria, con oggetti legati alla presunta “scadenza” della tessera. Il messaggio invita a cliccare su un link per “aggiornare i dati”. In realtà, il collegamento reindirizza a un sito falso che richiede l’inserimento di dati personali o credenziali di accesso, successivamente utilizzati dai truffatori per attività fraudolente, come il furto d’identità o l’accesso non autorizzato a conti e servizi online.",
+                   "**Data di pubblicazione:** 16 gennaio 2026\n"
+                   "**Link ufficiale:** https://cert-agid.gov.it/news/sintesi-riepilogativa-delle-campagne-malevole-nella-settimana-del-10-16-gennaio/\n\n"
+                   "**Riassunto:** Il CERT-AGID ha individuato 63 campagne malevole attive in Italia nella settimana 10–16 gennaio, condividendo 487 indicatori di compromissione con enti accreditati. I temi principali includono campagne di phishing con finte multe PagoPA, attacchi ai servizi bancari e diffusione di malware tramite messaggi email e link fraudolenti.\n\n"
+                   "**Meccanismo della truffa:** Le campagne di phishing utilizzano email o messaggi che sembrano provenire da enti affidabili come PagoPA, banche o servizi online, con l’obiettivo di indurre l’utente a cliccare su link malevoli o ad aprire allegati infetti. In un esempio concreto, un utente riceve una falsa notifica di multa stradale contenente un link che conduce a un sito fraudolento o avvia il download di malware come AgentTesla o AsyncRat, compromettendo credenziali bancarie, account online e dati sensibili.",
         "locale": "it",
     },
+
 
 
 ]

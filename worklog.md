@@ -2553,3 +2553,12 @@ Key changes:
 - Allineamento con sistema i18n next-intl"
 
 ⏱ 0.5h
+
+### 📌 2026-01-23 | RF-85| " Modifica radicale database ,Fix blog pages and i18n translations
+
+- Correzione query lista blog con ordinamento manuale
+- Fix errori TypeScript in app/[locale]/blog/page.tsx
+- Localizzazione categorie blog in tutte le lingue
+- Miglioramento gestione immagini con Next.js Image
+- Unificazione contenuti e fix relazioni database
+- Aggiunta traduzioni mancanti nei file messages"

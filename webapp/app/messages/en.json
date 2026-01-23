@@ -78,6 +78,12 @@
     "all_posts": "All posts",
     "featured": "Featured",
     "by": "By",
+    "clear_filter": "× Remove filter",
+    "view_all_posts": "View all posts",
+    "filter_how_it_works": "How it works",
+    "filter_instructions": "Click on a category to filter articles. Use \"All categories\" to remove the filter.",
+    "filter_by_category": "Filter by category",
+    "all_categories": "All categories",
     "categories": {
       "financial-education-eu": "EU Financial Education",
       "cybersecurity-frauds": "Cybersecurity & Frauds",

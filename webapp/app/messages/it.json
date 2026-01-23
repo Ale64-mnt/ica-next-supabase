@@ -137,6 +137,13 @@
     "by": "Di", 
     "readMore": "Leggi più →",
     "minRead": "min read",
+    "filter_by_category": "Filtra per categoria",
+    "all_categories": "Tutte le categorie",
+    "showing_category": "Visualizzando categoria:",
+    "clear_filter": "× Rimuovi filtro",
+    "view_all_posts": "Vedi tutti gli articoli",
+    "filter_how_it_works": "Come funziona",
+    "filter_instructions": "Clicca su una categoria per filtrare gli articoli. Usa \"Tutte le categorie\" per rimuovere il filtro.",
     "categories": {
       "financial-education-eu": "Educazione Finanziaria UE",
       "cybersecurity-frauds": "Cybersecurity & Frodi",
