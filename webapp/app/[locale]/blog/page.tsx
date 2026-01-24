@@ -1,8 +1,9 @@
-// app/[locale]/blog/page.tsx - VERSIONE CORRETTA
+// app/[locale]/blog/page.tsx - VERSIONE CON GERARCHIE
 import Link from 'next/link';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { createClient } from '@/app/lib/supabase/server';
+import CategoryHierarchy from '@/app/components/blog/CategoryHierarchy';
 
 interface BlogPageProps {
   params: {
@@ -48,8 +49,38 @@ interface ContentCategory {
   category: {
     category_key: string;
     name: string;
+    parent_category_id?: number;
   };
 }
+
+// Tipi per la gerarchia delle categorie
+interface CategoryNode {
+  category_id: number;
+  category_key: string;
+  name: string;
+  count: number;
+  children: CategoryNode[];
+}
+
+interface CategoryFromDB {
+  category_id: number;
+  category_key: string;
+  name: string;
+  parent_category_id?: number;
+  scope: string;
+}
+
+// Helper per identificare macro-categorie
+const MACRO_CATEGORIES = [
+  'digital-safety',
+  'digital-education', 
+  'digital-ethics',
+  'eu-updates'
+];
+
+const isMacroCategory = (categoryKey: string): boolean => {
+  return MACRO_CATEGORIES.includes(categoryKey);
+};
 
 export default async function BlogPage({ 
   params, 
@@ -64,7 +95,7 @@ export default async function BlogPage({
   const supabase = createClient();
   
   // ============================================
-  // 1. QUERY PRINCIPALE SENZA ORDER PROBLEMATICO
+  // 1. QUERY PRINCIPALE
   // ============================================
   console.log(`🎯 Query per: ${locale}`);
   
@@ -129,7 +160,7 @@ export default async function BlogPage({
   }
   
   // ============================================
-  // 3. RECUPERA DATI AGGIUNTIVI (usa sortedLocalizations)
+  // 3. RECUPERA E ORGANIZZA DATI
   // ============================================
   interface PostWithDetails {
     content_id: number;
@@ -161,6 +192,7 @@ export default async function BlogPage({
   }
   
   let postsWithDetails: PostWithDetails[] = [];
+  let categoryHierarchy: CategoryNode[] = [];
   
   if (sortedLocalizations && sortedLocalizations.length > 0) {
     // Estrai gli ID dei contenuti
@@ -170,23 +202,36 @@ export default async function BlogPage({
     
     console.log('📋 Content IDs trovati:', contentIds);
     
-    // 3A. Recupera categorie
-    const { data: categories } = await supabase
+    // 3A. Recupera categorie con gerarchia
+    const { data: allCategories } = await supabase
+      .from('category')
+      .select(`
+        category_id,
+        category_key,
+        name,
+        parent_category_id,
+        scope
+      `)
+      .eq('scope', 'project') as { data: CategoryFromDB[] | null };
+    
+    // 3B. Recupera associazioni articolo-categoria
+    const { data: contentCategories } = await supabase
       .from('content_category')
       .select(`
         content_id,
         category:category_id (
           category_key,
-          name
+          name,
+          parent_category_id
         )
       `)
       .in('content_id', contentIds) as { data: ContentCategory[] | null };
     
-    console.log('🏷️ Categorie trovate:', categories?.length || 0);
+    console.log('🏷️ Categorie trovate:', contentCategories?.length || 0);
     
-    // 3B. Combina i dati con tipo sicuro
+    // 3C. Combina i dati
     postsWithDetails = sortedLocalizations.map(loc => {
-      const postCategories = categories?.filter(
+      const postCategories = contentCategories?.filter(
         (cat: ContentCategory) => cat.content_id === loc.content.content_id
       ) || [];
       
@@ -220,7 +265,88 @@ export default async function BlogPage({
       };
     });
     
+    // 3D. Costruisci gerarchia categorie con conteggio CORRETTO
+    if (allCategories) {
+      // Conta articoli per categoria (incluse macro)
+      const categoryCounts: Record<string, number> = {};
+      
+      // Prima conta per ogni categoria direttamente
+      postsWithDetails.forEach(post => {
+        post.content_category.forEach(catItem => {
+          if (catItem.category?.category_key) {
+            const key = catItem.category.category_key;
+            categoryCounts[key] = (categoryCounts[key] || 0) + 1;
+          }
+        });
+      });
+      
+      // Ora propaga i conteggi dalle sottocategorie alle macro-categorie
+      allCategories.forEach(cat => {
+        if (cat.parent_category_id) {
+          // Se è una sottocategoria, trova la macro e aggiungi il conteggio
+          const parentCategory = allCategories.find(c => c.category_id === cat.parent_category_id);
+          if (parentCategory && categoryCounts[cat.category_key]) {
+            categoryCounts[parentCategory.category_key] = 
+              (categoryCounts[parentCategory.category_key] || 0) + categoryCounts[cat.category_key];
+          }
+        }
+      });
+      
+      // Organizza in gerarchia
+      const categoryMap = new Map<number, CategoryNode>();
+      const rootCategories: CategoryNode[] = [];
+      
+      // Crea nodi base
+      allCategories.forEach(cat => {
+        const node: CategoryNode = {
+          category_id: cat.category_id,
+          category_key: cat.category_key,
+          name: cat.name,
+          count: categoryCounts[cat.category_key] || 0,
+          children: []
+        };
+        categoryMap.set(cat.category_id, node);
+        
+        if (!cat.parent_category_id) {
+          rootCategories.push(node);
+        }
+      });
+      
+      // Collega figli ai parent
+      allCategories.forEach(cat => {
+        if (cat.parent_category_id) {
+          const parent = categoryMap.get(cat.parent_category_id);
+          const child = categoryMap.get(cat.category_id);
+          if (parent && child) {
+            parent.children.push(child);
+          }
+        }
+      });
+      
+      // Ordina per count
+      rootCategories.sort((a, b) => b.count - a.count);
+      rootCategories.forEach(cat => {
+        if (cat.children) {
+          cat.children.sort((a, b) => b.count - a.count);
+        }
+      });
+      
+      categoryHierarchy = rootCategories;
+      
+      // DEBUG: Log dei conteggi
+      console.log('📊 Conteggi categorie:');
+      categoryHierarchy.forEach(macro => {
+        console.log(`  ${macro.category_key}: ${macro.count} articoli`);
+        if (macro.children) {
+          macro.children.forEach(sub => {
+            console.log(`    └─ ${sub.category_key}: ${sub.count} articoli`);
+          });
+        }
+      });
+    }
+    
     console.log('✅ Dati combinati:', postsWithDetails.length, 'articoli');
+    console.log('🌳 Gerarchia categorie:', categoryHierarchy.length, 'macro-categorie');
     
     // Log degli articoli trovati
     postsWithDetails.forEach((post) => {
@@ -229,10 +355,37 @@ export default async function BlogPage({
     });
   }
   
-
+  // ============================================
+  // 4. FILTRA ARTICOLI PER CATEGORIA SELEZIONATA
+  // ============================================
+  let filteredPosts = postsWithDetails;
+  if (category) {
+    const isSelectedMacro = isMacroCategory(category);
+    
+    filteredPosts = postsWithDetails.filter(post => {
+      return post.content_category.some(catItem => {
+        const catKey = catItem.category?.category_key;
+        if (!catKey) return false;
+        
+        if (isSelectedMacro) {
+          // Se selezionata macro, cerca tra le sue sottocategorie
+          const macroCat = categoryHierarchy.find(macro => macro.category_key === category);
+          if (!macroCat) return false;
+          
+          return macroCat.children?.some((child: CategoryNode) => child.category_key === catKey) || 
+                 catKey === category;
+        } else {
+          // Se selezionata sottocategoria, solo quella specifica
+          return catKey === category;
+        }
+      });
+    });
+    
+    console.log(`🔍 Filtro categoria "${category}": ${filteredPosts.length} articoli`);
+  }
   
   // ============================================
-  // 3. HELPER FUNCTIONS
+  // 5. HELPER FUNCTIONS
   // ============================================
   const formatDate = (dateString: string) => {
     try {
@@ -253,51 +406,43 @@ export default async function BlogPage({
   
   const getCategory = (post: PostWithDetails) => {
     if (!post.content_category?.length) return null;
-    return post.content_category[0].category || null;
-  };
-  
-  // Funzione per tradurre le categorie
-  const translateCategory = (categoryKey: string) => {
-    const categoriesTranslations = {
-      'financial-education-eu': t('categories.financial-education-eu'),
-      'cybersecurity-frauds': t('categories.cybersecurity-frauds'),
-      'digital-ethics': t('categories.digital-ethics'),
-      'eu-updates': t('categories.eu-updates'),
-      'company-news': t('categories.company-news'),
-      'practical-guides_cybersecurity-frauds': t('categories.practical-guides_cybersecurity-frauds'),
-      'multilingual-education': t('categories.multilingual-education'),
-    };
+    const cat = post.content_category[0].category;
+    if (!cat) return null;
     
-    return categoriesTranslations[categoryKey as keyof typeof categoriesTranslations] || categoryKey;
+    // Trova la macro-categoria parent
+    const macroCat = categoryHierarchy.find(macro => 
+      macro.children?.some((child: CategoryNode) => child.category_key === cat.category_key)
+    );
+    
+    return {
+      ...cat,
+      parent_category_key: macroCat?.category_key,
+      parent_category_name: macroCat?.name
+    };
+  };
+  
+  // Funzione per tradurre le categorie (versione corretta)
+  const translateCategory = (categoryKey: string, type?: 'macro' | 'sub') => {
+    // Se type non è specificato, determina automaticamente
+    const categoryType = type || (isMacroCategory(categoryKey) ? 'macro' : 'sub');
+    
+    // Prova la traduzione i18n
+    const translated = t(`categories.${categoryType}.${categoryKey}`);
+    
+    // Se la traduzione esiste (non restituisce il percorso stesso)
+    if (translated && !translated.startsWith('categories.')) {
+      return translated;
+    }
+    
+    // Fallback: usa il nome dal database o formatta la chiave
+    const category = categoryHierarchy.flatMap(cat => [cat, ...(cat.children || [])])
+      .find(c => c.category_key === categoryKey);
+    
+    return category?.name || categoryKey.replace(/-/g, ' ');
   };
   
   // ============================================
-  // 4. CATEGORIE PER FILTRI
-  // ============================================
-  const { data: allCategories } = await supabase
-    .from('category')
-    .select('category_key, name')
-    .order('name');
-  
-  // Conta articoli per categoria
-  const categoriesCount: Record<string, number> = {};
-  postsWithDetails.forEach(post => {
-    post.content_category.forEach(catItem => {
-      if (catItem.category?.category_key) {
-        const key = catItem.category.category_key;
-        categoriesCount[key] = (categoriesCount[key] || 0) + 1;
-      }
-    });
-  });
-  
-  const categories = (allCategories || []).map(cat => ({
-    key: cat.category_key,
-    name: cat.name,
-    count: categoriesCount[cat.category_key] || 0
-  })).filter(cat => cat.count > 0);
-  
-  // ============================================
-  // 5. RENDER
+  // 6. RENDER
   // ============================================
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -309,6 +454,7 @@ export default async function BlogPage({
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Contenuto Principale */}
         <div className="lg:w-2/3">
+          {/* Header con categoria selezionata */}
           {category && (
             <div className="mb-6 p-4 bg-blue-50 rounded-lg flex justify-between items-center">
               <div>
@@ -316,7 +462,7 @@ export default async function BlogPage({
                 <span className="ml-2 font-semibold text-blue-700">
                   {translateCategory(category)}
                 </span>
-                <span className="ml-2 text-gray-500">({postsWithDetails.length} articoli)</span>
+                <span className="ml-2 text-gray-500">({filteredPosts.length} articoli)</span>
               </div>
               <Link href={`/${locale}/blog`} className="text-sm text-blue-600 hover:text-blue-800">
                 {t('clear_filter')}
@@ -325,9 +471,9 @@ export default async function BlogPage({
           )}
           
           {/* Lista Articoli */}
-          {postsWithDetails.length > 0 ? (
+          {filteredPosts.length > 0 ? (
             <div className="grid grid-cols-1 gap-8">
-              {postsWithDetails.map((post, index) => {
+              {filteredPosts.map((post, index) => {
                 const localization = post.content_localization[0];
                 const categoryInfo = getCategory(post);
                 const author = getAuthor(post);
@@ -355,14 +501,22 @@ export default async function BlogPage({
                     </Link>
                     
                     <div className="p-7 flex-grow flex flex-col">
-                      {/* CATEGORIA */}
+                      {/* CATEGORIA CON GERARCHIA */}
                       {categoryInfo && (
                         <div className="mb-4">
                           <Link 
                             href={`/${locale}/blog?category=${categoryInfo.category_key}`}
-                            className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-blue-50 text-blue-700 text-sm font-semibold rounded-full border border-blue-200 hover:bg-blue-200 transition-colors"
+                            className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-100 to-blue-50 text-blue-700 text-sm font-semibold rounded-full border border-blue-200 hover:bg-blue-200 transition-colors group"
                           >
-                            {translateCategory(categoryInfo.category_key)}
+                            {categoryInfo.parent_category_key && (
+                              <>
+                                <span className="opacity-80 group-hover:opacity-100">
+                                  {translateCategory(categoryInfo.parent_category_key, 'macro')}
+                                </span>
+                                <span className="mx-1.5 opacity-60">›</span>
+                              </>
+                            )}
+                            <span>{translateCategory(categoryInfo.category_key, 'sub')}</span>
                           </Link>
                         </div>
                       )}
@@ -446,45 +600,15 @@ export default async function BlogPage({
           )}
         </div>
         
-        {/* SIDEBAR */}
+        {/* SIDEBAR CON GERARCHIA */}
         <div className="lg:w-1/3">
           <div className="sticky top-8 bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-            <h3 className="text-xl font-bold text-gray-800 mb-6 pb-4 border-b border-gray-200">
-              {t('filter_by_category')}
-            </h3>
-            
-            <div className="space-y-3">
-              <Link
-                href={`/${locale}/blog`}
-                className={`flex justify-between items-center px-5 py-4 rounded-xl transition-all duration-200 ${
-                  !category 
-                    ? 'bg-gradient-to-r from-blue-50 to-blue-100 text-blue-800 border-2 border-blue-300 shadow-sm' 
-                    : 'hover:bg-gray-50 text-gray-700 border border-gray-200 hover:border-gray-300'
-                }`}
-              >
-                <span className="font-semibold">{t('all_categories')}</span>
-                <span className="text-sm bg-white px-3 py-1.5 rounded-full font-medium shadow-sm">
-                  {postsWithDetails.length}
-                </span>
-              </Link>
-              
-              {categories.map((cat) => (
-                <Link
-                  key={cat.key}
-                  href={`/${locale}/blog?category=${cat.key}`}
-                  className={`flex justify-between items-center px-5 py-4 rounded-xl transition-all duration-200 ${
-                    category === cat.key
-                      ? 'bg-gradient-to-r from-blue-50 to-blue-100 text-blue-800 border-2 border-blue-300 shadow-sm'
-                      : 'hover:bg-gray-50 text-gray-700 border border-gray-200 hover:border-gray-300'
-                  }`}
-                >
-                  <span className="font-medium">{translateCategory(cat.key)}</span>
-                  <span className="text-sm bg-white px-3 py-1.5 rounded-full font-medium shadow-sm">
-                    {cat.count}
-                  </span>
-                </Link>
-              ))}
-            </div>
+            <CategoryHierarchy
+              categories={categoryHierarchy}
+              currentLocale={locale}
+              selectedCategory={category}
+              selectedSubCategory={category && !isMacroCategory(category) ? category : undefined}
+            />
           </div>
         </div>
       </div>

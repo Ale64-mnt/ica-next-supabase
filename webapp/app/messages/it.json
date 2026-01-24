@@ -144,14 +144,42 @@
     "view_all_posts": "Vedi tutti gli articoli",
     "filter_how_it_works": "Come funziona",
     "filter_instructions": "Clicca su una categoria per filtrare gli articoli. Usa \"Tutte le categorie\" per rimuovere il filtro.",
+   "view_all_articles_in": "Vedi tutti gli articoli in",
+    "clear_all": "Cancella tutto",
+    
+    "articles": "articoli",
+    "view_all": "Vedi tutti",
+    "current_filter": "Filtro attuale",
+    "showing_results_for": "Risultati per",
+    "no_subcategories": "Nessuna sottocategoria",
+    "expand_all": "Espandi tutto",
+    "collapse_all": "Comprimi tutto",
     "categories": {
-      "financial-education-eu": "Educazione Finanziaria UE",
-      "cybersecurity-frauds": "Cybersecurity & Frodi",
-      "digital-ethics": "Etica Digitale",
-      "eu-updates": "Aggiornamenti UE",
-      "company-news": "News Aziendali",
-      "practical-guides_cybersecurity-frauds": "Guide pratiche su sicurezza informatica e frodi digitali",
-      "multilingual-education": "Educazione Multilingue"
+      "macro": {
+        "digital-safety": "Sicurezza Digitale",
+        "digital-education": "Educazione Digitale",
+        "digital-ethics": "Etica Digitale",
+        "eu-updates": "Aggiornamenti UE"
+      },
+      "sub": {
+        "online-frauds": "Frodi Online",
+        "email-and-messages": "Email e Messaggi",
+        "social-networks": "Social Network",
+        "smartphone-and-apps": "Smartphone e App",
+        "passwords-and-access": "Password e Accesso",
+        "privacy-and-personal-data": "Privacy e Dati Personali",
+        "financial-frauds": "Frodi Finanziarie",
+        "basic-skills": "Competenze Base",
+        "good-practices": "Buone Pratiche",
+        "families-and-schools": "Famiglie e Scuole",
+        "data-ethics": "Etica dei Dati",
+        "digital-responsibility": "Responsabilità Digitale",
+        "rights-and-risks": "Diritti e Rischi",
+        "official-alerts": "Allerta Ufficiali",
+        "campaigns": "Campagne",
+        "guidelines": "Linee Guida"
+        
+      }
     }
   },
   

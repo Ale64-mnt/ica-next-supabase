@@ -1,4 +1,4 @@
-// app/[locale]/blog/[slug]/page.tsx
+// app/[locale]/blog/[slug]/page.tsx - AGGIORNATO
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { createClient } from '@/app/lib/supabase/server';
@@ -47,6 +47,18 @@ export async function generateMetadata({ params }: { params: Promise<BlogPostPag
   };
 }
 
+// Helper per identificare macro-categorie
+const MACRO_CATEGORIES = [
+  'digital-safety',
+  'digital-education', 
+  'digital-ethics',
+  'eu-updates'
+];
+
+const isMacroCategory = (categoryKey: string): boolean => {
+  return MACRO_CATEGORIES.includes(categoryKey);
+};
+
 export default async function BlogPostPage({ params }: { params: Promise<BlogPostPageProps['params']> }) {
   const { locale, slug } = await params;
   
@@ -94,37 +106,54 @@ export default async function BlogPostPage({ params }: { params: Promise<BlogPos
     author = authorData;
   }
   
-  // 4. CERCA CATEGORIA PRIMARIA
-  let primaryCategory = null;
-  if (content.primary_category_id) {
-    const { data: categoryData } = await supabase
-      .from('category')
-      .select('*')
-      .eq('category_id', content.primary_category_id)
-      .maybeSingle();
-    
-    primaryCategory = categoryData;
-  }
-  
-  // 5. CERCA TUTTE LE CATEGORIE (MODIFICATO)
-  const { data: allCategories } = await supabase
+  // 4. CERCA TUTTE LE CATEGORIE CON GERARCHIA
+  const { data: categoriesData } = await supabase
     .from('content_category')
     .select(`
       category:category_id (
+        category_id,
         category_key,
-        name
+        name,
+        parent_category_id
       )
     `)
     .eq('content_id', content.content_id);
 
-  // Risolvi la struttura annidata correttamente
-  const categories = allCategories?.map(cat => {
-    // 'category' potrebbe essere un array o un oggetto
-    const categoryObj = Array.isArray(cat.category) ? cat.category[0] : cat.category;
-    return categoryObj;
+  // Processa le categorie per ottenere gerarchia
+  const categories = categoriesData?.map(catItem => {
+    const category = Array.isArray(catItem.category) ? catItem.category[0] : catItem.category;
+    return category;
   }).filter(Boolean) || [];
 
-  // 6. CERCA TAG (MODIFICATO)
+  // 5. CERCA MACRO-CATEGORIE PER LE SOTTOCATEGORIE
+  let categoryWithParent = null;
+  if (categories.length > 0) {
+    const primaryCategory = categories[0];
+    
+    if (primaryCategory.parent_category_id) {
+      // Se è una sottocategoria, trova la macro-categoria parent
+      const { data: parentCategory } = await supabase
+        .from('category')
+        .select('category_key, name')
+        .eq('category_id', primaryCategory.parent_category_id)
+        .maybeSingle();
+      
+      categoryWithParent = {
+        ...primaryCategory,
+        parent_category_key: parentCategory?.category_key,
+        parent_category_name: parentCategory?.name
+      };
+    } else {
+      // Se è già una macro-categoria
+      categoryWithParent = {
+        ...primaryCategory,
+        parent_category_key: null,
+        parent_category_name: null
+      };
+    }
+  }
+  
+  // 6. CERCA TAG
   const { data: tagsData } = await supabase
     .from('content_tag')
     .select(`
@@ -135,14 +164,15 @@ export default async function BlogPostPage({ params }: { params: Promise<BlogPos
     `)
     .eq('content_id', content.content_id);
 
-  // RISOLVI CORRETTAMENTE LA STRUTTURA DEI TAG
   const tags = tagsData?.map(tagItem => {
-    // 'tag' potrebbe essere un array o un oggetto
     const tagObj = Array.isArray(tagItem.tag) ? tagItem.tag[0] : tagItem.tag;
     return tagObj?.name;
   }).filter(Boolean) || [];
 
-  console.log('🏷️ Tag trovati:', tags);
+  console.log('✅ Dati completi recuperati!');
+  console.log('📝 Titolo:', localization.title);
+  console.log('🏷️ Categorie trovate:', categories.length);
+  console.log('🔤 Tag trovati:', tags.length);
   
   // 7. HELPER FUNCTIONS
   const formatDate = (dateString: string) => {
@@ -158,50 +188,62 @@ export default async function BlogPostPage({ params }: { params: Promise<BlogPos
     }
   };
 
-  const translateCategory = (categoryKey: string) => {
-    const categoriesTranslations = {
-      'financial-education-eu': t('categories.financial-education-eu'),
-      'cybersecurity-frauds': t('categories.cybersecurity-frauds'),
-      'digital-ethics': t('categories.digital-ethics'),
-      'eu-updates': t('categories.eu-updates'),
-      'company-news': t('categories.company-news'),
-      'practical-guides_cybersecurity-frauds': t('categories.practical-guides_cybersecurity-frauds'),
-      'multilingual-education': t('categories.multilingual-education'),
-    };
+  // Funzione per tradurre le categorie (nuova versione per gerarchie)
+  const translateCategory = (categoryKey: string, type?: 'macro' | 'sub') => {
+    // Determina automaticamente il tipo se non specificato
+    const categoryType = type || (isMacroCategory(categoryKey) ? 'macro' : 'sub');
     
-    return categoriesTranslations[categoryKey as keyof typeof categoriesTranslations] || categoryKey;
+    // Traduzione i18n
+    return t(`categories.${categoryType}.${categoryKey}`);
   };
 
-  const categoryLink = primaryCategory?.category_key 
-    ? `/${locale}/blog?category=${primaryCategory.category_key}`
+  // Link alla categoria (usa la sottocategoria se esiste, altrimenti macro)
+  const categoryLink = categoryWithParent?.category_key 
+    ? `/${locale}/blog?category=${categoryWithParent.category_key}`
     : `/${locale}/blog`;
-
-  console.log('✅ Dati completi recuperati!');
-  console.log('📝 Titolo:', localization.title);
-  console.log('🏷️ Categorie:', categories.length);
-  console.log('🔤 Tag:', tags.length);
 
   // 8. RENDER
   return (
     <article className="max-w-4xl mx-auto px-4 py-8">
       {/* Header */}
       <header className="mb-8">
-        {/* Categoria e tempo lettura */}
-        <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
-          {primaryCategory && (
-            <>
-              <Link 
-                href={categoryLink}
-                className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition-colors"
-              >
-                {translateCategory(primaryCategory.category_key)}
-              </Link>
-              <span>•</span>
-            </>
+        {/* Breadcrumb categoria e metadati */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-sm text-gray-600 mb-4">
+          {categoryWithParent && (
+            <div className="flex items-center flex-wrap gap-2">
+              {/* Breadcrumb gerarchico */}
+              <div className="flex items-center gap-1.5">
+                {categoryWithParent.parent_category_key ? (
+                  <>
+                    <Link 
+                      href={`/${locale}/blog?category=${categoryWithParent.parent_category_key}`}
+                      className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 transition-colors text-sm"
+                    >
+                      {translateCategory(categoryWithParent.parent_category_key, 'macro')}
+                    </Link>
+                    <span className="text-gray-400">›</span>
+                  </>
+                ) : null}
+                <Link 
+                  href={categoryLink}
+                  className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full hover:bg-blue-200 transition-colors font-medium"
+                >
+                  {translateCategory(
+                    categoryWithParent.category_key,
+                    categoryWithParent.parent_category_key ? 'sub' : 'macro'
+                  )}
+                </Link>
+              </div>
+              <span className="hidden sm:inline text-gray-400">•</span>
+            </div>
           )}
-          <span>{content.reading_time_min || 5} {t('minRead')}</span>
-          <span>•</span>
-          <span>{formatDate(content.published_at!)}</span>
+          
+          {/* Tempo lettura e data */}
+          <div className="flex items-center gap-3">
+            <span>{content.reading_time_min || 5} {t('minRead')}</span>
+            <span className="text-gray-400">•</span>
+            <span>{formatDate(content.published_at!)}</span>
+          </div>
         </div>
 
         {/* Titolo */}
@@ -286,7 +328,7 @@ export default async function BlogPostPage({ params }: { params: Promise<BlogPos
         {/* Link utili */}
         <div className="flex flex-col sm:flex-row gap-4 mt-8">
           {/* Link alla categoria */}
-          {primaryCategory && (
+          {categoryWithParent && (
             <Link 
               href={categoryLink}
               className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
@@ -294,7 +336,11 @@ export default async function BlogPostPage({ params }: { params: Promise<BlogPos
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
               </svg>
-              Vedi tutti gli articoli in {translateCategory(primaryCategory.category_key)}
+              {categoryWithParent.parent_category_key ? (
+  <>{t('view_all_articles_in')} {translateCategory(categoryWithParent.category_key, 'sub')}</>
+) : (
+  <>{t('view_all_articles_in')} {translateCategory(categoryWithParent.category_key, 'macro')}</>
+)}
             </Link>
           )}
           

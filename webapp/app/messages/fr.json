@@ -84,14 +84,35 @@
     "filter_instructions": "Cliquez sur une catégorie pour filtrer les articles. Utilisez \"Toutes les catégories\" pour supprimer le filtre.",
     "filter_by_category": "Filtrer par catégorie",
     "all_categories": "Toutes les catégories",
+    "articles": "Artikel",
+    "view_all": "Alle anzeigen",
+     "clear_all": "Tout effacer",
+     "view_all_articles_in": "Voir tous les articles dans",
     "categories": {
-      "financial-education-eu": "Éducation Financière UE",
-      "cybersecurity-frauds": "Cybersécurité & Fraudes",
-      "digital-ethics": "Éthique Numérique",
-      "eu-updates": "Actualités UE",
-      "company-news": "Actualités d'Entreprise",
-      "practical-guides_cybersecurity-frauds": "Guides pratiques sur la cybersécurité et les fraudes numériques",
-      "multilingual-education": "Éducation Multilingue"
+      "macro": {
+        "digital-safety": "Sécurité Numérique",
+        "digital-education": "Éducation Numérique",
+        "digital-ethics": "Éthique Numérique",
+        "eu-updates": "Actualités UE"
+      },
+      "sub": {
+        "online-frauds": "Fraudes en Ligne",
+        "email-and-messages": "Emails et Messages",
+        "social-networks": "Réseaux Sociaux",
+        "smartphone-and-apps": "Smartphones et Applications",
+        "passwords-and-access": "Mots de Passe et Accès",
+        "privacy-and-personal-data": "Vie Privée et Données Personnelles",
+        "financial-frauds": "Fraudes Financières",
+        "basic-skills": "Compétences de Base",
+        "good-practices": "Bonnes Pratiques",
+        "families-and-schools": "Familles et Écoles",
+        "data-ethics": "Éthique des Données",
+        "digital-responsibility": "Responsabilité Numérique",
+        "rights-and-risks": "Droits et Risques",
+        "official-alerts": "Alertes Officielles",
+        "campaigns": "Campagnes",
+        "guidelines": "Lignes Directrices"
+      }
     },
     "readMore": "Lire la suite →",
     "minRead": "min de lecture"

@@ -2554,7 +2554,7 @@ Key changes:
 
 ⏱ 0.5h
 
-### 📌 2026-01-23 | RF-85| " Modifica radicale database ,Fix blog pages and i18n translations
+### 📌 2026-01-23 | RF-85| " Nuova struttura dadabse & Fix blog pages and i18n translations
 
 - Correzione query lista blog con ordinamento manuale
 - Fix errori TypeScript in app/[locale]/blog/page.tsx
@@ -2562,3 +2562,22 @@ Key changes:
 - Miglioramento gestione immagini con Next.js Image
 - Unificazione contenuti e fix relazioni database
 - Aggiunta traduzioni mancanti nei file messages"
+
+⏱ 10h
+
+### 📌 2026-01-24 | RF-86|  "🎯 Implementazione sistema categorie gerarchiche e i18n
+
+- ✅ Migrazione articolo a nuove categorie gerarchiche (financial-education-eu → families-and-schools)
+- ✅ Implementazione componenti CategoryHierarchy e MobileCategoryFilter
+- ✅ Aggiornamento query per supporto gerarchie categorie
+- ✅ Aggiunta traduzioni i18n per 20 categorie in 5 lingue
+- ✅ Fix breadcrumb e filtri a cascata
+- ✅ Correzione conteggi propagati macro-sottocategorie
+- ✅ Nuova struttura utils/categoryHelpers.ts
+
+Database Changes:
+- Articolo ID 10 migrato da 'financial-education-eu' a 'families-and-schools'
+- Struttura gerarchica: 4 macro-categorie + 16 sottocategorie
+- Sistema di filtri intelligenti per navigazione"
+
+⏱ 4h
