@@ -2581,3 +2581,14 @@ Database Changes:
 - Sistema di filtri intelligenti per navigazione"
 
 ⏱ 4h
+
+### 📌 2026-01-28 | RF-87|  "🎯 "feat: implement sidebar with correct category counts and fix routing
+
+- Added BlogSidebar component with category filtering
+- Fixed locale routing issues (fr-FR → fr)
+- Moved ArticleCard to correct blog components folder
+- Improved query performance with parallel fetching
+- Added proper TypeScript interfaces
+- Updated category counts to match locale articles"
+
+⏱ 4h

@@ -46,17 +46,20 @@ NEWS_DATA = [
    
    # Italiano
     {
-        "title": "Allerta truffe: sintesi delle campagne malevole nella settimana 10–16 gennaio 2026",
-        "slug": "allerta-truffe-sintesi-campagne-malevole-10-16-gennaio-2026",
-        "excerpt": "CERT-AGID segnala 63 campagne malevole attive in Italia nella settimana 10–16 gennaio 2026, con phishing a tema PagoPA, attacchi bancari e malware diffusi tramite email e link ingannevoli.",
-        "body_md": "**Fonte:** CERT-AGID – cert-agid.gov.it\n"
-                   "**Data di pubblicazione:** 16 gennaio 2026\n"
-                   "**Link ufficiale:** https://cert-agid.gov.it/news/sintesi-riepilogativa-delle-campagne-malevole-nella-settimana-del-10-16-gennaio/\n\n"
-                   "**Riassunto:** Il CERT-AGID ha individuato 63 campagne malevole attive in Italia nella settimana 10–16 gennaio, condividendo 487 indicatori di compromissione con enti accreditati. I temi principali includono campagne di phishing con finte multe PagoPA, attacchi ai servizi bancari e diffusione di malware tramite messaggi email e link fraudolenti.\n\n"
-                   "**Meccanismo della truffa:** Le campagne di phishing utilizzano email o messaggi che sembrano provenire da enti affidabili come PagoPA, banche o servizi online, con l’obiettivo di indurre l’utente a cliccare su link malevoli o ad aprire allegati infetti. In un esempio concreto, un utente riceve una falsa notifica di multa stradale contenente un link che conduce a un sito fraudolento o avvia il download di malware come AgentTesla o AsyncRat, compromettendo credenziali bancarie, account online e dati sensibili.",
+        "title": "Avviso phishing sull’Agenzia delle Entrate – falso deposito cauzionale",
+        "slug": "avviso-phishing-agenzia-entrate-falso-deposito-cauzionale",
+        "excerpt": "L’Agenzia delle Entrate avverte su messaggi fraudolenti che usano il pretesto di un presunto mancato versamento di un deposito cauzionale in controversie internazionali per sottrarre dati e denaro.",
+        "body_md": "**Fonte:** Agenzia delle Entrate – agenziaentrate.gov.it\n"
+                   "**Data di pubblicazione:** 26 gennaio 2026\n"
+                   "**Link ufficiale:** https://www.agenziaentrate.gov.it/portale/avviso-del-26-gennaio-2026\n\n"
+                   "**Riassunto:** L’Agenzia delle Entrate segnala la circolazione di messaggi fraudolenti che utilizzano come pretesto il presunto “mancato versamento del deposito cauzionale in controversie internazionali”. Le comunicazioni impiegano un linguaggio pseudo-giuridico per apparire credibili e urgenti, spingendo il destinatario ad agire senza effettuare verifiche.\n\n"
+                   "**Canale:** messaggi elettronici (email o canali digitali analoghi) che **non** provengono dall’Agenzia delle Entrate.\n\n"
+                   "**Trucco principale:** il testo lascia intendere che sia necessario versare un “deposito cauzionale” o fornire informazioni sensibili per evitare conseguenze negative come sanzioni, perdita di una causa o blocco di fondi.\n\n"
+                   "**Obiettivo della truffa:** indurre la vittima a cliccare su link che portano a siti contraffatti dove vengono richiesti dati personali, credenziali di accesso o coordinate bancarie, oppure a rispondere direttamente al messaggio fornendo informazioni identificative e finanziarie.\n\n"
+                   "**Esempio tipico:** il destinatario riceve un’email che parla di “mancato versamento del deposito cauzionale in una controversia internazionale” e invita a cliccare su un link per “regolarizzare immediatamente la posizione”. Inserendo i dati del conto o delle carte, queste informazioni vengono raccolte dai truffatori e utilizzate per bonifici non autorizzati o furti di identità.\n\n"
+                   "**Avvertenza ufficiale:** l’Agenzia delle Entrate ribadisce che **non richiede mai** il pagamento di depositi cauzionali tramite email né invita a inserire dati bancari o credenziali tramite link esterni. In presenza di messaggi di questo tipo, il comportamento corretto è non cliccare, non rispondere e cancellare la comunicazione, verificando solo attraverso i canali ufficiali.",
         "locale": "it",
     },
-
 
 
 ]
