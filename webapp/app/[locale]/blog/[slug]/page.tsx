@@ -94,17 +94,56 @@ export default async function BlogPostPage({ params }: { params: Promise<BlogPos
     notFound();
   }
   
-  // 3. CERCA AUTORE
-  let author = null;
-  if (content.author_id) {
-    const { data: authorData } = await supabase
-      .from('authors')
-      .select('*')
-      .eq('id', content.author_id)
-      .maybeSingle();
-    
-    author = authorData;
-  }
+    // 3. CERCA AUTORE (LOCALIZZATO: slug + locale)
+    let author: any = null;
+
+    if (content.author_id) {
+      // 3a) ricava lo slug dall'id agganciato al contenuto
+      const { data: baseAuthor } = await supabase
+        .from('authors')
+        .select('slug')
+        .eq('id', content.author_id)
+        .maybeSingle();
+  
+      const authorSlug = baseAuthor?.slug;
+  
+      if (authorSlug) {
+        // 3b) prova autore nella lingua corrente
+        const { data: aCurrent } = await supabase
+          .from('authors')
+          .select('*')
+          .eq('slug', authorSlug)
+          .eq('locale', locale)
+          .maybeSingle();
+  
+        if (aCurrent) {
+          author = aCurrent;
+        } else {
+          // 3c) fallback EN
+          const { data: aEn } = await supabase
+            .from('authors')
+            .select('*')
+            .eq('slug', authorSlug)
+            .eq('locale', 'en')
+            .maybeSingle();
+  
+          if (aEn) {
+            author = aEn;
+          } else {
+            // 3d) fallback IT
+            const { data: aIt } = await supabase
+              .from('authors')
+              .select('*')
+              .eq('slug', authorSlug)
+              .eq('locale', 'it')
+              .maybeSingle();
+  
+            author = aIt ?? null;
+          }
+        }
+      }
+    }
+  
   
   // 4. CERCA TUTTE LE CATEGORIE CON GERARCHIA
   const { data: categoriesData } = await supabase
@@ -282,19 +321,22 @@ export default async function BlogPostPage({ params }: { params: Promise<BlogPos
           </div>
         )}
 
-        {/* Immagine cover */}
-        {localization.cover_url || localization.image_url ? (
-          <div className="relative w-full h-96 mb-8 rounded-xl overflow-hidden">
-            <Image
-              src={localization.cover_url || localization.image_url!}
-              alt={localization.image_alt || localization.title}
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 768px) 100vw, 800px"
-            />
-          </div>
-        ) : null}
+       {/* Immagine cover (RIDIMENSIONATA, RESPONSIVA) */}
+{localization.cover_url || localization.image_url ? (
+  <div className="mb-8 max-w-3xl mx-auto rounded-xl overflow-hidden bg-gray-100">
+    <Image
+      src={localization.cover_url || localization.image_url!}
+      alt={localization.image_alt || localization.title}
+      width={1200}
+      height={675}
+      className="w-full h-auto max-h-[420px] object-contain"
+      priority
+      sizes="(max-width: 768px) 100vw, 768px"
+    />
+  </div>
+) : null}
+
+
       </header>
 
       {/* Contenuto */}

@@ -146,7 +146,7 @@
     "filter_instructions": "Clicca su una categoria per filtrare gli articoli. Usa \"Tutte le categorie\" per rimuovere il filtro.",
    "view_all_articles_in": "Vedi tutti gli articoli in",
     "clear_all": "Cancella tutto",
-    
+    "no_posts_category": "Nessun articolo trovato per questa categoria",
     "articles": "articoli",
     "view_all": "Vedi tutti",
     "current_filter": "Filtro attuale",
@@ -154,6 +154,10 @@
     "no_subcategories": "Nessuna sottocategoria",
     "expand_all": "Espandi tutto",
     "collapse_all": "Comprimi tutto",
+    "no_posts_desc": "Al momento non ci sono articoli disponibili.",
+    "no_posts_category_desc": "Nessun articolo trovato per la categoria \"{category}\".",
+    "articles_found": "articoli trovati",
+   "locale_info": "Locale: {locale} (ricerca: {clean})",
     "categories": {
       "macro": {
         "digital-safety": "Sicurezza Digitale",

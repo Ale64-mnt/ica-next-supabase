@@ -2592,3 +2592,7 @@ Database Changes:
 - Updated category counts to match locale articles"
 
 ⏱ 4h
+
+### 📌 2026-01-29 | RF-89|  "🎯 "Blog: categories hierarchy, author localization, responsive header image"
+
+⏱ 2h

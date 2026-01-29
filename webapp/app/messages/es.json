@@ -84,10 +84,14 @@
     "filter_instructions": "Haz clic en una categoría para filtrar los artículos. Usa \"Todas las categorías\" para eliminar el filtro.",
     "filter_by_category": "Filtrar por categoría",
      "all_categories": "Todas las categorías",
+     "showing_category": "Mostrando categoría:",
      "view_all_articles_in": "Ver todos los artículos en",
     "articles": "artículos",
     "view_all": "Ver todos",
     "clear_all": "Limpiar todo",
+    "no_posts_category": "No se encontraron artículos para esta categoría",
+    "no_posts_category_desc": "No se encontraron artículos para la categoría \"{category}\".",
+
     "categories": {
       "macro": {
         "digital-safety": "Seguridad Digital",

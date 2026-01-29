@@ -1,9 +1,8 @@
-// app/[locale]/blog/page.tsx - VERSIONE SENZA SIDEBAR (gestita dal layout)
+// app/[locale]/blog/page.tsx
 import { getTranslations } from 'next-intl/server';
 import { createClient } from '@/app/lib/supabase/server';
 import ArticleCard from '@/app/components/blog/ArticleCard';
 
-// INTERFACCE TYPESCRIPT
 interface Author {
   id: string;
   name: string;
@@ -11,13 +10,32 @@ interface Author {
   avatar_url?: string;
 }
 
+interface ParentCategory {
+  category_id: number;
+  category_key: string;
+  name: string;
+}
+
+interface Category {
+  category_id: number;
+  category_key: string;
+  name: string;
+  parent_category_id?: number | null;
+  parent?: ParentCategory | null;
+}
+
+interface ContentCategoryRow {
+  category: Category | null;
+}
+
 interface Content {
   content_id: number;
   published_at: string;
-  reading_time_min?: number;
+  reading_time_min?: number | null;
   status: string;
-  author_id?: string;
+  author_id?: string | null;
   authors: Author[];
+  content_category?: ContentCategoryRow[];
 }
 
 interface ContentLocalization {
@@ -25,26 +43,68 @@ interface ContentLocalization {
   locale: string;
   slug: string;
   title: string;
-  excerpt?: string;
-  cover_url?: string;
-  thumb_url?: string;
-  image_url?: string;
-  image_alt?: string;
+  excerpt?: string | null;
+  cover_url?: string | null;
+  thumb_url?: string | null;
+  image_url?: string | null;
+  image_alt?: string | null;
   content: Content;
 }
 
 interface BlogPageProps {
-  params: {
-    locale: string;
-  };
-  searchParams?: {
-    category?: string;
-  };
+  params: { locale: string };
+  searchParams?: { category?: string };
 }
 
-// Helper per pulire locale (fr-FR → fr)
 function cleanLocale(locale: string): string {
   return locale.includes('-') ? locale.split('-')[0] : locale;
+}
+
+function extractCategories(article: ContentLocalization): Category[] {
+  const rows = article.content.content_category ?? [];
+  return rows.map((r) => r.category).filter((c): c is Category => Boolean(c));
+}
+
+function resolveCategoryLabel(
+  t: (key: string) => string,
+  categoryKey: string
+) {
+  const macroKey = `categories.macro.${categoryKey}`;
+  const subKey = `categories.sub.${categoryKey}`;
+
+  const has = (t as unknown as { has?: (k: string) => boolean }).has;
+
+  if (has?.(macroKey)) return t(macroKey);
+  if (has?.(subKey)) return t(subKey);
+
+  return categoryKey;
+}
+
+async function resolveFilterLabel(
+  t: (key: string) => string,
+  categoryKey: string,
+  supabase: any
+) {
+  const { data: row } = await supabase
+    .from('category')
+    .select(`
+      category_key,
+      parent:parent_category_id (
+        category_key
+      )
+    `)
+    .eq('category_key', categoryKey)
+    .single();
+
+  const parentKey = (row as any)?.parent?.category_key as string | undefined;
+
+  if (parentKey) {
+    const macroLabel = resolveCategoryLabel(t, parentKey);
+    const subLabel = resolveCategoryLabel(t, categoryKey);
+    return `${macroLabel} · ${subLabel}`;
+  }
+
+  return resolveCategoryLabel(t, categoryKey);
 }
 
 export default async function BlogPage({ params, searchParams }: BlogPageProps) {
@@ -55,7 +115,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
 
   const cleanLocaleCode = cleanLocale(locale);
 
-  const { data: localizations, error } = await supabase
+  const { data: localizations } = await supabase
     .from('content_localization')
     .select(`
       localization_id,
@@ -78,6 +138,19 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
           name,
           slug,
           avatar_url
+        ),
+        content_category:content_category (
+          category:category_id (
+            category_id,
+            category_key,
+            name,
+            parent_category_id,
+            parent:parent_category_id (
+              category_id,
+              category_key,
+              name
+            )
+          )
         )
       )
     `)
@@ -99,16 +172,21 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
     articles = await filterByCategory(articles, category, supabase);
   }
 
+  const filterLabel = category
+    ? await resolveFilterLabel(t as any, category, supabase)
+    : null;
+
   return (
     <div>
-      {/* Header con categoria */}
       {category && articles.length > 0 && (
         <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
           <div className="flex justify-between items-center">
             <div>
-              <span className="text-sm text-gray-600">{t('showing_category')}: </span>
-              <span className="font-semibold text-blue-700">{category}</span>
-              <span className="ml-2 text-gray-500">({articles.length} {t('articles')})</span>
+              <span className="text-sm text-gray-600">{t('showing_category')} </span>
+              <span className="font-semibold text-blue-700">{filterLabel}</span>
+              <span className="ml-2 text-gray-500">
+                ({articles.length} {t('articles')})
+              </span>
             </div>
             <a href={`/${cleanLocaleCode}/blog`} className="text-sm text-blue-600 hover:text-blue-800">
               {t('clear_filter')}
@@ -117,51 +195,34 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
         </div>
       )}
 
-      {/* Lista articoli */}
       {articles.length > 0 ? (
-        <>
-          <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
-            <div className="flex items-center">
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                <span className="text-green-600">✓</span>
-              </div>
-              <div>
-                <p className="font-medium text-green-800">
-                  {articles.length} articoli trovati
-                </p>
-                <p className="text-sm text-green-600">
-                  Locale: {locale} (cerca: {cleanLocaleCode})
-                </p>
-              </div>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          {articles.map((article) => {
+            const articleCleanLocale = cleanLocale(article.locale);
+            const categories = extractCategories(article);
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {articles.map((article) => {
-              const articleCleanLocale = cleanLocale(article.locale);
-
-              return (
-                <ArticleCard
-                  key={article.localization_id}
-                  article={{
-                    id: article.content.content_id,
-                    slug: article.slug,
-                    title: article.title,
-                    excerpt: article.excerpt,
-                    cover_url: article.cover_url,
-                    thumb_url: article.thumb_url,
-                    image_url: article.image_url,
-                    image_alt: article.image_alt,
-                    published_at: article.content.published_at,
-                    reading_time_min: article.content.reading_time_min || 5,
-                    locale: articleCleanLocale,
-                    author: article.content.authors?.[0],
-                  }}
-                />
-              );
-            })}
-          </div>
-        </>
+            return (
+              <ArticleCard
+                key={article.localization_id}
+                article={{
+                  id: article.content.content_id,
+                  slug: article.slug,
+                  title: article.title,
+                  excerpt: article.excerpt ?? undefined,
+                  cover_url: article.cover_url ?? undefined,
+                  thumb_url: article.thumb_url ?? undefined,
+                  image_url: article.image_url ?? undefined,
+                  image_alt: article.image_alt ?? undefined,
+                  published_at: article.content.published_at,
+                  reading_time_min: article.content.reading_time_min ?? undefined,
+                  locale: articleCleanLocale,
+                  author: article.content.authors?.[0],
+                  categories
+                }}
+              />
+            );
+          })}
+        </div>
       ) : (
         <div className="text-center py-16 bg-white rounded-xl shadow-sm border">
           <div className="text-5xl mb-4">📄</div>
@@ -169,65 +230,49 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
             {category ? t('no_posts_category') : t('no_posts')}
           </h3>
           <p className="text-gray-500 mb-4">
-            {category
-              ? `Nessun articolo trovato per la categoria "${category}".`
-              : 'Nessun articolo pubblicato ancora.'}
+            {category ? t('no_posts_category_desc', { category }) : t('no_posts_desc')}
           </p>
-
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg text-left max-w-md mx-auto">
-            <h4 className="font-medium text-gray-700 mb-2">Debug Info:</h4>
-            <div className="text-xs text-gray-600 space-y-1">
-              <p><strong>Route locale:</strong> {locale}</p>
-              <p><strong>Clean locale:</strong> {cleanLocaleCode}</p>
-              <p><strong>Articoli trovati:</strong> {localizations?.length || 0}</p>
-              <p><strong>Errore:</strong> {error?.message || 'Nessuno'}</p>
-              {localizations && localizations.length > 0 && (
-                <>
-                  <p className="mt-2"><strong>Articoli trovati:</strong></p>
-                  <ul className="list-disc pl-4">
-                    {localizations.slice(0, 3).map((loc: any, i: number) => (
-                      <li key={i}>
-                        {loc.title} (locale: {loc.locale}, slug: {loc.slug})
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-            </div>
-          </div>
         </div>
       )}
     </div>
   );
 }
 
-// Helper function per filtrare per categoria
 async function filterByCategory(
   articles: ContentLocalization[],
-  category: string,
+  categoryKey: string,
   supabase: any
 ) {
   try {
-    const { data: categoryData } = await supabase
+    const { data: selected, error: selErr } = await supabase
       .from('category')
       .select('category_id')
-      .eq('category_key', category)
+      .eq('category_key', categoryKey)
       .single();
 
-    if (!categoryData) return [];
+    if (selErr || !selected) return [];
 
-    const { data: contentCategories } = await supabase
+    const selectedId = selected.category_id;
+
+    const { data: children, error: childErr } = await supabase
+      .from('category')
+      .select('category_id')
+      .eq('parent_category_id', selectedId);
+
+    if (childErr) return [];
+
+    const categoryIds = [selectedId, ...(children ?? []).map((c: any) => c.category_id)];
+
+    const { data: contentCategories, error: ccErr } = await supabase
       .from('content_category')
       .select('content_id')
-      .eq('category_id', categoryData.category_id);
+      .in('category_id', categoryIds);
 
-    if (!contentCategories) return [];
+    if (ccErr || !contentCategories) return [];
 
-    const categoryContentIds = contentCategories.map((cc: any) => cc.content_id);
+    const allowedContentIds = new Set(contentCategories.map((cc: any) => cc.content_id));
 
-    return articles.filter((article) =>
-      categoryContentIds.includes(article.content.content_id)
-    );
+    return articles.filter((article) => allowedContentIds.has(article.content.content_id));
   } catch (err) {
     console.error('❌ Errore filtro categoria:', err);
     return [];
