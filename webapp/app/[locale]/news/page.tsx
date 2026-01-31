@@ -31,73 +31,33 @@ export default async function NewsPage({ params }: { params: { locale: string } 
 
   return (
     <div style={{ minHeight: '100vh', fontFamily: 'Arial, sans-serif' }}>
+      {/* HERO RESPONSIVE - Layout a due colonne su desktop, colonna su mobile */}
+<div className="relative w-full bg-white overflow-hidden">
+  <div className="max-w-7xl mx-auto px-4 py-8 md:py-12 lg:py-16">
+    <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-16">
       
-      {/* HERO MODIFICATO - Layout a due colonne */}
-      <div className="relative w-full h-64 md:h-80 lg:h-96 bg-white overflow-hidden">
-        {/* Contenitore principale centrato sopra la griglia */}
-        <div style={{
-          position: 'absolute',
-          top: '0',
-          left: '0',
-          right: '0',
-          bottom: '0',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 2rem'
-        }}>
-          {/* Layout a due colonne */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '3rem',
-            width: '100%',
-            maxWidth: '900px'
-          }}>
-            {/* Colonna sinistra - Immagine cubo */}
-            <div style={{
-              flexShrink: 0,
-              width: '300px',
-              height: '300px',
-              position: 'relative'
-            }}>
-              <Image
-                src="/images/News/news-1200x800.webp"
-                alt={t('news') || 'News e aggiornamenti'}
-                fill
-                style={{ 
-                  objectFit: 'contain',
-                  objectPosition: 'left center',
-                }}
-                sizes="300px"
-                priority
-              />
-            </div>
-
-            {/* Colonna destra - Testo */}
-            <div style={{
-              textAlign: 'left',
-              maxWidth: '500px'
-            }}>
-             
-              
-              {/* Sottotitolo "Latest news and updates" */}
-              <p style={{ 
-                fontSize: '1.8rem', 
-                color: '#000000',
-                margin: '0',
-                lineHeight: '1.5',
-                fontWeight: '700'
-              }}>
-                {t('news_description')}
-              </p>
-            </div>
-          </div>
-        </div>
+      {/* Immagine - Sopra su mobile, sinistra su desktop */}
+      <div className="w-48 h-48 md:w-60 md:h-60 lg:w-72 lg:h-72 relative flex-shrink-0">
+        <Image
+          src="/images/News/news-1200x800.webp"
+          alt={t('news') || 'News e aggiornamenti'}
+          fill
+          className="object-contain"
+          sizes="(max-width: 768px) 192px, (max-width: 1024px) 240px, 288px"
+          priority
+        />
       </div>
+
+      {/* Testo - Sotto su mobile, destra su desktop */}
+      <div className="text-center md:text-left max-w-lg md:max-w-xl">
+        <p className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight md:leading-normal">
+          {t('news_description')}
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
 
       {/* Lista News */}
       <section style={{ padding: '2rem 1rem', maxWidth: '1200px', margin: '0 auto' }}>

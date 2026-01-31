@@ -2605,3 +2605,11 @@ Database Changes:
 - Add/update hero images"
 
 ⏱ 4h
+
+### 📌 2026-01-31 | RF-91| "♻️ Improve hero section responsiveness for blog and news pages
+- Make hero sections fully responsive (mobile: image above text, desktop: side-by-side)
+- Replace inline styles with Tailwind classes for better maintainability
+- Ensure consistent design between blog and news pages
+- Improve text readability on all screen sizes"
+
+⏱ 0.5h
