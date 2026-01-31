@@ -32,47 +32,69 @@ export default async function NewsPage({ params }: { params: { locale: string } 
   return (
     <div style={{ minHeight: '100vh', fontFamily: 'Arial, sans-serif' }}>
       
-      {/* HERO CON IMMAGINE AGGIORNATO */}
-      <div className="relative w-full h-64 md:h-80 lg:h-96 bg-gray-100 overflow-hidden">
-        <Image
-          src="/images/News/news-1200x800.webp"
-          alt={t('news') || 'News e aggiornamenti'}
-          fill
-          style={{ 
-            objectFit: 'contain',
-            position: 'absolute',
-            top: '0',
-            left: '0'
-          }}
-          sizes="100vw"
-          priority
-        />
+      {/* HERO MODIFICATO - Layout a due colonne */}
+      <div className="relative w-full h-64 md:h-80 lg:h-96 bg-white overflow-hidden">
+        {/* Contenitore principale centrato sopra la griglia */}
         <div style={{
           position: 'absolute',
-          inset: '0',
-          backgroundColor: 'rgba(0, 0, 0, 0.4)',
+          top: '0',
+          left: '0',
+          right: '0',
+          bottom: '0',
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center'
+          justifyContent: 'center',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 2rem'
         }}>
-          <div style={{ textAlign: 'center', color: 'white' }}>
-            <h1 style={{ 
-              fontSize: '3rem', 
-              fontWeight: 'bold', 
-              marginBottom: '1.5rem',
-              textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
+          {/* Layout a due colonne */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '3rem',
+            width: '100%',
+            maxWidth: '900px'
+          }}>
+            {/* Colonna sinistra - Immagine cubo */}
+            <div style={{
+              flexShrink: 0,
+              width: '300px',
+              height: '300px',
+              position: 'relative'
             }}>
-              {t('news')}
-            </h1>
-            <p style={{ 
-              fontSize: '1.5rem', 
-              maxWidth: '800px',
-              margin: '0 auto',
-              textShadow: '1px 1px 2px rgba(0,0,0,0.5)',
-              lineHeight: '1.6'
+              <Image
+                src="/images/News/news-1200x800.webp"
+                alt={t('news') || 'News e aggiornamenti'}
+                fill
+                style={{ 
+                  objectFit: 'contain',
+                  objectPosition: 'left center',
+                }}
+                sizes="300px"
+                priority
+              />
+            </div>
+
+            {/* Colonna destra - Testo */}
+            <div style={{
+              textAlign: 'left',
+              maxWidth: '500px'
             }}>
-              {t('news_description')}
-            </p>
+             
+              
+              {/* Sottotitolo "Latest news and updates" */}
+              <p style={{ 
+                fontSize: '1.8rem', 
+                color: '#000000',
+                margin: '0',
+                lineHeight: '1.5',
+                fontWeight: '700'
+              }}>
+                {t('news_description')}
+              </p>
+            </div>
           </div>
         </div>
       </div>

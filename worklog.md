@@ -2596,3 +2596,12 @@ Database Changes:
 ### 📌 2026-01-29 | RF-89|  "🎯 "Blog: categories hierarchy, author localization, responsive header image"
 
 ⏱ 2h
+
+### 📌 2026-01-31 | RF-90| "✨ Update blog layout with two-column hero matching news page design
+- Match hero dimensions and positioning between blog and news pages
+- Remove subtitle text, keep only placeholder with bold styling
+- Improve sidebar text spacing to prevent overlap
+- Update translation files
+- Add/update hero images"
+
+⏱ 4h

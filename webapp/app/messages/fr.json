@@ -85,12 +85,14 @@
     "filter_by_category": "Filtrer par catégorie",
     "all_categories": "Toutes les catégories",
     "showing_category": "Catégorie affichée :",
-    "articles": "Artikel",
-    "view_all": "Alle anzeigen",
+    "articles": "Articles",
+  "view_all": "Tout afficher",
      "clear_all": "Tout effacer",
      "view_all_articles_in": "Voir tous les articles dans",
      "no_posts_category": "Aucun article trouvé pour cette catégorie",
       "no_posts_category_desc": "Aucun article n’a été trouvé pour la catégorie \"{category}\".",
+      "hero_title": "Information, prévention et sensibilisation",
+      "hero_subtitle": "Articles sur la sécurité en ligne, les fraudes numériques et l’éducation financière.",
 
     "categories": {
       "macro": {

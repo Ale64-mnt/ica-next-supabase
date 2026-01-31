@@ -158,6 +158,8 @@
     "no_posts_category_desc": "Nessun articolo trovato per la categoria \"{category}\".",
     "articles_found": "articoli trovati",
    "locale_info": "Locale: {locale} (ricerca: {clean})",
+   "hero_title": "Informazione, prevenzione e consapevolezza ",
+   "hero_subtitle": "Articoli su sicurezza online, frodi digitali ed educazione finanziaria.",
     "categories": {
       "macro": {
         "digital-safety": "Sicurezza Digitale",

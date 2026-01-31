@@ -1,14 +1,13 @@
 // app/[locale]/blog/layout.tsx
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { createClient } from '@/app/lib/supabase/server';
 import BlogSidebar from '@/app/components/blog/BlogSidebar';
 
 interface BlogLayoutProps {
   children: ReactNode;
-  params: Promise<{
-    locale: string;
-  }>;
+  params: Promise<{ locale: string }>;
 }
 
 function cleanLocale(locale: string): string {
@@ -33,6 +32,7 @@ export default async function BlogLayout({ children, params }: BlogLayoutProps) 
   const { locale } = await params;
   const supabase = createClient();
 
+  const t = await getTranslations({ locale, namespace: 'Blog' });
   const localeCode = cleanLocale(locale);
 
   const { data: categories } = await supabase
@@ -53,22 +53,88 @@ export default async function BlogLayout({ children, params }: BlogLayoutProps) 
     `)
     .eq('scope', 'project');
 
+  const cubeImage =
+    'https://twwgfrbcndouazujgcma.supabase.co/storage/v1/object/public/images/icon/Blog.webp';
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4"></h1>
-          <p className="text-xl text-blue-100 max-w-3xl"></p>
+      {/* HERO CON LE STESSE DIMENSIONI DELLA PAGINA NEWS */}
+      <div className="relative w-full h-64 md:h-80 lg:h-96 bg-white overflow-hidden">
+        {/* Contenitore principale centrato sopra la griglia */}
+        <div style={{
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          right: '0',
+          bottom: '0',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 2rem'
+        }}>
+          {/* Layout a due colonne */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '3rem',
+            width: '100%',
+            maxWidth: '900px'
+          }}>
+            {/* Colonna sinistra - Immagine cubo (300x300px come nell'altro hero) */}
+            <div style={{
+              flexShrink: 0,
+              width: '300px',
+              height: '300px',
+              position: 'relative'
+            }}>
+              <Image
+                src={cubeImage}
+                alt={t('title')}
+                fill
+                style={{ 
+                  objectFit: 'contain',
+                  objectPosition: 'left center',
+                }}
+                sizes="300px"
+                priority
+              />
+            </div>
+
+            {/* Colonna destra - Solo placeholder del sottotitolo */}
+<div style={{
+  textAlign: 'left',
+  maxWidth: '500px'
+}}>
+  {/* Solo placeholder del sottotitolo in grassetto */}
+  <p style={{ 
+    fontSize: '1.8rem', 
+    color: '#000000',
+    margin: '0',
+    lineHeight: '1.5',
+    fontWeight: '700'
+  }}>
+    {t('subtitle')}
+  </p>
+</div>
+          </div>
         </div>
-      </header>
+      </div>
 
+      {/* LAYOUT: cards a sinistra (larga), sidebar a destra (in alto) */}
       <main className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex flex-col lg:flex-row gap-8">
-          <aside className="lg:w-1/3 xl:w-1/4">
-            <BlogSidebar categories={categories || []} currentLocale={localeCode} />
-          </aside>
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-start">
+          {/* SINISTRA: contenuto (larga) */}
+          <section className="lg:col-span-9">{children}</section>
 
-          <div className="lg:w-2/3 xl:w-3/4">{children}</div>
+          {/* DESTRA: sidebar sticky */}
+          <aside className="lg:col-span-3">
+            <div className="lg:sticky lg:top-8">
+              <BlogSidebar categories={categories || []} currentLocale={localeCode} />
+            </div>
+          </aside>
         </div>
       </main>
     </div>

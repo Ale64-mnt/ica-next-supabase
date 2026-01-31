@@ -1,7 +1,8 @@
-// app/[locale]/blog/page.tsx
+// app/[locale]/blog/page.tsx - SEMPLIFICATA (senza sidebar)
 import { getTranslations } from 'next-intl/server';
 import { createClient } from '@/app/lib/supabase/server';
 import ArticleCard from '@/app/components/blog/ArticleCard';
+import { Filter, X } from 'lucide-react';
 
 interface Author {
   id: string;
@@ -178,25 +179,34 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
 
   return (
     <div>
+      {/* FILTRO ATTIVO (solo se c'è una categoria selezionata) */}
       {category && articles.length > 0 && (
         <div className="mb-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
           <div className="flex justify-between items-center">
-            <div>
-              <span className="text-sm text-gray-600">{t('showing_category')} </span>
-              <span className="font-semibold text-blue-700">{filterLabel}</span>
-              <span className="ml-2 text-gray-500">
-                ({articles.length} {t('articles')})
-              </span>
+            <div className="flex items-center gap-3">
+              <Filter className="w-5 h-5 text-blue-600" />
+              <div>
+                <span className="text-sm text-gray-600">{t('showing_category')} </span>
+                <span className="font-semibold text-blue-700">{filterLabel}</span>
+                <span className="ml-2 text-gray-500">
+                  ({articles.length} {t('articles')})
+                </span>
+              </div>
             </div>
-            <a href={`/${cleanLocaleCode}/blog`} className="text-sm text-blue-600 hover:text-blue-800">
+            <a 
+              href={`/${cleanLocaleCode}/blog`}
+              className="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1"
+            >
+              <X className="w-4 h-4" />
               {t('clear_filter')}
             </a>
           </div>
         </div>
       )}
 
+      {/* GRID DELLE CARD - ALLARGATO (2 colonne su desktop) */}
       {articles.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {articles.map((article) => {
             const articleCleanLocale = cleanLocale(article.locale);
             const categories = extractCategories(article);
@@ -224,7 +234,7 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
           })}
         </div>
       ) : (
-        <div className="text-center py-16 bg-white rounded-xl shadow-sm border">
+        <div className="text-center py-12 bg-white rounded-xl shadow-sm border">
           <div className="text-5xl mb-4">📄</div>
           <h3 className="text-xl font-semibold text-gray-700 mb-2">
             {category ? t('no_posts_category') : t('no_posts')}
@@ -232,6 +242,15 @@ export default async function BlogPage({ params, searchParams }: BlogPageProps) 
           <p className="text-gray-500 mb-4">
             {category ? t('no_posts_category_desc', { category }) : t('no_posts_desc')}
           </p>
+          {category && (
+            <a 
+              href={`/${cleanLocaleCode}/blog`}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
+            >
+              <X className="w-4 h-4" />
+              {t('clear_filter')}
+            </a>
+          )}
         </div>
       )}
     </div>

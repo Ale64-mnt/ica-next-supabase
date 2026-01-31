@@ -91,6 +91,8 @@
     "view_all_articles_in": "Alle Artikel anzeigen in",
     "no_posts_category": "Keine Artikel für diese Kategorie gefunden",
     "no_posts_category_desc": "Für die Kategorie \"{category}\" wurden keine Artikel gefunden.",
+"hero_title": "Information, Prävention und Bewusstsein",
+"hero_subtitle": "Artikel über Online-Sicherheit, digitalen Betrug und finanzielle Bildung.",
 
     "categories": {
       "macro": {

@@ -1,4 +1,3 @@
-// app/components/blog/BlogSidebar.tsx
 "use client";
 
 import { useMemo, useState } from "react";
@@ -45,79 +44,93 @@ export default function BlogSidebar({ categories, currentLocale }: BlogSidebarPr
 
   return (
     <div className="sticky top-8 bg-white rounded-xl shadow-lg p-6 border border-gray-200">
-      <div className="space-y-4">
-        <div className="flex items-center justify-between mb-4">
+      <div className="space-y-5">
+        <div className="flex items-center justify-between mb-6">
           <h3 className="text-lg font-semibold text-gray-800">{t("filter_by_category")}</h3>
-          <Link href={`/${currentLocale}/blog`} className="text-sm text-blue-600 hover:text-blue-800">
+          <Link
+            href={`/${currentLocale}/blog`}
+            className="text-sm text-blue-600 hover:text-blue-800 whitespace-nowrap"
+          >
             {t("clear_all")}
           </Link>
         </div>
 
         <Link
           href={`/${currentLocale}/blog`}
-          className="flex justify-between items-center px-4 py-3 rounded-lg transition-all duration-200 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-800 border-2 border-blue-300 shadow-sm hover:shadow-md"
+          className="flex justify-between items-center px-4 py-3.5 rounded-lg transition-all duration-200 bg-gradient-to-r from-blue-50 to-blue-100 text-blue-800 border-2 border-blue-300 shadow-sm hover:shadow-md"
         >
           <span className="font-semibold">{t("all_categories")}</span>
-          <span className="text-sm bg-white px-2.5 py-1 rounded-full font-medium shadow-sm">
+          <span className="text-sm bg-white px-3 py-1.5 rounded-full font-medium shadow-sm whitespace-nowrap">
             {totalArticles}
           </span>
         </Link>
 
-        {macroCategories.map((macroCat) => {
-          const isExpanded = expandedCategories.has(macroCat.category_key);
-          const hasSubCategories = macroCat.subCategories.length > 0;
+        <div className="space-y-3.5">
+          {macroCategories.map((macroCat) => {
+            const isExpanded = expandedCategories.has(macroCat.category_key);
+            const hasSubCategories = macroCat.subCategories.length > 0;
 
-          return (
-            <div key={macroCat.category_key} className="border border-gray-200 rounded-lg overflow-hidden">
-              <button
-                onClick={() => toggleCategory(macroCat.category_key)}
-                className="w-full flex justify-between items-center px-4 py-3 text-left transition-colors hover:bg-gray-50 text-gray-700"
-                aria-expanded={isExpanded}
-              >
-                <div className="flex items-center gap-3">
-                  {hasSubCategories ? (
-                    <ChevronDown
-                      className={`w-4 h-4 transform transition-transform ${
-                        isExpanded ? "rotate-0" : "-rotate-90"
-                      }`}
-                    />
-                  ) : (
-                    <div className="w-4" />
-                  )}
-                  <span className="font-semibold">{t(`categories.macro.${macroCat.category_key}`)}</span>
-                </div>
+            return (
+              <div key={macroCat.category_key} className="border border-gray-200 rounded-lg overflow-hidden">
+                <button
+                  onClick={() => toggleCategory(macroCat.category_key)}
+                  className="w-full flex items-start justify-between gap-3 px-4 py-3.5 text-left transition-colors hover:bg-gray-50 text-gray-700"
+                  aria-expanded={isExpanded}
+                >
+                  {/* SINISTRA: caret + label */}
+                  <div className="flex items-start gap-3 flex-1 min-w-0">
+                    {hasSubCategories ? (
+                      <ChevronDown
+                        className={`w-4 h-4 mt-0.5 transform transition-transform ${
+                          isExpanded ? "rotate-0" : "-rotate-90"
+                        }`}
+                      />
+                    ) : (
+                      <div className="w-4" />
+                    )}
 
-                <div className="flex items-center gap-3">
-                  <span className="text-sm text-gray-500">
-                    {macroCat.count} {t("articles")}
-                  </span>
-                  <Link
-                    href={`/${currentLocale}/blog?category=${macroCat.category_key}`}
-                    className="text-sm text-blue-600 hover:text-blue-800 px-2 py-1 rounded hover:bg-blue-50"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {t("view_all")}
-                  </Link>
-                </div>
-              </button>
+                    <span className="font-semibold leading-snug break-words">
+                      {t(`categories.macro.${macroCat.category_key}`)}
+                    </span>
+                  </div>
 
-              {hasSubCategories && isExpanded && (
-                <div className="bg-gray-50 border-t border-gray-200">
-                  {macroCat.subCategories.map((subCat) => (
+                  {/* DESTRA: count + link (responsive, no tronchi) */}
+                  <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                    <span className="text-sm text-gray-500 whitespace-nowrap">
+                      {macroCat.count} {t("articles")}
+                    </span>
                     <Link
-                      key={subCat.category_id}
-                      href={`/${currentLocale}/blog?category=${subCat.category_key}`}
-                      className="flex justify-between items-center px-4 py-2.5 pl-11 transition-colors hover:bg-gray-100 text-gray-700"
+                      href={`/${currentLocale}/blog?category=${macroCat.category_key}`}
+                      className="text-sm text-blue-600 hover:text-blue-800 px-2 py-1 rounded hover:bg-blue-50 whitespace-nowrap"
+                      onClick={(e) => e.stopPropagation()}
                     >
-                      <span className="text-sm">{t(`categories.sub.${subCat.category_key}`)}</span>
-                      <span className="text-xs bg-white px-2 py-0.5 rounded-full">{subCat.count}</span>
+                      {t("view_all")}
                     </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-          );
-        })}
+                  </div>
+                </button>
+
+                {hasSubCategories && isExpanded && (
+                  <div className="bg-gray-50 border-t border-gray-200">
+                    {macroCat.subCategories.map((subCat) => (
+                      <Link
+                        key={subCat.category_id}
+                        href={`/${currentLocale}/blog?category=${subCat.category_key}`}
+                        className="flex justify-between items-center gap-3 px-4 py-3 pl-11 transition-colors hover:bg-gray-100 text-gray-700 group"
+                      >
+                        <span className="text-sm group-hover:text-blue-600 break-words min-w-0">
+                          {t(`categories.sub.${subCat.category_key}`)}
+                        </span>
+                        <span className="text-xs bg-white px-3 py-1.5 rounded-full whitespace-nowrap flex-shrink-0">
+                          {subCat.count}
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
@@ -125,11 +138,8 @@ export default function BlogSidebar({ categories, currentLocale }: BlogSidebarPr
 
 function processCategories(categories: any[], locale: string) {
   const macroMap = new Map<number, MacroCategory>();
-
-  // Set globale: tutti i content_id distinti visibili in questa locale
   const globalContentIds = new Set<number>();
 
-  // Helper: estrae i content_id distinti per una categoria
   const getDistinctContentIdsForCategory = (cat: any): Set<number> => {
     const ids = new Set<number>();
 
@@ -149,11 +159,9 @@ function processCategories(categories: any[], locale: string) {
     return ids;
   };
 
-  // 1) Inizializza macro
   for (const cat of categories) {
     if (!cat?.parent_category_id) {
       const ids = getDistinctContentIdsForCategory(cat);
-
       for (const id of ids) globalContentIds.add(id);
 
       macroMap.set(cat.category_id, {
@@ -166,14 +174,12 @@ function processCategories(categories: any[], locale: string) {
     }
   }
 
-  // 2) Aggiungi sub + aggiorna globalContentIds
   for (const cat of categories) {
     if (cat?.parent_category_id) {
       const parent = macroMap.get(cat.parent_category_id);
       if (!parent) continue;
 
       const ids = getDistinctContentIdsForCategory(cat);
-
       for (const id of ids) globalContentIds.add(id);
 
       parent.subCategories.push({
@@ -185,20 +191,14 @@ function processCategories(categories: any[], locale: string) {
     }
   }
 
-  // 3) Opzionale ma utile: se una macro ha subcategorie, spesso vuoi che il count macro sia
-  //    il numero di articoli distinti presenti nelle sub (non la somma semplice).
-  //    Così non “sparisce” se i contenuti sono tutti taggati sulle sub.
   for (const macro of macroMap.values()) {
     if (macro.subCategories.length > 0) {
       const macroDistinct = new Set<number>();
 
-      // articoli direttamente sulla macro (già in macro.count ma non abbiamo gli ids salvati)
-      // quindi ricostruiamo anche questi ids:
       const macroCat = categories.find((c: any) => c?.category_id === macro.category_id);
       const macroDirectIds = macroCat ? getDistinctContentIdsForCategory(macroCat) : new Set<number>();
       for (const id of macroDirectIds) macroDistinct.add(id);
 
-      // articoli sulle sub (distinct)
       for (const sub of macro.subCategories) {
         const subCat = categories.find((c: any) => c?.category_id === sub.category_id);
         const subIds = subCat ? getDistinctContentIdsForCategory(subCat) : new Set<number>();
@@ -210,9 +210,7 @@ function processCategories(categories: any[], locale: string) {
   }
 
   const macroCategories = Array.from(macroMap.values()).sort((a, b) => b.count - a.count);
-  for (const macro of macroCategories) {
-    macro.subCategories.sort((a, b) => b.count - a.count);
-  }
+  for (const macro of macroCategories) macro.subCategories.sort((a, b) => b.count - a.count);
 
   return { macroCategories, totalArticles: globalContentIds.size };
 }

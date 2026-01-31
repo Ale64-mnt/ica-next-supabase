@@ -91,6 +91,8 @@
     "clear_all": "Limpiar todo",
     "no_posts_category": "No se encontraron artículos para esta categoría",
     "no_posts_category_desc": "No se encontraron artículos para la categoría \"{category}\".",
+    "hero_title": "Información, prevención y concienciación",
+    "hero_subtitle": "Artículos sobre seguridad en línea, fraudes digitales y educación financiera.",
 
     "categories": {
       "macro": {
