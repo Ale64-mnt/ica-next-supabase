@@ -13,7 +13,7 @@
     "financial_education": "Financial Education",
     "articles": "Articles",
     "news": "News",
-    "blog_link": "Blog",
+    "blog_link": "Blogs",
     "support": "Support",
     "contact": "Contact"
   },
@@ -56,6 +56,9 @@
       "eu-updates": "EU Updates",
       "company-news": "Company News",
       "practical-guides": "Practical Guides",
+      "financial-guides": "Financial Guides",
+      "digital-safety-guides": "Digital Safety Guides",
+
       "multilingual-education": "Multilingual Education"
     }
   },

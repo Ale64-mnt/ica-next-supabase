@@ -13,7 +13,7 @@
     "financial_education": "Educación Financiera",
     "articles": "Artículos",
     "news": "Noticias",
-    "blog_link": "Blog",
+    "blog_link": "Blogs",
     "support": "Soporte",
     "contact": "Contacto"
   },
@@ -55,7 +55,10 @@
       "digital-ethics": "Éthique Numérique",
       "eu-updates": "Actualités UE",
       "company-news": "Actualités d'Entreprise",
-      "practical-guides": "Guides Pratiques",
+      "practical-guides": "Guías prácticas",
+      "financial-guides": "Guías financieras",
+      "digital-safety-guides": "Guías de seguridad digital",
+
       "multilingual-education": "Éducation Multilingue"
     }
   },

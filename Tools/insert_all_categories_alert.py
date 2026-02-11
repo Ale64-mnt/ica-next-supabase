@@ -44,20 +44,16 @@ IMAGE_ALT_TEXTS = {
 NEWS_DATA = [
         
    
-   # Italiano
+    # Italiano
     {
-        "title": "Avviso phishing sull’Agenzia delle Entrate – falso deposito cauzionale",
-        "slug": "avviso-phishing-agenzia-entrate-falso-deposito-cauzionale",
-        "excerpt": "L’Agenzia delle Entrate avverte su messaggi fraudolenti che usano il pretesto di un presunto mancato versamento di un deposito cauzionale in controversie internazionali per sottrarre dati e denaro.",
-        "body_md": "**Fonte:** Agenzia delle Entrate – agenziaentrate.gov.it\n"
-                   "**Data di pubblicazione:** 26 gennaio 2026\n"
-                   "**Link ufficiale:** https://www.agenziaentrate.gov.it/portale/avviso-del-26-gennaio-2026\n\n"
-                   "**Riassunto:** L’Agenzia delle Entrate segnala la circolazione di messaggi fraudolenti che utilizzano come pretesto il presunto “mancato versamento del deposito cauzionale in controversie internazionali”. Le comunicazioni impiegano un linguaggio pseudo-giuridico per apparire credibili e urgenti, spingendo il destinatario ad agire senza effettuare verifiche.\n\n"
-                   "**Canale:** messaggi elettronici (email o canali digitali analoghi) che **non** provengono dall’Agenzia delle Entrate.\n\n"
-                   "**Trucco principale:** il testo lascia intendere che sia necessario versare un “deposito cauzionale” o fornire informazioni sensibili per evitare conseguenze negative come sanzioni, perdita di una causa o blocco di fondi.\n\n"
-                   "**Obiettivo della truffa:** indurre la vittima a cliccare su link che portano a siti contraffatti dove vengono richiesti dati personali, credenziali di accesso o coordinate bancarie, oppure a rispondere direttamente al messaggio fornendo informazioni identificative e finanziarie.\n\n"
-                   "**Esempio tipico:** il destinatario riceve un’email che parla di “mancato versamento del deposito cauzionale in una controversia internazionale” e invita a cliccare su un link per “regolarizzare immediatamente la posizione”. Inserendo i dati del conto o delle carte, queste informazioni vengono raccolte dai truffatori e utilizzate per bonifici non autorizzati o furti di identità.\n\n"
-                   "**Avvertenza ufficiale:** l’Agenzia delle Entrate ribadisce che **non richiede mai** il pagamento di depositi cauzionali tramite email né invita a inserire dati bancari o credenziali tramite link esterni. In presenza di messaggi di questo tipo, il comportamento corretto è non cliccare, non rispondere e cancellare la comunicazione, verificando solo attraverso i canali ufficiali.",
+        "title": "Consob: ulteriori interventi di oscuramento di siti web abusivi",
+        "slug": "consob-ulteriori-oscuramenti-siti-web-abusivi-febbraio-2026",
+        "excerpt": "Consob ha aggiornato l’elenco dei siti web oscurati perché offrivano servizi finanziari e cripto-attività senza autorizzazione, a tutela dei risparmiatori.",
+        "body_md": "**Fonte:** CONSOB – consob.it\n"
+                   "**Data di pubblicazione:** 5 febbraio 2026\n"
+                   "**Link ufficiale:** https://www.consob.it/web/area-pubblica/oscuramenti\n\n"
+                   "**Riassunto:** La CONSOB ha pubblicato un nuovo aggiornamento relativo all’attività di oscuramento di siti internet abusivi, includendo numerosi domini che offrivano servizi finanziari o di cripto-attività senza le necessarie autorizzazioni. Questi interventi rientrano nelle misure di contrasto alle frodi finanziarie e all’abusivismo online, evidenziando i rischi per i risparmiatori che si affidano a operatori non autorizzati.\n\n"
+                   "**Meccanismo pratico della truffa:** I siti che offrono servizi di investimento o cripto-trading senza autorizzazione inducono spesso gli utenti a depositare denaro promettendo rendimenti elevati o accesso a strumenti esclusivi. Le piattaforme appaiono professionali, con interfacce curate e loghi accattivanti, per sembrare affidabili. Un esempio concreto è un sito che si presenta come broker di trading online: l’utente apre un conto e versa fondi per investire, ma successivamente non riesce a prelevare il capitale o scopre che i servizi promessi non esistono. Gli oscuramenti disposti da Consob mirano a rimuovere queste pagine fraudolente e a proteggere i risparmiatori da perdite economiche e dal furto di informazioni personali.",
         "locale": "it",
     },
 
