@@ -46,14 +46,15 @@ NEWS_DATA = [
    
    # Italiano
     {
-        "title": "Occhio alle truffe: Consob oscura 5 siti che offrono abusivamente servizi finanziari online",
-        "slug": "consob-oscura-5-siti-servizi-finanziari-online-abusivi",
-        "excerpt": "Consob ha ordinato l’oscuramento di cinque siti che offrivano servizi di investimento online senza autorizzazione, richiamando i risparmiatori a verificare sempre l’abilitazione degli operatori.",
-        "body_md": "**Fonte:** Consob – consob.it\n"
-                   "**Data di pubblicazione:** 15 gennaio 2026\n"
-                   "**Link ufficiale:** https://www.consob.it/web/area-pubblica/dettaglio-news/-/asset_publisher/qjVSo44Lk1fI/content/comunicato-stampa-del-15-gennaio-2026-abusivismo/10194\n\n"
-                   "**Riassunto:** Consob ha ordinato l’oscuramento di cinque nuovi siti web (\"CCBIGLOBAL\", \"Torotrades24\", \"Partners-Swiss\", \"Privanet Securities\" e \"AurosAi\") tramite cui venivano prestati abusivamente servizi di investimento online. Si tratta dei primi interventi del 2026 nell’attività di contrasto all’abusivismo finanziario, che porta a 1.527 il numero complessivo di siti oscurati dall’Autorità dal 2019. Consob richiama i risparmiatori a verificare sempre che l’operatore sia autorizzato e che sia disponibile un prospetto informativo o un white paper per offerte di prodotti finanziari e cripto-attività.\n\n"
-                   "**Meccanismo della truffa:** I siti oscurati si presentano come piattaforme di trading online o di investimento apparentemente professionali, spesso con denominazioni che richiamano operatori svizzeri o internazionali, promettendo rendimenti elevati su strumenti finanziari e cripto-attività senza possedere alcuna autorizzazione. L’utente viene convinto a registrarsi e a versare denaro; dopo i primi presunti guadagni, al momento del prelievo emergono richieste di ulteriori versamenti o il blocco dell’account. Un esempio tipico è l’utente che, dopo aver cliccato su una pubblicità sui social, viene contattato da un finto “consulente” che lo guida nel bonifico verso la piattaforma abusiva, rendendo di fatto irrecuperabili le somme versate.",
+        "title": "Report riepilogativo sulle tendenze delle campagne malevole analizzate dal CERT-AGID nel 2025",
+        "slug": "report-cert-agid-tendenze-campagne-malevole-2025",
+        "excerpt": "Il CERT-AGID pubblica il report annuale sulle 3.620 campagne malevole osservate nel 2025, evidenziando phishing PagoPA, abuso della PEC, smishing e crescente uso dell’IA nelle truffe digitali.",
+        "body_md": "**Fonte:** CERT-AGID – cert-agid.gov.it\n"
+                   "**Data di pubblicazione:** 10 febbraio 2026\n"
+                   "**Link ufficiale:** https://cert-agid.gov.it/news/report-riepilogativo-sulle-tendenze-delle-campagne-malevole-analizzate-dal-cert-agid-nel-2025/\n\n"
+                   "**Riassunto:** Il CERT-AGID presenta un’analisi delle 3.620 campagne malevole osservate nel corso del 2025, con oltre 51.000 Indicatori di Compromissione (IoC) condivisi con la propria constituency. Il report evidenzia la diffusione di phishing a tema PagoPA (falsi solleciti di pagamento per presunte multe), l’aumento dell’abuso della PEC per campagne di phishing bancario e distribuzione di malware, e la crescita di campagne di smishing finalizzate all’installazione di software malevolo sui dispositivi mobili.\n\n"
+                   "**Trend principali:** Tra le tendenze rilevate emergono l’utilizzo della tecnica di ingegneria sociale ClickFix, il ruolo centrale dei malware infostealer nel furto di credenziali e dati sensibili e il crescente impiego dell’intelligenza artificiale per generare messaggi di phishing più credibili e diffusi su larga scala.\n\n"
+                   "**Nota tecnica:** Un infostealer è un tipo di malware progettato per sottrarre credenziali, cookie e documenti dall’endpoint della vittima. Lo smishing è una forma di phishing veicolata tramite SMS. ClickFix è una tecnica di social engineering che induce l’utente a eseguire manualmente azioni che portano all’installazione di codice malevolo.",
         "locale": "it",
     },
 

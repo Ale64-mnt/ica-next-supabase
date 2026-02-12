@@ -288,10 +288,7 @@ export default async function BlogPostPage({ params }: { params: Promise<BlogPos
         {/* Titolo */}
         <h1 className="text-4xl font-bold mb-4">{localization.title}</h1>
         
-        {/* Estratto */}
-        {localization.excerpt && (
-          <p className="text-xl text-gray-600 mb-6">{localization.excerpt}</p>
-        )}
+       
 
         {/* Autore */}
         {author && (
